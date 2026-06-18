@@ -1,0 +1,32 @@
+﻿name: Sync from GitCode
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch from GitCode
+        run: |
+          git remote add gitcode https://oauth2:${{ secrets.GITCODE_TOKEN }}@gitcode.com/RUN-Alex-project/game_test_3.git
+          git fetch gitcode main
+
+      - name: Merge and push if changes
+        run: |
+          git merge gitcode/main --allow-unrelated-histories -m "Sync from GitCode" || true
+          if git diff --quiet origin/main HEAD; then
+            echo "No changes to push"
+          else
+            git push origin main
+          fi
