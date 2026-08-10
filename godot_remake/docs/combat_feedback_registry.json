@@ -1,0 +1,1619 @@
+{
+ "registry_version": "1.37",
+ "baseline_version": "v1.36",
+ "purpose": "战斗反馈事件与声音注册表（v1.37 整改06）：37 段音频最终分类（FFDec 26.2.1 p-code + StartSound 标签[ShowFrame 计数] + 生产调用行核查）",
+ "evidence_source": "res://docs/evidence/combat_feedback_v103_v9.txt",
+ "manifest_source": "res://assets/extracted/sounds/manifest.csv",
+ "sounds": [
+  {
+   "sound_id": 1,
+   "file": "res://assets/extracted/sounds/sound_0001.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 1663,
+   "export_name": "指向怪物.wav",
+   "swf_trigger": {
+    "scope": 1074,
+    "frame": 1
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0001",
+    "指向怪物.wav",
+    "attachSound",
+    "sprite1074"
+   ],
+   "classification_reason": "SWF 完整链存在（sprite1074 onRollOver->attachSound('指向怪物.wav')->start）；生产未接入——重制版缺口",
+   "production_call_site": "（生产零调用：grep 证实 scripts/ 无 hover_item 播放行）",
+   "pcode_evidence": [
+    "DefineSprite_1074\\frame_1\\DoAction.pcode:203"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 2,
+   "file": "res://assets/extracted/sounds/sound_0002.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 11236,
+   "export_name": "指向NPC.wav",
+   "swf_trigger": {
+    "scope": 1079,
+    "frame": 1
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0002",
+    "指向NPC.wav",
+    "attachSound",
+    "sprite1079",
+    "sprite1090",
+    "sprite1129",
+    "sprite1133",
+    "sprite1137",
+    "sprite1141",
+    "sprite1150",
+    "sprite1154",
+    "sprite1159",
+    "sprite1161",
+    "sprite1174",
+    "sprite1183",
+    "sprite1184",
+    "sprite1185",
+    "sprite1186",
+    "sprite1195",
+    "sprite1200",
+    "sprite1206",
+    "sprite1209",
+    "sprite1235"
+   ],
+   "classification_reason": "SWF 完整链存在（NPC onRollOver->attachSound('指向NPC.wav')->start，20 处）；生产未接入——重制版缺口",
+   "production_call_site": "（生产零调用：grep 证实 scripts/ 无 hover_npc 播放行）",
+   "pcode_evidence": [
+    "DefineSprite_1235\\frame_1\\DoAction.pcode:129",
+    "DefineSprite_1209\\frame_1\\DoAction.pcode:130",
+    "DefineSprite_1206\\frame_1\\DoAction.pcode:701",
+    "DefineSprite_1200\\frame_1\\DoAction.pcode:130",
+    "DefineSprite_1195\\frame_1\\DoAction.pcode:167",
+    "DefineSprite_1186\\frame_1\\DoAction.pcode:211",
+    "DefineSprite_1185\\frame_1\\DoAction.pcode:104",
+    "DefineSprite_1184\\frame_1\\DoAction.pcode:440",
+    "DefineSprite_1183\\frame_1\\DoAction.pcode:272",
+    "DefineSprite_1174\\frame_1\\DoAction.pcode:439",
+    "DefineSprite_1161\\frame_1\\DoAction.pcode:711",
+    "DefineSprite_1159\\frame_1\\DoAction.pcode:18",
+    "DefineSprite_1154\\frame_1\\DoAction.pcode:240",
+    "DefineSprite_1150\\frame_1\\DoAction.pcode:18",
+    "DefineSprite_1141\\frame_1\\DoAction.pcode:116",
+    "DefineSprite_1137\\frame_1\\DoAction.pcode:18",
+    "DefineSprite_1133\\frame_1\\DoAction.pcode:18",
+    "DefineSprite_1129\\frame_1\\DoAction.pcode:109",
+    "DefineSprite_1090\\frame_1\\DoAction.pcode:78",
+    "DefineSprite_1079\\frame_1\\DoAction.pcode:742"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 3,
+   "file": "res://assets/extracted/sounds/sound_0003.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 24145,
+   "export_name": "召回幻兽.wav",
+   "swf_trigger": {
+    "scope": null,
+    "frame": null
+   },
+   "production_event": "summon_pet",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0003",
+    "召回幻兽.wav",
+    "attachSound",
+    "sprite782"
+   ],
+   "classification_reason": "sprite782 on(release)：NewObject Sound->attachSound('召回幻兽.wav')->start 完整链；生产已接入",
+   "production_call_site": "game_state.gd:731 AudioService.play('summon_pet')",
+   "pcode_evidence": [
+    "DefineSprite_782\\frame_1\\PlaceObject2_779_1\\CLIPACTIONRECORD on(release).pcode:60"
+   ],
+   "trigger_handler": [
+    "on(release)"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 4,
+   "file": "res://assets/extracted/sounds/sound_0004.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 44096,
+   "export_name": "学习技能.wav",
+   "swf_trigger": {
+    "scope": 731,
+    "frame": 1
+   },
+   "production_event": "learn_skill",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0004",
+    "学习技能.wav",
+    "attachSound",
+    "sprite731"
+   ],
+   "classification_reason": "p-code 完整链（学习技能 handler->attachSound('学习技能.wav')->start）；生产已接入",
+   "production_call_site": "game_state.gd:629,1091 AudioService.play('learn_skill')",
+   "pcode_evidence": [
+    "DefineSprite_731\\frame_1\\DoAction.pcode:195",
+    "DefineSprite_731\\frame_1\\DoAction.pcode:221"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 5,
+   "file": "res://assets/extracted/sounds/sound_0005.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 6048,
+   "export_name": "选择NPC.wav",
+   "swf_trigger": {
+    "scope": 1079,
+    "frame": 1
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0005",
+    "选择NPC.wav",
+    "attachSound",
+    "sprite1079",
+    "sprite1090",
+    "sprite1129",
+    "sprite1141",
+    "sprite1146",
+    "sprite1154",
+    "sprite1161",
+    "sprite1174",
+    "sprite1183",
+    "sprite1184",
+    "sprite1185",
+    "sprite1186",
+    "sprite1195",
+    "sprite1200",
+    "sprite1206",
+    "sprite1209",
+    "sprite1235"
+   ],
+   "classification_reason": "SWF 完整链存在（NPC onRelease->attachSound('选择NPC.wav')->start，40 处）；生产未接入——重制版缺口",
+   "production_call_site": "（生产零调用：grep 证实 scripts/ 无 select_npc 播放行）",
+   "pcode_evidence": [
+    "frame_35\\PlaceObject2_1088_2\\CLIPACTIONRECORD on(release).pcode:8",
+    "frame_12\\PlaceObject2_1133_14\\CLIPACTIONRECORD on(release).pcode:28",
+    "frame_12\\PlaceObject2_1137_16\\CLIPACTIONRECORD on(release).pcode:31",
+    "frame_12\\PlaceObject2_1150_22\\CLIPACTIONRECORD on(release).pcode:24",
+    "frame_12\\PlaceObject2_1159_39\\CLIPACTIONRECORD on(release).pcode:24",
+    "DefineSprite_1235\\frame_1\\DoAction.pcode:112",
+    "DefineSprite_1209\\frame_1\\DoAction.pcode:113",
+    "DefineSprite_1206\\frame_1\\DoAction.pcode:684",
+    "DefineSprite_1200\\frame_1\\DoAction.pcode:113",
+    "DefineSprite_1195\\frame_1\\DoAction.pcode:150",
+    "DefineSprite_1186\\frame_1\\DoAction.pcode:194",
+    "DefineSprite_1185\\frame_1\\DoAction.pcode:87",
+    "DefineSprite_1184\\frame_1\\DoAction.pcode:423",
+    "DefineSprite_1183\\frame_1\\DoAction.pcode:255",
+    "DefineSprite_1174\\frame_1\\DoAction.pcode:422",
+    "DefineSprite_1161\\frame_1\\DoAction.pcode:694",
+    "DefineSprite_1154\\frame_1\\DoAction.pcode:223",
+    "DefineSprite_1146\\frame_1\\DoAction.pcode:202",
+    "DefineSprite_1141\\frame_1\\DoAction.pcode:99",
+    "DefineSprite_1129\\frame_1\\DoAction.pcode:92",
+    "DefineSprite_1090\\frame_1\\DoAction.pcode:61",
+    "DefineSprite_1079\\frame_1\\DoAction.pcode:725"
+   ],
+   "trigger_handler": [
+    "DoAction",
+    "on(release)"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 6,
+   "file": "res://assets/extracted/sounds/sound_0006.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 24320,
+   "export_name": "送花.wav",
+   "swf_trigger": {
+    "scope": 1206,
+    "frame": 1
+   },
+   "production_event": "send_flower",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0006",
+    "送花.wav",
+    "attachSound",
+    "sprite1206"
+   ],
+   "classification_reason": "公主送礼 onRelease handler 完整链->attachSound('送花.wav')->start；生产已接入",
+   "production_call_site": "game_state.gd:909 AudioService.play('send_flower')",
+   "pcode_evidence": [
+    "DefineSprite_1206\\frame_1\\DoAction.pcode:497"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 7,
+   "file": "res://assets/extracted/sounds/sound_0007.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 18624,
+   "export_name": "升级.wav",
+   "swf_trigger": {
+    "scope": 932,
+    "frame": 1
+   },
+   "production_event": "level_up",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_level",
+   "priority": 1,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0007",
+    "升级.wav",
+    "attachSound",
+    "sprite932",
+    "sprite1222"
+   ],
+   "classification_reason": "sprite932 upSound 完整链->attachSound('升级.wav')->start；生产经 FeedbackService 已接入",
+   "production_call_site": "game_state.gd:1915 FeedbackService.emit('level_up', sound_name=level_up)",
+   "pcode_evidence": [
+    "DefineSprite_932\\frame_1\\DoAction.pcode:2072",
+    "DefineSprite_932\\frame_1\\DoAction.pcode:2077",
+    "DefineSprite_1222\\frame_1\\DoAction.pcode:127"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 8,
+   "file": "res://assets/extracted/sounds/sound_0008.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 6615,
+   "export_name": "切换地图.wav",
+   "swf_trigger": {
+    "scope": 1071,
+    "frame": 1
+   },
+   "production_event": "change_map",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0008",
+    "切换地图.wav",
+    "attachSound",
+    "sprite1071"
+   ],
+   "classification_reason": "地图按钮 onRelease 完整链->attachSound('切换地图.wav')->start；生产已接入",
+   "production_call_site": "main.gd:366 AudioService.play('change_map')",
+   "pcode_evidence": [
+    "DefineSprite_1071\\frame_1\\DoAction.pcode:49"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 9,
+   "file": "res://assets/extracted/sounds/sound_0009.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 20948,
+   "export_name": "其它升级.wav",
+   "swf_trigger": {
+    "scope": 932,
+    "frame": 1
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "none",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0009",
+    "其它升级.wav",
+    "attachSound",
+    "sprite932"
+   ],
+   "classification_reason": "SWF 完整链存在（sprite932 upSound->attachSound('其它升级.wav')->start，升级音组）；生产未接入——重制版缺口",
+   "production_call_site": "（生产零调用：无任何生产播放行）",
+   "pcode_evidence": [
+    "DefineSprite_932\\frame_1\\DoAction.pcode:2072"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 10,
+   "file": "res://assets/extracted/sounds/sound_0010.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 6784,
+   "export_name": "精练失败.wav",
+   "swf_trigger": {
+    "scope": 662,
+    "frame": 1
+   },
+   "production_event": "refine_fail",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0010",
+    "精练失败.wav",
+    "attachSound",
+    "sprite662"
+   ],
+   "classification_reason": "p-code 完整链->attachSound('精练失败.wav')->start；生产已接入",
+   "production_call_site": "game_state.gd:656 AudioService.play('refine_fail')",
+   "pcode_evidence": [
+    "DefineSprite_662\\frame_1\\DoAction.pcode:1494"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 11,
+   "file": "res://assets/extracted/sounds/sound_0011.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 21069,
+   "export_name": "精练成功.wav",
+   "swf_trigger": {
+    "scope": 662,
+    "frame": 1
+   },
+   "production_event": "refine_success",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0011",
+    "精练成功.wav",
+    "attachSound",
+    "sprite662"
+   ],
+   "classification_reason": "p-code 完整链->attachSound('精练成功.wav')->start；生产已接入",
+   "production_call_site": "game_state.gd:656 AudioService.play('refine_success')",
+   "pcode_evidence": [
+    "DefineSprite_662\\frame_1\\DoAction.pcode:1489"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 12,
+   "file": "res://assets/extracted/sounds/sound_0012.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 12795,
+   "export_name": "见到BOSS.wav",
+   "swf_trigger": {
+    "scope": null,
+    "frame": null
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "none",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0012",
+    "见到BOSS.wav",
+    "attachSound"
+   ],
+   "classification_reason": "SWF 完整链存在（sprite1074 战场怪物按钮 onClipEvent(load)->boss_sound attachSound('见到BOSS.wav')->start，7 处）；生产未接入——重制版缺口",
+   "production_call_site": "（生产零调用：grep 证实 scripts/ 无 'boss' 播放行）",
+   "pcode_evidence": [
+    "frame_8\\PlaceObject2_1074_22\\CLIPACTIONRECORD onClipEvent(load).pcode:23",
+    "frame_21\\PlaceObject2_1074_30\\CLIPACTIONRECORD onClipEvent(load).pcode:23",
+    "frame_20\\PlaceObject2_1074_32\\CLIPACTIONRECORD onClipEvent(load).pcode:23",
+    "frame_19\\PlaceObject2_1074_51\\CLIPACTIONRECORD onClipEvent(load).pcode:23",
+    "frame_18\\PlaceObject2_1074_51\\CLIPACTIONRECORD onClipEvent(load).pcode:23",
+    "frame_17\\PlaceObject2_1074_51\\CLIPACTIONRECORD onClipEvent(load).pcode:23",
+    "frame_16\\PlaceObject2_1074_64\\CLIPACTIONRECORD onClipEvent(load).pcode:23"
+   ],
+   "trigger_handler": [
+    "onClipEvent(load)"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 13,
+   "file": "res://assets/extracted/sounds/sound_0013.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 3425,
+   "export_name": "喝药.wav",
+   "swf_trigger": {
+    "scope": 37,
+    "frame": 1
+   },
+   "production_event": "potion",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0013",
+    "喝药.wav",
+    "attachSound",
+    "sprite37",
+    "sprite45"
+   ],
+   "classification_reason": "p-code 完整链->attachSound('喝药.wav')->start；生产已接入",
+   "production_call_site": "game_state.gd:593,606,614,1108 AudioService.play('potion')",
+   "pcode_evidence": [
+    "DefineSprite_45_果子\\frame_1\\DoAction.pcode:248",
+    "DefineSprite_37_体力药\\frame_1\\DoAction.pcode:248"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 14,
+   "file": "res://assets/extracted/sounds/sound_0014.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 16395,
+   "export_name": "传送.wav",
+   "swf_trigger": {
+    "scope": 1161,
+    "frame": 1
+   },
+   "production_event": "attack",
+   "classification": "used_unconfirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_attack",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0014",
+    "传送.wav",
+    "attachSound",
+    "sprite1161",
+    "sprite1185",
+    "sprite1186"
+   ],
+   "usage_mismatch": "export_name 传送.wav，attachSound 于 NPC 交互 sprite1161/1185/1186（sprite523 玩家待机段无 StartSound）；生产以 attack 名称播放——用途不符，需 PM 决策",
+   "classification_reason": "生产绑定 attack（普通攻击）；SWF 触发链在任务传送 handler（sprite1161 日常任务官'传送.wav'->attachSound->start，传送到雪域边境/地下城时播放）——语义不对应",
+   "production_call_site": "battle_panel.gd:102 + scene_battle_controller.gd:542 (sound_name=attack)",
+   "pcode_evidence": [
+    "DefineSprite_1186\\frame_1\\DoAction.pcode:121",
+    "DefineSprite_1185\\frame_1\\DoAction.pcode:58",
+    "DefineSprite_1161\\frame_1\\DoAction.pcode:450",
+    "DefineSprite_1161\\frame_1\\DoAction.pcode:484"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 15,
+   "file": "res://assets/extracted/sounds/sound_0015.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 15147,
+   "export_name": "出征幻兽.wav",
+   "swf_trigger": {
+    "scope": null,
+    "frame": null
+   },
+   "production_event": "victory",
+   "classification": "used_unconfirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_victory",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0015",
+    "出征幻兽.wav",
+    "attachSound",
+    "sprite782"
+   ],
+   "usage_mismatch": "export_name 出征幻兽.wav 生产以 victory 播放；胜利无 StartSound/attachSound 触发证据",
+   "classification_reason": "生产绑定 victory（胜利）；SWF 触发链在出征按钮 sprite782 on(release)：attachSound('出征幻兽.wav')->start——语义不对应",
+   "production_call_site": "battle_panel.gd:135 + scene_battle_controller.gd:637 (sound_name=victory)",
+   "pcode_evidence": [
+    "DefineSprite_782\\frame_1\\PlaceObject2_779_1\\CLIPACTIONRECORD on(release).pcode:31"
+   ],
+   "trigger_handler": [
+    "on(release)"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 16,
+   "file": "res://assets/extracted/sounds/sound_0016.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 4238,
+   "export_name": "open.wav",
+   "swf_trigger": {
+    "scope": 1222,
+    "frame": 1
+   },
+   "production_event": "open",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0016",
+    "open.wav",
+    "attachSound",
+    "sprite1222"
+   ],
+   "classification_reason": "p-code 完整链->attachSound('open.wav')->start；生产已接入",
+   "production_call_site": "game_state.gd:1144 AudioService.play('open')",
+   "pcode_evidence": [
+    "DefineSprite_1222\\frame_1\\DoAction.pcode:472"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 17,
+   "file": "res://assets/extracted/sounds/sound_0017.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 6485,
+   "export_name": "NPC对话框.wav",
+   "swf_trigger": {
+    "scope": 882,
+    "frame": 1
+   },
+   "production_event": "npc_dialogue",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0017",
+    "NPC对话框.wav",
+    "attachSound",
+    "sprite882"
+   ],
+   "classification_reason": "p-code 完整链->attachSound('NPC对话框.wav')->start；生产已接入",
+   "production_call_site": "dialogue_panel.gd:126 AudioService.play('npc_dialogue')",
+   "pcode_evidence": [
+    "DefineSprite_882\\frame_1\\DoAction.pcode:85"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 18,
+   "file": "res://assets/extracted/sounds/sound_0018.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 6818,
+   "export_name": "deathman.wav",
+   "swf_trigger": {
+    "scope": 932,
+    "frame": 1
+   },
+   "production_event": "death",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_defeat",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0018",
+    "deathman.wav",
+    "attachSound",
+    "sprite932"
+   ],
+   "classification_reason": "p-code deathSound 完整链->attachSound('deathman.wav')->start；生产已接入",
+   "production_call_site": "battle_panel.gd:145 + scene_battle_controller.gd:715,718 AudioService.play('death')",
+   "pcode_evidence": [
+    "DefineSprite_932\\frame_1\\DoAction.pcode:2082"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 19,
+   "file": "res://assets/extracted/sounds/sound_0019.mp3",
+   "format": "mp3",
+   "rate": 44100,
+   "sample_width": 2,
+   "channels": 2,
+   "sample_count": 1393920,
+   "export_name": "back.mp3",
+   "swf_trigger": {
+    "scope": 963,
+    "frame": 1
+   },
+   "production_event": "background_music",
+   "classification": "native_confirmed",
+   "concurrency_allowed": true,
+   "dedupe": "none",
+   "priority": 0,
+   "cancel_rule": "stop_music",
+   "evidence_tokens": [
+    "sound_0019",
+    "back.mp3",
+    "attachSound",
+    "sprite963"
+   ],
+   "classification_reason": "sprite963 startmusic：NewObject Sound->attachSound('back.mp3')->start+onSoundComplete 循环；生产已接入",
+   "production_call_site": "audio_service.gd:44-48 music_player.play()（sound_0019 循环）",
+   "pcode_evidence": [
+    "DefineSprite_963\\frame_1\\DoAction.pcode:19"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 20,
+   "file": "res://assets/extracted/sounds/sound_0020.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 4117,
+   "export_name": "装备.wav",
+   "swf_trigger": {
+    "scope": 561,
+    "frame": 1
+   },
+   "production_event": "equip",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "event_once",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0020",
+    "装备.wav",
+    "attachSound",
+    "sprite561"
+   ],
+   "classification_reason": "p-code 完整链->attachSound('装备.wav')->start；生产已接入",
+   "production_call_site": "game_state.gd:1741 AudioService.play('equip')",
+   "pcode_evidence": [
+    "DefineSprite_561\\frame_1\\DoAction.pcode:459"
+   ],
+   "trigger_handler": [
+    "DoAction"
+   ],
+   "attach_sound_call": true,
+   "start_call": true
+  },
+  {
+   "sound_id": 123,
+   "file": "res://assets/extracted/sounds/sound_0123.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 3556,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 124,
+    "frame": 7
+   },
+   "production_event": "monster_attack_normal",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_attack",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0123",
+    "start_sound",
+    "sprite124",
+    "frame7"
+   ],
+   "classification_reason": "StartSound sprite124/frame7（怪物对象攻击帧——帧标签 frame2=站立/frame7=攻击，ShowFrame 计数）；生产 monster_attack_normal（scene_battle_controller.gd:569-573）已接入——语义对应",
+   "production_call_site": "scene_battle_controller.gd:569-573 (sound_name=monster_attack_normal)",
+   "pcode_evidence": [
+    "StartSound:sprite124/frame7"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite124/frame3"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 132,
+   "file": "res://assets/extracted/sounds/sound_0132.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 5904,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 135,
+    "frame": 6
+   },
+   "production_event": "monster_attack_boss",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_attack",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0132",
+    "start_sound",
+    "sprite135",
+    "frame6"
+   ],
+   "classification_reason": "StartSound sprite135/frame6（BOSS 攻击帧——帧标签 frame2=站立/frame6=攻击，ShowFrame 计数）；生产 monster_attack_boss（scene_battle_controller.gd:569-573）已接入——语义对应",
+   "production_call_site": "scene_battle_controller.gd:569-573 (sound_name=monster_attack_boss)",
+   "pcode_evidence": [
+    "StartSound:sprite135/frame6"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite135/frame3"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 399,
+   "file": "res://assets/extracted/sounds/sound_0399.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 6565,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": null,
+    "frame": null
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "none",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0399"
+   ],
+   "classification_reason": "无 StartSound 标签、无 attachSound 调用（p-code 全库零命中）——无可靠触发证据",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [],
+   "trigger_handler": [],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 412,
+   "file": "res://assets/extracted/sounds/sound_0412.mp3",
+   "format": "mp3",
+   "rate": 22050,
+   "sample_width": 2,
+   "channels": 2,
+   "sample_count": 103680,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": -1,
+    "frame": 3
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "per_scene_switch",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0412",
+    "start_sound",
+    "frame3"
+   ],
+   "classification_reason": "StartSound root/frame3（前言帧——帧标签 frame3=前言）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:root/frame3"
+   ],
+   "trigger_handler": [
+    "StartSound@root/frame2"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 418,
+   "file": "res://assets/extracted/sounds/sound_0418.mp3",
+   "format": "mp3",
+   "rate": 22050,
+   "sample_width": 2,
+   "channels": 2,
+   "sample_count": 106560,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": -1,
+    "frame": 4
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "per_scene_switch",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0418",
+    "start_sound",
+    "frame4"
+   ],
+   "classification_reason": "StartSound root/frame4（创建角色帧——帧标签 frame4=创建角色）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:root/frame4"
+   ],
+   "trigger_handler": [
+    "StartSound@root/frame3"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 496,
+   "file": "res://assets/extracted/sounds/sound_0496.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 15019,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 523,
+    "frame": 12
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "per_cast",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0496",
+    "start_sound",
+    "sprite523",
+    "frame12"
+   ],
+   "classification_reason": "StartSound sprite523/frame12（裂地爆斩动画起始帧——帧标签 frame12=裂地爆斩）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:sprite523/frame12"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite523/frame12"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 502,
+   "file": "res://assets/extracted/sounds/sound_0502.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 11985,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 523,
+    "frame": 21
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "per_cast",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0502",
+    "start_sound",
+    "sprite523",
+    "frame21"
+   ],
+   "classification_reason": "StartSound sprite523/frame21（风斩动画起始帧——帧标签 frame21=风斩）；生产零调用——重制版缺口。整改05 曾误写 frame13（FrameLabel 序号计数错），整改06 修正为 ShowFrame 计数",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:sprite523/frame21"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite523/frame13"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 518,
+   "file": "res://assets/extracted/sounds/sound_0518.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 33198,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 523,
+    "frame": 27
+   },
+   "production_event": "skill_flying_slash",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_cast",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0518",
+    "start_sound",
+    "sprite523",
+    "sprite523",
+    "frame27",
+    "frame62"
+   ],
+   "classification_reason": "StartSound sprite523/frame27（飞天连斩动画起始帧——帧标签 frame27=飞天连斩，ShowFrame 计数）与 frame62（飞天连斩段尾）；生产 skill_flying_slash（scene_battle_controller.gd:536-540）已接入——语义对应。整改05 曾误标 used_unconfirmed：旧 FrameLabel 序号计数把 frame27 误算为 frame14（裂地爆斩段），整改06 修正",
+   "production_call_site": "scene_battle_controller.gd:536-540 (skill_sound=skill_flying_slash)",
+   "pcode_evidence": [
+    "StartSound:sprite523/frame27",
+    "StartSound:sprite523/frame62"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite523/frame14"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 520,
+   "file": "res://assets/extracted/sounds/sound_0520.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 18081,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 523,
+    "frame": 63
+   },
+   "production_event": "skill_star_sword",
+   "classification": "native_confirmed",
+   "concurrency_allowed": false,
+   "dedupe": "per_cast",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "evidence_tokens": [
+    "sound_0520",
+    "start_sound",
+    "sprite523",
+    "frame63"
+   ],
+   "classification_reason": "StartSound sprite523/frame63（星魔剑动画起始帧——帧标签 frame63=星魔剑，ShowFrame 计数）；生产 skill_star_sword（scene_battle_controller.gd:536-540）已接入——语义对应。整改05 曾误标 used_unconfirmed：旧 FrameLabel 序号计数把 frame63 误算为 frame15（裂地爆斩段），整改06 修正",
+   "production_call_site": "scene_battle_controller.gd:536-540 (skill_sound=skill_star_sword)",
+   "pcode_evidence": [
+    "StartSound:sprite523/frame63"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite523/frame15"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 540,
+   "file": "res://assets/extracted/sounds/sound_0540.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 5512,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 541,
+    "frame": 3
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "per_click",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0540",
+    "start_sound",
+    "sprite541",
+    "frame3"
+   ],
+   "classification_reason": "StartSound sprite541/frame3（按钮精灵）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:sprite541/frame3"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite541/frame1"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 551,
+   "file": "res://assets/extracted/sounds/sound_0551.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 1057,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": null,
+    "frame": null
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "none",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0551"
+   ],
+   "classification_reason": "无 StartSound 标签、无 attachSound 调用——无可靠触发证据",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [],
+   "trigger_handler": [],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 684,
+   "file": "res://assets/extracted/sounds/sound_0684.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 3303,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": null,
+    "frame": null
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "none",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0684"
+   ],
+   "classification_reason": "无 StartSound 标签、无 attachSound 调用——无可靠触发证据",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [],
+   "trigger_handler": [],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 810,
+   "file": "res://assets/extracted/sounds/sound_0810.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 5071,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": null,
+    "frame": null
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "none",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0810"
+   ],
+   "classification_reason": "无 StartSound 标签、无 attachSound 调用——无可靠触发证据",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [],
+   "trigger_handler": [],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 879,
+   "file": "res://assets/extracted/sounds/sound_0879.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 2888,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 880,
+    "frame": 2
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "per_click",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_0879",
+    "start_sound",
+    "sprite880",
+    "frame2"
+   ],
+   "classification_reason": "StartSound sprite880/frame2（对话框精灵 openme）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:sprite880/frame2"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite880/frame1"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 1145,
+   "file": "res://assets/extracted/sounds/sound_1145.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 18389,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": 1146,
+    "frame": 1
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": false,
+   "dedupe": "per_interaction",
+   "priority": 3,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_1145",
+    "start_sound",
+    "sprite1146",
+    "sprite1146",
+    "frame1",
+    "frame2"
+   ],
+   "classification_reason": "StartSound sprite1146/frame1+frame2（NPC 对话精灵，元帅）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:sprite1146/frame1",
+    "StartSound:sprite1146/frame2"
+   ],
+   "trigger_handler": [
+    "StartSound@sprite1146/frame1"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 1196,
+   "file": "res://assets/extracted/sounds/sound_1196.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 50290,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": -1,
+    "frame": 13
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "per_scene_switch",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_1196",
+    "start_sound",
+    "frame13"
+   ],
+   "classification_reason": "StartSound root/frame13（皇宫帧——帧标签 frame13=皇宫；整改05 曾误标 frame12=卡萨诺城，FrameLabel 序号计数错，整改06 修正为 ShowFrame 计数）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:root/frame13"
+   ],
+   "trigger_handler": [
+    "StartSound@root/frame12"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  },
+  {
+   "sound_id": 1296,
+   "file": "res://assets/extracted/sounds/sound_1296.mp3",
+   "format": "mp3",
+   "rate": 11025,
+   "sample_width": 2,
+   "channels": 1,
+   "sample_count": 31458,
+   "export_name": "",
+   "swf_trigger": {
+    "scope": -1,
+    "frame": 31
+   },
+   "production_event": "",
+   "classification": "evidence_gap",
+   "concurrency_allowed": null,
+   "dedupe": "per_scene_switch",
+   "priority": 0,
+   "cancel_rule": "none",
+   "evidence_tokens": [
+    "sound_1296",
+    "start_sound",
+    "frame31",
+    "frame32",
+    "frame33"
+   ],
+   "classification_reason": "StartSound root/frame31/32/33（PK赛场1/2/3层帧——帧标签 frame31=PK赛场1层等）；生产零调用——重制版缺口",
+   "production_call_site": "（生产零调用）",
+   "pcode_evidence": [
+    "StartSound:root/frame31",
+    "StartSound:root/frame32",
+    "StartSound:root/frame33"
+   ],
+   "trigger_handler": [
+    "StartSound@root/frame30",
+    "StartSound@root/frame31",
+    "StartSound@root/frame32"
+   ],
+   "attach_sound_call": false,
+   "start_call": false
+  }
+ ],
+ "feedback_events": {
+  "player_attack_started": {
+   "sound_name": "attack",
+   "sound_evidence": "none_start_sound",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "player_attack_frame": {
+   "sound_name": "attack",
+   "sound_evidence": "none_start_sound",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "player_attack_finished": {
+   "sound_name": "",
+   "sound_evidence": "none",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "skill_started": {
+   "sound_name": "",
+   "sound_evidence": "sound_0518_sound_0520",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "skill_failed_stamina": {
+   "sound_name": "",
+   "sound_evidence": "degrade_to_normal_attack",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "skill_finished": {
+   "sound_name": "",
+   "sound_evidence": "none",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "monster_hit": {
+   "sound_name": "",
+   "sound_evidence": "none_start_sound",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "monster_attack_started": {
+   "sound_name": "monster_attack",
+   "sound_evidence": "sound_0123_sound_0132",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "monster_attack_finished": {
+   "sound_name": "",
+   "sound_evidence": "none",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "player_hit": {
+   "sound_name": "",
+   "sound_evidence": "none_start_sound",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "dodge": {
+   "sound_name": "",
+   "sound_evidence": "none_start_sound",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_attack"
+  },
+  "monster_death": {
+   "sound_name": "",
+   "sound_evidence": "none",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_battle"
+  },
+  "player_death": {
+   "sound_name": "death",
+   "sound_evidence": "sound_0018_export",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_battle"
+  },
+  "victory": {
+   "sound_name": "victory",
+   "sound_evidence": "sound_0015_export_mismatch",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_battle"
+  },
+  "reward_queued": {
+   "sound_name": "",
+   "sound_evidence": "none",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_battle"
+  },
+  "loot_claimed": {
+   "sound_name": "",
+   "sound_evidence": "none",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_item"
+  },
+  "loot_claim_failed": {
+   "sound_name": "",
+   "sound_evidence": "none",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_item"
+  },
+  "level_up": {
+   "sound_name": "level_up",
+   "sound_evidence": "sound_0007_export",
+   "priority": 1,
+   "cancel_rule": "none",
+   "dedupe": "per_level",
+   "dedupe_note": "per_level 以结算时的最终 level 为 key：一次经验结算（含多级连升）只提示一次"
+  },
+  "battle_retreat": {
+   "sound_name": "death",
+   "sound_evidence": "sound_0018_export",
+   "priority": 1,
+   "cancel_rule": "battle_cancel",
+   "dedupe": "per_battle",
+   "dedupe_note": "v1.37 整改01：幸运耗尽自动退出战斗的语义反馈（非玩家死亡），声音保持基线 deathman.wav"
+  }
+ },
+ "dedupe_key_strategy": {
+  "per_attack": "attack:<session_id>:<attack_sequence>:<event_type>",
+  "per_cast": "attack:<session_id>:<attack_sequence>:<event_type>",
+  "per_battle": "battle:<session_id>:<event_type>",
+  "per_victory": "battle:<session_id>:<event_type>",
+  "per_defeat": "battle:<session_id>:<event_type>",
+  "per_level": "level:<session_id>:<event_type>:<level>",
+  "per_item": "item:<session_id>:<claim_serial>（serial 区分队列中两个相同 item_id 的独立领取）",
+  "other": "event:<session_id>:<event_type>"
+ },
+ "sequence_rules": [
+  "player_attack_started must precede monster_hit in the same attack_sequence",
+  "player_attack_started must precede player_attack_finished in the same attack_sequence",
+  "monster_attack_started must precede monster_attack_finished in the same attack_sequence",
+  "monster_attack_started must precede player_hit or dodge in the same attack_sequence",
+  "no monster_attack_started after monster_death in the same battle_session",
+  "no player_attack_started after player_death in the same battle_session",
+  "victory must precede reward_queued in the same battle_session",
+  "reward_queued must precede loot_claimed or loot_claim_failed in the same battle_session",
+  "skill_started and skill_failed_stamina are mutually exclusive in the same attack_sequence",
+  "skill_failed_stamina must not be followed by skill_finished in the same attack_sequence",
+  "no battle feedback event after battle cancel (stale session events rejected)"
+ ],
+ "error_codes": {
+  "FEEDBACK_DUPLICATE_EVENT": "同一 dedupe key 重复提交",
+  "FEEDBACK_SEQUENCE_MISMATCH": "事件顺序违反 sequence_rules",
+  "FEEDBACK_SOUND_UNREGISTERED": "请求播放的 sound 未在本注册表登记",
+  "FEEDBACK_PASSIVE_SKILL_TRIGGERED": "被动技能被当作主动施放反馈",
+  "FEEDBACK_STALE_SESSION_EVENT": "事件携带的 session 已失效（取消/结束/切换）"
+ },
+ "sound_name_map": {
+  "hover_item": 1,
+  "hover_npc": 2,
+  "summon_pet": 3,
+  "learn_skill": 4,
+  "select_npc": 5,
+  "send_flower": 6,
+  "level_up": 7,
+  "change_map": 8,
+  "refine_fail": 10,
+  "refine_success": 11,
+  "boss": 12,
+  "potion": 13,
+  "attack": 14,
+  "victory": 15,
+  "open": 16,
+  "npc_dialogue": 17,
+  "death": 18,
+  "equip": 20,
+  "monster_attack_normal": 123,
+  "monster_attack_boss": 132,
+  "skill_flying_slash": 518,
+  "skill_star_sword": 520
+ },
+ "evidence_gaps": [
+  "sound_0001-0020（除0019）无 StartSound 且无 AS attachSound 调用：触发机制未确认，仅导出文件名证据（used_unconfirmed）",
+  "sound_0014 导出名=传送.wav 生产以 attack 播放、玩家普通攻击段无 StartSound：攻击声音映射需 PM 决策",
+  "sound_0015 导出名=出征幻兽.wav 生产以 victory 播放、胜利无 StartSound：胜利声音映射需 PM 决策",
+  "sound_0012 导出名=见到BOSS.wav 登记 boss 名称但无生产调用点",
+  "原版技能裂地爆斩(sound_0496)/风斩(sound_0502) 当前技能集未实现",
+  "根时间轴声音 412/418/1196/1296 为场景切换/环境类，生产场景音乐未接入",
+  "受击声音仅有 hitsb/next_gw_hit AS 字符串无 StartSound：触发机制未确认",
+  "按钮/交互声音 540/879/1145 StartSound 明确但生产按钮事件未接入反馈通道",
+  "sound_0399/0551/0684/0810 无导出名、无 StartSound、无生产使用：用途未知",
+  "monster_hit/player_hit/dodge/reward/loot 无 StartSound 声音证据，不伪造声音"
+ ],
+ "classification_standard": "整改06：native_confirmed=StartSound/精确链+生产接入对应事件；used_unconfirmed=生产已使用但 SWF 触发链语义不对应；evidence_gap=SWF 有证据但生产零调用或无触发证据"
+}

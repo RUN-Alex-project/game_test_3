@@ -1,0 +1,367 @@
+魔域1.03 v9 SWF 原生时间轴证据文件（整改05：完整引用链 + ColorTransform 实际参数 + RemoveObject2 + 帧序显示列表 + 逐实体完整 token + 全文件递归 tag 统计 + 根移除 depth 匹配）
+================================================================================
+
+SWF 源文件: E:\deepseek-work\TKS3_mod\魔域1.03_v9.swf
+SHA-256: 5c9d0df690f2921d6bbe01e896e59a5e1b0b7a16c7f985058506cf6d762ee1e6
+文件大小: 2845315 字节
+签名: CWS (zlib)  版本: 8  声明长度: 3348349  解压后 body: 3348341
+根时间轴: 帧数=38  帧率=12fps
+DefineSprite 总数: 233  bitmap character: 285  shape character: 313
+
+标签分布（整改05 修正口径：全文件递归统计，递归进入全部 DefineSprite；work/_v136_tagscan.py）:
+  全文件: PlaceObject(tag4)=0   RemoveObject(tag5)=0
+          PlaceObject2(tag26)=1577   RemoveObject2(tag28)=320   DefineSprite(tag39)=233
+  （根时间轴口径: tag26=327, tag28=285——仅根时间轴，非全文件）
+  ShowFrame(tag1)=1582（含 sprite 内部）   DoAction(tag12)=408   FrameLabel(tag43)=343
+  → 解析器（swf_parser.gd）与 python 工具均递归统计，两口径一致；tag4/tag5 全文件不存在。
+  根时间轴 RemoveObject2 事实查询按 (frame, depth) 匹配（has_root_remove_after_placement），
+  测试内以独立参考实现逐一对比全部根放置 character，杜绝其他 depth 删除误判。
+
+反查工具（可复现）:
+  python work/dump_sprite_actions.py 魔域1.03_v9.swf <sprite_id>
+  python work/find_swf_bitmap_shapes.py 魔域1.03_v9.swf <bitmap_id...>
+  python work/find_swf_character_parents.py 魔域1.03_v9.swf <char_id...>
+  python work/_v136_matrices.py <sprite_id...>
+  python work/_v136_classify.py
+  python work/_v136_tagscan.py（标签分布）  python work/_v136_removecheck.py（RemoveObject2 depth）
+  python work/_v136_cxform.py（ColorTransform 实际参数）
+
+独立验证: tests/helpers/swf_parser.gd 测试时直读 SWF 二进制，解压 CWS，解析 DefineShape fill 与
+PlaceObject2（character + 完整 matrix translate/scale/rotate + ColorTransform 实际参数 CXFORM），
+解析 RemoveObject2（深度删除），按帧序模拟显示列表状态（保持/替换/删除），
+建立 bitmap->shape->sprite->根 placement 引用链并递归到根，独立核对（非文档自洽）。
+位序 MSB-first: HasCharacter=0x02, HasMatrix=0x04, HasColorTransform=0x08, Move=0x01。
+
+================================================================================
+一、native_confirmed 时间轴（已实现，独立复核）
+================================================================================
+
+--- player_motion (sprite523, 72帧) ---
+子剪辑: sprite459 idle 8帧 / sprite469 down 8帧 / sprite474 up 8帧 / sprite481 left 10帧 / sprite488 right 10帧
+fps=12(=SWF根帧率)  loop_mode=loop  cancel_policy=on_map_change  fallback=image_0455
+bitmap: 455(tag36,57x161) 457(tag36,58x162)
+
+--- player_attack (4帧 image_0503/0505/0507/0509) ---
+帧资源（独立完整 token，逐帧）:
+image_0503
+image_0505
+image_0507
+image_0509
+均 tag36 189x271; loop_mode=once_restore  cancel_policy=on_battle_cancel
+
+--- normal_monster_attack (sprite124, 11帧) ---
+帧6 attack label，单图横移5px后复位:
+frame=6
+SWF placement 独立核对: sprite124 frame7 Move+HasMatrix translate=(-100,0)twips=(-5.0,0.0)px
+loop_mode=once_restore  cancel_policy=on_battle_cancel
+
+--- boss_attack (sprite135/sprite131) ---
+sprite135(15帧) frame6 放置 sprite131 at translate=(-1300,-843)twips=(-65.0,-42.15)px
+production 相对 offset=(-33,-42): SWF绝对(-65) 减站立bitmap起始(-32)（scene_battle_controller.gd 注释）
+帧资源（独立完整 token，逐帧）:
+image_0127
+image_0129
+均 tag36 186x173; loop_mode=once_restore  cancel_policy=on_battle_cancel
+sprite135 内部 RemoveObject2(depth1) 事实: 选择器/替换机制（帧序状态机检出，attack 帧序仍还原）
+
+--- boss_hit (sprite134/shape133) ---
+sprite134(4帧) frame3 放置 shape133 at translate=(0,0)
+shape133: DefineShape3(tag32) 123x148 bitmap97 fill; boss_hit_native.png 由 shape133 栅格化
+loop_mode=once_restore  cancel_policy=on_battle_cancel
+
+================================================================================
+二、引用链分析方法（整改04）
+================================================================================
+
+建立 bitmap->shape fill->sprite 嵌套->根 placement 引用链:
+  1. find_swf_bitmap_shapes: bitmap X -> shape Y（fill type 0x40-0x43 引用 X）
+  2. find_swf_character_parents: shape Y -> 放置 Y 的 sprite Z（含根时间轴）
+  3. _v136_matrices/_v136_classify: 每帧 PlaceObject2 的 character + 完整 matrix(translate+scale+rotate) + ColorTransform 实际参数
+  4. _v136_removecheck/_v136_tagscan: RemoveObject2（深度删除）帧序；tag4/tag5 全文件为 0
+  5. 递归: 从 shape 出发经所有 wrapper sprite 直到根时间轴
+
+视觉变化判定（任一触发即非静态，按帧序显示列表状态机: 保持/替换/删除）:
+  - char_swap: 某 depth 跨帧放置 >1 个不同 character（替换）
+  - translate: 后续 HasMatrix translate 与初始不同
+  - scale_rotate: 后续 HasMatrix scale/rotate 与初始不同
+  - color: 任意帧 HasColorTransform（解析实际 CXFORM 参数，非仅标志位）
+  - remove: 对象在 sprite 时间轴内放置后被 RemoveObject2 删除（帧序判定: 仅当该 depth 此前存在对象）
+
+专项用例 image_1156->shape1157->sprite1158->sprite1159:
+  bitmap1156 -> shape1157(fill0引用bitmap1156) -> sprite1158(1帧,放置shape1157@(0,0))
+  -> sprite1159(3帧: frame1放置sprite1158@(0,0); frame2-3 flags=0x09=Move+HasColorTransform, 无character, translate(0,0))
+  -> sprite1186(3帧,同模式) -> 根时间轴frame12放置sprite1159
+  sprite1159 frame2/3 ColorTransform 实际参数（CXFORM 解析，独立实测）:
+    frame2: add=[77,77,77,0]（RGB 各 +77，悬停变亮）
+    frame3: add=[38,38,38,0]（RGB 各 +38）
+  sprite1159 frame1 DoAction: onRelease/onRollOver/onRollOut/指向NPC.wav（鼠标交互逻辑）
+  结论: sprite1159 多帧且帧2/3 有 ColorTransform 悬停色变（实际参数非零）-> "视觉不变"不成立
+        -> grocery 为 evidence_gap（色变是交互效果而非bitmap帧动画，remake 用静态bitmap未实现）
+
+根时间轴 RemoveObject2 语义（场景状态机，如实记录，整改07 算法升级）:
+  根时间轴 285 个 RemoveObject2 分布在帧3-38 的部分帧（帧13=29个、帧38=58个清场；
+  帧7、帧37 无 RemoveObject2，并非每帧清空重建）
+  -> 根时间轴的 remove 是场景状态切换机制（gotoAndStop 目标帧需 ActionScript 审计），
+     不构成对象自身动画证据；swf_parser.gd 按原始 tag 顺序事件流（root_events）模拟
+     depth->当前 character 显示列表：同一 depth 被其他角色替换后再删除的旧角色
+     **不**算被移除（frame5 char100->depth7、frame6 char200->depth7、frame9 remove：
+     char100=false、char200=true）。
+  统计（整改08，独立可复现，与 PM/SE 独立模拟完全一致）:
+    根时间轴唯一放置角色 186 个；事件流状态机判定被删除 149 个。
+    算法语义：place 且 HasCharacter=true 更新 depth 当前角色；place 且 HasCharacter=false
+    （Move 更新）不覆盖当前角色；remove 删除 depth 当前角色。
+    旧缺陷对照：仅比帧号=176 误判（10 字符已固化）；"历史上出现"=176 误判（18 字符固化）；
+    Move 覆盖当前角色=146 漏判（PM 点名 787/925/1228 已固化为 true——这正是整改07 的
+    146 与 PM 149 的差异根源，Move 修复后 149 与 PM 完全一致）。
+    PM 点名 387/1067/1092/1096/1176/1227/1237/1298 等 18 字符（替换后才删除）已固化为 false 断言。
+  实例: shape1178(marshal) 根放置 frame13 depth7，frame14 RemoveObject2(depth7) 移除（depth 匹配）。
+        marshal 分类保持 static_native 的依据 = bitmap/shape/wrapper 无自身动画；
+        根时间轴"出现→消失"属场景状态机，需 gotoAndStop 审计确认常驻帧（证据缺口）。
+
+================================================================================
+三、static_native 实体（3个：链路中所有 wrapper 无任何视觉变化，含 color/scale/rotate/remove/根）
+================================================================================
+
+marshal       image_1177  chain: bitmap1177->shape1178->root（根放置无动画；帧13放置帧14被场景状态机移除，见上）-> static_native
+research      image_1171  chain: bitmap1171->shape1172（无 wrapper；SWF 任何时间轴均无放置记录，疑运行时动态附加）-> static_native
+mine_nodes    image_0038  chain: bitmap38->shape39->sprite41（sprite41 2帧内无变化，无 RemoveObject2；SWF 无放置记录）-> static_native
+
+================================================================================
+四、evidence_gap 实体（41个：wrapper 存在视觉变化，remake 用静态bitmap未实现）
+================================================================================
+
+[ColorTransform 悬停色变（17 NPC）]
+grocery(1156): sprite1159:color(add=77/38) + sprite1186:color
+stone_shop(1134): sprite1137:color + sprite1200:color + sprite1209:color
+collector(1138): sprite1141:color
+warehouse(1130): sprite1133:color
+daily_officer(1076): sprite1079:color + sprite1161:color + sprite1184:color
+stone_synthesizer(1151): sprite1154:color
+forger(1142): sprite1146:color + sprite1183:color
+prime_minister(1142): 同 forger
+pet_master(1147): sprite1150:color + sprite1185:color
+experience_mentor(1126): sprite1129:color
+king(1191): sprite1195:color
+maid(1134): 同 stone_shop
+pk_officer(1076): 同 daily_officer
+lottery_officer(1147): 同 pet_master
+fuwa_messenger(1086): sprite1090:color
+fuwa_completion(1086): 同 fuwa_messenger
+war_soul_explorer(1231): sprite1235:color
+
+[char_swap/translate/scale_rotate/remove（15 怪物，sprite118/1074 多帧选择器 + sprite124 攻击位移）]
+spider(63) spider_queen(75) dungeon_boss(49) dungeon_boss_2(49) nameless_war_soul_keeper(101)
+demon_guard(99) demon_totem(103) demon_energy(116)
+  chain: bitmap->shape->sprite118->sprite1074->sprite119->root + sprite124:translate
+  sprite118/1074 内部 RemoveObject2(depth1)（选择器替换机制，帧序状态机检出）
+demon_mystery(105) demon_commander(105): + sprite109:char_swap
+demon_assault(97): sprite118/sprite125/sprite134/sprite135/sprite124
+dungeon_boss_3(129): sprite131:char_swap + sprite135:char_swap + sprite135:translate [attack_reuse boss_attack]
+pk_champion_60/100/130(1072): sprite1074:char_swap + translate + scale_rotate [attack_reuse boss_attack]
+
+[char_swap 真动画（princess/chest）]
+princess(1201): sprite1205:char_swap(24帧2姿势) + sprite1206:color
+war_soul_chest(1213): sprite1221:char_swap(25帧5开箱阶段) + sprite1222:color
+lottery_chests(1213): 同 war_soul_chest
+
+[char_swap 选择器 + translate（5 福娃 + fuwa_reward）]
+fuwa_beibei(1101) fuwa_huanhuan(1104) fuwa_yingying(1106) fuwa_nini(1108) fuwa_jingjing(1110) fuwa_reward
+  chain: bitmap->shape->sprite1112(5帧每帧一福娃)->sprite1113(位置变化)->root
+
+================================================================================
+五、SWF 多帧 sprite 全集（107个 frame_count>1，上下文）
+================================================================================
+
+native_confirmed 动画 sprite(10): 523 459 469 474 481 488 124 135 134 131
+选择器/包装 sprite(示例): 118(39帧怪物选择器) 1074(35帧PK Boss) 1112(5帧福娃选择器) 1113(4帧bob) 1205(24帧公主) 1221(25帧宝箱)
+完整多帧清单:
+  109:10 118:39 124:11 125:4 131:5 134:4 135:15 138:24 164:77 189:77 214:77 239:77 264:77 289:77
+  313:14 325:14 332:11 341:15 350:14 359:14 374:13 385:13 391:100 433:37 440:18 443:4
+  459:8 469:8 474:8 481:10 488:10 495:9 501:6 517:36 519:6 522:4 523:72 541:3 555:5 560:2
+  577:9 580:4 581:8 582:8 583:8 584:4 585:4 586:4 587:4 588:4 589:4 590:4 592:4 593:4 594:4
+  637:8 638:8 639:8 695:2 702:2 707:2 712:2 717:2 725:5 730:2 737:8 752:8 779:2
+  874:20 880:2 912:24 920:2 925:8 936:2 959:7 963:2 1018:4 1056:14 1065:8 1071:3 1074:35
+  1079:3 1090:3 1112:5 1113:4 1129:3 1133:3 1137:3 1141:3 1146:3 1150:3 1154:3 1159:3 1161:3
+  1174:3 1183:3 1184:3 1185:3 1186:3 1195:3 1200:3 1205:24 1206:3 1209:3 1221:25 1222:2 1235:3
+
+================================================================================
+六、token 清单（逐行独立 token；与 docs/native_timeline_registry.json evidence_tokens 一一对应，
+    验证器按子串精确匹配，禁用组合压缩写法如 image_0503/0505/0507/0509）
+================================================================================
+
+--- timelines（native_confirmed）---
+player_motion:
+sprite523
+sprite459
+sprite469
+sprite474
+sprite481
+sprite488
+player_attack:
+image_0503
+image_0505
+image_0507
+image_0509
+normal_monster_attack:
+sprite124
+frame=6
+boss_attack:
+sprite135
+sprite131
+image_0127
+image_0129
+boss_hit:
+sprite134
+shape133
+boss_hit_native
+
+--- static_entities（3）---
+marshal:
+image_1177
+static_native
+research:
+image_1171
+static_native
+mine_nodes:
+image_0038
+static_native
+
+--- evidence_gap_entities（41，逐实体）---
+grocery:
+image_1156
+evidence_gap
+stone_shop:
+image_1134
+evidence_gap
+collector:
+image_1138
+evidence_gap
+warehouse:
+image_1130
+evidence_gap
+daily_officer:
+image_1076
+evidence_gap
+stone_synthesizer:
+image_1151
+evidence_gap
+forger:
+image_1142
+evidence_gap
+prime_minister:
+image_1142
+evidence_gap
+pet_master:
+image_1147
+evidence_gap
+experience_mentor:
+image_1126
+evidence_gap
+king:
+image_1191
+evidence_gap
+princess:
+image_1201
+evidence_gap
+maid:
+image_1134
+evidence_gap
+pk_officer:
+image_1076
+evidence_gap
+lottery_officer:
+image_1147
+evidence_gap
+fuwa_messenger:
+image_1086
+evidence_gap
+fuwa_completion:
+image_1086
+evidence_gap
+war_soul_explorer:
+image_1231
+evidence_gap
+spider:
+image_0063
+evidence_gap
+spider_queen:
+image_0075
+evidence_gap
+dungeon_boss:
+image_0049
+evidence_gap
+dungeon_boss_2:
+image_0049
+evidence_gap
+dungeon_boss_3:
+image_0129
+evidence_gap
+pk_champion_60:
+image_1072
+evidence_gap
+pk_champion_100:
+image_1072
+evidence_gap
+pk_champion_130:
+image_1072
+evidence_gap
+nameless_war_soul_keeper:
+image_0101
+evidence_gap
+demon_guard:
+image_0099
+evidence_gap
+demon_assault:
+image_0097
+evidence_gap
+demon_totem:
+image_0103
+evidence_gap
+demon_mystery:
+image_0105
+evidence_gap
+demon_commander:
+image_0105
+evidence_gap
+demon_energy:
+image_0116
+evidence_gap
+war_soul_chest:
+image_1213
+evidence_gap
+lottery_chests:
+image_1213
+evidence_gap
+lottery_chests
+fuwa_beibei:
+image_1101
+evidence_gap
+fuwa_huanhuan:
+image_1104
+evidence_gap
+fuwa_yingying:
+image_1106
+evidence_gap
+fuwa_nini:
+image_1108
+evidence_gap
+fuwa_jingjing:
+image_1110
+evidence_gap
+fuwa_reward:
+image_1101
+evidence_gap
+fuwa_reward
+
+================================================================================
+七、证据缺口（需 PM 决策）
+================================================================================
+
+- NPC wrapper ColorTransform 悬停色变（sprite1159/1141/1129/1133/1154/1195/1090/1235/1150/1079/1137/1146/1206/1222 等）：remake 用静态bitmap未实现色变，需 PM 决策是否补。
+- 怪物在 sprite118/1074 多帧选择器（每帧不同怪物，char_swap+translate+scale_rotate+内部RemoveObject2替换）：选择器 vs 动画播放方式需 ActionScript 审计。
+- 公主 sprite1205(24帧2姿势)/战魂箱 sprite1221(25帧5开箱阶段)/福娃 sprite1113(位置变化)：SWF 有真动画，remake 未实现，需 PM 决策。
+- 根时间轴 RemoveObject2 场景状态机：对象"出现→消失"由 gotoAndStop 目标帧决定（如 marshal 帧13放置帧14移除），需 ActionScript 审计确认各 NPC 常驻帧；当前 static_native 分类仅基于对象自身动画证据。
+- research(shape1172)/mine_nodes(sprite41) 在 SWF 任何时间轴均无放置记录：疑运行时动态附加，需 ActionScript 审计（attachMovie 等价机制）。
+- 地下城 Boss 独立受击动画: 原版复用 sprite124(普通怪无受击帧), 不套用 Boss 受击 shape133。
+- 剧情过场动画(救王、通关等根时间轴帧动画): 不在本版本范围。
+- fuwa_reward 具体 bitmap 运行时动态选择(从5福娃bitmap选一, 均在sprite1112中)。

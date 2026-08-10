@@ -1,0 +1,1566 @@
+{
+	"registry_version": "1.32",
+	"baseline_version": "v1.31",
+	"generated_for": "无图像能力模型证据定位：任何无法看图的模型都可凭本注册表定位已确认 UI/动画的 SWF 角色号、坐标、边界、色值、Godot 文件与测试文件",
+	"canvas": {
+		"width": 700,
+		"height": 550,
+		"origin": "logical top-left of the 700x550 stage"
+	},
+	"coordinate_convention": "root_position 为根时间轴放置矩阵的平移分量（以 700x550 画布左上角为原点）；child_controls.position 为相对父控件左上角的局部矩阵平移；尺寸单位为逻辑像素",
+	"evidence_sources_legend": {
+		"test_assertion": "数值由 tests/ 下对应测试场景的 assert 语句直接断言（最高置信度）",
+		"handover_6": "数值记录于《交接任务书_无图像模型_v1.31.md》第 6 节“无需看图片的 UI 文本规格”",
+		"version_log": "数值记录于《版本改动.md》对应版本条目的 SWF 反查结论",
+		"main_original": "数值来自 scripts/main_original.gd 的运行时构建代码",
+		"swf_dump": "数值来自 E:\\deepseek-work\\TKS3_mod\\work 下的 SWF 检查脚本文本转储",
+		"manifest": "角色号/尺寸来自 assets/extracted/images/manifest.csv"
+	},
+	"ui_components": [
+		{
+			"id": "top-hud",
+			"name": "顶部状态卡（人物/双幻兽/地图）",
+			"primary_character": "sprite932",
+			"additional_characters": [
+				"sprite925",
+				"sprite920"
+			],
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_positions": {
+				"player_card": [
+					1,
+					2
+				],
+				"pet_card_0": [
+					198,
+					2
+				],
+				"pet_card_1": [
+					394,
+					2
+				],
+				"map_card": [
+					590.5,
+					2
+				]
+			},
+			"shape_bounds": {
+				"player_card": [
+					193,
+					72
+				],
+				"pet_card": [
+					193,
+					72
+				],
+				"map_card": [
+					108.5,
+					72
+				]
+			},
+			"fill_color": null,
+			"color_note": "Godot 重建面板使用 #505050 底色 + #202020 边框；SWF 卡片底色未在现有证据中单独确认",
+			"child_controls": [
+				{
+					"name": "player_portrait",
+					"position": [
+						3,
+						3
+					],
+					"size": [
+						61,
+						52
+					]
+				},
+				{
+					"name": "player_title",
+					"position": [
+						66,
+						1
+					],
+					"size": [
+						124,
+						19
+					]
+				},
+				{
+					"name": "hp_meter",
+					"position": [
+						66,
+						20
+					],
+					"size": [
+						124,
+						12
+					]
+				},
+				{
+					"name": "map_title",
+					"position": [
+						3,
+						3
+					],
+					"size": [
+						102,
+						21
+					]
+				},
+				{
+					"name": "map_name",
+					"position": [
+						3,
+						23
+					],
+					"size": [
+						102,
+						45
+					]
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/main_original.gd",
+			"godot_symbol": "_build_hud / _build_player_status_card / _build_pet_status_card",
+			"test_file": "res://tests/test_pet_combination_scene.tscn",
+			"evidence_source": "test_assertion (player/pet card root positions) + handover_6.1 + version_log v1.18 (sprite932/sprite925/sprite920) + main_original.gd"
+		},
+		{
+			"id": "bottom-bar",
+			"name": "底部固定功能栏",
+			"primary_character": "sprite908",
+			"additional_characters": [
+				"button889",
+				"sprite963"
+			],
+			"parent_character": "root timeline",
+			"root_frame": 6,
+			"root_position": [
+				0,
+				512
+			],
+			"shape_bounds": [
+				700,
+				38
+			],
+			"fill_color": null,
+			"child_controls": [
+				{
+					"name": "day_label",
+					"position": [
+						5.2,
+						4.0
+					],
+					"size": null
+				},
+				{
+					"name": "time_box",
+					"position": [
+						185.7,
+						6.0
+					],
+					"size": null
+				},
+				{
+					"name": "music_toggle",
+					"position": [
+						245.7,
+						4.0
+					],
+					"size": null
+				},
+				{
+					"name": "trash_button",
+					"position": [
+						301.05,
+						1.65
+					],
+					"size": null
+				},
+				{
+					"name": "button_inventory",
+					"position": [
+						378.0,
+						0.0
+					],
+					"size": [
+						62,
+						32
+					]
+				},
+				{
+					"name": "button_equipment",
+					"position": [
+						441.7,
+						0.0
+					],
+					"size": [
+						62,
+						32
+					]
+				},
+				{
+					"name": "button_pet",
+					"position": [
+						505.2,
+						0.0
+					],
+					"size": [
+						62,
+						32
+					]
+				},
+				{
+					"name": "button_skill",
+					"position": [
+						568.7,
+						0.0
+					],
+					"size": [
+						62,
+						32
+					]
+				},
+				{
+					"name": "button_vip",
+					"position": [
+						631.7,
+						0.0
+					],
+					"size": [
+						62,
+						32
+					]
+				}
+			],
+			"button_colors": {
+				"normal": "#ff6600",
+				"hover": "#ffcc33",
+				"pressed": "#ff9900"
+			},
+			"frame_count": null,
+			"godot_file": "res://scripts/main_original.gd",
+			"godot_symbol": "bottom_bar / footer_buttons / _footer_style",
+			"test_file": "res://tests/test_native_footer_scene.tscn",
+			"evidence_source": "test_assertion (root pos, 62x32, three-state colors, weekday) + handover_6.2 + version_log v1.19 (sprite908/button889/sprite963, root frame 6, buttons 893-897)"
+		},
+		{
+			"id": "scene-exits",
+			"name": "场景边缘切图入口",
+			"primary_character": "char1071",
+			"parent_character": "root timeline",
+			"root_frame": "per-map frame (8/10-11/12/16-21/22-27 etc.)",
+			"root_positions_city": {
+				"right": [
+					654.5,
+					264.95
+				],
+				"top": [
+					211.05,
+					124.3
+				],
+				"left": [
+					2.1,
+					264.95
+				],
+				"bottom": [
+					391.05,
+					403.9
+				]
+			},
+			"shape_bounds": {
+				"vertical_lr": [
+					41,
+					90
+				],
+				"horizontal_tb": [
+					90,
+					41
+				]
+			},
+			"fill_color": null,
+			"label_colors": {
+				"destination": "#00ff00-style green",
+				"verb": "#ff0000-style red"
+			},
+			"frame_count": null,
+			"godot_file": "res://scripts/native_exit_button.gd",
+			"godot_symbol": "NativeExitButton",
+			"test_file": "res://tests/test_native_map_exits_scene.tscn",
+			"evidence_source": "test_assertion (city four exits pos+size, travel, level gate) + handover_6.3 + version_log v1.20 (char1071 placement matrices)"
+		},
+		{
+			"id": "backpack",
+			"name": "背包窗口",
+			"primary_character": "sprite572",
+			"shape_character": "shape566",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				453,
+				300
+			],
+			"shape_bounds": [
+				247,
+				207
+			],
+			"fill_color": "#666666",
+			"grid": {
+				"columns": 6,
+				"rows": 4,
+				"visible_slots": 24,
+				"slot_size": [
+					36,
+					36
+				],
+				"first_slot": [
+					4,
+					4
+				],
+				"last_slot": [
+					204,
+					124
+				]
+			},
+			"child_controls": [
+				{
+					"name": "title_label",
+					"position": [
+						177.95,
+						172.4
+					],
+					"size": null
+				},
+				{
+					"name": "close_button",
+					"position": [
+						221.25,
+						172.15
+					],
+					"size": null
+				},
+				{
+					"name": "gold_label",
+					"position": [
+						4,
+						165
+					],
+					"size": null
+				},
+				{
+					"name": "magic_stone_label",
+					"position": [
+						4,
+						186.4
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/inventory_panel.gd",
+			"godot_symbol": "InventoryPanel",
+			"test_file": "res://tests/test_native_storage_scene.tscn",
+			"evidence_source": "test_assertion (pos, 247x207, 24 slots, 36x36, title/close/gold/magic positions, #666666) + handover_6.4 + version_log v1.21 (sprite572/shape566)"
+		},
+		{
+			"id": "warehouse",
+			"name": "仓库窗口",
+			"primary_character": "sprite565",
+			"shape_character": "shape562",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				208,
+				220
+			],
+			"shape_bounds": [
+				247,
+				287
+			],
+			"fill_color": "#666666",
+			"grid": {
+				"columns": 6,
+				"rows": 6,
+				"visible_slots": 36,
+				"slot_size": [
+					36,
+					36
+				],
+				"first_slot": [
+					4,
+					44
+				],
+				"last_slot": [
+					204,
+					244
+				]
+			},
+			"child_controls": [
+				{
+					"name": "title_label",
+					"position": [
+						102.3,
+						11.9
+					],
+					"size": null
+				},
+				{
+					"name": "close_button",
+					"position": [
+						220.4,
+						4.95
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/inventory_panel.gd",
+			"godot_symbol": "InventoryPanel (warehouse mode)",
+			"test_file": "res://tests/test_native_storage_scene.tscn",
+			"evidence_source": "test_assertion (pos, 247x287, 36 slots, title/close positions, #666666) + handover_6.4 + version_log v1.21 (sprite565/shape562)"
+		},
+		{
+			"id": "grocery-shop",
+			"name": "杂货商交易窗",
+			"primary_character": "sprite609",
+			"shape_character": "shape573",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				285,
+				90
+			],
+			"shape_bounds": [
+				333,
+				207
+			],
+			"fill_color": null,
+			"grid": {
+				"buy_slots": 12,
+				"sell_slots": 12,
+				"buy_origin": [
+					4,
+					44
+				],
+				"sell_origin": [
+					166,
+					81
+				]
+			},
+			"child_controls": [
+				{
+					"name": "buy_header",
+					"position": [
+						11.85,
+						11.35
+					],
+					"size": null
+				},
+				{
+					"name": "sell_header",
+					"position": [
+						173.8,
+						11.35
+					],
+					"size": null
+				},
+				{
+					"name": "close_button",
+					"position": [
+						303.95,
+						6
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/shop_panel_original.gd",
+			"godot_symbol": "ShopPanelOriginal",
+			"test_file": "res://tests/test_native_shop_scene.tscn",
+			"evidence_source": "test_assertion (pos, 333x207, 12+12 slots, headers, close, unlimited gold sale) + handover_6.5 + version_log v1.22 (sprite609/shape573)"
+		},
+		{
+			"id": "collection-shop",
+			"name": "收藏商店购买窗",
+			"primary_character": "sprite645",
+			"shape_character": "shape610",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				285,
+				90
+			],
+			"shape_bounds": [
+				167,
+				207
+			],
+			"fill_color": null,
+			"grid": {
+				"buy_slots": 16
+			},
+			"child_controls": [
+				{
+					"name": "close_button",
+					"position": [
+						138.35,
+						5.95
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/shop_panel_original.gd",
+			"godot_symbol": "ShopPanelOriginal (buy mode)",
+			"test_file": "res://tests/test_native_shop_scene.tscn",
+			"evidence_source": "test_assertion (pos, 167x207, 16 slots, close) + handover_6.5 + version_log v1.22 (sprite645/shape610)"
+		},
+		{
+			"id": "collector",
+			"name": "收藏家出售窗",
+			"primary_character": "sprite652",
+			"shape_character": "shape646",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				260,
+				300
+			],
+			"shape_bounds": [
+				167,
+				207
+			],
+			"fill_color": null,
+			"grid": {
+				"sell_slots": 12,
+				"sell_origin": [
+					3,
+					81
+				]
+			},
+			"child_controls": [
+				{
+					"name": "close_button",
+					"position": [
+						141.55,
+						4.95
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/shop_panel_original.gd",
+			"godot_symbol": "ShopPanelOriginal (sell mode)",
+			"test_file": "res://tests/test_native_shop_scene.tscn",
+			"evidence_source": "test_assertion (pos, 167x207, 12 slots, close, unlimited magic-stone sale) + handover_6.5 + version_log v1.22 (sprite652/shape646)"
+		},
+		{
+			"id": "dialogue",
+			"name": "NPC 对话窗口",
+			"primary_character": "sprite882",
+			"shape_character": "shape834",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				200,
+				80
+			],
+			"shape_bounds": [
+				362,
+				269.3
+			],
+			"fill_color": "#ffcc99",
+			"child_controls": [
+				{
+					"name": "npc_portrait",
+					"position": [
+						4,
+						4
+					],
+					"size": [
+						64,
+						64
+					]
+				},
+				{
+					"name": "body_label",
+					"position": [
+						78.5,
+						6.35
+					],
+					"size": null
+				},
+				{
+					"name": "player_portrait",
+					"position": [
+						287.8,
+						153.5
+					],
+					"size": null
+				},
+				{
+					"name": "answer_row_0",
+					"position": [
+						5,
+						155.7
+					],
+					"size": [
+						270,
+						16
+					]
+				},
+				{
+					"name": "answer_pitch",
+					"position": [
+						5,
+						171.7
+					],
+					"size": [
+						270,
+						16
+					],
+					"note": "16px row pitch, up to six rows"
+				},
+				{
+					"name": "answer_row_5",
+					"position": [
+						5,
+						235.7
+					],
+					"size": [
+						270,
+						16
+					]
+				},
+				{
+					"name": "close_button",
+					"position": [
+						338.5,
+						2
+					],
+					"size": [
+						21,
+						21
+					]
+				}
+			],
+			"answer_colors": {
+				"hover": "#ffcc66",
+				"pressed": "#ff9900"
+			},
+			"portrait_count": 19,
+			"frame_count": null,
+			"godot_file": "res://scripts/dialogue_panel.gd",
+			"godot_symbol": "DialoguePanel",
+			"test_file": "res://tests/test_native_dialogue_scene.tscn",
+			"evidence_source": "test_assertion (pos, 362x269.3, #ffcc99, portraits, six rows, 270x16, hover #ffcc66, close) + handover_6.6 + version_log v1.23 (sprite882/shape834)"
+		},
+		{
+			"id": "equipment",
+			"name": "人物信息与六栏装备窗口",
+			"primary_character": "sprite561",
+			"shape_character": "shape524",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				210,
+				85
+			],
+			"shape_bounds": [
+				243,
+				289
+			],
+			"fill_color": "#666666",
+			"child_controls": [
+				{
+					"name": "title_label",
+					"position": [
+						77,
+						5.3
+					],
+					"size": null
+				},
+				{
+					"name": "stats_label",
+					"position": [
+						10,
+						28.7
+					],
+					"size": null
+				},
+				{
+					"name": "helmet_slot",
+					"position": [
+						173,
+						28
+					],
+					"size": [
+						64,
+						64
+					]
+				},
+				{
+					"name": "necklace_slot",
+					"position": [
+						173,
+						92
+					],
+					"size": [
+						64,
+						64
+					]
+				},
+				{
+					"name": "bracelet_slot",
+					"position": [
+						173,
+						156
+					],
+					"size": [
+						64,
+						64
+					]
+				},
+				{
+					"name": "armor_slot",
+					"position": [
+						109,
+						220
+					],
+					"size": [
+						64,
+						64
+					]
+				},
+				{
+					"name": "weapon_slot",
+					"position": [
+						45,
+						220
+					],
+					"size": [
+						64,
+						64
+					]
+				},
+				{
+					"name": "boots_slot",
+					"position": [
+						173,
+						220
+					],
+					"size": [
+						64,
+						64
+					]
+				},
+				{
+					"name": "detail_button",
+					"position": [
+						3,
+						224.4
+					],
+					"size": [
+						42,
+						24
+					]
+				},
+				{
+					"name": "war_soul_badge",
+					"position": [
+						210.4,
+						5.8
+					],
+					"size": null
+				},
+				{
+					"name": "soul_set_badge",
+					"position": [
+						182.85,
+						5.8
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/equipment_panel.gd",
+			"godot_symbol": "EquipmentPanel",
+			"test_file": "res://tests/test_native_equipment_scene.tscn",
+			"evidence_source": "test_assertion (pos, 243x289, #666666, six 64x64 slots, title, detail button, soul badges) + handover_6.7 + version_log v1.24 (sprite561/shape524)"
+		},
+		{
+			"id": "equipment-detail",
+			"name": "战斗力详细评定页",
+			"primary_character": "sprite546",
+			"shape_character": "shape544",
+			"parent_character": "sprite561 (equipment window)",
+			"root_frame": null,
+			"root_position": [
+				-179.05,
+				24.3
+			],
+			"shape_bounds": [
+				178,
+				231
+			],
+			"fill_color": "#ffcc99",
+			"frame_count": null,
+			"godot_file": "res://scripts/equipment_panel.gd",
+			"godot_symbol": "EquipmentPanel.detail_panel",
+			"test_file": "res://tests/test_native_equipment_scene.tscn",
+			"evidence_source": "test_assertion (local pos, 178x231, #ffcc99) + handover_6.7 + version_log v1.24 (sprite546/shape544)"
+		},
+		{
+			"id": "pet-bag",
+			"name": "幻兽背包窗口",
+			"primary_character": "sprite787",
+			"shape_character": "shape732",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				0,
+				150
+			],
+			"shape_bounds": [
+				213,
+				333
+			],
+			"fill_color": "#666666",
+			"grid": {
+				"rows_per_page": 4,
+				"row_size": [
+					193,
+					69
+				],
+				"row_positions": [
+					[
+						10,
+						12
+					],
+					[
+						10,
+						82
+					],
+					[
+						10,
+						152
+					],
+					[
+						10,
+						222
+					]
+				]
+			},
+			"child_controls": [
+				{
+					"name": "previous_button",
+					"position": [
+						5,
+						300
+					],
+					"size": null
+				},
+				{
+					"name": "next_button",
+					"position": [
+						87,
+						298
+					],
+					"size": null
+				},
+				{
+					"name": "discard_button",
+					"position": [
+						117,
+						302
+					],
+					"size": null
+				},
+				{
+					"name": "detail_button",
+					"position": [
+						164,
+						302
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/pet_panel.gd",
+			"godot_symbol": "PetPanel",
+			"test_file": "res://tests/test_native_pet_bag_scene.tscn",
+			"evidence_source": "test_assertion (pos, 213x333, #666666, four 193x69 rows, buttons, portraits) + handover_6.8 + version_log v1.25 (sprite787/shape732)"
+		},
+		{
+			"id": "pet-detail",
+			"name": "幻兽详情页",
+			"primary_character": "sprite775",
+			"parent_character": "sprite787 (pet bag)",
+			"root_frame": null,
+			"root_position": [
+				210,
+				0
+			],
+			"shape_bounds": [
+				213,
+				333
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/pet_panel.gd",
+			"godot_symbol": "PetPanel.detail_panel",
+			"test_file": "res://tests/test_native_pet_bag_scene.tscn",
+			"evidence_source": "test_assertion (local pos, 213x333) + handover_6.8 + version_log v1.25 (sprite775)"
+		},
+		{
+			"id": "pet-discard-confirm",
+			"name": "幻兽丢弃确认层",
+			"primary_character": "sprite786",
+			"parent_character": "sprite787 (pet bag)",
+			"root_frame": null,
+			"root_position": [
+				6,
+				93
+			],
+			"shape_bounds": [
+				203,
+				123
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/pet_panel.gd",
+			"godot_symbol": "PetPanel.discard_confirmation",
+			"test_file": "res://tests/test_native_pet_bag_scene.tscn",
+			"evidence_source": "test_assertion (local pos, 203x123, deployed pet rejection) + handover_6.8 + version_log v1.25 (sprite786)"
+		},
+		{
+			"id": "skill-panel",
+			"name": "六栏技能窗口",
+			"primary_character": "sprite731",
+			"shape_character": "shape697",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				23,
+				220
+			],
+			"shape_bounds": [
+				183,
+				253
+			],
+			"fill_color": "#666666",
+			"grid": {
+				"icon_size": [
+					40,
+					40
+				],
+				"row_positions": [
+					[
+						10,
+						5
+					],
+					[
+						10,
+						45
+					],
+					[
+						10,
+						85
+					],
+					[
+						10,
+						125
+					],
+					[
+						10,
+						165
+					],
+					[
+						10,
+						207.6
+					]
+				]
+			},
+			"child_controls": [
+				{
+					"name": "close_button",
+					"position": [
+						156.45,
+						2.95
+					],
+					"size": [
+						21,
+						21
+					]
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/skill_panel.gd",
+			"godot_symbol": "SkillPanel",
+			"test_file": "res://tests/test_native_skill_panel_scene.tscn",
+			"evidence_source": "test_assertion (pos, 183x253, #666666, six 40x40 rows, close, icons) + handover_6.9 + version_log v1.26 (sprite731/shape697)"
+		},
+		{
+			"id": "refining",
+			"name": "装备精炼窗口",
+			"primary_character": "sprite662",
+			"shape_character": "shape653",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				238,
+				375
+			],
+			"shape_bounds": [
+				191,
+				133
+			],
+			"fill_color": "#666666",
+			"child_controls": [
+				{
+					"name": "close_button",
+					"position": [
+						160,
+						4.5
+					],
+					"size": null
+				},
+				{
+					"name": "quality_button",
+					"position": [
+						132,
+						31
+					],
+					"size": null
+				},
+				{
+					"name": "earth_button",
+					"position": [
+						132,
+						107
+					],
+					"size": null
+				}
+			],
+			"operation_count": 5,
+			"frame_count": null,
+			"godot_file": "res://scripts/enhancement_panel.gd",
+			"godot_symbol": "EnhancementPanel",
+			"test_file": "res://tests/test_native_enhancement_panel_scene.tscn",
+			"evidence_source": "test_assertion (pos, 191x133, #666666, close, 5 operations) + handover_6.10 + version_log v1.27 (sprite662/shape653)"
+		},
+		{
+			"id": "research",
+			"name": "幻兽研究所窗口",
+			"primary_character": "sprite827",
+			"shape_character": "shape823",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				250,
+				180
+			],
+			"shape_bounds": [
+				203,
+				183
+			],
+			"fill_color": "#666666",
+			"child_controls": [
+				{
+					"name": "close_button",
+					"position": [
+						172.5,
+						6.95
+					],
+					"size": null
+				},
+				{
+					"name": "buy_button",
+					"position": [
+						155,
+						108
+					],
+					"size": null
+				},
+				{
+					"name": "fund_button",
+					"position": [
+						136.5,
+						147.05
+					],
+					"size": null
+				}
+			],
+			"frame_count": null,
+			"godot_file": "res://scripts/research_panel.gd",
+			"godot_symbol": "ResearchPanel",
+			"test_file": "res://tests/test_native_research_flow_scene.tscn",
+			"evidence_source": "test_assertion (pos, 203x183, #666666, close/buy/fund) + handover_6.11 + version_log v1.29 (sprite827/shape823)"
+		},
+		{
+			"id": "monster-tooltip",
+			"name": "怪物悬停信息框",
+			"primary_character": "sprite972",
+			"parent_character": "root timeline (global tsxs prompt)",
+			"root_frame": null,
+			"root_position": "follows target actor top-left, clamped to 700x550",
+			"shape_bounds": [
+				123,
+				74
+			],
+			"fill_color": null,
+			"strength_colors": {
+				"far_stronger": "#333333",
+				"slightly_stronger": "#ff0000",
+				"equal": "#ffffff",
+				"weaker": "#009933"
+			},
+			"frame_count": null,
+			"godot_file": "res://scripts/main_original.gd",
+			"godot_symbol": "monster_tooltip_panel / _monster_tooltip_color / _actor_hover",
+			"test_file": "res://tests/test_monster_tooltip_scene.tscn",
+			"evidence_source": "test_assertion (123x74, three lines, 900% exp, four colors, placement, hidden labels) + handover_6.13 + version_log v1.13 (sprite972 bounds)"
+		},
+		{
+			"id": "quest-book",
+			"name": "任务簿（复用杏色对话底板）",
+			"primary_character": "sprite882",
+			"shape_character": "shape834",
+			"reuse_of": "dialogue",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"root_position": [
+				200,
+				80
+			],
+			"shape_bounds": [
+				362,
+				269.3
+			],
+			"fill_color": "#ffcc99",
+			"frame_count": null,
+			"godot_file": "res://scripts/quest_panel.gd",
+			"godot_symbol": "QuestPanel",
+			"test_file": "res://tests/test_quest_flow_guide_scene.tscn",
+			"evidence_source": "test_assertion (quest book on parchment deck) + handover_6.12 + version_log v1.30 (reuses sprite882/shape834 deck)",
+			"note": "复用对话底板 sprite882/shape834；reuse_of=dialogue 表示同源底板复用而非角色号冲突"
+		}
+	],
+	"animations": [
+		{
+			"id": "player-motion",
+			"name": "人物待机与四方向行走",
+			"primary_character": "sprite523",
+			"parent_character": "root timeline",
+			"root_frame": null,
+			"sub_clips": {
+				"idle": {
+					"sprite": "sprite459",
+					"frame_count": 8,
+					"bitmaps": [
+						"image_0455",
+						"image_0457"
+					]
+				},
+				"down": {
+					"sprite": "sprite469",
+					"frame_count": 8,
+					"bitmaps": [
+						"image_0465",
+						"image_0467"
+					]
+				},
+				"up": {
+					"sprite": "sprite474",
+					"frame_count": 8,
+					"bitmaps": [
+						"image_0470",
+						"image_0472"
+					]
+				},
+				"left": {
+					"sprite": "sprite481",
+					"frame_count": 10,
+					"bitmaps": [
+						"image_0475",
+						"image_0477",
+						"image_0479"
+					]
+				},
+				"right": {
+					"sprite": "sprite488",
+					"frame_count": 10,
+					"bitmaps": [
+						"image_0482",
+						"image_0484",
+						"image_0486"
+					]
+				}
+			},
+			"fps": 12,
+			"godot_file": "res://scripts/main_original.gd",
+			"godot_symbol": "player_idle_frames / player_walk_frames / _update_player_animation",
+			"test_file": "res://tests/test_player_native_motion_scene.tscn",
+			"evidence_source": "test_assertion (5 clip lengths, first/switch frames, 12fps, independent left/right) + version_log v1.17 (sprite523/sub-clips)"
+		},
+		{
+			"id": "player-attack",
+			"name": "人物四帧挥剑攻击",
+			"primary_character": "sprite523",
+			"reuse_of": "player-motion",
+			"parent_character": "root timeline",
+			"frame_count": 4,
+			"bitmaps": [
+				"image_0503",
+				"image_0505",
+				"image_0507",
+				"image_0509"
+			],
+			"godot_file": "res://scripts/scene_battle_controller.gd",
+			"godot_symbol": "_play_player_attack",
+			"test_file": "res://tests/test_scene_battle_scene.tscn",
+			"evidence_source": "main_original/scene_battle_controller frame array + version_log v0.8/v1.0 (four-frame sword swing)",
+			"note": "攻击段是 sprite523 主剪辑的另一时间轴段；reuse_of=player-motion 表示同一角色号的另一段，非冲突"
+		},
+		{
+			"id": "normal-monster",
+			"name": "普通怪站立/攻击（5像素横移）",
+			"primary_character": "sprite124",
+			"parent_character": "root timeline (per-map placement)",
+			"frame_count": null,
+			"attack_kind": "normal_lunge",
+			"attack_motion": "single bitmap shifted 5px then restored",
+			"godot_file": "res://scripts/scene_battle_controller.gd",
+			"godot_symbol": "native_attack_active / last_target_attack_kind",
+			"test_file": "res://tests/test_monster_attack_animation_scene.tscn",
+			"evidence_source": "test_assertion (5px lunge, exact restore) + version_log v1.14 (sprite124, no invented hit sprite)"
+		},
+		{
+			"id": "boss-monster",
+			"name": "通用等级 Boss 站立/攻击",
+			"primary_character": "sprite135",
+			"additional_characters": [
+				"sprite131"
+			],
+			"parent_character": "root timeline (per-map placement, char1074 wrapper)",
+			"attack_kind": "boss_frames",
+			"attack_bitmaps": [
+				"image_0127",
+				"image_0129"
+			],
+			"attack_frame_size": [
+				186,
+				173
+			],
+			"attack_offset": [
+				-33,
+				-42
+			],
+			"standing_bounds": [
+				101,
+				132
+			],
+			"godot_file": "res://scripts/scene_battle_controller.gd",
+			"godot_symbol": "_set_target_attack_frame",
+			"test_file": "res://tests/test_monster_attack_animation_scene.tscn",
+			"evidence_source": "test_assertion (186x173, offset -33,-42, two bitmaps, exact restore) + version_log v1.14/v1.16 (sprite135/sprite131, image_1072 standing)"
+		},
+		{
+			"id": "boss-hit",
+			"name": "通用 Boss 受击形状",
+			"primary_character": "sprite134",
+			"shape_character": "shape133",
+			"parent_character": "sprite135 (boss clip)",
+			"hit_kind": "boss_native_shape",
+			"hit_resource": "res://assets/extracted/derived/boss_hit_native.png",
+			"hit_size": [
+				123,
+				148
+			],
+			"hit_offset": [
+				0,
+				-7
+			],
+			"godot_file": "res://scripts/scene_battle_controller.gd",
+			"godot_symbol": "native_hit_active / last_target_hit_kind",
+			"test_file": "res://tests/test_monster_hit_scene.tscn",
+			"evidence_source": "test_assertion (123x148, offset 0,-7, boss_hit_native.png, cancel restore) + version_log v1.15 (sprite134/shape133, bitmap 97 fill)"
+		}
+	],
+	"shared_characters": [
+		{
+			"id": "close-button",
+			"primary_character": "char564",
+			"shape_characters": [
+				"shape547",
+				"shape548",
+				"shape550"
+			],
+			"description": "橙色圆环关闭钮三态（正常/悬停/按下），被背包、仓库、商店、对话、装备、幻兽、技能、精炼、研究所、任务簿复用",
+			"size": [
+				21,
+				21
+			],
+			"evidence_source": "version_log v1.21/v1.22 (char564, shapes 547/548/550)"
+		},
+		{
+			"id": "buy-sell-button",
+			"primary_character": "shape537",
+			"shape_characters": [
+				"shape538",
+				"shape539"
+			],
+			"description": "42x24 购买/出售按钮三态（深灰/浅灰/按下深色），被商店与装备详细按钮复用",
+			"size": [
+				42,
+				24
+			],
+			"evidence_source": "version_log v1.22 (shapes 537/538/539)"
+		},
+		{
+			"id": "boss-standing",
+			"primary_character": "image_1072",
+			"description": "101x132 通用 Boss 站立图，被七个等级 Boss、三档 PK 擂主、六个领地挑战者复用",
+			"size": [
+				101,
+				132
+			],
+			"evidence_source": "version_log v1.9/v1.16 + main_original _add_actor calls"
+		},
+		{
+			"id": "answer-hover-shape",
+			"primary_character": "shape878",
+			"description": "对话回答悬停底色 #ffcc66",
+			"evidence_source": "version_log v1.23 (shape878)"
+		}
+	],
+	"image_assets": [
+		{"image_id": "image_0038", "file": "res://assets/extracted/images/image_0038.jpg", "known_uses": ["雷鸣矿洞四个挖矿点图标"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0038"}]},
+		{"image_id": "image_0049", "file": "res://assets/extracted/images/image_0049.png", "known_uses": ["普通怪巨杰士/雪原统领/地下城首领站立帧（sprite124 通用怪第1种）"], "evidence_source": "main_original.gd+ manifest(49,36,152x115)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0049"}]},
+		{"image_id": "image_0051", "file": "res://assets/extracted/images/image_0051.png", "known_uses": ["雷角风牙兽（草原福娃事件Boss，main_original.gd）", "龙怪（雷鸣大陆普通怪，main_original.gd）", "attack_defense_heavy 幻兽模板 icon 字段（data/pets.json）", "legacy battle_panel/main.gd 暴雪骑士长与蜘蛛王后艾达（隐藏旧面板）"], "evidence_source": "main_original.gd+ data/pets.json(attack_defense_heavy) + battle_panel.gd+ main.gd(legacy)", "scope": "active+legacy", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0051"}, {"path": "res://data/pets.json", "token": "image_0051"}, {"path": "res://scripts/battle_panel.gd", "token": "image_0051"}, {"path": "res://scripts/main.gd", "token": "image_0051"}]},
+		{"image_id": "image_0053", "file": "res://assets/extracted/images/image_0053.png", "known_uses": ["普通怪冰妖剑士"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0053"}]},
+		{"image_id": "image_0055", "file": "res://assets/extracted/images/image_0055.png", "known_uses": ["普通怪杰克灯笼"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0055"}]},
+		{"image_id": "image_0057", "file": "res://assets/extracted/images/image_0057.png", "known_uses": ["普通怪提风"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0057"}]},
+		{"image_id": "image_0059", "file": "res://assets/extracted/images/image_0059.png", "known_uses": ["普通怪望齿魔人"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0059"}]},
+		{"image_id": "image_0061", "file": "res://assets/extracted/images/image_0061.png", "known_uses": ["普通怪角蜥"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0061"}]},
+		{"image_id": "image_0063", "file": "res://assets/extracted/images/image_0063.png", "known_uses": ["蜘蛛（迷梦沼泽，45级）"], "evidence_source": "main_original.gd+ version_log v1.9", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0063"}]},
+		{"image_id": "image_0065", "file": "res://assets/extracted/images/image_0065.png", "known_uses": ["普通怪塔亚龙"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0065"}]},
+		{"image_id": "image_0067", "file": "res://assets/extracted/images/image_0067.png", "known_uses": ["普通怪死亡骑士"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0067"}]},
+		{"image_id": "image_0069", "file": "res://assets/extracted/images/image_0069.png", "known_uses": ["普通怪鱼妖"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0069"}]},
+		{"image_id": "image_0071", "file": "res://assets/extracted/images/image_0071.png", "known_uses": ["普通怪恐兽"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0071"}]},
+		{"image_id": "image_0073", "file": "res://assets/extracted/images/image_0073.png", "known_uses": ["普通怪巨斧怪"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0073"}]},
+		{"image_id": "image_0075", "file": "res://assets/extracted/images/image_0075.png", "known_uses": ["蜘蛛王后艾达（亚维特岛，80级）"], "evidence_source": "main_original.gd+ version_log v1.9", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0075"}]},
+		{"image_id": "image_0077", "file": "res://assets/extracted/images/image_0077.png", "known_uses": ["普通怪刺虫人"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0077"}]},
+		{"image_id": "image_0079", "file": "res://assets/extracted/images/image_0079.png", "known_uses": ["普通怪四牙怪"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0079"}]},
+		{"image_id": "image_0081", "file": "res://assets/extracted/images/image_0081.png", "known_uses": ["普通怪炎女"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0081"}]},
+		{"image_id": "image_0083", "file": "res://assets/extracted/images/image_0083.png", "known_uses": ["普通怪蝎怪"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0083"}]},
+		{"image_id": "image_0085", "file": "res://assets/extracted/images/image_0085.png", "known_uses": ["普通怪暗黑弥塞亚"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0085"}]},
+		{"image_id": "image_0087", "file": "res://assets/extracted/images/image_0087.png", "known_uses": ["普通怪暗黑格拉斯"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0087"}]},
+		{"image_id": "image_0089", "file": "res://assets/extracted/images/image_0089.png", "known_uses": ["普通怪叹息骑士"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0089"}]},
+		{"image_id": "image_0097", "file": "res://assets/extracted/images/image_0097.png", "known_uses": ["魔军突击队（最终战）"], "evidence_source": "main_original.gd+ manifest(97,36,101x132)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0097"}]},
+		{"image_id": "image_0099", "file": "res://assets/extracted/images/image_0099.png", "known_uses": ["魔军守卫军（最终战）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0099"}]},
+		{"image_id": "image_0101", "file": "res://assets/extracted/images/image_0101.png", "known_uses": ["无名氏（战魂封印谜宫守卫，sprite124 第28帧）"], "evidence_source": "main_original.gd+ version_log v1.8 + manifest(101,36,91x167)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0101"}]},
+		{"image_id": "image_0103", "file": "res://assets/extracted/images/image_0103.png", "known_uses": ["魔军图腾兽（最终战）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0103"}]},
+		{"image_id": "image_0105", "file": "res://assets/extracted/images/image_0105.png", "known_uses": ["魔军主帅（最终战）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0105"}]},
+		{"image_id": "image_0116", "file": "res://assets/extracted/images/image_0116.png", "known_uses": ["魔的能量（最终目标）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0116"}]},
+		{"image_id": "image_0127", "file": "res://assets/extracted/images/image_0127.png", "known_uses": ["通用 Boss 攻击帧 A（186x173）/ legacy 暴雪勇士"], "evidence_source": "scene_battle_controller.gd+ manifest(127,36,186x173)", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0127"}]},
+		{"image_id": "image_0129", "file": "res://assets/extracted/images/image_0129.png", "known_uses": ["通用 Boss 攻击帧 B（186x173）/ 雪原骑兵/地下城三层首领"], "evidence_source": "main_original.gd+ manifest(129,36,186x173)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0129"}]},
+		{"image_id": "image_0431", "file": "res://assets/extracted/images/image_0431.png", "known_uses": ["legacy main.gd 幻兽师（隐藏旧面板，非运行时）"], "evidence_source": "main.gd(legacy)", "scope": "legacy", "source_refs": [{"path": "res://scripts/main.gd", "token": "image_0431"}]},
+		{"image_id": "image_0447", "file": "res://assets/extracted/images/image_0447.png", "known_uses": ["legacy battle_panel 人物攻击帧（隐藏旧面板，非运行时）"], "evidence_source": "battle_panel.gd(legacy)", "scope": "legacy", "source_refs": [{"path": "res://scripts/battle_panel.gd", "token": "image_0447"}]},
+		{"image_id": "image_0449", "file": "res://assets/extracted/images/image_0449.png", "known_uses": ["legacy battle_panel 怪物图（隐藏旧面板，非运行时）"], "evidence_source": "battle_panel.gd(legacy)", "scope": "legacy", "source_refs": [{"path": "res://scripts/battle_panel.gd", "token": "image_0449"}]},
+		{"image_id": "image_0455", "file": "res://assets/extracted/images/image_0455.png", "known_uses": ["人物待机帧 A（idle frame A）"], "evidence_source": "main_original.gd+ test_player_native_motion + manifest(455,36,57x161)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0455"}]},
+		{"image_id": "image_0457", "file": "res://assets/extracted/images/image_0457.png", "known_uses": ["人物待机帧 B（idle frame B）"], "evidence_source": "main_original.gd+ test_player_native_motion", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0457"}]},
+		{"image_id": "image_0465", "file": "res://assets/extracted/images/image_0465.png", "known_uses": ["人物向下行走帧 A"], "evidence_source": "test_player_native_motion + manifest(465,36,73x136)"},
+		{"image_id": "image_0467", "file": "res://assets/extracted/images/image_0467.png", "known_uses": ["人物向下行走帧 B"], "evidence_source": "test_player_native_motion"},
+		{"image_id": "image_0470", "file": "res://assets/extracted/images/image_0470.png", "known_uses": ["人物向上行走帧 A"], "evidence_source": "test_player_native_motion + manifest(470,36,73x136)"},
+		{"image_id": "image_0472", "file": "res://assets/extracted/images/image_0472.png", "known_uses": ["人物向上行走帧 B"], "evidence_source": "test_player_native_motion"},
+		{"image_id": "image_0475", "file": "res://assets/extracted/images/image_0475.png", "known_uses": ["人物向左行走帧 A"], "evidence_source": "test_player_native_motion + manifest(475,36,146x124)"},
+		{"image_id": "image_0477", "file": "res://assets/extracted/images/image_0477.png", "known_uses": ["人物向左过渡帧"], "evidence_source": "test_player_native_motion"},
+		{"image_id": "image_0479", "file": "res://assets/extracted/images/image_0479.png", "known_uses": ["人物向左迈步帧"], "evidence_source": "test_player_native_motion"},
+		{"image_id": "image_0482", "file": "res://assets/extracted/images/image_0482.png", "known_uses": ["人物向右行走帧 A（独立素材，非镜像）"], "evidence_source": "test_player_native_motion + manifest(482,36,149x126)"},
+		{"image_id": "image_0484", "file": "res://assets/extracted/images/image_0484.png", "known_uses": ["人物向右过渡帧"], "evidence_source": "test_player_native_motion"},
+		{"image_id": "image_0486", "file": "res://assets/extracted/images/image_0486.png", "known_uses": ["人物向右迈步帧"], "evidence_source": "test_player_native_motion"},
+		{"image_id": "image_0503", "file": "res://assets/extracted/images/image_0503.png", "known_uses": ["人物攻击挥剑帧 1/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0503"}]},
+		{"image_id": "image_0505", "file": "res://assets/extracted/images/image_0505.png", "known_uses": ["人物攻击挥剑帧 2/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0505"}]},
+		{"image_id": "image_0507", "file": "res://assets/extracted/images/image_0507.png", "known_uses": ["人物攻击挥剑帧 3/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0507"}]},
+		{"image_id": "image_0509", "file": "res://assets/extracted/images/image_0509.png", "known_uses": ["人物攻击挥剑帧 4/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0509"}]},
+		{"image_id": "image_0553", "file": "res://assets/extracted/images/image_0553.jpg", "known_uses": ["装备窗战魂标志 war_soul_badge"], "evidence_source": "equipment_panel.gd", "source_refs": [{"path": "res://scripts/equipment_panel.gd", "token": "image_0553"}]},
+		{"image_id": "image_0556", "file": "res://assets/extracted/images/image_0556.jpg", "known_uses": ["装备窗天魂套装标志 soul_set_badge"], "evidence_source": "equipment_panel.gd", "source_refs": [{"path": "res://scripts/equipment_panel.gd", "token": "image_0556"}]},
+		{"image_id": "image_0558", "file": "res://assets/extracted/images/image_0558.jpg", "known_uses": ["装备窗地魂套装标志（切换态）"], "evidence_source": "equipment_panel.gd", "source_refs": [{"path": "res://scripts/equipment_panel.gd", "token": "image_0558"}]},
+		{"image_id": "image_0698", "file": "res://assets/extracted/images/image_0698.jpg", "known_uses": ["技能图标 飞天连斩"], "evidence_source": "skill_panel.gd+ test_native_skill_panel + manifest(698,21,40x40)", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0698"}]},
+		{"image_id": "image_0703", "file": "res://assets/extracted/images/image_0703.jpg", "known_uses": ["技能图标（原版保留栏 2）"], "evidence_source": "skill_panel.gd", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0703"}]},
+		{"image_id": "image_0708", "file": "res://assets/extracted/images/image_0708.jpg", "known_uses": ["技能图标 星魔剑"], "evidence_source": "skill_panel.gd", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0708"}]},
+		{"image_id": "image_0713", "file": "res://assets/extracted/images/image_0713.jpg", "known_uses": ["技能图标（原版保留栏 4）"], "evidence_source": "skill_panel.gd", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0713"}]},
+		{"image_id": "image_0718", "file": "res://assets/extracted/images/image_0718.jpg", "known_uses": ["技能图标 斗志昂扬"], "evidence_source": "skill_panel.gd+ test_native_skill_panel", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0718"}]},
+		{"image_id": "image_0726", "file": "res://assets/extracted/images/image_0726.png", "known_uses": ["技能图标 爱的力量"], "evidence_source": "skill_panel.gd+ test_native_skill_panel", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0726"}]},
+		{"image_id": "image_0738", "file": "res://assets/extracted/images/image_0738.jpg", "known_uses": ["幻兽头像 攻防型光幻兽 attack_defense_light"], "evidence_source": "pet_panel.gd+ test_native_pet_bag + manifest(738,21,63x58)", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0738"}]},
+		{"image_id": "image_0740", "file": "res://assets/extracted/images/image_0740.jpg", "known_uses": ["幻兽头像 奇异兽 strange_beast"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0740"}]},
+		{"image_id": "image_0742", "file": "res://assets/extracted/images/image_0742.jpg", "known_uses": ["幻兽头像 噜噜 lulu_pet"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0742"}]},
+		{"image_id": "image_0744", "file": "res://assets/extracted/images/image_0744.jpg", "known_uses": ["幻兽头像 攻防型重幻兽 attack_defense_heavy（pet_panel PORTRAITS 覆盖 pets.json 的 image_0051）"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0744"}]},
+		{"image_id": "image_0746", "file": "res://assets/extracted/images/image_0746.jpg", "known_uses": ["幻兽头像默认回退图"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0746"}]},
+		{"image_id": "image_0748", "file": "res://assets/extracted/images/image_0748.jpg", "known_uses": ["幻兽头像 年猪 year_pig"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0748"}]},
+		{"image_id": "image_0750", "file": "res://assets/extracted/images/image_0750.jpg", "known_uses": ["幻兽头像 圣天使 holy_angel"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0750"}]},
+		{"image_id": "image_0875", "file": "res://assets/extracted/images/image_0875.jpg", "known_uses": ["顶部人物卡玩家头像"], "evidence_source": "main_original.gd+ manifest(875,21,64x64)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0875"}]},
+		{"image_id": "image_1066", "file": "res://assets/extracted/images/image_1066.jpg", "known_uses": ["雷鸣大陆背景"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1072", "file": "res://assets/extracted/images/image_1072.png", "known_uses": ["通用 Boss 站立图（101x132，七等级Boss/PK擂主/领地挑战者共用）"], "evidence_source": "main_original _add_actor + manifest(1072,36,101x132) + version_log v1.9", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1072"}]},
+		{"image_id": "image_1076", "file": "res://assets/extracted/images/image_1076.png", "known_uses": ["日常任务官/PK赛报名官/地图占领报名官人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1076"}]},
+		{"image_id": "image_1086", "file": "res://assets/extracted/images/image_1086.png", "known_uses": ["2008奥运使者（五福娃事件）"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1086"}]},
+		{"image_id": "image_1091", "file": "res://assets/extracted/images/image_1091.jpg", "known_uses": ["雷鸣矿洞背景"], "evidence_source": "maps.json + version_log v1.4"},
+		{"image_id": "image_1097", "file": "res://assets/extracted/images/image_1097.jpg", "known_uses": ["草原/草原2背景（五福娃事件图）"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1101", "file": "res://assets/extracted/images/image_1101.png", "known_uses": ["福娃贝贝"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1101"}]},
+		{"image_id": "image_1104", "file": "res://assets/extracted/images/image_1104.png", "known_uses": ["福娃欢欢"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1104"}]},
+		{"image_id": "image_1106", "file": "res://assets/extracted/images/image_1106.png", "known_uses": ["福娃迎迎"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1106"}]},
+		{"image_id": "image_1108", "file": "res://assets/extracted/images/image_1108.png", "known_uses": ["福娃妮妮"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1108"}]},
+		{"image_id": "image_1110", "file": "res://assets/extracted/images/image_1110.png", "known_uses": ["福娃晶晶"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1110"}]},
+		{"image_id": "image_1114", "file": "res://assets/extracted/images/image_1114.jpg", "known_uses": ["卡萨诺城背景（默认背景）"], "evidence_source": "main_original.gd+ maps.json + manifest(1114,21,700x550)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1114"}]},
+		{"image_id": "image_1126", "file": "res://assets/extracted/images/image_1126.png", "known_uses": ["经验导师人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1126"}]},
+		{"image_id": "image_1130", "file": "res://assets/extracted/images/image_1130.png", "known_uses": ["仓库管理员人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1130"}]},
+		{"image_id": "image_1134", "file": "res://assets/extracted/images/image_1134.png", "known_uses": ["收藏商店/公主侍女/丫环人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1134"}]},
+		{"image_id": "image_1138", "file": "res://assets/extracted/images/image_1138.png", "known_uses": ["收藏家人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1138"}]},
+		{"image_id": "image_1142", "file": "res://assets/extracted/images/image_1142.png", "known_uses": ["装备打造师/首相人物图"], "evidence_source": "main_original.gd+ version_log v1.1/v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1142"}]},
+		{"image_id": "image_1147", "file": "res://assets/extracted/images/image_1147.png", "known_uses": ["幻兽幻化师/抽奖官人物图"], "evidence_source": "main_original.gd+ version_log v1.6", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1147"}]},
+		{"image_id": "image_1151", "file": "res://assets/extracted/images/image_1151.png", "known_uses": ["宝石合成师人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1151"}]},
+		{"image_id": "image_1156", "file": "res://assets/extracted/images/image_1156.png", "known_uses": ["杂货商人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1156"}]},
+		{"image_id": "image_1171", "file": "res://assets/extracted/images/image_1171.png", "known_uses": ["幻兽研究所人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1171"}]},
+		{"image_id": "image_1175", "file": "res://assets/extracted/images/image_1175.jpg", "known_uses": ["皇宫/后花园/抽奖房背景"], "evidence_source": "maps.json + test_garden_lottery"},
+		{"image_id": "image_1177", "file": "res://assets/extracted/images/image_1177.png", "known_uses": ["元帅人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1177"}]},
+		{"image_id": "image_1191", "file": "res://assets/extracted/images/image_1191.png", "known_uses": ["国王人物图（救王后回宫）"], "evidence_source": "main_original.gd+ test_palace", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1191"}]},
+		{"image_id": "image_1197", "file": "res://assets/extracted/images/image_1197.png", "known_uses": ["皇宫装饰图 1"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1197"}]},
+		{"image_id": "image_1198", "file": "res://assets/extracted/images/image_1198.png", "known_uses": ["皇宫/后花园/抽奖房装饰图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1198"}]},
+		{"image_id": "image_1201", "file": "res://assets/extracted/images/image_1201.png", "known_uses": ["公主人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1201"}]},
+		{"image_id": "image_1213", "file": "res://assets/extracted/images/image_1213.png", "known_uses": ["抽奖房宝箱关闭帧/战魂封印之箱"], "evidence_source": "main_original.gd+ version_log v1.6/v1.8 + manifest(1213,36,100x100)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1213"}]},
+		{"image_id": "image_1226", "file": "res://assets/extracted/images/image_1226.jpg", "known_uses": ["戈壁背景"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1231", "file": "res://assets/extracted/images/image_1231.png", "known_uses": ["戈壁探险家人物图（战魂任务期间）"], "evidence_source": "main_original.gd+ version_log v1.8", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1231"}]},
+		{"image_id": "image_1236", "file": "res://assets/extracted/images/image_1236.jpg", "known_uses": ["迷梦沼泽背景"], "evidence_source": "maps.json"},
+		{"image_id": "image_1242", "file": "res://assets/extracted/images/image_1242.jpg", "known_uses": ["冰宫背景"], "evidence_source": "maps.json"},
+		{"image_id": "image_1252", "file": "res://assets/extracted/images/image_1252.jpg", "known_uses": ["亚维特岛背景"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1262", "file": "res://assets/extracted/images/image_1262.jpg", "known_uses": ["火山背景"], "evidence_source": "maps.json"},
+		{"image_id": "image_1268", "file": "res://assets/extracted/images/image_1268.jpg", "known_uses": ["深渊迷宫背景"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1271", "file": "res://assets/extracted/images/image_1271.jpg", "known_uses": ["雪域边境/魔中军阵地背景"], "evidence_source": "maps.json + version_log v1.3"},
+		{"image_id": "image_1276", "file": "res://assets/extracted/images/image_1276.jpg", "known_uses": ["魔左军/魔右军阵地背景"], "evidence_source": "maps.json + version_log v1.3"},
+		{"image_id": "image_1278", "file": "res://assets/extracted/images/image_1278.jpg", "known_uses": ["魔军帅旗/能量塔禁地背景"], "evidence_source": "maps.json + version_log v1.3"},
+		{"image_id": "image_1281", "file": "res://assets/extracted/images/image_1281.jpg", "known_uses": ["地下城一层背景"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1287", "file": "res://assets/extracted/images/image_1287.jpg", "known_uses": ["地下城二层背景"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1292", "file": "res://assets/extracted/images/image_1292.jpg", "known_uses": ["地下城三层背景"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "image_1294", "file": "res://assets/extracted/images/image_1294.jpg", "known_uses": ["PK 赛场 1/2/3 背景"], "evidence_source": "maps.json + version_log v1.7"},
+		{"image_id": "image_1297", "file": "res://assets/extracted/images/image_1297.jpg", "known_uses": ["战魂封印谜宫背景"], "evidence_source": "maps.json + version_log v1.8"},
+		{"image_id": "image_1299", "file": "res://assets/extracted/images/image_1299.jpg", "known_uses": ["树心城背景（五福娃最终交任务）"], "evidence_source": "maps.json + version_log v1.5"},
+		{"image_id": "boss_hit_native", "file": "res://assets/extracted/derived/boss_hit_native.png", "known_uses": ["通用 Boss 受击帧（由 SWF shape133 栅格化生成，123x148）"], "evidence_source": "test_monster_hit + version_log v1.15 + assets/extracted/derived"}
+	],
+	"maps": [
+		{
+			"map_id": "cassano_city",
+			"background": "image_1114.jpg"
+		},
+		{
+			"map_id": "palace",
+			"background": "image_1175.jpg"
+		},
+		{
+			"map_id": "palace_garden",
+			"background": "image_1175.jpg"
+		},
+		{
+			"map_id": "lottery_room",
+			"background": "image_1175.jpg"
+		},
+		{
+			"map_id": "thunder_continent",
+			"background": "image_1066.jpg"
+		},
+		{
+			"map_id": "thunder_mine",
+			"background": "image_1091.jpg"
+		},
+		{
+			"map_id": "desert",
+			"background": "image_1226.jpg"
+		},
+		{
+			"map_id": "dream_swamp",
+			"background": "image_1236.jpg"
+		},
+		{
+			"map_id": "ice_palace",
+			"background": "image_1242.jpg"
+		},
+		{
+			"map_id": "ice_border",
+			"background": "image_1271.jpg"
+		},
+		{
+			"map_id": "avit_island",
+			"background": "image_1252.jpg"
+		},
+		{
+			"map_id": "volcano",
+			"background": "image_1262.jpg"
+		},
+		{
+			"map_id": "abyss_maze",
+			"background": "image_1268.jpg"
+		},
+		{
+			"map_id": "green_field",
+			"background": "image_1097.jpg"
+		},
+		{
+			"map_id": "grass_reward",
+			"background": "image_1097.jpg"
+		},
+		{
+			"map_id": "treeheart_city",
+			"background": "image_1299.jpg"
+		},
+		{
+			"map_id": "dungeon",
+			"background": "image_1281.jpg"
+		},
+		{
+			"map_id": "dungeon_floor_2",
+			"background": "image_1287.jpg"
+		},
+		{
+			"map_id": "dungeon_floor_3",
+			"background": "image_1292.jpg"
+		},
+		{
+			"map_id": "demon_camp",
+			"background": "image_1271.jpg"
+		},
+		{
+			"map_id": "demon_left",
+			"background": "image_1276.jpg"
+		},
+		{
+			"map_id": "demon_right",
+			"background": "image_1276.jpg"
+		},
+		{
+			"map_id": "demon_banner",
+			"background": "image_1278.jpg"
+		},
+		{
+			"map_id": "energy_tower",
+			"background": "image_1278.jpg"
+		},
+		{
+			"map_id": "pk_arena",
+			"background": "image_1294.jpg"
+		},
+		{
+			"map_id": "pk_arena_2",
+			"background": "image_1294.jpg"
+		},
+		{
+			"map_id": "pk_arena_3",
+			"background": "image_1294.jpg"
+		},
+		{
+			"map_id": "war_soul_seal_maze",
+			"background": "image_1297.jpg"
+		}
+	],
+	"evidence_gaps": [
+		"部分 UI 窗口的 SWF 根时间轴帧号（root_frame）未在现有反查文档中单独确认，已记为 null；窗口均由 PlaceObject 在根时间轴显示，根矩阵平移分量已由测试断言确认。",
+		"顶部 HUD 三段 sprite932/925/920 与人物卡/双幻兽卡/地图卡的 1:1 对应关系未在现有证据中单独拆分确认，已合并为单个 top-hud 组件并记录四组根坐标。",
+		"HUD 卡片底色为 Godot 重建样式（#505050/#202020），SWF 原始卡片底色未在现有证据中确认，已记为 null。",
+		"data/pets.json 中 attack_defense_heavy 模板的 icon 字段为 image_0051，但 pet_panel.gd 的 PORTRAITS 字典运行时覆盖为 image_0744；两者均已如实登记，运行时实际显示 image_0744。"
+	]
+}

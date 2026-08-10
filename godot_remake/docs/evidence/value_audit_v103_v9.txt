@@ -1,0 +1,36 @@
+魔域1.03 v9 数值审计证据（v1.39）
+来源：data/*.json（权威配置源）+ 生产代码（combat_service/enhancement_service/pet_service/game_state）
+原则：用户覆盖值优先于还原原版；无法确认标 UNCONFIRMED/gap。
+
+=== 人物/幻兽经验（4.1）===
+data/progression.json: player_experience_multiplier=10（权威源）
+combat_service.victory_rewards: experience=base_exp*10（仅一次）；pet_experience=base_exp（不乘10）
+main_original.gd:770 悬停显示 experience_multiplier=10（一致）
+
+=== 军功/功勋（4.2）===
+data/progression.json: boss_military_merit_multiplier=10 / normal=1（权威源）
+combat_service.victory_rewards: military_merit=base_military*multiplier（Boss 10 / 普通 1）
+data/ranks.json: gold_per_nobility_merit=750000（750000金币=1功勋）
+日常官魔魂晶石500/灵魂王2000 -> intentional_divergence（用户批准，不擅自改回原版）
+
+=== 商人无限货币（4.3）===
+game_state.gd:63-64: gold=magic_stones=99_999_999_999
+game_state.gd:462: SALE_GRANT=99_999_999_999（出售每次增加）
+64位上限 9_223_372_036_854_775_807 前拒绝（int64）
+
+=== 装备养成/关系（4.4）===
+data/enhancement.json: quality_success_rate=1.0 / magic_soul_success_rate=1.0
+war_soul_crystal_success_rate=0.5（比较符号 <，enhancement_service.gd:42）
+war_soul_combat_power_percent_per_level=10（战魂每级10%战斗力）
+heaven_soul_attack_percent_per_level=10 / earth_soul_dodge_percent_per_level=4
+data/ranks.json + enhancement.json: rose_affection 99=50 / 999=250
+
+=== 幻兽/研究所（4.5）===
+data/pet_config.json research: initial_technology_level=10 / unlock=20 / cap=300
+production_rate_cap=6（日产量上限）/ production_task_increment=2（每次+2）/ stock_cap=100
+
+=== 掉落/概率（4.6）===
+combat_service: 蜘蛛技能书 0.30/0.50/0.60（用户要求双倍规则，再乘幸运 baoli）
+  王后高级技能书 0.40/0.40/0.20；王后增强月光盒 0.50（固定）
+  60级以上原生Boss增强月光盒 0.50；60及以下普通月光盒路径
+  战魂解锁后Boss首个晶石分支 >0.50 语义（单独记录，非通用 <0.50）

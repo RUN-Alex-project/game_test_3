@@ -1,0 +1,302 @@
+{
+ "registry_version": "1.39",
+ "baseline_version": "v103_v9",
+ "purpose": "原版数值与用户覆盖值双层审计（v1.39）：区分 native/user_override/effective；防止后续还原误删用户修改；登记重复倍率/概率边界",
+ "evidence_source": "res://docs/evidence/value_audit_v103_v9.txt",
+ "values": [
+  {
+   "value_id": "player_exp_multiplier",
+   "domain": "经验",
+   "unit": "倍",
+   "native_value": "UNCONFIRMED",
+   "user_override": 10,
+   "effective_value": 10,
+   "formula": "base_exp*10",
+   "application_count": 1,
+   "evidence_source": "data/progression.json",
+   "config_source": "data/progression.json",
+   "implementation_sources": [
+    "combat_service.gd:40-47"
+   ],
+   "classification": "user_override",
+   "pm_decision": "10倍为用户冻结覆盖",
+   "known_risks": "仅 main_original 悬停与 combat_service 各应用一次，需防重复乘10"
+  },
+  {
+   "value_id": "boss_military_multiplier",
+   "domain": "军功",
+   "unit": "倍",
+   "native_value": "UNCONFIRMED",
+   "user_override": 10,
+   "effective_value": 10,
+   "formula": "base_military_merit*10",
+   "evidence_source": "data/progression.json",
+   "config_source": "data/progression.json",
+   "implementation_sources": [
+    "combat_service.gd:42-44"
+   ],
+   "classification": "user_override",
+   "pm_decision": "Boss军功10倍冻结",
+   "known_risks": "普通怪必须用normal=1，防误用Boss倍率"
+  },
+  {
+   "value_id": "normal_military_multiplier",
+   "domain": "军功",
+   "unit": "倍",
+   "native_value": "UNCONFIRMED",
+   "user_override": 1,
+   "effective_value": 1,
+   "formula": "base_military_merit*1",
+   "evidence_source": "data/progression.json",
+   "config_source": "data/progression.json",
+   "implementation_sources": [
+    "combat_service.gd:42-44"
+   ],
+   "classification": "user_override",
+   "pm_decision": "普通怪军功1倍冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "initial_gold",
+   "domain": "货币",
+   "unit": "gold",
+   "native_value": "UNCONFIRMED",
+   "user_override": 99999999999,
+   "effective_value": 99999999999,
+   "evidence_source": "game_state.gd:63",
+   "config_source": "game_state.gd",
+   "implementation_sources": [
+    "game_state.gd:63"
+   ],
+   "classification": "user_override",
+   "pm_decision": "初始金币99,999,999,999冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "initial_magic_stones",
+   "domain": "货币",
+   "unit": "stones",
+   "native_value": "UNCONFIRMED",
+   "user_override": 99999999999,
+   "effective_value": 99999999999,
+   "evidence_source": "game_state.gd:64",
+   "config_source": "game_state.gd",
+   "implementation_sources": [
+    "game_state.gd:64"
+   ],
+   "classification": "user_override",
+   "pm_decision": "初始魔石99,999,999,999冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "sale_grant",
+   "domain": "货币",
+   "unit": "currency",
+   "native_value": "UNCONFIRMED",
+   "user_override": 99999999999,
+   "effective_value": 99999999999,
+   "evidence_source": "game_state.gd:462",
+   "config_source": "game_state.gd",
+   "implementation_sources": [
+    "game_state.gd:462"
+   ],
+   "classification": "user_override",
+   "pm_decision": "出售标题每次增加99,999,999,999冻结",
+   "known_risks": "int64溢出上限9_223_372_036_854_775_807前拒绝"
+  },
+  {
+   "value_id": "quality_success_rate",
+   "domain": "装备",
+   "unit": "概率",
+   "native_value": "UNCONFIRMED",
+   "user_override": 1.0,
+   "effective_value": 1.0,
+   "evidence_source": "data/enhancement.json",
+   "config_source": "data/enhancement.json",
+   "implementation_sources": [
+    "enhancement_service.gd"
+   ],
+   "classification": "user_override",
+   "pm_decision": "品质必成冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "magic_soul_success_rate",
+   "domain": "装备",
+   "unit": "概率",
+   "native_value": "UNCONFIRMED",
+   "user_override": 1.0,
+   "effective_value": 1.0,
+   "evidence_source": "data/enhancement.json",
+   "config_source": "data/enhancement.json",
+   "implementation_sources": [
+    "enhancement_service.gd"
+   ],
+   "classification": "user_override",
+   "pm_decision": "魔魂必成冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "war_soul_crystal_success_rate",
+   "domain": "装备",
+   "unit": "概率",
+   "native_value": "UNCONFIRMED",
+   "user_override": 0.5,
+   "effective_value": 0.5,
+   "operator": "<",
+   "evidence_source": "data/enhancement.json + enhancement_service.gd:42",
+   "config_source": "data/enhancement.json",
+   "implementation_sources": [
+    "enhancement_service.gd:42"
+   ],
+   "classification": "user_override",
+   "pm_decision": "战魂晶石50%（roll<0.5）冻结",
+   "known_risks": "比较符号必须<，改<=会改变边界"
+  },
+  {
+   "value_id": "rose_99",
+   "domain": "关系",
+   "unit": "好感",
+   "native_value": "UNCONFIRMED",
+   "user_override": 50,
+   "effective_value": 50,
+   "evidence_source": "data/ranks.json + enhancement.json",
+   "config_source": "data/enhancement.json",
+   "implementation_sources": [
+    "game_state.gd:899 give_roses"
+   ],
+   "classification": "user_override",
+   "pm_decision": "99玫瑰+50冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "rose_999",
+   "domain": "关系",
+   "unit": "好感",
+   "native_value": "UNCONFIRMED",
+   "user_override": 250,
+   "effective_value": 250,
+   "evidence_source": "data/ranks.json + enhancement.json",
+   "config_source": "data/enhancement.json",
+   "implementation_sources": [
+    "game_state.gd:899 give_roses"
+   ],
+   "classification": "user_override",
+   "pm_decision": "999玫瑰+250冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "research_tech_cap",
+   "domain": "研究所",
+   "unit": "等级",
+   "native_value": "UNCONFIRMED",
+   "user_override": 300.0,
+   "effective_value": 300.0,
+   "evidence_source": "data/pet_config.json",
+   "config_source": "data/pet_config.json",
+   "implementation_sources": [
+    "pet_service.gd"
+   ],
+   "classification": "user_override",
+   "pm_decision": "技术上限300冻结",
+   "known_risks": "初始10/解锁20/上限300"
+  },
+  {
+   "value_id": "research_daily_cap",
+   "domain": "研究所",
+   "unit": "产量",
+   "native_value": "UNCONFIRMED",
+   "user_override": 6,
+   "effective_value": 6,
+   "evidence_source": "data/pet_config.json",
+   "config_source": "data/pet_config.json",
+   "implementation_sources": [
+    "pet_service.gd"
+   ],
+   "classification": "user_override",
+   "pm_decision": "日产量上限6冻结",
+   "known_risks": "每次+2，库存上限100"
+  },
+  {
+   "value_id": "spider_skill_base",
+   "domain": "掉落",
+   "unit": "概率",
+   "native_value": "UNCONFIRMED",
+   "user_override": [
+    0.3,
+    0.5,
+    0.6
+   ],
+   "effective_value": [
+    0.3,
+    0.5,
+    0.6
+   ],
+   "evidence_source": "combat_service.gd:117-119",
+   "config_source": "combat_service.gd",
+   "implementation_sources": [
+    "combat_service.gd:117-119"
+   ],
+   "classification": "user_override",
+   "pm_decision": "蜘蛛技能书双倍规则冻结",
+   "known_risks": "再乘幸运baoli"
+  },
+  {
+   "value_id": "queen_skill_base",
+   "domain": "掉落",
+   "unit": "概率",
+   "native_value": "UNCONFIRMED",
+   "user_override": [
+    0.4,
+    0.4,
+    0.2
+   ],
+   "effective_value": [
+    0.4,
+    0.4,
+    0.2
+   ],
+   "evidence_source": "combat_service.gd:125-127",
+   "config_source": "combat_service.gd",
+   "implementation_sources": [
+    "combat_service.gd:125-127"
+   ],
+   "classification": "user_override",
+   "pm_decision": "王后高级技能书冻结",
+   "known_risks": ""
+  },
+  {
+   "value_id": "enhanced_moon_box_50",
+   "domain": "掉落",
+   "unit": "概率",
+   "native_value": "UNCONFIRMED",
+   "user_override": 0.5,
+   "effective_value": 0.5,
+   "operator": "<=(非<)",
+   "evidence_source": "combat_service.gd:133",
+   "config_source": "combat_service.gd",
+   "implementation_sources": [
+    "combat_service.gd:133"
+   ],
+   "classification": "user_override",
+   "pm_decision": "王后/60+原生Boss增强月光盒固定50%冻结",
+   "known_risks": "战魂解锁后Boss首个晶石分支>0.50语义，单独记录，非通用<0.50"
+  },
+  {
+   "value_id": "gold_per_merit",
+   "domain": "功勋",
+   "unit": "金币/功勋",
+   "native_value": 750000,
+   "user_override": 750000,
+   "effective_value": 750000,
+   "evidence_source": "data/ranks.json",
+   "config_source": "data/ranks.json",
+   "implementation_sources": [
+    "progression_service.gd"
+   ],
+   "classification": "native_confirmed",
+   "pm_decision": "750000金币=1功勋",
+   "known_risks": ""
+  }
+ ]
+}

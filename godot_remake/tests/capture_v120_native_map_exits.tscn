@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://tests/capture_v120_native_map_exits.gd" type="Script" id="1"]
+
+[node name="CaptureV120NativeMapExits" type="Node"]
+script = ExtResource("1")

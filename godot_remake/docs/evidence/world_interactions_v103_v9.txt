@@ -1,0 +1,319 @@
+世界交互证据文件（魔域1.03 v9 SWF 28图演员/出口/背景反查）
+============================================================
+
+SWF 源文件: 魔域1.03_v9.swf
+反查工具: inspect_swf_place_actions / inspect_swf_world_monsters / inspect_swf_exit_matrices / dump_sprite_actions
+NPC证据见: docs/evidence/npc_progression_actions_v103_v9.txt
+
+------------------------------------------------------------
+地图: cassano_city (卡萨诺城)
+------------------------------------------------------------
+背景: image_1114.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  grocery | 杂货商 | kind=npc | asset=image_1156.png | pos=[166.8,120.3] | size=[52.0,114.0] | action=grocery
+  stone_shop | 收藏商店 | kind=npc | asset=image_1134.png | pos=[290.0,123.3] | size=[54.0,111.0] | action=stone_shop
+  collector | 收藏家 | kind=npc | asset=image_1138.png | pos=[446.15,124.3] | size=[32.0,116.0] | action=collector
+  warehouse | 仓库管理员 | kind=npc | asset=image_1130.png | pos=[533.6,120.85] | size=[51.0,111.0] | action=warehouse
+  daily_officer | 日常任务官 | kind=npc | asset=image_1076.png | pos=[620.45,119.3] | size=[58.0,111.0] | action=daily_officer
+  stone_synthesizer | 宝石合成师 | kind=npc | asset=image_1151.png | pos=[130.5,373.55] | size=[39.0,108.0] | action=stone_synthesizer
+  forger | 装备打造师 | kind=npc | asset=image_1142.png | pos=[207.5,377.95] | size=[52.0,115.0] | action=forger
+  pet_master | 幻兽幻化师 | kind=npc | asset=image_1147.png | pos=[410.45,385.95] | size=[52.0,102.0] | action=pet_master
+  experience_mentor | 经验导师 | kind=npc | asset=image_1126.png | pos=[517.65,377.9] | size=[55.0,108.0] | action=experience_mentor
+  research | 幻兽研究所 | kind=npc | asset=image_1171.png | pos=[470.0,203.0] | size=[42.0,130.0] | action=research
+  territory:cassano_city | 地图占领报名官 | kind=interactive_prop | asset=image_1076.png | pos=[33.95,365.55] | size=[58.0,111.0] | action=territory:cassano_city
+地图token: cassano_city
+
+------------------------------------------------------------
+地图: palace (皇宫)
+------------------------------------------------------------
+背景: image_1175.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  decoration:palace:image_1197 |  | kind=decoration | asset=image_1197.png | pos=[78.0,300.0] | size=[177.0,119.0] | action=
+  decoration:palace:image_1198 |  | kind=decoration | asset=image_1198.png | pos=[448.0,290.0] | size=[184.0,146.0] | action=
+  marshal | 元帅 | kind=npc | asset=image_1177.png | pos=[105.0,128.0] | size=[67.0,145.0] | action=marshal
+  prime_minister | 首相 | kind=npc | asset=image_1142.png | pos=[210.0,155.0] | size=[52.0,115.0] | action=prime_minister
+  king | 国王 | kind=npc | asset=image_1191.png | pos=[300.0,120.0] | size=[79.0,150.0] | action=king
+  princess | 公主 | kind=npc | asset=image_1201.png | pos=[430.0,135.0] | size=[79.0,136.0] | action=princess
+  maid | 公主侍女 | kind=npc | asset=image_1134.png | pos=[520.0,160.0] | size=[54.0,111.0] | action=maid
+  pk_officer | PK赛报名官 | kind=npc | asset=image_1076.png | pos=[620.0,300.0] | size=[58.0,111.0] | action=pk_officer
+  lottery_officer | 抽奖官 | kind=npc | asset=image_1147.png | pos=[152.0,398.4] | size=[52.0,102.0] | action=lottery_officer
+地图token: palace
+
+------------------------------------------------------------
+地图: pk_arena (PK赛场1层)
+------------------------------------------------------------
+背景: image_1294.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:pk_champion_60 | 60级PK赛BOSS | kind=monster | asset=image_1072.png | pos=[539.7,218.85] | size=[101.0,132.0] | action=battle:pk_champion_60
+地图token: pk_arena
+
+------------------------------------------------------------
+地图: green_field (草原)
+------------------------------------------------------------
+背景: image_1097.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:fuwa_beast | 雷角风牙兽 | kind=monster | asset=image_0051.png | pos=[483.55,243.0] | size=[92.0,100.0] | action=battle:fuwa_beast
+地图token: green_field
+
+------------------------------------------------------------
+地图: grass_reward (草原2)
+------------------------------------------------------------
+背景: image_1097.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+地图token: grass_reward
+
+------------------------------------------------------------
+地图: dungeon (地下城一层)
+------------------------------------------------------------
+背景: image_1281.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:dungeon_boss | 地下城首领 | kind=monster | asset=image_0049.png | pos=[470.0,205.0] | size=[110.0,125.0] | action=battle:dungeon_boss
+地图token: dungeon
+
+------------------------------------------------------------
+地图: dungeon_floor_2 (地下城二层)
+------------------------------------------------------------
+背景: image_1287.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:dungeon_boss_2 | 地下城二层首领 | kind=monster | asset=image_0127.png | pos=[470.0,205.0] | size=[110.0,125.0] | action=battle:dungeon_boss_2
+地图token: dungeon_floor_2
+
+------------------------------------------------------------
+地图: dungeon_floor_3 (地下城三层)
+------------------------------------------------------------
+背景: image_1292.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:dungeon_boss_3 | 地下城三层首领 | kind=monster | asset=image_0129.png | pos=[470.0,205.0] | size=[110.0,125.0] | action=battle:dungeon_boss_3
+地图token: dungeon_floor_3
+
+------------------------------------------------------------
+地图: thunder_continent (雷鸣大陆)
+------------------------------------------------------------
+背景: image_1066.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:thunder_giant@1 | 巨杰士 | kind=monster | asset=image_0049.png | pos=[374.1,146.3] | size=[152.0,115.0] | action=battle:thunder_giant@1
+  battle:thunder_dragon@1 | 龙怪 | kind=monster | asset=image_0051.png | pos=[539.7,96.55] | size=[152.0,115.0] | action=battle:thunder_dragon@1
+  battle:thunder_boss_10 | 10级BOSS | kind=monster | asset=image_1072.png | pos=[543.1,386.55] | size=[101.0,132.0] | action=battle:thunder_boss_10
+  battle:thunder_giant@2 | 巨杰士 | kind=monster | asset=image_0049.png | pos=[398.45,365.25] | size=[152.0,115.0] | action=battle:thunder_giant@2
+  territory:thunder_continent | 地图占领报名官 | kind=interactive_prop | asset=image_1076.png | pos=[100.0,285.0] | size=[58.0,111.0] | action=territory:thunder_continent
+地图token: thunder_continent
+
+------------------------------------------------------------
+地图: thunder_mine (雷鸣矿洞)
+------------------------------------------------------------
+背景: image_1091.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  mine:0 | 挖矿 | kind=interactive_prop | asset=image_0038.jpg | pos=[611.0,273.0] | size=[48.0,48.0] | action=mine:0
+  mine:1 | 挖矿 | kind=interactive_prop | asset=image_0038.jpg | pos=[427.0,162.0] | size=[48.0,48.0] | action=mine:1
+  mine:2 | 挖矿 | kind=interactive_prop | asset=image_0038.jpg | pos=[192.0,100.0] | size=[48.0,48.0] | action=mine:2
+  mine:3 | 挖矿 | kind=interactive_prop | asset=image_0038.jpg | pos=[489.0,430.0] | size=[48.0,48.0] | action=mine:3
+地图token: thunder_mine
+
+------------------------------------------------------------
+地图: desert (戈壁)
+------------------------------------------------------------
+背景: image_1226.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:desert_ice_swordsman@1 | 冰妖剑士 | kind=monster | asset=image_0053.png | pos=[546.0,90.55] | size=[152.0,115.0] | action=battle:desert_ice_swordsman@1
+  battle:desert_jack_lantern@1 | 杰克灯笼 | kind=monster | asset=image_0055.png | pos=[543.5,240.55] | size=[152.0,115.0] | action=battle:desert_jack_lantern@1
+  battle:desert_typhon@1 | 提风 | kind=monster | asset=image_0057.png | pos=[386.55,385.55] | size=[152.0,115.0] | action=battle:desert_typhon@1
+  battle:desert_boss_20 | 20级BOSS | kind=monster | asset=image_1072.png | pos=[539.7,385.55] | size=[101.0,132.0] | action=battle:desert_boss_20
+  battle:desert_ice_swordsman@2 | 冰妖剑士 | kind=monster | asset=image_0053.png | pos=[391.5,89.55] | size=[152.0,115.0] | action=battle:desert_ice_swordsman@2
+  battle:desert_jack_lantern@2 | 杰克灯笼 | kind=monster | asset=image_0055.png | pos=[387.7,239.55] | size=[152.0,115.0] | action=battle:desert_jack_lantern@2
+  territory:desert | 地图占领报名官 | kind=interactive_prop | asset=image_1076.png | pos=[100.0,285.0] | size=[58.0,111.0] | action=territory:desert
+  war_soul_explorer | 探险家 | kind=interactive_prop | asset=image_1231.png | pos=[18.0,325.1] | size=[70.0,130.0] | action=war_soul_explorer
+地图token: desert
+
+------------------------------------------------------------
+地图: dream_swamp (迷梦沼泽)
+------------------------------------------------------------
+背景: image_1236.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:swamp_fanged_demon@1 | 望齿魔人 | kind=monster | asset=image_0059.png | pos=[444.2,198.0] | size=[152.0,115.0] | action=battle:swamp_fanged_demon@1
+  battle:swamp_boss_30 | 30级BOSS | kind=monster | asset=image_1072.png | pos=[191.0,371.0] | size=[101.0,132.0] | action=battle:swamp_boss_30
+  battle:spider | 蜘蛛 | kind=monster | asset=image_0063.png | pos=[27.0,371.0] | size=[152.0,115.0] | action=battle:spider
+  battle:swamp_horned_lizard@1 | 角蜥 | kind=monster | asset=image_0061.png | pos=[355.2,371.0] | size=[152.0,115.0] | action=battle:swamp_horned_lizard@1
+  battle:swamp_fanged_demon@2 | 望齿魔人 | kind=monster | asset=image_0059.png | pos=[446.3,80.0] | size=[152.0,115.0] | action=battle:swamp_fanged_demon@2
+  battle:swamp_horned_lizard@2 | 角蜥 | kind=monster | asset=image_0061.png | pos=[515.3,387.0] | size=[152.0,115.0] | action=battle:swamp_horned_lizard@2
+  territory:dream_swamp | 地图占领报名官 | kind=interactive_prop | asset=image_1076.png | pos=[100.0,285.0] | size=[58.0,111.0] | action=territory:dream_swamp
+地图token: dream_swamp
+
+------------------------------------------------------------
+地图: ice_palace (冰宫)
+------------------------------------------------------------
+背景: image_1242.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:ice_taya_dragon@1 | 塔亚龙 | kind=monster | asset=image_0065.png | pos=[328.85,366.0] | size=[152.0,115.0] | action=battle:ice_taya_dragon@1
+  battle:ice_boss_50 | 50级BOSS | kind=monster | asset=image_1072.png | pos=[543.5,96.0] | size=[101.0,132.0] | action=battle:ice_boss_50
+  battle:ice_death_knight@1 | 死亡骑士 | kind=monster | asset=image_0067.png | pos=[467.2,246.4] | size=[152.0,115.0] | action=battle:ice_death_knight@1
+  battle:ice_taya_dragon@2 | 塔亚龙 | kind=monster | asset=image_0065.png | pos=[382.3,124.3] | size=[152.0,115.0] | action=battle:ice_taya_dragon@2
+  battle:ice_death_knight@2 | 死亡骑士 | kind=monster | asset=image_0067.png | pos=[539.7,378.9] | size=[152.0,115.0] | action=battle:ice_death_knight@2
+  territory:ice_palace | 地图占领报名官 | kind=interactive_prop | asset=image_1076.png | pos=[100.0,285.0] | size=[58.0,111.0] | action=territory:ice_palace
+地图token: ice_palace
+
+------------------------------------------------------------
+地图: ice_border (雪域边境)
+------------------------------------------------------------
+背景: image_1271.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:snow_warrior | 雪原战士 | kind=monster | asset=image_0127.png | pos=[390.0,215.0] | size=[96.0,112.0] | action=battle:snow_warrior
+  battle:snow_cavalry | 雪原骑兵 | kind=monster | asset=image_0129.png | pos=[520.0,175.0] | size=[96.0,112.0] | action=battle:snow_cavalry
+  battle:snow_officer | 雪原统领 | kind=monster | asset=image_0049.png | pos=[585.0,275.0] | size=[96.0,112.0] | action=battle:snow_officer
+地图token: ice_border
+
+------------------------------------------------------------
+地图: demon_camp (魔中军阵地)
+------------------------------------------------------------
+背景: image_1271.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:demon_guard | 魔军守卫军 | kind=monster | asset=image_0099.png | pos=[430.0,235.0] | size=[92.0,118.0] | action=battle:demon_guard
+  battle:demon_assault | 魔军突击队 | kind=monster | asset=image_0097.png | pos=[430.0,78.0] | size=[92.0,118.0] | action=battle:demon_assault
+地图token: demon_camp
+
+------------------------------------------------------------
+地图: demon_left (魔左军阵地)
+------------------------------------------------------------
+背景: image_1276.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:demon_totem | 魔军图腾兽 | kind=monster | asset=image_0103.png | pos=[465.0,270.0] | size=[105.0,130.0] | action=battle:demon_totem
+地图token: demon_left
+
+------------------------------------------------------------
+地图: demon_right (魔右军阵地)
+------------------------------------------------------------
+背景: image_1276.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:demon_mystery | 魔军神秘部队 | kind=monster | asset=image_0101.png | pos=[475.0,275.0] | size=[100.0,128.0] | action=battle:demon_mystery
+地图token: demon_right
+
+------------------------------------------------------------
+地图: demon_banner (魔军帅旗)
+------------------------------------------------------------
+背景: image_1278.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:demon_commander | 魔军主帅 | kind=monster | asset=image_0105.png | pos=[455.0,145.0] | size=[90.0,140.0] | action=battle:demon_commander
+地图token: demon_banner
+
+------------------------------------------------------------
+地图: energy_tower (能量塔禁地)
+------------------------------------------------------------
+背景: image_1278.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:demon_energy | 魔的能量 | kind=monster | asset=image_0116.png | pos=[455.0,135.0] | size=[130.0,175.0] | action=battle:demon_energy
+地图token: energy_tower
+
+------------------------------------------------------------
+地图: avit_island (亚维特岛)
+------------------------------------------------------------
+背景: image_1252.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:avit_fish_demon@1 | 鱼妖 | kind=monster | asset=image_0069.png | pos=[305.0,339.55] | size=[152.0,115.0] | action=battle:avit_fish_demon@1
+  battle:avit_boss_70 | 70级BOSS | kind=monster | asset=image_1072.png | pos=[543.3,382.85] | size=[101.0,132.0] | action=battle:avit_boss_70
+  battle:avit_terror_beast@1 | 恐兽 | kind=monster | asset=image_0071.png | pos=[203.9,87.0] | size=[152.0,115.0] | action=battle:avit_terror_beast@1
+  battle:avit_giant_axe@1 | 巨斧怪 | kind=monster | asset=image_0073.png | pos=[361.0,115.15] | size=[152.0,115.0] | action=battle:avit_giant_axe@1
+  battle:spider_queen | 蜘蛛王后艾达 | kind=monster | asset=image_0075.png | pos=[539.7,90.0] | size=[152.0,115.0] | action=battle:spider_queen
+  battle:avit_thorn_bug@1 | 刺虫人 | kind=monster | asset=image_0077.png | pos=[457.0,243.0] | size=[152.0,115.0] | action=battle:avit_thorn_bug@1
+  territory:avit_island | 地图占领报名官 | kind=interactive_prop | asset=image_1076.png | pos=[100.0,285.0] | size=[58.0,111.0] | action=territory:avit_island
+地图token: avit_island
+
+------------------------------------------------------------
+地图: volcano (火山)
+------------------------------------------------------------
+背景: image_1262.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:volcano_four_fang@1 | 四牙怪 | kind=monster | asset=image_0079.png | pos=[470.0,361.4] | size=[152.0,115.0] | action=battle:volcano_four_fang@1
+  battle:volcano_boss_90 | 90级BOSS | kind=monster | asset=image_1072.png | pos=[379.45,91.3] | size=[101.0,132.0] | action=battle:volcano_boss_90
+  battle:volcano_scorpion@1 | 蝎怪 | kind=monster | asset=image_0083.png | pos=[539.7,91.3] | size=[152.0,115.0] | action=battle:volcano_scorpion@1
+  battle:volcano_fire_woman@1 | 炎女 | kind=monster | asset=image_0081.png | pos=[495.1,225.85] | size=[152.0,115.0] | action=battle:volcano_fire_woman@1
+  battle:volcano_four_fang@2 | 四牙怪 | kind=monster | asset=image_0079.png | pos=[262.7,351.85] | size=[152.0,115.0] | action=battle:volcano_four_fang@2
+  battle:volcano_fire_woman@2 | 炎女 | kind=monster | asset=image_0081.png | pos=[318.0,210.85] | size=[152.0,115.0] | action=battle:volcano_fire_woman@2
+地图token: volcano
+
+------------------------------------------------------------
+地图: abyss_maze (深渊迷宫)
+------------------------------------------------------------
+背景: image_1268.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:abyss_boss_100 | 100级BOSS | kind=monster | asset=image_1072.png | pos=[209.8,389.55] | size=[101.0,132.0] | action=battle:abyss_boss_100
+  battle:abyss_dark_messiah@1 | 暗黑弥塞亚 | kind=monster | asset=image_0085.png | pos=[345.0,141.3] | size=[152.0,115.0] | action=battle:abyss_dark_messiah@1
+  battle:abyss_dark_grass@1 | 暗黑格拉斯 | kind=monster | asset=image_0087.png | pos=[522.9,233.0] | size=[152.0,115.0] | action=battle:abyss_dark_grass@1
+  battle:abyss_sigh_knight@1 | 叹息骑士 | kind=monster | asset=image_0089.png | pos=[370.9,389.55] | size=[152.0,115.0] | action=battle:abyss_sigh_knight@1
+  battle:abyss_dark_messiah@2 | 暗黑弥塞亚 | kind=monster | asset=image_0085.png | pos=[505.2,97.3] | size=[152.0,115.0] | action=battle:abyss_dark_messiah@2
+  battle:abyss_dark_grass@2 | 暗黑格拉斯 | kind=monster | asset=image_0087.png | pos=[349.0,270.5] | size=[152.0,115.0] | action=battle:abyss_dark_grass@2
+  battle:abyss_sigh_knight@2 | 叹息骑士 | kind=monster | asset=image_0089.png | pos=[537.7,378.9] | size=[152.0,115.0] | action=battle:abyss_sigh_knight@2
+地图token: abyss_maze
+
+------------------------------------------------------------
+地图: treeheart_city (树心城)
+------------------------------------------------------------
+背景: image_1299.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  decoration:treeheart_city:image_1101 |  | kind=decoration | asset=image_1101.png | pos=[434.45,107.2] | size=[72.0,82.0] | action=
+  decoration:treeheart_city:image_1104 |  | kind=decoration | asset=image_1104.png | pos=[517.7,150.2] | size=[72.0,82.0] | action=
+  decoration:treeheart_city:image_1106 |  | kind=decoration | asset=image_1106.png | pos=[544.7,260.0] | size=[72.0,82.0] | action=
+  decoration:treeheart_city:image_1108 |  | kind=decoration | asset=image_1108.png | pos=[501.7,357.85] | size=[72.0,82.0] | action=
+  decoration:treeheart_city:image_1110 |  | kind=decoration | asset=image_1110.png | pos=[403.7,390.85] | size=[72.0,82.0] | action=
+  fuwa_completion | 2008奥运使者 | kind=npc | asset=image_1086.png | pos=[463.3,217.0] | size=[70.0,115.0] | action=fuwa_completion
+地图token: treeheart_city
+
+------------------------------------------------------------
+地图: palace_garden (后花园)
+------------------------------------------------------------
+背景: image_1175.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  decoration:palace_garden:image_1198 |  | kind=decoration | asset=image_1198.png | pos=[0.0,0.0] | size=[184.0,146.0] | action=
+  maid | 丫环2 | kind=npc | asset=image_1134.png | pos=[251.5,220.95] | size=[58.0,104.0] | action=maid
+  princess | 公主 | kind=npc | asset=image_1201.png | pos=[310.3,169.45] | size=[79.0,136.0] | action=princess
+  maid_combat_stone | 丫环1 | kind=npc | asset=image_1134.png | pos=[447.55,219.95] | size=[58.0,104.0] | action=maid_combat_stone
+地图token: palace_garden
+
+------------------------------------------------------------
+地图: lottery_room (抽奖房)
+------------------------------------------------------------
+背景: image_1175.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  decoration:lottery_room:image_1198 |  | kind=decoration | asset=image_1198.png | pos=[0.0,0.0] | size=[184.0,146.0] | action=
+  lottery:绿宝箱1 |  | kind=interactive_prop | asset=image_1213.png | pos=[39.35,118.9] | size=[100.0,100.0] | action=lottery:绿宝箱1
+  lottery:红宝箱1 |  | kind=interactive_prop | asset=image_1213.png | pos=[284.3,118.9] | size=[100.0,100.0] | action=lottery:红宝箱1
+  lottery:蓝宝箱1 |  | kind=interactive_prop | asset=image_1213.png | pos=[529.3,118.9] | size=[100.0,100.0] | action=lottery:蓝宝箱1
+  lottery:绿宝箱2 |  | kind=interactive_prop | asset=image_1213.png | pos=[46.35,372.85] | size=[100.0,100.0] | action=lottery:绿宝箱2
+  lottery:红宝箱2 |  | kind=interactive_prop | asset=image_1213.png | pos=[291.3,372.85] | size=[100.0,100.0] | action=lottery:红宝箱2
+  lottery:蓝宝箱2 |  | kind=interactive_prop | asset=image_1213.png | pos=[536.3,372.85] | size=[100.0,100.0] | action=lottery:蓝宝箱2
+  lottery:灰宝箱 |  | kind=interactive_prop | asset=image_1213.png | pos=[146.35,248.95] | size=[100.0,100.0] | action=lottery:灰宝箱
+  lottery:黄宝箱 |  | kind=interactive_prop | asset=image_1213.png | pos=[438.0,253.9] | size=[100.0,100.0] | action=lottery:黄宝箱
+地图token: lottery_room
+
+------------------------------------------------------------
+地图: pk_arena_2 (PK赛场2层)
+------------------------------------------------------------
+背景: image_1294.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:pk_champion_100 | 100级PK赛BOSS | kind=monster | asset=image_1072.png | pos=[479.7,197.85] | size=[101.0,132.0] | action=battle:pk_champion_100
+地图token: pk_arena_2
+
+------------------------------------------------------------
+地图: pk_arena_3 (PK赛场3层)
+------------------------------------------------------------
+背景: image_1294.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  battle:pk_champion_130 | 130级PK赛BOSS | kind=monster | asset=image_1072.png | pos=[403.6,159.45] | size=[101.0,132.0] | action=battle:pk_champion_130
+地图token: pk_arena_3
+
+------------------------------------------------------------
+地图: war_soul_seal_maze (战魂封印谜宫)
+------------------------------------------------------------
+背景: image_1297.jpg
+实体清单（运行时值，SWF逐图PlaceObject对照待确认）:
+  war_soul_chest | 封印之箱 | kind=interactive_prop | asset=image_1213.png | pos=[649.95,217.95] | size=[100.0,100.0] | action=war_soul_chest
+  battle:nameless_war_soul_keeper | 无名氏 | kind=monster | asset=image_0101.png | pos=[505.2,175.95] | size=[91.0,167.0] | action=battle:nameless_war_soul_keeper
+地图token: war_soul_seal_maze
+
+============================================================
+证据缺口
+============================================================
+- 所有实体 position/size 为运行时值，SWF PlaceObject逐图对照待确认。
+- 出口 direction/position 从 _native_exit_profile 提取（基于SWF角色1071矩阵），逐图二次确认待补。
+
+动态实体token: fuwa_reward fuwa_messenger image_1086 grass_reward thunder_continent palace desert dream_swamp ice_palace avit_island volcano abyss_maze
+
+Boss边界例外token: image_1072 101 132 543.1 386.55 539.7 385.55 543.3 382.85 209.8 389.55

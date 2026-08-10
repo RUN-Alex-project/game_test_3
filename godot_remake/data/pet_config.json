@@ -1,0 +1,24 @@
+{
+  "inventory_capacity": 100,
+  "deployed_capacity": 2,
+  "max_level": 50,
+  "player_level_headroom": 10,
+  "experience_per_level_base": 200,
+  "fusion_main_level": 50,
+  "fusion_initial_stat_inherit": 0.9,
+  "fusion_growth_inherit": 0.85,
+  "research": {
+    "initial_technology_level": 10.0,
+    "technology_level_cap": 300.0,
+    "production_unlock_level": 20.0,
+    "initial_production_rate": 0,
+    "production_rate_cap": 6,
+    "production_task_increment": 2,
+    "initial_stock": 0,
+    "stock_cap": 100,
+    "funding_magic_stones_per_level": 10000,
+    "weekly_growth_rate": 0.10,
+    "research_pet_score_factor": 75.0,
+    "research_pet_price_per_star": 200
+  }
+}

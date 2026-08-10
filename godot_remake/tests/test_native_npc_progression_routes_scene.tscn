@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://tests/test_native_npc_progression_routes_scene.gd" type="Script" id="1"]
+
+[node name="TestNativeNpcProgressionRoutes" type="Node"]
+script = ExtResource("1")

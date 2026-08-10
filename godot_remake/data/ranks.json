@@ -1,0 +1,40 @@
+{
+  "military": [
+    {"level":0,"name":"无军衔","threshold":0,"combat_power":0},
+    {"level":1,"name":"少尉","threshold":1000,"combat_power":1},
+    {"level":2,"name":"中尉","threshold":2000,"combat_power":2},
+    {"level":3,"name":"上尉","threshold":3000,"combat_power":3},
+    {"level":4,"name":"少校","threshold":8000,"combat_power":5},
+    {"level":5,"name":"中校","threshold":13000,"combat_power":10},
+    {"level":6,"name":"上校","threshold":18000,"combat_power":15},
+    {"level":7,"name":"少将","threshold":26000,"combat_power":20},
+    {"level":8,"name":"中将","threshold":34000,"combat_power":30},
+    {"level":9,"name":"上将","threshold":44000,"combat_power":40},
+    {"level":10,"name":"大将","threshold":54000,"combat_power":50},
+    {"level":11,"name":"元帅","threshold":100000,"combat_power":60}
+  ],
+  "nobility": [
+    {"level":0,"name":"平民","threshold":0,"combat_power":0},
+    {"level":1,"name":"勋爵","threshold":1000,"combat_power":2},
+    {"level":2,"name":"子爵","threshold":3000,"combat_power":6},
+    {"level":3,"name":"伯爵","threshold":6000,"combat_power":12},
+    {"level":4,"name":"侯爵","threshold":15000,"combat_power":20},
+    {"level":5,"name":"公爵","threshold":30000,"combat_power":30},
+    {"level":6,"name":"王","threshold":100000,"combat_power":50}
+  ],
+  "affection": [
+    {"level":0,"name":"未认识","threshold":0},
+    {"level":1,"name":"认识","threshold":1},
+    {"level":2,"name":"普通朋友","threshold":10},
+    {"level":3,"name":"好朋友","threshold":30},
+    {"level":4,"name":"知己","threshold":50},
+    {"level":5,"name":"恋人","threshold":100},
+    {"level":6,"name":"亲密爱人","threshold":200}
+  ],
+  "gold_per_nobility_merit": 750000,
+  "rose_affection": {"99":50,"999":250},
+  "daily_tasks": {
+    "collect_magic_soul": {"item_id":"magic_soul_crystal","quantity":1,"nobility_merit":500},
+    "collect_soul_king": {"item_id":"soul_king","quantity":1,"nobility_merit":2000}
+  }
+}

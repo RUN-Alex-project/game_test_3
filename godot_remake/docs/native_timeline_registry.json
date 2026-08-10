@@ -1,0 +1,165 @@
+{
+  "registry_version": "1.36",
+  "baseline_version": "v1.35",
+  "purpose": "NPC、特殊怪物与剧情对象原生时间轴注册表（整改04：完整引用链分类，含 ColorTransform 实际参数/RemoveObject2/帧序显示列表/根时间轴事实）",
+  "canvas": {"width": 700, "height": 550},
+  "classification_method": "swf_parser.gd 建立 bitmap->shape fill->sprite 嵌套->根 placement 引用链，递归到根，按帧序模拟显示列表状态机（保持/替换/删除），比较 character/matrix(translate+scale+rotate)/ColorTransform 实际参数(CXFORM add/mult)/RemoveObject2(depth删除)；static_native 要求链路中所有 wrapper 均无任何视觉变化；任何变化（含 color hover）记 evidence_gap。tag4/tag5 全文件为 0（扫描确认）；根时间轴 RemoveObject2 为场景状态机切换，由 has_root_remove_after_placement() 如实记录，不构成对象自身动画证据",
+  "cancel_policy_production_mapping": "生产代码在启动时读取本注册表 timelines 的 cancel_policy（scene_battle_controller._load_timeline_policies），每个活动 Tween/Timer 登记 timeline_id，事件站点按 timeline_cancelled_by(timeline_id, event) 查询策略后决定取消。事件映射：battle_cancel（cancel_battle()，含地图切换 _rebuild_map_actors 调用）取消 on_battle_cancel 时间轴（player_attack/normal_monster_attack/boss_attack/boss_hit/battle_feedback）；map_change（main_original.gd _apply_current_map()）取消 on_map_change 时间轴（player_motion 移动动画状态重置）",
+  "timelines": [
+    {
+      "timeline_id": "player_motion",
+      "entity_ids": ["player"],
+      "classification": "native_confirmed",
+      "trigger": "idle",
+      "cancel_policy": "on_map_change",
+      "frames": [
+        {"resource": "res://assets/extracted/images/image_0455.png", "duration_frames": 4, "position_offset": [0, 0], "size": [57, 161], "anchor": "top_left"},
+        {"resource": "res://assets/extracted/images/image_0457.png", "duration_frames": 4, "position_offset": [0, 0], "size": [57, 161], "anchor": "top_left"}
+      ],
+      "sub_clips": {
+        "idle": {"sprite": 459, "frame_count": 8, "fps": 12},
+        "down": {"sprite": 469, "frame_count": 8, "fps": 12},
+        "up": {"sprite": 474, "frame_count": 8, "fps": 12},
+        "left": {"sprite": 481, "frame_count": 10, "fps": 12},
+        "right": {"sprite": 488, "frame_count": 10, "fps": 12}
+      },
+      "loop_mode": "loop",
+      "fallback_frame": "res://assets/extracted/images/image_0455.png",
+      "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt",
+      "evidence_tokens": ["sprite523", "sprite459", "sprite469", "sprite474", "sprite481", "sprite488"],
+      "implementation_path": "res://scripts/main_original.gd",
+      "test_scene": "res://tests/test_player_native_motion_scene.tscn",
+      "evidence_gaps": []
+    },
+    {
+      "timeline_id": "player_attack",
+      "entity_ids": ["player"],
+      "classification": "native_confirmed",
+      "trigger": "attack",
+      "cancel_policy": "on_battle_cancel",
+      "frames": [
+        {"resource": "res://assets/extracted/images/image_0503.png", "duration_frames": 1, "position_offset": [18, -4], "size": "UNCONFIRMED", "anchor": "top_left"},
+        {"resource": "res://assets/extracted/images/image_0505.png", "duration_frames": 1, "position_offset": [18, -4], "size": "UNCONFIRMED", "anchor": "top_left"},
+        {"resource": "res://assets/extracted/images/image_0507.png", "duration_frames": 1, "position_offset": [18, -4], "size": "UNCONFIRMED", "anchor": "top_left"},
+        {"resource": "res://assets/extracted/images/image_0509.png", "duration_frames": 1, "position_offset": [18, -4], "size": "UNCONFIRMED", "anchor": "top_left"}
+      ],
+      "loop_mode": "once_restore",
+      "fallback_frame": "res://assets/extracted/images/image_0455.png",
+      "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt",
+      "evidence_tokens": ["image_0503", "image_0505", "image_0507", "image_0509"],
+      "implementation_path": "res://scripts/scene_battle_controller.gd",
+      "test_scene": "res://tests/test_scene_battle_scene.tscn",
+      "evidence_gaps": ["每帧精确尺寸UNCONFIRMED"]
+    },
+    {
+      "timeline_id": "normal_monster_attack",
+      "entity_ids": ["normal_monsters"],
+      "classification": "native_confirmed",
+      "trigger": "attack",
+      "cancel_policy": "on_battle_cancel",
+      "frames": [
+        {"resource": "single_bitmap", "duration_frames": 1, "position_offset": [-5, 0], "size": "original", "anchor": "top_left"},
+        {"resource": "single_bitmap", "duration_frames": 1, "position_offset": [0, 0], "size": "original", "anchor": "top_left"}
+      ],
+      "loop_mode": "once_restore",
+      "fallback_frame": "original_monster_bitmap",
+      "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt",
+      "evidence_tokens": ["sprite124", "frame=6"],
+      "implementation_path": "res://scripts/scene_battle_controller.gd",
+      "test_scene": "res://tests/test_monster_attack_animation_scene.tscn",
+      "evidence_gaps": []
+    },
+    {
+      "timeline_id": "boss_attack",
+      "entity_ids": ["bosses"],
+      "classification": "native_confirmed",
+      "trigger": "attack",
+      "cancel_policy": "on_battle_cancel",
+      "frames": [
+        {"resource": "res://assets/extracted/images/image_0127.png", "duration_frames": 1, "position_offset": [-33, -42], "size": [186, 173], "anchor": "top_left"},
+        {"resource": "res://assets/extracted/images/image_0129.png", "duration_frames": 1, "position_offset": [-33, -42], "size": [186, 173], "anchor": "top_left"}
+      ],
+      "loop_mode": "once_restore",
+      "fallback_frame": "res://assets/extracted/images/image_1072.png",
+      "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt",
+      "evidence_tokens": ["sprite135", "sprite131", "image_0127", "image_0129"],
+      "implementation_path": "res://scripts/scene_battle_controller.gd",
+      "test_scene": "res://tests/test_monster_attack_animation_scene.tscn",
+      "evidence_gaps": []
+    },
+    {
+      "timeline_id": "boss_hit",
+      "entity_ids": ["bosses"],
+      "classification": "native_confirmed",
+      "trigger": "hit",
+      "cancel_policy": "on_battle_cancel",
+      "frames": [
+        {"resource": "res://assets/extracted/images/image_1072.png", "duration_frames": 2, "position_offset": [0, 0], "size": [101, 132], "anchor": "top_left"},
+        {"resource": "res://assets/extracted/derived/boss_hit_native.png", "duration_frames": 2, "position_offset": [0, -7], "size": [123, 148], "anchor": "top_left"}
+      ],
+      "loop_mode": "once_restore",
+      "fallback_frame": "res://assets/extracted/images/image_1072.png",
+      "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt",
+      "evidence_tokens": ["sprite134", "shape133", "boss_hit_native"],
+      "implementation_path": "res://scripts/scene_battle_controller.gd",
+      "test_scene": "res://tests/test_monster_hit_scene.tscn",
+      "evidence_gaps": []
+    }
+  ],
+  "static_entities": [
+    {"entity_id": "marshal", "asset": "res://assets/extracted/images/image_1177.png", "classification": "static_native", "wrapper_chain": "bitmap1177->shape1178->root(无任何视觉变化)", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1177", "static_native"]},
+    {"entity_id": "research", "asset": "res://assets/extracted/images/image_1171.png", "classification": "static_native", "wrapper_chain": "bitmap1171->shape1172(无任何视觉变化)", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1171", "static_native"]},
+    {"entity_id": "mine_nodes", "asset": "res://assets/extracted/images/image_0038.jpg", "classification": "static_native", "wrapper_chain": "bitmap38->shape39->sprite41(无任何视觉变化)", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0038", "static_native"]}
+  ],
+  "evidence_gap_entities": [
+    {"entity_id": "grocery", "asset": "res://assets/extracted/images/image_1156.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1156->shape1157->sprite1158->sprite1159->sprite1186->root", "visual_changes": ["sprite1159:color", "sprite1186:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 用静态bitmap未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1156", "evidence_gap"]},
+    {"entity_id": "stone_shop", "asset": "res://assets/extracted/images/image_1134.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1134->shape1135->sprite1136->sprite1137->sprite1200->sprite1209->root", "visual_changes": ["sprite1137:color", "sprite1200:color", "sprite1209:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1134", "evidence_gap"]},
+    {"entity_id": "collector", "asset": "res://assets/extracted/images/image_1138.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1138->shape1139->sprite1140->sprite1141->root", "visual_changes": ["sprite1141:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1138", "evidence_gap"]},
+    {"entity_id": "warehouse", "asset": "res://assets/extracted/images/image_1130.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1130->shape1131->sprite1132->sprite1133->root", "visual_changes": ["sprite1133:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1130", "evidence_gap"]},
+    {"entity_id": "daily_officer", "asset": "res://assets/extracted/images/image_1076.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1076->shape1077->sprite1078->sprite1079->sprite1161->sprite1184->root", "visual_changes": ["sprite1079:color", "sprite1161:color", "sprite1184:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1076", "evidence_gap"]},
+    {"entity_id": "stone_synthesizer", "asset": "res://assets/extracted/images/image_1151.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1151->shape1152->sprite1153->sprite1154->root", "visual_changes": ["sprite1154:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1151", "evidence_gap"]},
+    {"entity_id": "forger", "asset": "res://assets/extracted/images/image_1142.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1142->shape1143->sprite1144->sprite1146->sprite1183->root", "visual_changes": ["sprite1146:color", "sprite1183:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1142", "evidence_gap"]},
+    {"entity_id": "prime_minister", "asset": "res://assets/extracted/images/image_1142.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1142->shape1143->sprite1144->sprite1146->sprite1183->root", "visual_changes": ["sprite1146:color", "sprite1183:color"], "gap_reason": "同 forger（共用 image_1142）", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1142", "evidence_gap"]},
+    {"entity_id": "pet_master", "asset": "res://assets/extracted/images/image_1147.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1147->shape1148->sprite1149->sprite1150->sprite1185->root", "visual_changes": ["sprite1150:color", "sprite1185:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1147", "evidence_gap"]},
+    {"entity_id": "experience_mentor", "asset": "res://assets/extracted/images/image_1126.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1126->shape1127->sprite1128->sprite1129->root", "visual_changes": ["sprite1129:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1126", "evidence_gap"]},
+    {"entity_id": "king", "asset": "res://assets/extracted/images/image_1191.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1191->shape1192->sprite1193->sprite1195->root", "visual_changes": ["sprite1195:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1191", "evidence_gap"]},
+    {"entity_id": "princess", "asset": "res://assets/extracted/images/image_1201.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1201->shape1202->sprite1205->sprite1206->root", "visual_changes": ["sprite1205:char_swap", "sprite1206:color"], "gap_reason": "sprite1205 24帧2姿势真动画+color，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1201", "evidence_gap"]},
+    {"entity_id": "maid", "asset": "res://assets/extracted/images/image_1134.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1134->shape1135->sprite1136->sprite1137->sprite1200->sprite1209->root", "visual_changes": ["sprite1137:color", "sprite1200:color", "sprite1209:color"], "gap_reason": "同 stone_shop", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1134", "evidence_gap"]},
+    {"entity_id": "pk_officer", "asset": "res://assets/extracted/images/image_1076.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1076->shape1077->sprite1078->sprite1079->sprite1161->sprite1184->root", "visual_changes": ["sprite1079:color", "sprite1161:color", "sprite1184:color"], "gap_reason": "同 daily_officer", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1076", "evidence_gap"]},
+    {"entity_id": "lottery_officer", "asset": "res://assets/extracted/images/image_1147.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1147->shape1148->sprite1149->sprite1150->sprite1185->root", "visual_changes": ["sprite1150:color", "sprite1185:color"], "gap_reason": "同 pet_master", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1147", "evidence_gap"]},
+    {"entity_id": "fuwa_messenger", "asset": "res://assets/extracted/images/image_1086.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1086->shape1087->sprite1088->sprite1090->root", "visual_changes": ["sprite1090:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1086", "evidence_gap"]},
+    {"entity_id": "fuwa_completion", "asset": "res://assets/extracted/images/image_1086.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1086->shape1087->sprite1088->sprite1090->root", "visual_changes": ["sprite1090:color"], "gap_reason": "同 fuwa_messenger", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1086", "evidence_gap"]},
+    {"entity_id": "war_soul_explorer", "asset": "res://assets/extracted/images/image_1231.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1231->shape1232->sprite1233->sprite1235->root", "visual_changes": ["sprite1235:color"], "gap_reason": "wrapper ColorTransform 悬停色变，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1231", "evidence_gap"]},
+    {"entity_id": "spider", "asset": "res://assets/extracted/images/image_0063.png", "classification": "evidence_gap", "wrapper_chain": "bitmap63->shape64->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "attack_reuse": "normal_monster_attack", "gap_reason": "多帧选择器 sprite118/1074（每帧不同怪物）+ sprite124 攻击位移动画；选择器 vs 动画需审计", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0063", "evidence_gap"]},
+    {"entity_id": "spider_queen", "asset": "res://assets/extracted/images/image_0075.png", "classification": "evidence_gap", "wrapper_chain": "bitmap75->shape76->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "同 spider", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0075", "evidence_gap"]},
+    {"entity_id": "dungeon_boss", "asset": "res://assets/extracted/images/image_0049.png", "classification": "evidence_gap", "wrapper_chain": "bitmap49->shape50->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "同 spider", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0049", "evidence_gap"]},
+    {"entity_id": "dungeon_boss_2", "asset": "res://assets/extracted/images/image_0049.png", "classification": "evidence_gap", "wrapper_chain": "bitmap49->shape50->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "同 dungeon_boss", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0049", "evidence_gap"]},
+    {"entity_id": "dungeon_boss_3", "asset": "res://assets/extracted/images/image_0129.png", "classification": "evidence_gap", "wrapper_chain": "bitmap129->shape130->sprite131->sprite135", "visual_changes": ["sprite131:char_swap", "sprite135:char_swap", "sprite135:translate"], "attack_reuse": "boss_attack", "gap_reason": "在 boss_attack 动画 sprite131/135 中；攻击已 native_confirmed，待机 wrapper 需审计", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0129", "evidence_gap"]},
+    {"entity_id": "pk_champion_60", "asset": "res://assets/extracted/images/image_1072.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1072->shape1073->sprite1074->root", "visual_changes": ["sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate"], "attack_reuse": "boss_attack", "gap_reason": "在 PK Boss 包装 sprite1074(35帧) 中；攻击已 native_confirmed，待机 wrapper 需审计", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1072", "evidence_gap"]},
+    {"entity_id": "pk_champion_100", "asset": "res://assets/extracted/images/image_1072.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1072->shape1073->sprite1074->root", "visual_changes": ["sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate"], "attack_reuse": "boss_attack", "gap_reason": "同 pk_champion_60", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1072", "evidence_gap"]},
+    {"entity_id": "pk_champion_130", "asset": "res://assets/extracted/images/image_1072.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1072->shape1073->sprite1074->root", "visual_changes": ["sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate"], "attack_reuse": "boss_attack", "gap_reason": "同 pk_champion_60", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1072", "evidence_gap"]},
+    {"entity_id": "nameless_war_soul_keeper", "asset": "res://assets/extracted/images/image_0101.png", "classification": "evidence_gap", "wrapper_chain": "bitmap101->shape102->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "attack_reuse": "normal_monster_attack", "gap_reason": "同 spider", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0101", "evidence_gap"]},
+    {"entity_id": "demon_guard", "asset": "res://assets/extracted/images/image_0099.png", "classification": "evidence_gap", "wrapper_chain": "bitmap99->shape100->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "同 spider", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0099", "evidence_gap"]},
+    {"entity_id": "demon_assault", "asset": "res://assets/extracted/images/image_0097.png", "classification": "evidence_gap", "wrapper_chain": "bitmap97->shape98->sprite118->sprite125->sprite134->sprite119->sprite135->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite125:translate", "sprite134:char_swap", "sprite134:translate", "sprite135:char_swap", "sprite135:translate", "sprite124:translate"], "gap_reason": "在多帧 sprite118/125/134/135 中", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0097", "evidence_gap"]},
+    {"entity_id": "demon_totem", "asset": "res://assets/extracted/images/image_0103.png", "classification": "evidence_gap", "wrapper_chain": "bitmap103->shape104->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "同 spider", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0103", "evidence_gap"]},
+    {"entity_id": "demon_mystery", "asset": "res://assets/extracted/images/image_0105.png", "classification": "evidence_gap", "wrapper_chain": "bitmap105->shape106->sprite109->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite109:char_swap", "sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "在多帧 sprite109/118/1074 中", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0105", "evidence_gap"]},
+    {"entity_id": "demon_commander", "asset": "res://assets/extracted/images/image_0105.png", "classification": "evidence_gap", "wrapper_chain": "bitmap105->shape106->sprite109->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite109:char_swap", "sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "同 demon_mystery", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0105", "evidence_gap"]},
+    {"entity_id": "demon_energy", "asset": "res://assets/extracted/images/image_0116.png", "classification": "evidence_gap", "wrapper_chain": "bitmap116->shape117->sprite118->sprite1074->sprite119->root->sprite124", "visual_changes": ["sprite118:char_swap", "sprite118:translate", "sprite118:scale_rotate", "sprite1074:char_swap", "sprite1074:translate", "sprite1074:scale_rotate", "sprite124:translate"], "gap_reason": "同 spider", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_0116", "evidence_gap"]},
+    {"entity_id": "war_soul_chest", "asset": "res://assets/extracted/images/image_1213.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1213->shape1214->sprite1221->sprite1222->root", "visual_changes": ["sprite1221:char_swap", "sprite1222:color"], "gap_reason": "sprite1221 25帧5开箱阶段真动画+color，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1213", "evidence_gap"]},
+    {"entity_id": "lottery_chests", "asset": "res://assets/extracted/images/image_1213.png", "classification": "evidence_gap", "members": ["lottery:绿宝箱1", "lottery:红宝箱1", "lottery:蓝宝箱1", "lottery:绿宝箱2", "lottery:红宝箱2", "lottery:蓝宝箱2", "lottery:灰宝箱", "lottery:黄宝箱"], "wrapper_chain": "同 war_soul_chest", "visual_changes": ["sprite1221:char_swap", "sprite1222:color"], "gap_reason": "同 war_soul_chest（共用 image_1213）", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1213", "evidence_gap", "lottery_chests"]},
+    {"entity_id": "fuwa_beibei", "asset": "res://assets/extracted/images/image_1101.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1101->shape1102->sprite1112->sprite1113->root", "visual_changes": ["sprite1112:char_swap", "sprite1113:translate"], "gap_reason": "sprite1112 5帧选择器 + sprite1113 位置变化，remake 未实现", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1101", "evidence_gap"]},
+    {"entity_id": "fuwa_huanhuan", "asset": "res://assets/extracted/images/image_1104.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1104->shape1105->sprite1112->sprite1113->root", "visual_changes": ["sprite1112:char_swap", "sprite1113:translate"], "gap_reason": "同 fuwa_beibei", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1104", "evidence_gap"]},
+    {"entity_id": "fuwa_yingying", "asset": "res://assets/extracted/images/image_1106.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1106->shape1107->sprite1112->sprite1113->root", "visual_changes": ["sprite1112:char_swap", "sprite1113:translate"], "gap_reason": "同 fuwa_beibei", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1106", "evidence_gap"]},
+    {"entity_id": "fuwa_nini", "asset": "res://assets/extracted/images/image_1108.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1108->shape1109->sprite1112->sprite1113->root", "visual_changes": ["sprite1112:char_swap", "sprite1113:translate"], "gap_reason": "同 fuwa_beibei", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1108", "evidence_gap"]},
+    {"entity_id": "fuwa_jingjing", "asset": "res://assets/extracted/images/image_1110.png", "classification": "evidence_gap", "wrapper_chain": "bitmap1110->shape1111->sprite1112->sprite1113->root", "visual_changes": ["sprite1112:char_swap", "sprite1113:translate"], "gap_reason": "同 fuwa_beibei", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1110", "evidence_gap"]},
+    {"entity_id": "fuwa_reward", "asset": "res://assets/extracted/images/image_1101.png", "classification": "evidence_gap", "wrapper_chain": "运行时从5福娃bitmap选一（均在 sprite1112 中）", "visual_changes": ["sprite1112:char_swap", "sprite1113:translate"], "gap_reason": "同 fuwa_beibei", "evidence_source": "res://docs/evidence/native_timelines_v103_v9.txt", "evidence_tokens": ["image_1101", "evidence_gap", "fuwa_reward"]}
+  ],
+  "evidence_gaps": [
+    "NPC wrapper ColorTransform 悬停色变（sprite1159/1141/1129/1133/1154/1195/1090/1235/1150/1079 等）：remake 用静态bitmap未实现色变，需 PM 决策是否补",
+    "怪物在 sprite118/1074 多帧选择器（每帧不同怪物，char_swap+translate+scale_rotate）：选择器 vs 动画播放方式需 ActionScript 审计",
+    "公主 sprite1205(24帧2姿势)/战魂箱 sprite1221(25帧5开箱阶段)/福娃 sprite1113(位置变化)：SWF 有真动画，remake 未实现，需 PM 决策",
+    "地下城 Boss 独立受击动画: 原版复用 sprite124(普通怪无受击帧), 不套用 Boss 受击 shape133",
+    "剧情过场动画(救王、通关等根时间轴帧动画): 不在本版本范围",
+    "fuwa_reward 具体 bitmap 运行时动态选择(从5福娃bitmap选一, 均在sprite1112中)"
+  ]
+}

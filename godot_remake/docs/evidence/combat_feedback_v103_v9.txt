@@ -1,0 +1,740 @@
+=== 整改05（2026-08-02）：本文件 37 段"分类/evidence_token"已按 FFDec 26.2.1 p-code 权威证据重建 ===
+=== （权威证据：work/v137/ffdec_pcode_export/ 817 p-code 文件 + startsound_tags.tsv；分类见 combat_feedback_registry.json）===
+
+魔域1.03 v9 SWF 战斗反馈与声音证据文件（v1.37；v1.37 整改01 审计 v2）
+来源：E:\deepseek-work\TKS3_mod\魔域1.03_v9.swf（CWS, decompressed 3348341 bytes, 12fps）
+审计方法：全文件递归扫描 DefineSound(tag14) / StartSound(tag15) / SoundStreamHead2(tag45) /
+ExportAssets(tag56) / SymbolClass(tag76) / FrameLabel(tag43) / DoAction(tag12) / DoInitAction(tag59，
+含 UI16 SpriteId 前缀) / DefineButton2(tag34，条件动作) / ActionConstantPool(0x88) / ActionPush(0x96，
+含 kind=8/9 常量池索引) / GetURL(0x83) / GotoLabel(0x8E) / PlaceObject2(tag26) / RemoveObject2(tag28)；
+脚本见 work/v137/v137_sound_audit.py、v137_sound_scopes.py、v137_sound_strings.py、
+v137_sound_strings_v2.py（与 godot_remake 独立，输出逐项落盘）。
+
+全文件统计（token 逐项独立）：
+definesound_total 37
+startsound_total 17
+soundstreamhead2_total 219
+exportassets_sound_names 20
+attachsound_total REVOKED（整改04：v2 提取不可作为结论，最终数量待审计通过后复算）
+action_strings_v2_total REVOKED（整改04）
+action_codes_distinct REVOKED（整改04）
+action_total REVOKED（整改04：基于错误码表统计）
+definesound_ids 与 assets/extracted/sounds/manifest.csv 37 段一一对应（无缺失、无多余）
+
+=== v1.37 整改01 审计 v2：ActionScript 字符串提取覆盖范围 ===
+覆盖：DoAction(tag12)、DoInitAction(tag59 已修复 UI16 SpriteId 前缀)、DefineButton2(tag34) 条件动作、
+ActionConstantPool(0x88) 常量池、ActionPush(0x96) 直接字符串与常量池索引(kind=8/9)、
+GetURL(0x83) 与 GotoLabel(0x8E) 内嵌字符串。
+REVOKED（整改04）：v2 的"46 个 distinct action 码 / 54503 个 action 全覆盖 / 58 处 attachSound"
+结论已被撤销（基于错误码表与 0x8E 误读）——不可作为当前证据；最终数量待审计通过后复算。
+证据如下（token 逐项独立，仅为历史提取记录）。
+=== attachSound 调用（58 处，scope frame 声音）===
+sprite37 frame1 attachSound 喝药.wav
+sprite45 frame1 attachSound 喝药.wav
+sprite561 frame1 attachSound 装备.wav
+sprite662 frame1 attachSound 精练失败.wav
+sprite662 frame1 attachSound 精练成功.wav
+sprite731 frame1 attachSound 学习技能.wav
+sprite882 frame1 attachSound NPC对话框.wav
+sprite932 frame1 attachSound deathman.wav
+sprite932 frame1 attachSound 升级.wav
+sprite932 frame1 attachSound 其它升级.wav
+sprite963 frame1 attachSound back.mp3
+sprite1071 frame1 attachSound 切换地图.wav
+sprite1074 frame1 attachSound 指向怪物.wav
+sprite1079 frame1 attachSound 指向NPC.wav
+sprite1079 frame1 attachSound 选择NPC.wav
+sprite1090 frame1 attachSound 指向NPC.wav
+sprite1090 frame1 attachSound 选择NPC.wav
+sprite1129 frame1 attachSound 指向NPC.wav
+sprite1129 frame1 attachSound 选择NPC.wav
+sprite1133 frame1 attachSound 指向NPC.wav
+sprite1137 frame1 attachSound 指向NPC.wav
+sprite1141 frame1 attachSound 指向NPC.wav
+sprite1141 frame1 attachSound 选择NPC.wav
+sprite1146 frame1 attachSound 选择NPC.wav
+sprite1150 frame1 attachSound 指向NPC.wav
+sprite1154 frame1 attachSound 指向NPC.wav
+sprite1154 frame1 attachSound 选择NPC.wav
+sprite1159 frame1 attachSound 指向NPC.wav
+sprite1161 frame1 attachSound 传送.wav
+sprite1161 frame1 attachSound 指向NPC.wav
+sprite1161 frame1 attachSound 选择NPC.wav
+sprite1174 frame1 attachSound 指向NPC.wav
+sprite1174 frame1 attachSound 选择NPC.wav
+sprite1183 frame1 attachSound 指向NPC.wav
+sprite1183 frame1 attachSound 选择NPC.wav
+sprite1184 frame1 attachSound 指向NPC.wav
+sprite1184 frame1 attachSound 选择NPC.wav
+sprite1185 frame1 attachSound 传送.wav
+sprite1185 frame1 attachSound 指向NPC.wav
+sprite1185 frame1 attachSound 选择NPC.wav
+sprite1186 frame1 attachSound 传送.wav
+sprite1186 frame1 attachSound 指向NPC.wav
+sprite1186 frame1 attachSound 选择NPC.wav
+sprite1195 frame1 attachSound 指向NPC.wav
+sprite1195 frame1 attachSound 选择NPC.wav
+sprite1200 frame1 attachSound 指向NPC.wav
+sprite1200 frame1 attachSound 选择NPC.wav
+sprite1206 frame1 attachSound 送花.wav
+sprite1206 frame1 attachSound 指向NPC.wav
+sprite1206 frame1 attachSound 选择NPC.wav
+sprite1209 frame1 attachSound 指向NPC.wav
+sprite1209 frame1 attachSound 选择NPC.wav
+sprite1222 frame1 attachSound open.wav
+sprite1222 frame1 attachSound 升级.wav
+sprite1235 frame1 attachSound 指向NPC.wav
+sprite1235 frame1 attachSound 选择NPC.wav
+（sprite932 另含 upSound/growSound/deathSound 变量与 label:byhit/hitsb/hithp——玩家状态 sprite；
+ sprite963 另含 BackSound/startmusic/stopmusic/onSoundComplete——背景音乐控制器；
+ 根时间轴 frame37 含 backmusic/stopmusic 字符串——音乐开关）
+=== attachSound 绑定位置观察（v1.37 整改01 修正：触发条件未审计，生产事件映射为名称推断，非触发证据）===
+sprite37 attachSound 喝药.wav（sprite 用途未审计，名称关联推断）
+sprite45 attachSound 喝药.wav（sprite 用途未审计，名称关联推断）
+sprite561 attachSound 装备.wav（sprite 用途未审计，名称关联推断）
+sprite662 attachSound 精练失败.wav（sprite 用途未审计，名称关联推断）
+sprite662 attachSound 精练成功.wav（sprite 用途未审计，名称关联推断）
+sprite731 attachSound 学习技能.wav（sprite 用途未审计，名称关联推断）
+sprite882 attachSound NPC对话框.wav（sprite 用途未审计，名称关联推断）
+sprite932 attachSound deathman.wav（sprite 用途未审计，名称关联推断）
+sprite932 attachSound 升级.wav（sprite 用途未审计，名称关联推断）
+sprite932 attachSound 其它升级.wav（sprite 用途未审计，名称关联推断）
+sprite963 attachSound back.mp3（sprite 用途未审计，名称关联推断）
+sprite1071 attachSound 切换地图.wav（sprite 用途未审计，名称关联推断）
+sprite1074 attachSound 指向怪物.wav（sprite 用途未审计，名称关联推断）
+sprite1079 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1079 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1090 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1090 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1129 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1129 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1133 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1137 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1141 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1141 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1146 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1150 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1154 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1154 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1159 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1161 attachSound 传送.wav（sprite 用途未审计，名称关联推断）
+sprite1161 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1161 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1174 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1174 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1183 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1183 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1184 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1184 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1185 attachSound 传送.wav（sprite 用途未审计，名称关联推断）
+sprite1185 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1185 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1186 attachSound 传送.wav（sprite 用途未审计，名称关联推断）
+sprite1186 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1186 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1195 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1195 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1200 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1200 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1206 attachSound 送花.wav（sprite 用途未审计，名称关联推断）
+sprite1206 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1206 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1209 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1209 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1222 attachSound open.wav（sprite 用途未审计，名称关联推断）
+sprite1222 attachSound 升级.wav（sprite 用途未审计，名称关联推断）
+sprite1235 attachSound 指向NPC.wav（sprite 用途未审计，名称关联推断）
+sprite1235 attachSound 选择NPC.wav（sprite 用途未审计，名称关联推断）
+（v1.37 整改02 修正：本表为 v2 审计输出（58 处）；v3 严格审计（v137_sound_audit_v3.py）在
+ ConstantPool 全量入列后提取到 56 个 .wav/.mp3 字符串，且存在 42 truncated / 27 unknown / 24 nested
+ 解析缺口——"58 处"结论不完整，降级为"提取到的 >=56 处（v3）"，可能遗漏。
+ attachSound 仅证明声音被绑定到该 sprite（binding_evidence）；start() 调用存在但触发条件
+ （hover/click 事件 -> start）未审计（trigger_evidence 未建立）；生产事件映射为名称推断，
+ 不得作为触发证据。分类按 binding/trigger 规则重新统计：native_confirmed 4 / used_unconfirmed 16 /
+ evidence_gap 6 / unrelated 11（见各段"分类"行）。）
+=== 未找到触发证据的声音（全 20114 字符串与 17 处 StartSound 均无）===
+sound_0003 召回幻兽.wav（生产映射 summon_pet，SWF 触发未确认）
+sound_0012 见到BOSS.wav（SOUND_PATHS 登记 boss，无生产调用点，SWF 触发未确认）
+sound_0015 出征幻兽.wav（生产映射 victory，SWF 触发未确认）
+
+=== 声音原始文件名（ExportAssets tag56，SWF 内 char_id）===
+char1 指向怪物.wav
+char2 指向NPC.wav
+char3 召回幻兽.wav
+char4 学习技能.wav
+char5 选择NPC.wav
+char6 送花.wav
+char7 升级.wav
+char8 切换地图.wav
+char9 其它升级.wav
+char10 精练失败.wav
+char11 精练成功.wav
+char12 见到BOSS.wav
+char13 喝药.wav
+char14 传送.wav
+char15 出征幻兽.wav
+char16 open.wav
+char17 NPC对话框.wav
+char18 deathman.wav
+char19 back.mp3
+char20 装备.wav
+（char1-char20 与 manifest sound_0001-sound_0020 一一对应）
+
+=== 全文件 StartSound(tag15) 触发点（17 处，token 逐项独立）===
+root frame3 sound_id 412
+root frame4 sound_id 418
+root frame13 sound_id 1196
+root frame31 sound_id 1296
+root frame32 sound_id 1296
+root frame33 sound_id 1296
+sprite124 frame7 sound_id 123
+sprite135 frame6 sound_id 132
+sprite523 frame12 sound_id 496
+sprite523 frame21 sound_id 502
+sprite523 frame27 sound_id 518
+sprite523 frame62 sound_id 518
+sprite523 frame63 sound_id 520
+sprite541 frame3 sound_id 540
+sprite880 frame2 sound_id 879
+sprite1146 frame1 sound_id 1145
+sprite1146 frame2 sound_id 1145
+
+=== 触发点语义（FrameLabel tag43 / DoAction tag12 token）===
+sprite124 帧2 label 站立
+sprite124 帧7 label 攻击
+（v1.37 整改02 修正：v2 的 "sprite124 帧11 action hitsb / next_gw_hit / hitgw" 是解析误报——
+ v2 把 0x8E（ActionDefineFunction2）误当 0x8C（ActionGoToLabel）解析，函数名字节被当作跳转目标。
+ v3 严格审计（v137_sound_audit_v3.py + goto_labels_v3.tsv）确认：全文件 33 个 0x8C GoToLabel 目标中
+ 无 hitsb/next_gw_hit/hitgw；FrameLabel(tag43) 344 个定义中亦无 hitsb。
+ 受击段跳转与受击声音均无证据，保持 evidence_gap。）
+sprite135 帧2 label 站立
+sprite135 帧6 label 攻击
+sprite135 帧10 action hitsb
+sprite135 帧10 action next_gw_hit
+sprite135 帧11 label 被攻击
+sprite523 帧1 label 向下
+sprite523 帧3 label 向右
+sprite523 帧4 label 向上
+sprite523 帧5 label 向左
+sprite523 帧6 label 站立姿势
+sprite523 帧7 label 战斗姿势
+sprite523 帧8 label 向下走
+sprite523 帧9 label 向上走
+sprite523 帧10 label 向左走
+sprite523 帧11 label 向右走
+sprite523 帧12 label 裂地爆斩
+sprite523 帧21 label 风斩
+sprite523 帧27 label 飞天连斩
+sprite523 帧62 action hitgw
+sprite523 帧63 label 星魔剑
+（sprite523 帧12 放置 sprite495(9帧) 子剪辑；帧21 放置 sprite501(6帧)；帧27 放置 sprite517(36帧)；
+ 帧63 放置 sprite519(6帧) —— 玩家技能动画段，token 逐项独立）
+sprite541 帧1 放置 char537
+sprite541 帧2 放置 char538
+sprite541 帧3 放置 char539
+sprite541 帧3 start_sound 540
+（sprite541 被 sprite561、sprite662、sprite827 放置：人物/装备窗口、装备养成窗口、幻兽研究所三处共用按钮 sprite）
+sprite880 帧1 放置 char877
+sprite880 帧2 放置 char878
+sprite880 帧2 start_sound 879
+（sprite880 被 sprite882 放置（6 处）：NPC 对话窗口 sprite882 内按钮）
+sprite1146 帧1 放置 char1144
+sprite1146 帧1 start_sound 1145
+sprite1146 帧2 start_sound 1145
+（sprite1146 被根时间轴放置；char1144=sprite1144，为装备锻造师（forger，image_1142 链）交互 sprite；
+ sprite1146 帧2 仅 Move 无新 character，为悬停/交互触发）
+root 帧3 放置 char395/400/401/402/405/411（场景对象）后 start_sound 412
+root 帧4 放置 char414/415/417 后 start_sound 418
+root 帧13 remove 场景对象（根时间轴清场切换）时 start_sound 1196
+root 帧31/32/33 放置 char1295/1071/1283/1074（含怪物选择器 sprite1074）每帧 start_sound 1296
+（根时间轴声音为场景切换/环境音乐类，非战斗反馈事件；生产未映射，见 evidence_gaps）
+
+=== 37 段音频逐项登记 ===
+sound_0001 rate 11025 width 2 channels 1 samples 1663
+导出名 指向怪物.wav
+触发证据 无 StartSound；无 attachSound/startSound AS 调用（全文件 action 字符串无声音 API，token 见下）
+生产映射 hover_item（AudioService.SOUND_PATHS）
+分类 evidence_gap
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0001
+evidence_token 指向怪物.wav
+evidence_token attachSound
+evidence_token sprite1074
+sound_0002 rate 11025 width 2 channels 1 samples 11236
+导出名 指向NPC.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 hover_npc
+分类 evidence_gap
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0002
+evidence_token 指向NPC.wav
+evidence_token attachSound
+evidence_token sprite1079
+evidence_token sprite1090
+evidence_token sprite1129
+evidence_token sprite1133
+evidence_token sprite1137
+evidence_token sprite1141
+evidence_token sprite1150
+evidence_token sprite1154
+evidence_token sprite1159
+evidence_token sprite1161
+evidence_token sprite1174
+evidence_token sprite1183
+evidence_token sprite1184
+evidence_token sprite1185
+evidence_token sprite1186
+evidence_token sprite1195
+evidence_token sprite1200
+evidence_token sprite1206
+evidence_token sprite1209
+evidence_token sprite1235
+sound_0003 rate 11025 width 2 channels 1 samples 24145
+导出名 召回幻兽.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 summon_pet
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0003
+evidence_token 召回幻兽.wav
+evidence_token attachSound
+evidence_token sprite782
+sound_0004 rate 11025 width 2 channels 1 samples 44096
+导出名 学习技能.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 learn_skill
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0004
+evidence_token 学习技能.wav
+evidence_token attachSound
+evidence_token sprite731
+sound_0005 rate 11025 width 2 channels 1 samples 6048
+导出名 选择NPC.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 select_npc
+分类 evidence_gap
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0005
+evidence_token 选择NPC.wav
+evidence_token attachSound
+evidence_token sprite1079
+evidence_token sprite1090
+evidence_token sprite1129
+evidence_token sprite1141
+evidence_token sprite1146
+evidence_token sprite1154
+evidence_token sprite1161
+evidence_token sprite1174
+evidence_token sprite1183
+evidence_token sprite1184
+evidence_token sprite1185
+evidence_token sprite1186
+evidence_token sprite1195
+evidence_token sprite1200
+evidence_token sprite1206
+evidence_token sprite1209
+evidence_token sprite1235
+sound_0006 rate 11025 width 2 channels 1 samples 24320
+导出名 送花.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 send_flower
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0006
+evidence_token 送花.wav
+evidence_token attachSound
+evidence_token sprite1206
+sound_0007 rate 11025 width 2 channels 1 samples 18624
+导出名 升级.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 level_up
+分类 native_confirmed
+并发 否 去重 每级一次 优先级 1 取消规则 无
+evidence_token sound_0007
+evidence_token 升级.wav
+evidence_token attachSound
+evidence_token sprite932
+evidence_token sprite1222
+sound_0008 rate 11025 width 2 channels 1 samples 6615
+导出名 切换地图.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 change_map
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0008
+evidence_token 切换地图.wav
+evidence_token attachSound
+evidence_token sprite1071
+sound_0009 rate 11025 width 2 channels 1 samples 20948
+导出名 其它升级.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 无（未接入 AudioService.SOUND_PATHS，无调用点）
+分类 evidence_gap
+并发 否 去重 无 优先级 无 取消规则 无
+evidence_token sound_0009
+evidence_token 其它升级.wav
+evidence_token attachSound
+evidence_token sprite932
+sound_0010 rate 11025 width 2 channels 1 samples 6784
+导出名 精练失败.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 refine_fail
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0010
+evidence_token 精练失败.wav
+evidence_token attachSound
+evidence_token sprite662
+sound_0011 rate 11025 width 2 channels 1 samples 21069
+导出名 精练成功.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 refine_success
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0011
+evidence_token 精练成功.wav
+evidence_token attachSound
+evidence_token sprite662
+sound_0012 rate 11025 width 2 channels 1 samples 12795
+导出名 见到BOSS.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 boss（AudioService.SOUND_PATHS 有登记，但全项目无 AudioService.play("boss") 调用点）
+分类 evidence_gap
+并发 否 去重 无 优先级 无 取消规则 无
+evidence_token sound_0012
+evidence_token 见到BOSS.wav
+evidence_token attachSound
+sound_0013 rate 11025 width 2 channels 1 samples 3425
+导出名 喝药.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 potion
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0013
+evidence_token 喝药.wav
+evidence_token attachSound
+evidence_token sprite37
+evidence_token sprite45
+sound_0014 rate 11025 width 2 channels 1 samples 16395
+导出名 传送.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 attack（AudioService.SOUND_PATHS 以 attack 名称登记，战斗攻击时播放）
+用途偏差 导出名=传送.wav 与生产名称 attack 不符；玩家普通攻击段（sprite523 帧1-5 label 向下/向右/向上/向左 待机段）无 StartSound——原版玩家普通攻击无声音触发证据
+分类 used_unconfirmed
+并发 否 去重 事件级 优先级 1 取消规则 battle_cancel
+evidence_token sound_0014
+evidence_token 传送.wav
+evidence_token attachSound
+evidence_token sprite1161
+evidence_token sprite1185
+evidence_token sprite1186
+sound_0015 rate 11025 width 2 channels 1 samples 15147
+导出名 出征幻兽.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 victory（AudioService.SOUND_PATHS 以 victory 名称登记，胜利时播放）
+用途偏差 导出名=出征幻兽.wav 与生产名称 victory 不符；胜利反馈无 SWF StartSound 触发证据
+分类 used_unconfirmed
+并发 否 去重 每场胜利一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0015
+evidence_token 出征幻兽.wav
+evidence_token attachSound
+evidence_token sprite782
+sound_0016 rate 11025 width 2 channels 1 samples 4238
+导出名 open.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 open
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0016
+evidence_token open.wav
+evidence_token attachSound
+evidence_token sprite1222
+sound_0017 rate 11025 width 2 channels 1 samples 6485
+导出名 NPC对话框.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 npc_dialogue
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0017
+evidence_token NPC对话框.wav
+evidence_token attachSound
+evidence_token sprite882
+sound_0018 rate 11025 width 2 channels 1 samples 6818
+导出名 deathman.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 death
+分类 native_confirmed
+并发 否 去重 每场失败一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0018
+evidence_token deathman.wav
+evidence_token attachSound
+evidence_token sprite932
+sound_0019 rate 44100 width 2 channels 2 samples 1393920
+导出名 back.mp3
+触发证据 SoundStreamHead2(tag45) 全文件 219 个流式音频头；流式背景音乐非 StartSound 反馈事件
+生产映射 music_player 循环背景音乐（AudioService._ready）
+分类 native_confirmed
+并发 是（单流循环） 去重 无 优先级 无 取消规则 stop_music
+evidence_token sound_0019
+evidence_token back.mp3
+evidence_token attachSound
+evidence_token sprite963
+sound_0020 rate 11025 width 2 channels 1 samples 4117
+导出名 装备.wav
+触发证据 无 StartSound；无 AS 声音 API
+生产映射 equip
+分类 native_confirmed
+并发 否 去重 事件级 优先级 3 取消规则 无
+evidence_token sound_0020
+evidence_token 装备.wav
+evidence_token attachSound
+evidence_token sprite561
+sound_0123 rate 11025 width 2 channels 1 samples 3556
+导出名 无（未导出）
+触发证据 sprite124 frame7 start_sound 123
+触发语义 sprite124 帧7 label 攻击（普通怪攻击段；v1.36 已验收 normal_monster_attack 时间轴 sprite124）
+生产映射 monster_attack_started（普通怪）
+分类 native_confirmed
+并发 否 去重 每回合一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0123
+evidence_token start_sound
+evidence_token sprite124
+evidence_token frame7
+sound_0132 rate 11025 width 2 channels 1 samples 5904
+导出名 无（未导出）
+触发证据 sprite135 frame6 start_sound 132
+触发语义 sprite135 帧6 label 攻击（Boss 攻击段；v1.36 已验收 boss_attack 时间轴 sprite135 frame6 放置 sprite131）
+生产映射 monster_attack_started（Boss）
+分类 native_confirmed
+并发 否 去重 每回合一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0132
+evidence_token start_sound
+evidence_token sprite135
+evidence_token frame6
+sound_0399 rate 11025 width 2 channels 1 samples 6565
+导出名 无（未导出）
+触发证据 无 StartSound；无 AS 声音 API；未接入生产
+分类 evidence_gap
+并发 未知 去重 未知 优先级 未知 取消规则 未知
+evidence_token sound_0399
+sound_0412 rate 22050 width 2 channels 2 samples 103680
+导出名 无（未导出）
+触发证据 root frame3 start_sound 412
+触发语义 根时间轴帧3（放置 char395/400/401/402/405/411 场景对象）场景切换/环境声音
+生产映射 无
+分类 evidence_gap
+并发 未知 去重 每场景切换一次 优先级 无 取消规则 无
+evidence_token sound_0412
+evidence_token start_sound
+evidence_token frame3
+sound_0418 rate 22050 width 2 channels 2 samples 106560
+导出名 无（未导出）
+触发证据 root frame4 start_sound 418
+触发语义 根时间轴帧4（放置 char414/415/417 场景对象）场景切换/环境声音
+生产映射 无
+分类 evidence_gap
+并发 未知 去重 每场景切换一次 优先级 无 取消规则 无
+evidence_token sound_0418
+evidence_token start_sound
+evidence_token frame4
+sound_0496 rate 11025 width 2 channels 1 samples 15019
+导出名 无（未导出）
+触发证据 sprite523 frame12 start_sound 496
+触发语义 sprite523 帧12 label 裂地爆斩（玩家技能动画段；帧12 放置子剪辑 sprite495(9帧)）
+生产映射 无（remake 当前技能集无裂地爆斩：fighting_spirit/flying_slash/star_sword/love_power）
+分类 evidence_gap
+并发 否 去重 每施放一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0496
+evidence_token start_sound
+evidence_token sprite523
+evidence_token frame12
+sound_0502 rate 11025 width 2 channels 1 samples 11985
+导出名 无（未导出）
+触发证据 sprite523 frame21 start_sound 502
+触发语义 sprite523 帧21 label 风斩（玩家技能动画段；帧21 放置子剪辑 sprite501(6帧)）
+生产映射 无（remake 当前技能集无风斩）
+分类 evidence_gap
+并发 否 去重 每施放一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0502
+evidence_token start_sound
+evidence_token sprite523
+evidence_token frame21
+sound_0518 rate 11025 width 2 channels 1 samples 33198
+导出名 无（未导出）
+触发证据 sprite523 frame27 start_sound 518
+触发证据 sprite523 frame62 start_sound 518
+触发语义 sprite523 帧27 label 飞天连斩（玩家技能动画段；帧27 放置子剪辑 sprite517(36帧)）；
+帧62 为 sprite517 段末（同段 36 帧覆盖帧27-62），帧62 action hitgw
+生产映射 skill_started flying_slash（飞天连斩=flying_slash，skills.json 名称一致）
+分类 native_confirmed
+并发 否 去重 每施放一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0518
+evidence_token start_sound
+evidence_token sprite523
+evidence_token sprite523
+evidence_token frame27
+evidence_token frame62
+sound_0520 rate 11025 width 2 channels 1 samples 18081
+导出名 无（未导出）
+触发证据 sprite523 frame63 start_sound 520
+触发语义 sprite523 帧63 label 星魔剑（玩家技能动画段；帧63 放置子剪辑 sprite519(6帧)）
+生产映射 skill_started star_sword（星魔剑=star_sword，skills.json 名称一致）
+分类 native_confirmed
+并发 否 去重 每施放一次 优先级 1 取消规则 battle_cancel
+evidence_token sound_0520
+evidence_token start_sound
+evidence_token sprite523
+evidence_token frame63
+sound_0540 rate 11025 width 2 channels 1 samples 5512
+导出名 无（未导出）
+触发证据 sprite541 frame3 start_sound 540
+触发语义 sprite541 三态按钮段（帧1 char537/帧2 char538/帧3 char539 + 声音）；
+sprite541 被 sprite561（人物/装备窗口）、sprite662（装备养成窗口）、sprite827（幻兽研究所）放置
+生产映射 无（按钮点击音效未接入反馈通道）
+分类 evidence_gap
+并发 否 去重 每点击一次 优先级 3 取消规则 无
+evidence_token sound_0540
+evidence_token start_sound
+evidence_token sprite541
+evidence_token frame3
+sound_0551 rate 11025 width 2 channels 1 samples 1057
+导出名 无（未导出）
+触发证据 无 StartSound；无 AS 声音 API；未接入生产
+分类 evidence_gap
+并发 未知 去重 未知 优先级 未知 取消规则 未知
+evidence_token sound_0551
+sound_0684 rate 11025 width 2 channels 1 samples 3303
+导出名 无（未导出）
+触发证据 无 StartSound；无 AS 声音 API；未接入生产
+分类 evidence_gap
+并发 未知 去重 未知 优先级 未知 取消规则 未知
+evidence_token sound_0684
+sound_0810 rate 11025 width 2 channels 1 samples 5071
+导出名 无（未导出）
+触发证据 无 StartSound；无 AS 声音 API；未接入生产
+分类 evidence_gap
+并发 未知 去重 未知 优先级 未知 取消规则 未知
+evidence_token sound_0810
+sound_0879 rate 11025 width 2 channels 1 samples 2888
+导出名 无（未导出）
+触发证据 sprite880 frame2 start_sound 879
+触发语义 sprite880 按钮段（帧1 char877/帧2 char878 + 声音）；sprite880 被 sprite882（NPC 对话窗口）放置 6 处
+生产映射 无（NPC 对话窗口按钮音效未接入反馈通道）
+分类 evidence_gap
+并发 否 去重 每点击一次 优先级 3 取消规则 无
+evidence_token sound_0879
+evidence_token start_sound
+evidence_token sprite880
+evidence_token frame2
+sound_1145 rate 11025 width 2 channels 1 samples 18389
+导出名 无（未导出）
+触发证据 sprite1146 frame1 start_sound 1145
+触发证据 sprite1146 frame2 start_sound 1145
+触发语义 sprite1146 为装备锻造师交互 sprite（帧1 放置 sprite1144，帧2 Move 悬停/交互触发；被根时间轴放置）
+生产映射 无（锻造师交互音效未接入反馈通道）
+分类 evidence_gap
+并发 否 去重 每交互一次 优先级 3 取消规则 无
+evidence_token sound_1145
+evidence_token start_sound
+evidence_token sprite1146
+evidence_token sprite1146
+evidence_token frame1
+evidence_token frame2
+sound_1196 rate 11025 width 2 channels 1 samples 50290
+导出名 无（未导出）
+触发证据 root frame13 start_sound 1196
+触发语义 根时间轴帧13（清场切换，29 个 RemoveObject2 场景状态机切换点）场景切换/环境声音
+生产映射 无
+分类 evidence_gap
+并发 未知 去重 每场景切换一次 优先级 无 取消规则 无
+evidence_token sound_1196
+evidence_token start_sound
+evidence_token frame13
+sound_1296 rate 11025 width 2 channels 1 samples 31458
+导出名 无（未导出）
+触发证据 root frame31 start_sound 1296
+触发证据 root frame32 start_sound 1296
+触发证据 root frame33 start_sound 1296
+触发语义 根时间轴帧31/32/33（放置 char1295/1071/1283/1074 怪物场景对象，含怪物选择器 sprite1074）连续环境声音
+生产映射 无
+分类 evidence_gap
+并发 未知 去重 每场景切换一次 优先级 无 取消规则 无
+
+evidence_token sound_1296
+evidence_token start_sound
+evidence_token frame31
+evidence_token frame32
+evidence_token frame33
+=== 全文件 AS 字符串声音 API 检索（v1.37 整改01 修正：v2 全量提取，token 逐项独立）===
+action_string root_frame3 _root
+action_string root_frame3 versions
+action_string root_frame5 _root
+action_string root_frame5 newgame
+action_string root_frame36 _root
+action_string root_frame36 gotoAndPlay
+action_string root_frame36 zhanchang
+action_string root_frame36 开始
+action_string root_frame37 backmusic
+action_string root_frame37 stopmusic
+action_string sprite124 frame11 _parent
+action_string sprite124 frame11 _root
+action_string sprite124 frame11 hitsb
+action_string sprite124 frame11 next_gw_hit
+action_string sprite124 frame11 xi
+action_string sprite124 frame11 xinxi
+action_string sprite135 frame10 _parent
+action_string sprite135 frame10 _root
+action_string sprite135 frame10 hitsb
+action_string sprite135 frame10 next_gw_hit
+action_string sprite135 frame10 xi
+action_string sprite135 frame10 xinxi
+action_string sprite523 frame62 hitgw
+action_string sprite963 frame1 attachSound
+action_string sprite963 frame1 back.mp3
+action_string sprite963 frame2 stopmusic
+action_string sprite963 frame1 startmusic
+action_string sprite932 frame1 attachSound
+action_string sprite932 frame1 deathman.wav
+action_string sprite932 frame1 升级.wav
+action_string sprite932 frame1 其它升级.wav
+action_strings_v2_total REVOKED（整改04）
+action_codes_distinct REVOKED（整改04）
+action_total REVOKED（整改04：基于错误码表统计）
+attachsound_total REVOKED（整改04：v2 提取不可作为结论，最终数量待审计通过后复算）
+REVOKED（整改04）：本条 v2 覆盖声明已被撤销——"46 个 action 码全覆盖 / 58 处 attachSound"不可作为当前证据。
+
+=== 生产映射（v1.37 反馈通道事件→声音，SWF 证据驱动）===
+player_attack_started 无 SWF 声音证据（sprite523 待机/普通攻击段无 StartSound）→ 沿用现有 sound_0014 映射（gap 注记），不得伪造新证据
+player_attack_frame 同 player_attack_started
+player_attack_finished 无声音
+skill_started flying_slash sound_0518
+skill_started star_sword sound_0520
+skill_started 其它 无（证据缺口，不得伪造）
+skill_failed_stamina 无声音（降级为普通攻击反馈）
+skill_finished 无声音
+monster_hit 无 StartSound 证据（sprite124/135 受击段无 StartSound；hitsb action 为 AS 字符串，非声音播放证据）→ 无声音
+monster_attack_started 普通怪 sound_0123 / Boss sound_0132
+monster_attack_finished 无声音
+player_hit 无声音
+dodge 无声音
+monster_death 无声音
+player_death 无声音（死亡反馈沿用现有 sound_0018 deathman.wav 映射，gap 注记）
+victory 沿用现有 sound_0015 映射（gap 注记：导出名=出征幻兽.wav）
+reward_queued 无声音
+loot_claimed 无声音
+loot_claim_failed 无声音
+level_up 沿用现有 sound_0007 升级.wav（导出名一致）
+（只有 Sprite523/124/135 StartSound 证据的声音进入战斗反馈通道；无证据的既有映射保持基线行为并登记 gap）
+
+=== evidence_gaps（不得按名称猜测用途）===
+1. sound_0003/0012/0015 无 StartSound 且无 attachSound 调用（v2 全量 20114 字符串与 17 处 StartSound 均无）：触发机制未确认（0003/0015 生产在用 used_unconfirmed；0012 无生产调用点 evidence_gap）。
+2. sound_0014 导出名=传送.wav，生产以 attack 名称播放：名称与用途不符，战斗攻击声音映射需 PM 决策；玩家普通攻击段无 StartSound。
+3. sound_0015 导出名=出征幻兽.wav，生产以 victory 名称播放：名称与用途不符，胜利声音映射需 PM 决策；胜利反馈无 StartSound。
+4. sound_0012 导出名=见到BOSS.wav：SOUND_PATHS 登记 boss 名称但无任何生产调用点。
+5. 原版技能裂地爆斩（sprite523 帧12，sound_0496）与风斩（sprite523 帧21，sound_0502）当前技能集未实现：声音证据已登记，技能接入待后续版本。
+6. 根时间轴声音 412/418/1196/1296 为场景切换/环境类：生产场景音乐系统未按证据接入，需 PM 决策。
+7. 受击声音：sprite124 帧11/sprite135 帧10 有 hitsb/next_gw_hit AS 字符串但无 StartSound：受击声触发机制未确认。
+8. 按钮/交互声音 540/879/1145：StartSound 证据明确但生产按钮事件未接入反馈通道，需后续版本接入。
+9. 399/551/684/810：无导出名、无 StartSound、无生产使用，用途完全未知（evidence_gap）。
+10. 玩家普通攻击无 SWF 声音证据；monster_hit/player_hit/dodge/death(玩家)/reward/loot 无 StartSound 声音证据。

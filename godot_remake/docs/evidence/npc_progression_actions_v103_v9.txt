@@ -1,0 +1,186 @@
+NPC 原版流程证据文件（魔域 1.03 v9 SWF ActionScript 反查）
+============================================================
+
+SWF 源文件: 魔域1.03_v9.swf
+反查脚本: python work/dump_sprite_actions.py 魔域1.03_v9.swf <sprite_id>
+用途: 为 docs/npc_progression_flow_registry.json 提供独立于 Godot 实现代码的原版文本证据。
+      evidence_tokens 必须能在本文件中命中。
+
+------------------------------------------------------------
+sprite 1184 — 元帅（marshal）
+------------------------------------------------------------
+反查命令: python work/dump_sprite_actions.py 魔域1.03_v9.swf 1184
+原版选项文本（Action_88 常量）:
+  - 领取军饷
+  - 战功查询
+  - 军情查询
+  - 关于军衔
+  - 没事
+关键 token / 文本片段:
+  - "你好，我是国家元帅"
+  - "你的当前的战功是"
+  - "你还要"
+  - "战功才能晋升一级军衔"
+  - boss10 / boss20 / boss30 / boss50 / boss70 / boss90 / boss100   （军情查询：各级BOSS行踪）
+  - "10级BOSS正在雷鸣大陆活动"
+  - "关于军衔"
+  - "每消灭一个BOSS奖1000点战功"
+  - "少尉至上尉军衔每级要1000战功"
+  - "少校至上校军衔每级要5000战功"
+  - "少将至大将军衔每级要10000战功"
+  - yspay / nowday / mc_day   （军饷：周日发放）
+  - "星期天才发军饷"
+  - "这个星期的军饷你已经领过了"
+  - "你还没有军衔，所以没有你的军饷"
+  - subms / "获得了" / "魔石"   （军饷奖励）
+Godot action 映射:
+  - 领取军饷 -> military_salary（claim_military_salary）
+  - 战功查询 -> military_status（_open_military_status_dialogue）
+  - 军情查询 -> 未实现（evidence_gap）
+  - 关于军衔 -> 未实现（evidence_gap）
+注: 当前 Godot 元帅"国王消息"(marshal_info)是项目现有故事入口，不等同原版"军情查询"。
+
+------------------------------------------------------------
+sprite 1183 — 首相（prime_minister）
+------------------------------------------------------------
+反查命令: python work/dump_sprite_actions.py 魔域1.03_v9.swf 1183
+原版选项文本:
+  - 捐献金币
+  - 功勋查询
+  - 关于国王的消息
+  - 关于爵位
+  - 没事
+关键 token / 文本片段:
+  - "你好，我是国家首相"
+  - "捐每750,000金币能获得1点功勋"
+  - "有1,000点功勋就的人国家将授于他勋爵"
+  - "子爵3,000功勋"
+  - "伯爵6,000功勋"
+  - "公爵15,000功勋"
+  - "侯爵30,000功勋"
+  - "感谢勇士慷慨解囊"
+  - "你获得了"
+  - "点功勋"
+  - jwname / jwexp / jwdj / jwdjexp / upjw   （功勋查询变量）
+  - "你当前的的功勋是"
+  - "你还要"
+  - "功勋就能被授予高一级爵位"
+  - needjb   （金币检查）
+Godot action 映射:
+  - 捐献金币 -> prime_donate -> donate_gold:750000（donate_gold_for_nobility，原版仅 750,000=1功勋档）
+  - 功勋查询 -> prime_merit
+  - 关于国王的消息 -> prime_king
+  - 关于爵位 -> prime_nobility
+注: 75,000,000 金币档无原版证据，仅为 VIP 便捷聚合窗批量操作（convenience_override）。
+
+------------------------------------------------------------
+sprite 1206 — 公主（princess）
+------------------------------------------------------------
+反查命令: python work/dump_sprite_actions.py 魔域1.03_v9.swf 1206
+原版选项文本:
+  - 聊天
+  - 送礼
+  - 星期天的礼物
+关键 token / 文本片段:
+  - gzchat / "今天已经聊过了"
+  - gzgift   （送礼）
+  - "公主非常高兴地收下了你的999朵白玫瑰"
+  - "公主高兴地收下了你的99朵白玫瑰"
+  - "你与公主的友好度提高了"
+  - neednum   （玫瑰数量检查）
+  - "999朵白玫瑰"
+  - "99朵白玫瑰"
+  - sundaygift   （周日礼物）
+  - "今天是星期天，我为你准备了一份特别的礼物"
+  - "高级经验石" / "高级战斗力石" / "灵魂王" / "电浆药水" / "战魂之心"   （周日礼物种类）
+  - gzgx4   （知己的礼物）
+  - upgzgx / "你与公主的友好度增加1点"
+Godot action 映射:
+  - 聊天 -> princess_chat（chat_with_princess）
+  - 送礼 -> princess_gift -> give_roses:99 / give_roses:999（give_roses）
+  - 星期天的礼物 -> princess_sunday_gift
+  - 知己的礼物 -> princess_friend_gift
+注: 玫瑰好感度加成（99朵+50、999朵+250）为项目用户覆盖值，原版 token 为 gzgift/neednum。
+
+------------------------------------------------------------
+sprite 1161 — 日常任务官（daily_officer）
+------------------------------------------------------------
+反查命令: python work/dump_sprite_actions.py 魔域1.03_v9.swf 1161
+原版选项文本:
+  - 接受任务
+  - 关于日常任务
+  - 随便问问
+关键 token / 文本片段:
+  - "周一和周二任务：收集宝石——收集一定数量灵魂晶石或灵魂王"
+  - "周三和周四任务：训练幻兽——上交一只高星攻防型幻兽"
+  - "周五任务：突击——前往雪域边境袭击魔族军队"
+  - "周六任务：PK赛——国家例行勇士PK大赛"
+  - "周日任务：地下城魔族将领会议——前往破坏会议"
+  - 灵魂晶石 / lhjs   （原版周一/二材料）
+  - 灵魂王 / lhw   （原版周一/二材料）
+  - "任务奖励：大量经验和500点功勋"
+  - "你的背包里没有足够的灵魂晶石"
+  - "你的背包里没有足够的灵魂王"
+  - "你今天已经做过任务了"
+  - usethings / have_exp / "你获得了" / "点经验和" / "点功勋"
+  - rw_bs / "雪域边境"   （周五突袭）
+  - "皇宫"   （周六PK）
+  - rw_dxc / "地下城1层" / "地下城3层"   （周日地下城）
+  - huanshougeiyu / huanshoumb   （周三/四上交幻兽）
+Godot action 映射:
+  - 交付宝石(周一/二) -> daily_deliver -> daily_deliver:collect_magic_soul / daily_deliver:collect_soul_king
+  - 查看幻兽(周三/四) -> pets（submit_pet_for_daily_task）
+  - 接受突袭(周五) -> quest_accept:border_raid
+  - 前往皇宫(周六) -> travel:palace
+  - 接受地下城/进入地下城(周日) -> quest_accept:dungeon_conquest / enter_dungeon
+项目主动差异（intentional_divergence，PM 决定本版本保持）:
+  - 原版: 灵魂晶石 + 灵魂王，奖励 500 功勋。
+  - 当前项目: 魔魂晶石(magic_soul_crystal) 500 功勋 + 灵魂王(soul_king) 2000 功勋。
+  - PM 决定: v1.34 整改不改数值，保持项目规则；后续如需还原原版另发数值迁移任务。
+
+------------------------------------------------------------
+------------------------------------------------------------
+sprite 1174 - 幻兽研究所NPC（research NPC 对话）
+------------------------------------------------------------
+反查命令: python work/dump_sprite_actions.py 魔域1.03_v9.swf 1174
+原版选项文本:
+  - 进入
+  - 研究所的当前信息
+  - 关于2008奥运使者
+  - 提高产量任务
+关键 token / 文本片段:
+  - "国家投资100,000魔石成立了幻兽研究所"
+  - "技术每星期提升10%"
+  - "每资助10,000魔石可以提高1级技术"
+  - "20级以上时就可以生产高星级奇异兽"
+  - 进入 / flag
+  - 研究所的当前信息
+  - 关于2008奥运使者
+  - 提高产量任务 / rw_hsyjs
+  - hsyjs / hsyjs_rate / hsyjsmaxrate / hsyjs_jsdj / hsyjs_number / hsyjsvip
+  - needbs / 灵魂王 / updata
+  - "现在生产量已经达到最高了"
+  - pro2008now
+  - "听说2008奥运使者对幻兽培养技术很有研究"
+  - "非常感谢2008奥运使者给我们的技术"
+  - hsyjs_jsdjmax   （技术上限）
+Godot action 映射:
+  - 进入 -> research（_toggle_research -> ResearchPanel）
+  - 研究所的当前信息 -> research_info（_open_research_info）
+  - 关于2008奥运使者 -> research_olympic_info（_open_research_olympic_info）
+  - 提高产量任务 -> research_production_task（_perform_research_production_task -> complete_research_production_task）
+
+------------------------------------------------------------
+sprite 827 - 幻兽研究所专属窗口（ResearchPanel，非NPC对话）
+------------------------------------------------------------
+反查命令: python work/dump_sprite_actions.py 魔域1.03_v9.swf 827
+原版窗口内容（专属窗口，不是NPC对话入口）:
+  - 技术等级 / 库存 / 售价 / 生产量 / 资助 / 购买及失败反馈
+关键 token:
+  - hsyjs_jsdj / hsyjs_number / hsyjs_rate / price / vipprice
+  - upjs / updata / huanshou / givebb
+  - "技术20级前不能生产" / "你的魔石不够啊" / "没有库存了"
+Godot 实现: ResearchPanel._fund / _production_task / _buy_pet
+注: sprite827 是研究所专属窗口；NPC对话证据见 sprite1174，不得用 sprite827 作为 NPC 四选项的证据。
+
+

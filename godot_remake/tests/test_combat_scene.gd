@@ -1,0 +1,41 @@
+extends Node
+
+const CombatService = preload("res://scripts/combat_service.gd")
+
+
+func _ready() -> void:
+	var combat := CombatService.new(12345)
+	assert(combat.calculate_damage(100, 40, 1.0) == 78, "damage formula changed unexpectedly")
+	assert(combat.calculate_damage(10, 999, 1.0) == 1, "minimum damage must be one")
+
+	var spider_rewards := combat.victory_rewards("spider")
+	assert(spider_rewards.experience == 12000, "player experience multiplier is incorrect")
+	assert(spider_rewards.pet_experience == 1200, "pet experience should use the monster base experience")
+	assert(spider_rewards.military_merit == 0, "normal spider received boss merit")
+	var queen_rewards := combat.victory_rewards("spider_queen")
+	assert(queen_rewards.experience == 30000, "boss experience multiplier is incorrect")
+	assert(queen_rewards.military_merit == 10000, "boss military merit multiplier is incorrect")
+	assert(queen_rewards.nobility_merit == 0 and queen_rewards.monster_id == "spider_queen", "normal boss reward metadata is incorrect")
+	assert(combat.victory_rewards("dungeon_boss").nobility_merit == 3000, "dungeon floor one merit is incorrect")
+	assert(combat.victory_rewards("dungeon_boss_2").nobility_merit == 6000, "dungeon floor two merit is incorrect")
+	assert(combat.victory_rewards("dungeon_boss_3").nobility_merit == 12000, "dungeon floor three merit is incorrect")
+	assert(combat.victory_rewards("snow_warrior").military_merit == 5000, "snow warrior x10 military merit is incorrect")
+	assert(combat.victory_rewards("snow_cavalry").military_merit == 20000, "snow cavalry x10 military merit is incorrect")
+	assert(combat.victory_rewards("snow_officer").military_merit == 50000, "snow officer x10 military merit is incorrect")
+	var pk60 := combat.victory_rewards("pk_champion_60")
+	assert(pk60.experience == 400000 and pk60.magic_stones == 27000 and pk60.military_merit == 0, "60-level PK reward is incorrect")
+	var pk100 := combat.victory_rewards("pk_champion_100")
+	assert(pk100.experience == 1500000 and pk100.magic_stones == 56000, "100-level PK reward is incorrect")
+	var pk130 := combat.victory_rewards("pk_champion_130")
+	assert(pk130.experience == 2500000 and pk130.magic_stones == 82800, "130-level PK reward is incorrect")
+
+	var queen_drops := combat.roll_drops("spider_queen", [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 0)
+	assert(queen_drops == ["advanced_fighting_spirit", "advanced_star_sword", "advanced_flying_slash", "soul_crystal", "soul_king", "illusion_heart", "magic_soul_heart", "enhanced_moon_box"], "queen drop branches are incomplete")
+	var boundary_drops := combat.roll_drops("spider_queen", [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 0)
+	assert(boundary_drops.is_empty(), "queen drops must reject rolls above every chance")
+	assert(combat.roll_drops("dungeon_boss", [0.99, 1.0, 1.0]) == ["soul_king"], "dungeon floor one guaranteed reward is incorrect")
+	assert(combat.roll_drops("dungeon_boss_2", [0.99, 1.0]) == ["dungeon_plus9_sword"], "dungeon floor two +9 equipment is incorrect")
+	assert(combat.roll_drops("dungeon_boss_3", [0.99, 0.99, 1.0]) == ["dungeon_plus12_sword", "war_soul_heart"], "dungeon floor three rewards are incorrect")
+	assert(combat.roll_drops("pk_champion_130", [0.99, 0.99, 0.99, 0.99]) == ["advanced_fighting_spirit", "enhanced_moon_box", "plasma_potion", "rose_bouquet_999"], "130-level PK fixed loot is incorrect")
+	print("PASS combat damage, x10 experience, boss-only merit, and drop tables")
+	get_tree().quit(0)

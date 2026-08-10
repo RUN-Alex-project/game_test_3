@@ -1,0 +1,83 @@
+[
+    {
+        "id":  "border_raid",
+        "name":  "冰雪边境突袭",
+        "description":  "击败暴雪勇士、暴雪骑士长和暴雪军官；三类精英分别即时奖励5,000、20,000和50,000军功。",
+        "repeat":  "daily",
+        "goals":  [
+                      {
+                          "type":  "kill",
+                          "target":  "snow_warrior",
+                          "quantity":  1,
+                          "label":  "击败暴雪勇士"
+                      },
+                      {
+                          "type":  "kill",
+                          "target":  "snow_cavalry",
+                          "quantity":  1,
+                          "label":  "击败暴雪骑士长"
+                      },
+                      {
+                          "type":  "kill",
+                          "target":  "snow_officer",
+                          "quantity":  1,
+                          "label":  "击败暴雪军官"
+                      }
+                  ],
+        "rewards":  {
+
+                    }
+    },
+    {
+        "id":  "dungeon_conquest",
+        "name":  "地下城讨伐",
+        "description":  "依次击败地下城一层、二层和三层首领。每层胜利时立即获得原版功勋奖励。",
+        "repeat":  "daily",
+        "goals":  [
+                      {
+                          "type":  "kill",
+                          "target":  "dungeon_boss",
+                          "quantity":  1,
+                          "label":  "击败地下城一层首领"
+                      },
+                      {
+                          "type":  "kill",
+                          "target":  "dungeon_boss_2",
+                          "quantity":  1,
+                          "label":  "击败地下城二层首领"
+                      },
+                      {
+                          "type":  "kill",
+                          "target":  "dungeon_boss_3",
+                          "quantity":  1,
+                          "label":  "击败地下城三层首领"
+                      }
+                  ],
+        "rewards":  {
+
+                    }
+    },
+    {
+        "id":  "spider_crisis",
+        "name":  "蜘蛛灾变",
+        "description":  "在迷梦沼泽清理蜘蛛，并前往亚维特岛击败蜘蛛王后艾达。",
+        "repeat":  "once",
+        "goals":  [
+                      {
+                          "type":  "kill",
+                          "target":  "spider",
+                          "quantity":  3,
+                          "label":  "击败蜘蛛"
+                      },
+                      {
+                          "type":  "kill",
+                          "target":  "spider_queen",
+                          "quantity":  1,
+                          "label":  "击败蜘蛛王后艾达"
+                      }
+                  ],
+        "rewards":  {
+                        "experience":  10000
+                    }
+    }
+]

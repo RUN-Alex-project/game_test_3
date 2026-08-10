@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource path="res://tests/capture_v131_final_route_guide.gd" type="Script" id="1"]
+
+[node name="CaptureV131FinalRouteGuide" type="Node"]
+script = ExtResource("1")

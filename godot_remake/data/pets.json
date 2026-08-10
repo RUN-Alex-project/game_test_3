@@ -1,0 +1,74 @@
+[
+    {
+        "id":  "attack_defense_light",
+        "name":  "攻防型",
+        "base_hp":  20,
+        "base_attack":  8,
+        "base_defense":  5,
+        "growth_hp":  8,
+        "growth_attack":  3,
+        "growth_defense":  2,
+        "base_quality_score":  0,
+        "icon":  "res://assets/extracted/images/image_0049.png"
+    },
+    {
+        "id":  "attack_defense_heavy",
+        "name":  "攻防型",
+        "base_hp":  30,
+        "base_attack":  5,
+        "base_defense":  8,
+        "growth_hp":  10,
+        "growth_attack":  2,
+        "growth_defense":  3,
+        "base_quality_score":  0,
+        "icon":  "res://assets/extracted/images/image_0051.png"
+    },
+    {
+        "id":  "strange_beast",
+        "name":  "奇异兽",
+        "base_hp":  30,
+        "base_attack":  5,
+        "base_defense":  5,
+        "growth_hp":  8,
+        "growth_attack":  2,
+        "growth_defense":  2,
+        "base_quality_score":  0,
+        "icon":  "res://assets/extracted/images/image_0127.png"
+    },
+    {
+        "id":  "year_pig",
+        "name":  "年猪",
+        "base_hp":  45,
+        "base_attack":  8,
+        "base_defense":  8,
+        "growth_hp":  12,
+        "growth_attack":  3,
+        "growth_defense":  3,
+        "base_quality_score":  1900,
+        "icon":  "res://assets/extracted/images/image_0055.png"
+    },
+    {
+        "id":  "lulu_pet",
+        "name":  "噜噜幻兽",
+        "base_hp":  38,
+        "base_attack":  9,
+        "base_defense":  7,
+        "growth_hp":  10,
+        "growth_attack":  3,
+        "growth_defense":  3,
+        "base_quality_score":  1200,
+        "icon":  "res://assets/extracted/images/image_0055.png"
+    },
+    {
+        "id":  "holy_angel",
+        "name":  "圣天使幻兽",
+        "base_hp":  45,
+        "base_attack":  11,
+        "base_defense":  9,
+        "growth_hp":  12,
+        "growth_attack":  4,
+        "growth_defense":  3,
+        "base_quality_score":  1500,
+        "icon":  "res://assets/extracted/images/image_0129.png"
+    }
+]

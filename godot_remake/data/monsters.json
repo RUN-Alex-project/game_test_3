@@ -1,0 +1,897 @@
+[
+    {
+        "id":  "pk_champion_60",
+        "name":  "60级PK赛冠军战",
+        "level":  60,
+        "max_hp":  16000,
+        "attack":  300,
+        "defense":  130,
+        "base_exp":  40000,
+        "base_magic_stones":  27000,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "advanced_flying_slash",
+                          "chance":  1.0
+                      }
+                  ]
+    },
+    {
+        "id":  "pk_champion_100",
+        "name":  "100级PK赛冠军战",
+        "level":  100,
+        "max_hp":  70000,
+        "attack":  760,
+        "defense":  380,
+        "base_exp":  150000,
+        "base_magic_stones":  56000,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "advanced_flying_slash",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "enhanced_moon_box",
+                          "chance":  1.0
+                      }
+                  ]
+    },
+    {
+        "id":  "pk_champion_130",
+        "name":  "130级PK赛冠军战",
+        "level":  130,
+        "max_hp":  180000,
+        "attack":  1450,
+        "defense":  720,
+        "base_exp":  250000,
+        "base_magic_stones":  82800,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "advanced_fighting_spirit",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "enhanced_moon_box",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "plasma_potion",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "rose_bouquet_999",
+                          "chance":  1.0
+                      }
+                  ]
+    },
+    {
+        "id":  "snow_warrior",
+        "name":  "暴雪勇士",
+        "level":  70,
+        "max_hp":  18000,
+        "attack":  340,
+        "defense":  150,
+        "base_exp":  5000,
+        "base_military_merit":  500,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "magic_soul_crystal",
+                          "chance":  0.20
+                      }
+                  ]
+    },
+    {
+        "id":  "snow_cavalry",
+        "name":  "暴雪骑士长",
+        "level":  90,
+        "max_hp":  42000,
+        "attack":  620,
+        "defense":  300,
+        "base_exp":  10000,
+        "base_military_merit":  2000,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "war_soul_crystal",
+                          "chance":  0.25
+                      }
+                  ]
+    },
+    {
+        "id":  "snow_officer",
+        "name":  "暴雪军官",
+        "level":  110,
+        "max_hp":  90000,
+        "attack":  1000,
+        "defense":  500,
+        "base_exp":  20000,
+        "base_military_merit":  5000,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "war_soul_heart",
+                          "chance":  0.30
+                      }
+                  ]
+    },
+    {
+        "id":  "spider",
+        "name":  "蜘蛛",
+        "level":  45,
+        "max_hp":  7500,
+        "attack":  180,
+        "defense":  78,
+        "base_exp":  1200,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "spider",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "spider_queen",
+        "name":  "蜘蛛王后艾达",
+        "level":  80,
+        "max_hp":  30000,
+        "attack":  450,
+        "defense":  210,
+        "base_exp":  3000,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "loot_profile":  "spider_queen",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "dungeon_boss",
+        "name":  "地下城首领",
+        "level":  80,
+        "max_hp":  36000,
+        "attack":  520,
+        "defense":  260,
+        "base_exp":  9000,
+        "base_military_merit":  1000,
+        "base_nobility_merit":  3000,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "soul_king",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "war_soul_heart",
+                          "chance":  0.15
+                      },
+                      {
+                          "item_id":  "war_soul_crystal",
+                          "chance":  0.25
+                      }
+                  ]
+    },
+    {
+        "id":  "dungeon_boss_2",
+        "name":  "地下城二层首领",
+        "level":  100,
+        "max_hp":  72000,
+        "attack":  800,
+        "defense":  420,
+        "base_exp":  15000,
+        "base_military_merit":  1000,
+        "base_nobility_merit":  6000,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "dungeon_plus9_sword",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "magic_soul_crystal",
+                          "chance":  0.35
+                      }
+                  ]
+    },
+    {
+        "id":  "dungeon_boss_3",
+        "name":  "地下城三层首领",
+        "level":  120,
+        "max_hp":  120000,
+        "attack":  1200,
+        "defense":  600,
+        "base_exp":  25000,
+        "base_military_merit":  1000,
+        "base_nobility_merit":  12000,
+        "is_boss":  true,
+        "drops":  [
+                      {
+                          "item_id":  "dungeon_plus12_sword",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "war_soul_heart",
+                          "chance":  1.0
+                      },
+                      {
+                          "item_id":  "enhanced_moon_box",
+                          "chance":  0.50
+                      }
+                  ]
+    },
+    {
+        "id":  "thunder_boss_10",
+        "name":  "10级BOSS",
+        "level":  10,
+        "combat_power":  10,
+        "max_hp":  1200,
+        "attack":  55,
+        "defense":  18,
+        "base_exp":  500,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "original_level":  10,
+        "loot_profile":  "native_boss",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "desert_boss_20",
+        "name":  "20级BOSS",
+        "level":  20,
+        "combat_power":  30,
+        "max_hp":  2500,
+        "attack":  90,
+        "defense":  32,
+        "base_exp":  1200,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "original_level":  20,
+        "loot_profile":  "native_boss",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "swamp_boss_30",
+        "name":  "30级BOSS",
+        "level":  30,
+        "combat_power":  45,
+        "max_hp":  5500,
+        "attack":  140,
+        "defense":  55,
+        "base_exp":  2500,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "original_level":  30,
+        "loot_profile":  "native_boss",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "ice_boss_50",
+        "name":  "50级BOSS",
+        "level":  50,
+        "combat_power":  75,
+        "max_hp":  12000,
+        "attack":  240,
+        "defense":  105,
+        "base_exp":  6000,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "original_level":  50,
+        "loot_profile":  "native_boss",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "avit_boss_70",
+        "name":  "70级BOSS",
+        "level":  70,
+        "combat_power":  105,
+        "max_hp":  25000,
+        "attack":  400,
+        "defense":  185,
+        "base_exp":  12000,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "original_level":  70,
+        "loot_profile":  "native_boss",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "volcano_boss_90",
+        "name":  "90级BOSS",
+        "level":  90,
+        "combat_power":  135,
+        "max_hp":  55000,
+        "attack":  700,
+        "defense":  330,
+        "base_exp":  25000,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "original_level":  90,
+        "loot_profile":  "native_boss",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "abyss_boss_100",
+        "name":  "100级BOSS",
+        "level":  100,
+        "combat_power":  150,
+        "max_hp":  85000,
+        "attack":  900,
+        "defense":  450,
+        "base_exp":  35000,
+        "base_military_merit":  1000,
+        "is_boss":  true,
+        "original_level":  100,
+        "loot_profile":  "native_boss",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "territory_thunder_guard",
+        "name":  "雷鸣大陆挑战者",
+        "level":  50,
+        "combat_power":  120,
+        "max_hp":  14000,
+        "attack":  250,
+        "defense":  110,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "territory_desert_guard",
+        "name":  "戈壁挑战者",
+        "level":  80,
+        "combat_power":  140,
+        "max_hp":  30000,
+        "attack":  480,
+        "defense":  240,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "territory_swamp_guard",
+        "name":  "迷梦沼泽挑战者",
+        "level":  100,
+        "combat_power":  160,
+        "max_hp":  60000,
+        "attack":  750,
+        "defense":  390,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "territory_ice_guard",
+        "name":  "冰宫挑战者",
+        "level":  120,
+        "combat_power":  200,
+        "max_hp":  100000,
+        "attack":  1100,
+        "defense":  560,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "territory_avit_guard",
+        "name":  "亚维特岛挑战者",
+        "level":  120,
+        "combat_power":  240,
+        "max_hp":  135000,
+        "attack":  1400,
+        "defense":  700,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "territory_cassano_guard",
+        "name":  "卡萨诺城挑战者",
+        "level":  150,
+        "combat_power":  500,
+        "max_hp":  250000,
+        "attack":  2000,
+        "defense":  1000,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "demon_assault",
+        "name":  "魔军突击队",
+        "level":  700,
+        "combat_power":  700,
+        "max_hp":  140000,
+        "attack":  1600,
+        "defense":  700,
+        "base_exp":  50000,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ],
+        "original_max_hp":  140000,
+        "original_attack_min":  42000,
+        "original_attack_max":  70000,
+        "original_defense":  24500
+    },
+    {
+        "id":  "demon_guard",
+        "name":  "魔军守卫军",
+        "level":  800,
+        "combat_power":  800,
+        "max_hp":  480000,
+        "attack":  1000,
+        "defense":  800,
+        "base_exp":  70000,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ],
+        "original_max_hp":  480000,
+        "original_attack_min":  16000,
+        "original_attack_max":  40000,
+        "original_defense":  28000
+    },
+    {
+        "id":  "demon_mystery",
+        "name":  "魔军神秘部队",
+        "level":  900,
+        "combat_power":  900,
+        "max_hp":  270000,
+        "attack":  1250,
+        "defense":  643,
+        "base_exp":  90000,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ],
+        "original_max_hp":  270000,
+        "original_attack_min":  27000,
+        "original_attack_max":  54000,
+        "original_defense":  22500
+    },
+    {
+        "id":  "demon_totem",
+        "name":  "魔军图腾兽",
+        "level":  1000,
+        "combat_power":  1000,
+        "max_hp":  300000,
+        "attack":  1150,
+        "defense":  857,
+        "base_exp":  110000,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ],
+        "original_max_hp":  300000,
+        "original_attack_min":  30000,
+        "original_attack_max":  50000,
+        "original_defense":  30000
+    },
+    {
+        "id":  "demon_commander",
+        "name":  "魔军主帅",
+        "level":  2000,
+        "combat_power":  2000,
+        "max_hp":  1000000,
+        "attack":  4300,
+        "defense":  1143,
+        "base_exp":  250000,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ],
+        "original_max_hp":  1000000,
+        "original_attack_min":  100000,
+        "original_attack_max":  200000,
+        "original_defense":  40000
+    },
+    {
+        "id":  "demon_energy",
+        "name":  "魔的能量",
+        "level":  2000,
+        "combat_power":  2000,
+        "max_hp":  1000000,
+        "attack":  4300,
+        "defense":  1143,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  true,
+        "drops":  [
+
+                  ],
+        "original_note":  "原版按2000级最终敌人进入战场；摧毁后直接触发游戏结束。"
+    },
+    {
+        "id":  "fuwa_beast",
+        "name":  "雷角风牙兽",
+        "level":  1,
+        "combat_power":  1,
+        "max_hp":  1200,
+        "attack":  80,
+        "defense":  25,
+        "base_exp":  500,
+        "base_gold":  0,
+        "base_magic_stones":  0,
+        "base_military_merit":  0,
+        "base_nobility_merit":  0,
+        "is_boss":  false,
+        "drops":  [
+
+                  ],
+        "exclusive_drops":  [
+                                {
+                                    "item_id":  "war_soul_heart",
+                                    "chance":  0.5
+                                },
+                                {
+                                    "item_id":  "enhanced_moon_box",
+                                    "chance":  0.5
+                                }
+                            ]
+    },
+    {
+        "id":  "nameless_war_soul_keeper",
+        "name":  "无名氏",
+        "level":  50,
+        "combat_power":  150,
+        "max_hp":  12000,
+        "attack":  240,
+        "defense":  105,
+        "base_exp":  0,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "drops":  [
+                      {
+                          "item_id":  "war_soul_heart",
+                          "chance":  1
+                      }
+                  ]
+    },
+    {
+        "id":  "thunder_giant",
+        "name":  "巨杰士",
+        "level":  1,
+        "original_level":  1,
+        "max_hp":  350,
+        "attack":  22,
+        "defense":  4,
+        "base_exp":  50,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "thunder_dragon",
+        "name":  "龙怪",
+        "level":  5,
+        "original_level":  5,
+        "max_hp":  650,
+        "attack":  38,
+        "defense":  10,
+        "base_exp":  100,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "desert_ice_swordsman",
+        "name":  "冰妖剑士",
+        "level":  10,
+        "original_level":  10,
+        "max_hp":  900,
+        "attack":  48,
+        "defense":  16,
+        "base_exp":  180,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "desert_jack_lantern",
+        "name":  "杰克灯笼",
+        "level":  15,
+        "original_level":  15,
+        "max_hp":  1400,
+        "attack":  60,
+        "defense":  22,
+        "base_exp":  280,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "desert_typhon",
+        "name":  "提风",
+        "level":  25,
+        "original_level":  25,
+        "max_hp":  2600,
+        "attack":  90,
+        "defense":  35,
+        "base_exp":  500,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "swamp_fanged_demon",
+        "name":  "望齿魔人",
+        "level":  35,
+        "original_level":  35,
+        "max_hp":  4300,
+        "attack":  125,
+        "defense":  50,
+        "base_exp":  800,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "swamp_horned_lizard",
+        "name":  "角蜥",
+        "level":  45,
+        "original_level":  45,
+        "max_hp":  7500,
+        "attack":  180,
+        "defense":  78,
+        "base_exp":  1200,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "ice_taya_dragon",
+        "name":  "塔亚龙",
+        "level":  55,
+        "original_level":  55,
+        "max_hp":  10000,
+        "attack":  220,
+        "defense":  95,
+        "base_exp":  1800,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "ice_death_knight",
+        "name":  "死亡骑士",
+        "level":  65,
+        "original_level":  65,
+        "max_hp":  15000,
+        "attack":  300,
+        "defense":  130,
+        "base_exp":  2600,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "avit_fish_demon",
+        "name":  "鱼妖",
+        "level":  70,
+        "original_level":  70,
+        "max_hp":  18000,
+        "attack":  340,
+        "defense":  150,
+        "base_exp":  3200,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "avit_terror_beast",
+        "name":  "恐兽",
+        "level":  75,
+        "original_level":  75,
+        "max_hp":  22000,
+        "attack":  380,
+        "defense":  175,
+        "base_exp":  3800,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "avit_giant_axe",
+        "name":  "巨斧怪",
+        "level":  80,
+        "original_level":  80,
+        "max_hp":  27000,
+        "attack":  430,
+        "defense":  205,
+        "base_exp":  4500,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "avit_thorn_bug",
+        "name":  "刺虫人",
+        "level":  85,
+        "original_level":  85,
+        "max_hp":  33000,
+        "attack":  500,
+        "defense":  240,
+        "base_exp":  5200,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "volcano_four_fang",
+        "name":  "四牙怪",
+        "level":  90,
+        "original_level":  90,
+        "max_hp":  40000,
+        "attack":  580,
+        "defense":  280,
+        "base_exp":  6500,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "volcano_fire_woman",
+        "name":  "炎女",
+        "level":  95,
+        "original_level":  95,
+        "max_hp":  48000,
+        "attack":  660,
+        "defense":  320,
+        "base_exp":  8000,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "volcano_scorpion",
+        "name":  "蝎怪",
+        "level":  100,
+        "original_level":  100,
+        "max_hp":  60000,
+        "attack":  760,
+        "defense":  380,
+        "base_exp":  10000,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "abyss_dark_messiah",
+        "name":  "暗黑弥塞亚",
+        "level":  110,
+        "original_level":  110,
+        "max_hp":  80000,
+        "attack":  920,
+        "defense":  470,
+        "base_exp":  14000,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "abyss_dark_grass",
+        "name":  "暗黑格拉斯",
+        "level":  120,
+        "original_level":  120,
+        "max_hp":  110000,
+        "attack":  1150,
+        "defense":  580,
+        "base_exp":  19000,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    },
+    {
+        "id":  "abyss_sigh_knight",
+        "name":  "叹息骑士",
+        "level":  130,
+        "original_level":  130,
+        "max_hp":  150000,
+        "attack":  1450,
+        "defense":  720,
+        "base_exp":  25000,
+        "base_military_merit":  0,
+        "is_boss":  false,
+        "loot_profile":  "native_normal",
+        "drops":  [
+
+                  ]
+    }
+]

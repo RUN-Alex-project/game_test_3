@@ -1,0 +1,22 @@
+{
+  "quality_success_rate": 1.0,
+  "magic_soul_success_rate": 1.0,
+  "quality_stat_percent_per_level": 5,
+  "magic_soul_stat_percent_per_level": 3,
+  "war_soul_crystal_success_rate": 0.5,
+  "war_soul_combat_power_percent_per_level": 10,
+  "soul_level_cap": 5,
+  "heaven_soul_attack_percent_per_level": 10,
+  "earth_soul_dodge_percent_per_level": 4,
+  "rose_affection": {
+    "99": 50,
+    "999": 250
+  },
+  "materials": {
+    "quality":"enhanced_moon_box",
+    "magic_soul":"magic_soul_crystal",
+    "war_soul":"war_soul_crystal",
+    "heaven_soul":"war_soul_heart",
+    "earth_soul":"war_soul_heart"
+  }
+}

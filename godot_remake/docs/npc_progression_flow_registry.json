@@ -1,0 +1,93 @@
+{
+	"registry_version": "1.34",
+	"baseline_version": "v1.33",
+	"purpose": "区分原版NPC对话入口与VIP便捷聚合窗；登记五组NPC可交互选项的action映射、状态差与SWF证据",
+	"evidence_convention": "evidence_source 为可机器验证的工程文件路径；evidence_tokens 必须在该文件文本中命中；swf_evidence 为原版ActionScript来源（sprite scope，不机器验证但记录出处）",
+	"npcs": [
+		{
+			"npc_id": "marshal",
+			"map_id": "palace",
+			"options": [
+				{"label": "领取军饷", "action_id": "military_salary", "availability": "周日且有军衔且当周未领取", "success_state_diff": "魔石+999999999（用户覆盖值）", "failure_state_diff": "非周日/无军衔/已领取时不扣资源", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["领取军饷", "星期天才发军饷"], "implementation_path": "res://scripts/main_original.gd#_claim_military_salary", "swf_evidence": "sprite1184: 选项'领取军饷'，'星期天才发军饷'/'你已经领过了'", "classification": "native_confirmed"},
+				{"label": "战功查询", "action_id": "military_status", "availability": "always", "success_state_diff": "显示当前军功/军衔/下一军衔差额/军衔战斗力，不打开progression_panel", "failure_state_diff": "无失败路径", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["战功查询", "你的当前的战功是"], "implementation_path": "res://scripts/main_original.gd#_open_military_status_dialogue", "swf_evidence": "sprite1184: 选项'战功查询'，文本'你的当前的战功是'/'你还要X战功才能晋升一级军衔'", "classification": "native_confirmed"},
+				{"label": "国王消息", "action_id": "marshal_info", "availability": "always", "success_state_diff": "显示元帅消息页，提供战功查询返回", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["军情查询"], "implementation_path": "res://scripts/main_original.gd#_open_marshal_info_dialogue", "swf_evidence": "sprite1184: 军情/消息分支", "classification": "evidence_gap"}
+			]
+		},
+		{
+			"npc_id": "prime_minister",
+			"map_id": "palace",
+			"options": [
+				{"label": "捐献金币", "action_id": "prime_donate", "availability": "always", "success_state_diff": "进入捐献档位页；执行donate_gold:750000成功扣750000金币加1功勋", "failure_state_diff": "金币不足时不扣金币不加功勋", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["捐献金币", "捐每750,000金币能获得1点功勋"], "implementation_path": "res://scripts/main_original.gd#_open_prime_donate_dialogue", "swf_evidence": "sprite1183: 选项'捐献金币'，'捐每750,000金币能获得1点功勋'", "classification": "native_confirmed"},
+				{"label": "功勋查询", "action_id": "prime_merit", "availability": "always", "success_state_diff": "显示当前功勋/爵位/下一爵位差额", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["功勋查询", "你当前的的功勋是"], "implementation_path": "res://scripts/main_original.gd#_open_prime_minister_merit", "swf_evidence": "sprite1183: 选项'功勋查询'，'你当前的的功勋是'", "classification": "native_confirmed"},
+				{"label": "国王消息", "action_id": "prime_king", "availability": "always", "success_state_diff": "显示国王消息文本", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["关于国王的消息"], "implementation_path": "res://scripts/main_original.gd#_open_prime_minister_king_news", "swf_evidence": "sprite1183: 选项'关于国王的消息'", "classification": "native_confirmed"},
+				{"label": "关于爵位", "action_id": "prime_nobility", "availability": "always", "success_state_diff": "显示爵位说明与捐献入口", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["关于爵位", "捐每750,000金币能获得1点功勋"], "implementation_path": "res://scripts/main_original.gd#_open_prime_minister_nobility", "swf_evidence": "sprite1183: 选项'关于爵位'，爵位门槛1000/3000/6000/15000/30000", "classification": "native_confirmed"}
+			]
+		},
+		{
+			"npc_id": "princess",
+			"map_id": "palace",
+			"options": [
+				{"label": "聊天", "action_id": "princess_chat", "availability": "当日未聊过", "success_state_diff": "好感+1并按关系阶段赠幻兽", "failure_state_diff": "已聊过不扣资源", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["聊天", "今天已经聊过了"], "implementation_path": "res://scripts/main_original.gd#_chat_with_princess", "swf_evidence": "sprite1206: 选项'聊天'，gzchat", "classification": "native_confirmed"},
+				{"label": "送礼", "action_id": "princess_gift", "availability": "always", "success_state_diff": "进入玫瑰档位页；give_roses:99成功消耗99玫瑰+50好感；give_roses:999消耗999玫瑰+250好感", "failure_state_diff": "玫瑰不足不扣物品不加好感", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["送礼", "99朵白玫瑰", "999朵白玫瑰"], "implementation_path": "res://scripts/main_original.gd#_open_princess_gift_dialogue", "swf_evidence": "sprite1206: 选项'送礼'gzgift，'99朵白玫瑰'/'999朵白玫瑰'，'公主高兴地收下了你的99/999朵白玫瑰'", "classification": "native_confirmed"},
+				{"label": "星期天礼物", "action_id": "princess_sunday_gift", "availability": "周日且关系达标且未领取", "success_state_diff": "获得周日礼物", "failure_state_diff": "非周日/关系不足/已领取不写入领取日", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["星期天的礼物", "今天是星期天"], "implementation_path": "res://scripts/main_original.gd#_claim_princess_sunday_gift", "swf_evidence": "sprite1206: sundaygift，高级经验石/高级战斗力石/灵魂王/电浆药水/战魂之心", "classification": "native_confirmed"},
+				{"label": "知己的礼物", "action_id": "princess_friend_gift", "availability": "关系达知己且标志可用", "success_state_diff": "获得攻防型幻兽", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["gzgx4"], "implementation_path": "res://scripts/main_original.gd#_claim_princess_friend_gift", "swf_evidence": "sprite1206: gzgx4 知己礼物", "classification": "native_confirmed"}
+			]
+		},
+		{
+			"npc_id": "daily_officer",
+			"map_id": "cassano_city",
+			"options": [
+				{"label": "交付宝石", "action_id": "daily_deliver", "availability": "周一/周二", "success_state_diff": "进入交付页；daily_deliver:collect_magic_soul消耗1魔魂晶石+500功勋；daily_deliver:collect_soul_king消耗1灵魂王+2000功勋", "failure_state_diff": "材料不足/当天已完成不扣资源", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["灵魂晶石", "灵魂王", "500点功勋"], "implementation_path": "res://scripts/main_original.gd#_open_daily_deliver_dialogue", "swf_evidence": "sprite1161: 周一/二'收集宝石'，'灵魂晶石'/'灵魂王'，'任务奖励：大量经验和500点功勋'", "classification": "intentional_divergence"},
+				{"label": "任务说明", "action_id": "daily_help", "availability": "always", "success_state_diff": "显示全周任务说明", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["关于日常任务"], "implementation_path": "res://scripts/main_original.gd#_open_daily_help_dialogue", "swf_evidence": "sprite1161: '关于日常任务'分支", "classification": "native_confirmed"},
+				{"label": "查看幻兽", "action_id": "pets", "availability": "周三/周四", "success_state_diff": "打开幻兽面板，可由详情'上交日常'完成submit_pet_for_daily_task", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["训练幻兽", "上交一只高星攻防型幻兽"], "implementation_path": "res://scripts/pet_panel.gd", "swf_evidence": "sprite1161: 周三/四'训练幻兽'，'上交一个[攻防型]幻兽'", "classification": "native_confirmed"},
+				{"label": "接受突袭任务", "action_id": "quest_accept:border_raid", "availability": "周五", "success_state_diff": "接受雪域边境突袭任务", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["周五任务：突击", "雪域边境"], "implementation_path": "res://scripts/main_original.gd#_accept_daily_quest", "swf_evidence": "sprite1161: 周五'突击'", "classification": "native_confirmed"},
+				{"label": "前往皇宫(PK)", "action_id": "travel:palace", "availability": "周六", "success_state_diff": "传送皇宫报名PK", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["周六任务：PK赛", "皇宫"], "implementation_path": "res://scripts/main_original.gd#_travel_to", "swf_evidence": "sprite1161: 周六PK赛", "classification": "native_confirmed"},
+				{"label": "接受地下城任务", "action_id": "quest_accept:dungeon_conquest", "availability": "周日", "success_state_diff": "接受地下城任务", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["周日任务：地下城"], "implementation_path": "res://scripts/main_original.gd#_accept_daily_quest", "swf_evidence": "sprite1161: 周日'地下城魔族将领会议'", "classification": "native_confirmed"},
+				{"label": "进入地下城", "action_id": "enter_dungeon", "availability": "周日", "success_state_diff": "进入地下城一层", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["地下城1层"], "implementation_path": "res://scripts/main_original.gd#_enter_dungeon", "swf_evidence": "sprite1161: 周日地下城入口", "classification": "native_confirmed"}
+			]
+		},
+		{
+			"npc_id": "research",
+			"map_id": "cassano_city",
+			"options": [
+				{"label": "进入", "action_id": "research", "availability": "always", "success_state_diff": "打开现有ResearchPanel", "failure_state_diff": "无", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["进入", "国家投资100,000魔石成立了幻兽研究所"], "implementation_path": "res://scripts/main_original.gd#_toggle_research", "classification": "native_confirmed", "swf_evidence": "sprite1174: 选项'进入'(flag)，打开研究所窗口"},
+				{"label": "研究所的当前信息", "action_id": "research_info", "availability": "always", "success_state_diff": "只读显示当前技术/日产量/库存/VIP/20级生产条件，不修改状态", "failure_state_diff": "无（只读）", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["研究所的当前信息"], "implementation_path": "res://scripts/main_original.gd#_open_research_info", "classification": "native_confirmed", "swf_evidence": "sprite1174: 选项'研究所的当前信息'，hsyjs_jsdj/hsyjs_rate/hsyjs_number/hsyjsvip"},
+				{"label": "关于2008奥运使者", "action_id": "research_olympic_info", "availability": "always", "success_state_diff": "显示五福娃/技术资料状态（未完成/未领取/已领取），不修改状态", "failure_state_diff": "无（只读）", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["关于2008奥运使者", "听说2008奥运使者对幻兽培养技术很有研究"], "implementation_path": "res://scripts/main_original.gd#_open_research_olympic_info", "classification": "native_confirmed", "swf_evidence": "sprite1174: 选项'关于2008奥运使者'，pro2008now"},
+				{"label": "提高产量任务", "action_id": "research_production_task", "availability": "产量未达上限6且有灵魂王", "success_state_diff": "消耗灵魂王+日产量+2", "failure_state_diff": "缺材料/达上限不扣灵魂王不改产量", "evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt", "evidence_tokens": ["提高产量任务", "rw_hsyjs"], "implementation_path": "res://scripts/main_original.gd#_perform_research_production_task", "classification": "native_confirmed", "swf_evidence": "sprite1174: 选项'提高产量任务'(rw_hsyjs)，needbs/灵魂王/updata"}
+			]
+		}
+	],
+	"evidence_gaps": [
+		"元帅原版'军情查询'：sprite1184含BOSS行踪文本(boss10..boss100)，当前未实现独立入口；现有'国王消息'(marshal_info)是项目故事入口，不等同原版'军情查询'。",
+		"元帅原版'关于军衔'：sprite1184含军功来源与各级军衔说明(每消灭BOSS奖1000战功/少尉至上尉1000战功等)，当前未实现独立入口。",
+		"首相75,000,000金币档：无原版ActionScript证据，仅为VIP便捷聚合窗批量操作(convenience_override)。",
+		"日常官材料/奖励差异：原版'灵魂晶石+灵魂王 500功勋' vs 项目'魔魂晶石500+灵魂王2000'(intentional_divergence)。"
+	],
+	"convenience_overrides": [
+		{
+			"label": "捐献75,000,000金币",
+			"classification": "convenience_override",
+			"description": "VIP便捷聚合窗批量档，100功勋；原版仅确认750,000金币=1功勋，此档无原版ActionScript证据",
+			"evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt",
+			"evidence_tokens": [
+				"捐每750,000金币能获得1点功勋"
+			],
+			"pm_decision": "DEC-134-01: 保留为VIP便捷批量操作，不作为原版首相NPC选项"
+		}
+	],
+	"intentional_divergences": [
+		{
+			"label": "日常官材料与奖励",
+			"classification": "intentional_divergence",
+			"native_evidence": "原版sprite1161: 灵魂晶石+灵魂王，奖励500点功勋",
+			"project_rule": "魔魂晶石(magic_soul_crystal)500功勋 + 灵魂王(soul_king)2000功勋",
+			"evidence_source": "res://docs/evidence/npc_progression_actions_v103_v9.txt",
+			"evidence_tokens": [
+				"灵魂晶石",
+				"灵魂王",
+				"500点功勋"
+			],
+			"pm_decision": "DEC-134-02: v1.34整改不改数值，保持项目规则；后续如需还原原版另发数值迁移任务"
+		}
+	]
+}

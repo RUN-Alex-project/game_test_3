@@ -1,0 +1,18 @@
+请接手 E:\deepseek-work\TKS3_mod\godot_remake 中的《魔域 1.03》Godot 重制项目。
+
+你不能识别图片，因此请不要依赖或猜测截图内容。先完整阅读：
+
+1. E:\deepseek-work\TKS3_mod\godot_remake\交接任务书_无图像模型_v1.31.md
+2. E:\deepseek-work\TKS3_mod\godot_remake\README.md
+3. E:\deepseek-work\TKS3_mod\godot_remake\版本改动.md
+4. E:\deepseek-work\TKS3_mod\godot_remake\开发进度.md
+5. E:\deepseek-work\TKS3_mod\godot_remake\试玩反馈.md
+
+然后运行：
+
+cd E:\deepseek-work\TKS3_mod\godot_remake
+.\run_tests.ps1
+
+当前冻结基线是 v1.31：46 个自动化测试场景和主场景冒烟测试全部通过，主线已经从地下城三层救王贯通到摧毁魔的能量和结局页。
+
+本次只完成 v1.32“基线冻结与无图像证据注册表”：建立结构化文本注册表，记录当前已确认 UI/动画的 SWF 角色号、父角色、根帧、矩阵、边界、色值、Godot 文件和测试文件；添加验证注册表路径和结构的自动化测试。不得修改玩法、UI、用户覆盖数值或存档。完成后运行专项、相邻回归和全量测试，并把 v1.32 追加到同一份版本文档。不要自动开始 v1.33。

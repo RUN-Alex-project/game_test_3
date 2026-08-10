@@ -1,0 +1,180 @@
+魔域1.03 v9 SWF 剧情与对话证据文件（v1.38）
+来源：E:\deepseek-work\TKS3_mod\魔域1.03_v9.swf（FFDec 26.2.1 反编译，work/v137/ffdec_export_v5/scripts/）
+分类：native_confirmed（FFDec 原文可定位）/ evidence_gap（无原文，仅行为推断）/ intentional_divergence（用户批准改值）
+
+=== 救王域（地下城三层 dungeon_boss_3 击败 -> rescue_king）===
+
+【frame6 DoAction.as（创建角色/开始后，王宫消息）】native_confirmed
+  "\r　　随着国王的回来，人类军队的士气被激起到了最高点，他们已经准备好与魔族大军决战到底。"
+  "\r　　因为英勇地救出了国王，你被授与王爵位。"
+  "\r　　快回皇宫看年国王对于与魔族大军决战有什么策略吧......"
+  → 救王奖励：未达王爵位 -> 授与"王"；已为"王" -> 200,000 魔石（用户覆盖，见 intentional_divergence）
+    奖励文本出自本帧（授与王爵位 / 决战策略）。
+
+【game_state.gd rescue_king()】native_confirmed（行为证据）
+  前置：story_flags.king_rescued == false（已救 -> already_rescued，幂等）
+  首次：dungeon_boss_3 击败（game_state.gd:1880 story_result = rescue_king()）
+    - 爵位等级 < 6 -> nobility_merit = max(merit, 100000)，reward_type=nobility_rank（授与王）
+    - 否 -> magic_stones += 200000，reward_type=magic_stones
+  重复：king_rescued=true -> {"triggered":false,"reason":"already_rescued"}（奖励不重复）
+  跨日：无（一次性剧情，不随日重置）
+  读档：story_flags["king_rescued"] 随 v21 存档保存/恢复（game_state.gd:2163）
+
+【test_story_scene.gd】native_confirmed（已有自动化覆盖）
+  首次授王爵位 / 20万魔石分支 / already_rescued 幂等 / 读档恢复已覆盖。
+
+=== 王国情报域（国王/首相，未救/已救两分支）===
+
+【main_original.gd _open_prime_minister_king_news()】evidence_gap（SWF 原文未定位，行为为实现推断）
+  未救："人类的国王被魔族大军先锋部队俘虏了。……人类必须尽快消灭境内先锋、救出国王并组织军队抵抗。"
+  已救："感谢勇士们，我们的国王终于回来了。请听听国王对付魔族大军的策略。"
+  注：两条文案为生产实现文本，SWF 原字符串未在导出中定位到一致措辞——标 evidence_gap，不冒充 native_confirmed。
+
+【main_original.gd _open_king_dialogue()】evidence_gap
+  前置：king_rescued == false -> "国王仍被魔族囚禁。"（不打开对话）
+  已救：六类情报选项（突击队/守卫军/神秘军/图腾兽/魔的能量/魔军主帅）
+  情报文本（700/800/900/1000级、攻防/生命/战斗力+50%、每天复活、2000级主帅）为生产实现，
+  未在 SWF 导出定位到逐字一致措辞——标 evidence_gap。
+
+=== intentional_divergence（用户批准的冻结覆盖，v1.38 不得改动）===
+  救王奖励金额种族：王爵位 <- 原版；20万魔石为便利档（用户批准），分类 intentional_divergence。
+=== 公主/侍女域（第二阶段）===
+
+【sprite1079 frame_1 DoAction.as（公主）】native_confirmed
+  关系奖励 reward1-6 按关系等级送宠（reward1 reward2 reward3 reward4 reward5 reward6）：
+    reward1/2: 满经验球+灵魂晶石+99朵白玫瑰+装备（攻防型xo8）
+    reward3:   +飞天连斩 +xo12（12星奇异兽）
+    reward5/6: +999朵白玫瑰 +xo19（19星奇异兽）
+  99朵/999朵白玫瑰 id（送花礼物，消耗玫瑰增好感）
+  → 对应 game_state.chat_with_princess（关系2-6送宠）/ give_roses（99=+50 / 999=+250）
+
+【sprite1146/sprite1200 侍女 DoAction.as】native_confirmed
+  年猪（5,888 魔石）/ 高级战斗力石（2,800 魔石）购买
+  → 对应 game_state.buy_maid_year_pig / buy_maid_combat_stone（均幂等，已售出 sold_out）
+
+【main_original.gd 公主/侍女对话路由】native_confirmed（行为证据）
+  princess_chat / give_roses:99|999 / princess_friend_gift / princess_sunday_gift /
+  maid_year_pig / maid_combat_stone 六 action 走真实 dispatcher（_handle_dialogue_action）
+  → 对应注册表 6 节点（precondition/first/repeat/cross_day/save_restore 逐项登记）
+
+=== intentional_divergence（附录）===
+  公主/侍女价格均为原版（5888/2800 魔石），用户冻结覆盖，v1.38 不改。
+
+=== 日常官域（第三阶段）===
+
+【sprite1161 frame_1 DoAction.as（日常任务官）】native_confirmed
+  周一至周日任务文本（逐字）：
+    "在这里从周一到周日都有不同的任务可以接。"
+    "周一和周二任务：收集宝石－－收集一定数量灵魂晶石或灵魂王"
+    "周三和周四任务：训练幻兽－－上交一只高星攻防型幻兽"
+    "周五任务：突袭－－前往雪域边境袭击魔族军队"
+    "周六任务：PK赛－－国家例行勇士PK大赛"
+    "周日任务：地下城魔族将领会议－－前往破坏会议"
+  今日任务分支（收集宝石/训练幻兽/突袭/PK赛/地下城魔族将领会议）：
+    "今天任务：收集宝石" / "今天任务：训练幻兽" / "今天任务：突袭" /
+    "今天任务：PK赛\r请到[皇宫][周赛PK报名官]那里报名参加比赛。" /
+    "今天任务：地下城魔族将领会议\r　前言：探子来报说……地下城共有三层……"
+  地下城入口路由：_root.gotoAndStop("地下城1层") / gotoAndStop("地下城3层")
+
+【game_state/quest_service 行为证据】native_confirmed
+  quest_service.accept（available->active）/ claim（ready->completed）/ reset_daily（daily 任务跨日重置）
+  complete_daily_task（消耗物品->功勋/军功，幂等）/ submit_pet_for_daily_task（星级10/15/30 -> 5000/10000/50000魔石+1000军功，幂等）
+  advance_day 清空 completed_daily_tasks + reset_daily(quest_states)（跨日可重做）
+  对应注册表 3 节点（daily_task_accept / complete / submit_pet）
+
+=== 五福娃域（第四阶段）===
+
+【sprite1090 frame_1 DoAction.as（2008奥运使者）】native_confirmed
+  "我们的五福娃不知跑去哪玩了，我正在找它们。"
+  → 接受后 _root.gotoAndStop("草原")（对应 start_fuwa_round -> green_field）
+
+【frame_10 DoAction.as（草原战斗）】native_confirmed
+  "你找啊找，来到了一片草原上，突然蹦出了一头怪兽出来...非常凶悍...是打是跑你看着办吧..."
+  → 对应 complete_fuwa_beast_battle（雷角风牙兽）-> 草原2
+
+【frame_11 福娃 reward】native_confirmed
+  五福娃（贝贝/欢欢/迎迎/妮妮/晶晶）随机礼物领取
+  → 对应 claim_fuwa_reward（found_count++，五轮）
+
+【game_state 五福娃状态机行为证据】native_confirmed
+  start_fuwa_round（开始->草原，round_active）
+  complete_fuwa_beast_battle（击败->beast_defeated）
+  claim_fuwa_reward（领取->found_count+1，回合结束，集齐去树心城）
+  claim_fuwa_completion（集齐->100000魔石+VIP+1，幂等）
+  refresh_fuwa_messenger_for_new_day（跨日使者刷新）
+  对应注册表 4 节点（fuwa_start_round / beast_battle / claim_reward / completion）
+
+=== 后花园/抽奖域（第五阶段）===
+
+【sprite1071 DoAction.as（皇宫方向出口）】native_confirmed
+  "只有爵位达到勋爵以上才可以进入后花园"
+  → 对应 palace_garden_entry 门槛（爵位>=勋爵）
+
+【sprite1222 DoAction.as（抽奖房）】native_confirmed
+  "你不够28点魔石了哦，不能抽奖费啦。"
+  → 对应 lottery_chest（28 魔石 + 2 时间，可重复，四档奖励）
+
+【game_state 后花园/抽奖行为证据】native_confirmed
+  map_entry_availability_rule("palace_garden") = nobility_rank_gt_0（爵位门槛）
+  open_lottery_chest（扣28魔石+2时间，四档2%/5%/38%/55%随机，可重复）
+  对应注册表 2 节点（palace_garden_entry / lottery_chest）
+
+=== PK 域（第六阶段）===
+
+【sprite1161 DoAction.as（周六任务）】native_confirmed
+  "周六任务：PK赛\r请到[皇宫][周赛PK报名官]那里报名参加比赛。"
+  → 对应 pk_register（星期六报名）
+
+【sprite443 DoAction.as（三级 PK 擂主）】native_confirmed
+  "恭喜你获得了本届PK赛冠军\r你获得了：27,000魔石、40,000经验、高级飞天连斩"（60级）
+  "恭喜你获得了本届PK赛冠军\r你获得了：56,000魔石、150,000经验、高级飞天连斩、月光宝盒增强版"（100级）
+  "恭喜你获得了本届PK赛冠军\r你获得了：82,800魔石、250,000经验、高级斗志抑扬、月光宝盒增强版、电浆药水、999朵白玫瑰"（130级）
+  → 对应 pk_champion（三级冠军奖励）
+
+【game_state PK 状态机行为证据】native_confirmed
+  register_pk_race（星期六/当天一次/三级分组 <=60/<=100/>100）
+  finish_pk_race（报名资格消耗，当天不可重复）
+  对应注册表 2 节点（pk_register / pk_champion）
+
+=== 战魂域（第七阶段）===
+
+【sprite1235 DoAction.as（战魂探险家/带路人）】native_confirmed
+  "小伙子，看你东张西望的，是不是在寻找有关战魂的秘密？这里有条路是通往一个地方，我在那里见过一个箱子，也许有关战魂的秘密就在里面......"
+  "如果你愿意付给我50,000魔石作路费我可以带你去。"
+  → _root.gotoAndStop("战魂封印谜宫")
+  → 对应 war_soul_explorer（enter_war_soul_maze 50000 魔石）
+
+【sprite1146 DoAction.as（装备锻造师）】native_confirmed
+  "关于战魂"（全身六件极品后解锁战魂任务）
+  → 对应 war_soul_quest_unlock（try_unlock_war_soul_quest）
+
+【sprite1074 DoAction.as（无名氏）】native_confirmed
+  战魂封印谜宫守卫（"无名氏"敌人）
+  → 对应 war_soul_complete（击败无名氏 -> 战魂之心）
+
+【game_state 战魂状态机行为证据】native_confirmed
+  try_unlock_war_soul_quest（全身极品 -> quest_available）
+  enter_war_soul_maze（50000魔石+15时间 -> maze_active）
+  reveal_war_soul_guardian（封印之箱 -> guardian_revealed）
+  complete_war_soul_secret（击败无名氏 -> secret_unlocked，幂等）
+  对应注册表 4 节点（quest_unlock / explorer / chest / complete）
+
+=== 最终战/研究所域（第八阶段，收官）===
+
+【frame23-27 六类魔军（突击队/守卫军/神秘部队/图腾兽/魔军主帅/魔的能量）】native_confirmed
+  六段战线最终战敌人；主帅存活禁止进入能量塔禁地
+  → 对应 final_campaign_victory / final_campaign_gate
+  → 跨日复活：king_rescued 且未 game_won 且当天有敌被灭 -> 次日六类复活（advance_day）
+
+【研究所】native_confirmed
+  产量任务（日上限 6，跨日重置）
+  → 对应 research_produce
+
+【game_state 最终战状态机行为证据】native_confirmed
+  default_demon_campaign（六类 alive）
+  resolve_final_campaign_victory（击败 -> dead；摧毁能量 -> game_won）
+  final_campaign_modifiers（四类存活增益 1.5x）
+  is_final_campaign_enemy_alive（game_won 后全部失效）
+  map_entry_availability_rule("energy_tower")=commander_defeated（主帅门禁）
+  advance_day 跨日复活（demon_campaign 重置）
+  对应注册表 3 节点（final_campaign_victory / gate / research_produce）

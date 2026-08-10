@@ -1,0 +1,27 @@
+# Godot editor/import/cache output
+godot_remake/.godot/
+godot_remake/_playdata/
+
+# Generated release packages and release checksums
+godot_remake/artifacts/releases/
+
+# Local audit/tool downloads and generated work files
+godot_remake/work/
+godot_remake/tests/artifacts/
+
+# Local run logs
+godot_remake/*.log
+godot_remake/**/*.log
+
+# Workspace scratch, backups, and local diagnostics
+backup/
+tmp/
+work/
+tests/tmp_*
+
+# Original SWF inputs are kept outside the source repository
+魔域1.03_v*.swf
+
+# Local Python/tool caches
+__pycache__/
+*.pyc
