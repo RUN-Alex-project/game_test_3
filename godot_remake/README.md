@@ -147,9 +147,19 @@ cd E:\deepseek-work\TKS3_mod\godot_remake
 .\run_tests.ps1
 ```
 
-`run_tests.ps1` 的 `$scenes` 数组当前登记 66 个自动化场景，最后再运行一次主场景冒烟，共 67 RUN；runner 会检查退出码、`PASS` 完成标记、脚本错误、失败标记、ObjectDB 泄漏和不可写测试数据。场景清单以脚本实际内容为准，不要在文档中手写另一套数量。
+`tests/test_manifest.json` 是唯一测试清单，当前登记 66 个自动化场景，最后再运行一次主场景冒烟，共 67 RUN；`run_tests.ps1`（Windows）与 `run_tests.sh`（Linux）都是 `tools/run_tests.py` 的薄入口。runner 会检查退出码、`PASS` 完成标记、脚本错误、失败标记、ObjectDB 泄漏和不可写测试数据。场景清单以 manifest 实际内容为准，不要在文档中手写另一套数量。
 
-当前测试口径：**66 个自动化场景 + 主场景冒烟，共 67 RUN**（数量由 `docs/doc_gate.py` 从 `run_tests.ps1` 的 `$scenes` 数组机械读取，基线见 `docs/current_test_baseline.json`；历史版本数量冻结不机械替换）。
+当前测试口径：**66 个自动化场景 + 主场景冒烟，共 67 RUN**（数量由 `docs/doc_gate.py` 从 `tests/test_manifest.json` 机械读取，基线见 `docs/current_test_baseline.json`；历史版本数量冻结不机械替换）。
+
+### Linux / WSL 快速开始（简版）
+
+```bash
+cd ~/deepseek-work/TKS3_mod/godot_remake   # 必须位于 ext4（/home 或 /root），不要用 /mnt/*
+export GODOT_BIN=/usr/local/bin/godot      # Godot 4.6 Linux
+./run_tests.sh
+```
+
+Windows-only 场景（如 release 候选校验）在 Linux 输出 `NOT_APPLICABLE`，不算 SKIP/PASS/FAIL。详见 `docs/linux_wsl_port.md`。
 
 ### 文档与发布门禁
 

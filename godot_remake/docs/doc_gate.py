@@ -144,10 +144,10 @@ for md in CONTROL_DOCS:
         if bad:
             errors.append(f"控制字符存在: {md} {[hex(b) for b in bad[:5]]}")
 
-# ---- 6. 测试数量统一（v1.42：机械读取 run_tests.ps1 $scenes 数组 + 唯一测试基线文件，
-#      不再把 65/66 写成永久常量；历史版本记录中的旧数量不得被机械全局替换）----
+# ---- 6. 测试数量统一（v1.42 跨平台改造：读取平台中立 tests/test_manifest.json + 唯一测试基线文件，
+#      不再解析 run_tests.ps1，不再把 65/66 写成永久常量；历史版本记录中的旧数量不得被机械全局替换）----
 baseline_file = PROJECT / "docs" / "current_test_baseline.json"
-runner_path = PROJECT / "run_tests.ps1"
+manifest_file = PROJECT / "tests" / "test_manifest.json"
 AUTO = -1
 TOTAL = -1
 if not baseline_file.exists():
@@ -162,19 +162,36 @@ else:
     except Exception as e:
         errors.append("current_test_baseline.json 解析失败: %s" % e)
 
-runner_count = -1
-if not runner_path.exists():
-    errors.append("run_tests.ps1 不存在")
+ALLOWED_MANIFEST_PLATFORMS = {"windows", "linux"}
+manifest_count = -1
+if not manifest_file.exists():
+    errors.append("tests/test_manifest.json 不存在（跨平台测试清单缺失）")
 else:
-    runner_text = runner_path.read_text(encoding="utf-8")
-    scenes_block = re.search(r"\$scenes = @\((.*?)\)\s*\n", runner_text, re.S)
-    if scenes_block is None:
-        errors.append("run_tests.ps1: 找不到 $scenes 数组块")
-    else:
-        scene_lines = re.findall(r'"res://tests/[^"]+\.tscn"', scenes_block.group(1))
-        runner_count = len(scene_lines)
-        if runner_count != AUTO:
-            errors.append(f"run_tests.ps1 场景数组实际 {runner_count} 个（测试基线应为 {AUTO} 个自动化场景 + 主场景冒烟 = {TOTAL} RUN；数量以 runner 实际为准，基线文件必须同步）")
+    try:
+        mf = json.loads(manifest_file.read_text(encoding="utf-8"))
+        scenes = mf.get("scenes", [])
+        if int(mf.get("schema_version", 0)) != 1:
+            errors.append("test_manifest.json schema_version != 1")
+        manifest_count = len(scenes)
+        seen_paths = set()
+        for sc in scenes:
+            spath = str(sc.get("path", ""))
+            if spath in seen_paths:
+                errors.append(f"test_manifest.json 场景重复: {spath}")
+            seen_paths.add(spath)
+            if not spath.startswith("res://tests/") or not spath.endswith(".tscn"):
+                errors.append(f"test_manifest.json 场景路径非法: {spath}")
+                continue
+            plat = sc.get("platforms")
+            if not isinstance(plat, list) or not plat or not set(plat) <= ALLOWED_MANIFEST_PLATFORMS:
+                errors.append(f"test_manifest.json platforms 非法: {spath} -> {plat}")
+            real = PROJECT / spath[len("res://"):]
+            if not real.is_file():
+                errors.append(f"test_manifest.json 场景文件不存在: {spath}")
+        if manifest_count != AUTO:
+            errors.append(f"test_manifest.json 注册 {manifest_count} 个场景 != 测试基线 {AUTO} 个自动化场景（清单与基线必须同步）")
+    except Exception as e:
+        errors.append("test_manifest.json 解析失败: %s" % e)
 
 # 当前测试口径：由基线派生，不在 doc_gate 硬编码具体数字。
 CURRENT_PHRASE = f"{AUTO} 个自动化场景 + 主场景冒烟，共 {TOTAL} RUN"

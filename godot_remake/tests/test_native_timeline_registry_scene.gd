@@ -17,12 +17,22 @@ extends Node
 
 const REGISTRY_PATH := "res://docs/native_timeline_registry.json"
 const EVIDENCE_PATH := "res://docs/evidence/native_timelines_v103_v9.txt"
-const SWF_PATH := "E:/deepseek-work/TKS3_mod/魔域1.03_v9.swf"
+# 原版 SWF 路径（跨平台）：MOYU_SWF_PATH 环境变量优先，否则 res://../魔域1.03_v9.swf（Windows/Linux 工作树相对位置一致）。
 const ALLOWED_CLASSIFICATIONS := ["native_confirmed", "static_native", "evidence_gap", "intentional_divergence"]
 const ALLOWED_ANCHORS := ["top_left"]
 
 const SwfParser = preload("res://tests/helpers/swf_parser.gd")
 const TimelineScheduler = preload("res://scripts/timeline_scheduler.gd")
+
+
+## 原版 SWF 绝对路径（跨平台解析）：MOYU_SWF_PATH 环境变量优先；
+## 否则 ProjectSettings.globalize_path("res://../魔域1.03_v9.swf")——Windows/Linux 工作树中
+## 原版 SWF 与 godot_remake 的相对位置一致，无需依赖任何盘符。
+func _swf_path() -> String:
+	var env_path := OS.get_environment("MOYU_SWF_PATH")
+	if not env_path.is_empty():
+		return env_path
+	return ProjectSettings.globalize_path("res://../魔域1.03_v9.swf")
 
 # 独立 SWF 期望值（来自 dump_sprite_actions / _v136_matrices / manifest.csv，非注册表派生）。
 const ALLOWED_CANCEL_POLICIES := ["on_battle_cancel", "on_map_change"]
@@ -63,7 +73,7 @@ func _ready() -> void:
 	reg = _load_json(REGISTRY_PATH)
 	ev_text = _read_text(EVIDENCE_PATH)
 	swf = SwfParser.new()
-	assert(swf.load_swf(SWF_PATH), "swf load failed: " + swf.parse_error)
+	assert(swf.load_swf(_swf_path()), "swf load failed: " + swf.parse_error)
 
 	# --- 1. 候选对象全覆盖分类 ---
 	var all_ids: Dictionary = {}

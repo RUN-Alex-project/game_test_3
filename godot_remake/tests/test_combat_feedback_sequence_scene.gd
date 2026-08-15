@@ -23,7 +23,18 @@ extends Node
 const SceneBattleController = preload("res://scripts/scene_battle_controller.gd")
 const BattleSession = preload("res://scripts/battle_session.gd")
 const SwfParser = preload("res://tests/helpers/swf_parser.gd")
-const SWF_PATH := "E:/deepseek-work/TKS3_mod/魔域1.03_v9.swf"
+# 原版 SWF 路径（跨平台）：MOYU_SWF_PATH 环境变量优先，否则 res://../魔域1.03_v9.swf（Windows/Linux 工作树相对位置一致）。
+
+
+## 原版 SWF 绝对路径（跨平台解析）：MOYU_SWF_PATH 环境变量优先；
+## 否则 ProjectSettings.globalize_path("res://../魔域1.03_v9.swf")——Windows/Linux 工作树中
+## 原版 SWF 与 godot_remake 的相对位置一致，无需依赖任何盘符。
+func _swf_path() -> String:
+	var env_path := OS.get_environment("MOYU_SWF_PATH")
+	if not env_path.is_empty():
+		return env_path
+	return ProjectSettings.globalize_path("res://../魔域1.03_v9.swf")
+
 
 var ctrl: Control
 var player_actor: TextureRect
@@ -510,7 +521,7 @@ func _section_h() -> void:
 	assert(evidence_file != null, "evidence file from registry must exist")
 	var evidence_text := evidence_file.get_as_text()
 
-	var parser := SwfParser.new(SWF_PATH)
+	var parser := SwfParser.new(_swf_path())
 	assert(parser.is_loaded(), "SWF parser must load")
 	assert(parser.sound_definitions.size() == 37, "SWF must define 37 sounds")
 

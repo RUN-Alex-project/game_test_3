@@ -4,8 +4,10 @@
   "automated_scenes": 66,
   "smoke_scenes": 1,
   "total_runs": 67,
-  "runner_source": "run_tests.ps1 $scenes 数组（doc_gate 机械读取当前数量，不把 65 写成永久常量）",
-  "count_rule": "自动化场景数以 run_tests.ps1 $scenes 数组实际项数为准，doc_gate 与本文档一致；主场景冒烟固定 1 次；total_runs = automated_scenes + 1。",
+  "runner_source": "tests/test_manifest.json（平台中立唯一测试清单；run_tests.ps1 与 run_tests.sh 均为 tools/run_tests.py 的薄入口，全部读取同一 manifest）",
+  "manifest_source": "tests/test_manifest.json",
+  "platform_policy": "registered scenes are global baseline; platform runners execute only applicable scenes（Windows-only 场景在 Linux 报 NOT_APPLICABLE，不算 SKIP/PASS/FAIL，不从全局基线删除）",
+  "count_rule": "自动化场景数以 tests/test_manifest.json scenes 数组实际项数为准，doc_gate 与本文档一致；主场景冒烟固定 1 次；total_runs = automated_scenes + 1。",
   "history_rule": "历史版本记录中的旧数量（如 v1.41 的 65 个自动化场景 + 主场景冒烟 = 66 RUN）冻结在各自版本文档中，不得机械全局替换。",
-  "note": "唯一当前测试基线文件。新增测试必须同时更新 run_tests.ps1 与本文档；历史版本文档保持各自冻结数量。"
+  "note": "唯一当前测试基线文件。新增测试必须同时更新 tests/test_manifest.json 与本文档；历史版本文档保持各自冻结数量。"
 }

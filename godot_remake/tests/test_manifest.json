@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "default_quit_after": 1200,
+  "smoke_quit_after": 300,
+  "scenes": [
+    {
+      "path": "res://tests/test_inventory_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_combat_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_mining_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_fuwa_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_garden_lottery_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_persistent_health_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_scene_battle_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_monster_tooltip_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_monster_attack_animation_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_monster_hit_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_player_native_motion_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_pet_combination_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_footer_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_map_exits_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_storage_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_shop_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_dialogue_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_equipment_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_pet_bag_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_skill_panel_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_enhancement_panel_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_progression_flow_panel_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_research_flow_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_quest_flow_guide_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_complete_game_flow_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_daily_officer_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_palace_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_pk_tournament_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_war_soul_maze_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_story_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_final_campaign_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_ending_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_territory_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_world_equipment_battle_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_world_population_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_city_npc_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_loot_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_pet_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_pet_ui_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_progression_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_relationship_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_quest_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_skill_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_original_ui_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_enhancement_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_swf_evidence_registry_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_no_legacy_panels_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_npc_progression_routes_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_world_interaction_registry_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_native_timeline_registry_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_combat_feedback_sequence_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "quit_after": 2000
+    },
+    {
+      "path": "res://tests/test_feedback_lifecycle_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "quit_after": 2000
+    },
+    {
+      "path": "res://tests/test_doc_revoked_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "quit_after": 600
+    },
+    {
+      "path": "res://tests/test_story_dialogue_state_machine_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "quit_after": 2000
+    },
+    {
+      "path": "res://tests/ui_audit/test_ui_startup_panels_hidden_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/ui_audit/test_ui_hud_layout_audit_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/ui_audit/test_ui_player_movement_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/ui_audit/test_ui_map_exit_blocking_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/ui_audit/test_ui_status_prompt_layer_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/ui_audit/test_ui_panel_bounds_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_value_audit_registry_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_save_integrity_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "quit_after": 2000
+    },
+    {
+      "path": "res://tests/test_release_candidate_scene.tscn",
+      "platforms": [
+        "windows"
+      ],
+      "reason": "Validates Windows Desktop export preset, Windows .exe/.pck release artifacts, and the PowerShell exe smoke script (work/smoke_release_exe.ps1); no Linux equivalent exists yet"
+    },
+    {
+      "path": "res://tests/test_release_acceptance_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_moyu_expansion_registry_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    }
+  ]
+}
