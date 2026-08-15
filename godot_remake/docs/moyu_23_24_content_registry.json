@@ -1,0 +1,2599 @@
+{
+  "registry_version": "v1.42.1",
+  "baseline_version": "v1.41",
+  "generated_for": "v1.42 内容证据与扩展数据合同：本地 2.2/2.3/2.4 纯文本证据 + 单机原创扩展目录",
+  "evidence_texts": {
+    "2.2": "docs/evidence/v142/moyu_2.2_strings.txt",
+    "2.3": "docs/evidence/v142/moyu_2.3_strings.txt",
+    "2.4": "docs/evidence/v142/moyu_2.4_strings.txt",
+    "note": "docs/evidence/v142 为仓库内可提交的规范副本；work/v142/text 为可重跑提取输出（gitignored）"
+  },
+  "categories": {
+    "map": 22,
+    "quest": 72,
+    "npc_first": 12,
+    "npc_backup": 24,
+    "item": 22,
+    "skill_boss": 20,
+    "system": 6,
+    "total": 178
+  },
+  "entries": [
+    {
+      "id": "map_treeheart_road",
+      "kind": "map",
+      "display_name": "树心路",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "树心路"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_treeheart_wild_1",
+      "kind": "map",
+      "display_name": "树心城野外一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "树心城野外一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_south_city_1",
+      "kind": "map",
+      "display_name": "南城一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "南城一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.49",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_south_city_wild_1",
+      "kind": "map",
+      "display_name": "南城野外一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "南城野外一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.49",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_border_wild_1",
+      "kind": "map",
+      "display_name": "边关野外一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "边关野外一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.49",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_frozen_valley_1",
+      "kind": "map",
+      "display_name": "冰封谷一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "冰封谷一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_frozen_valley_2",
+      "kind": "map",
+      "display_name": "冰封谷二",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "冰封谷二"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_frozen_valley_3",
+      "kind": "map",
+      "display_name": "冰封谷三",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "冰封谷三"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_frozen_corridor",
+      "kind": "map",
+      "display_name": "冰封走廊",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "冰封走廊"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_ice_bridge",
+      "kind": "map",
+      "display_name": "冰桥",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "冰桥"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_abyss_1",
+      "kind": "map",
+      "display_name": "黑渊一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "黑渊一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_abyss_2",
+      "kind": "map",
+      "display_name": "黑渊二",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "黑渊二"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_abyss_3",
+      "kind": "map",
+      "display_name": "黑渊三",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "黑渊三"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_thunder_beast_valley",
+      "kind": "map",
+      "display_name": "雷兽谷",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "雷兽谷"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_spider_valley_1",
+      "kind": "map",
+      "display_name": "蜘蛛谷一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "蜘蛛谷一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "not_planned",
+      "design_status": "adapted",
+      "dependencies": [],
+      "notes": "本地有蜘蛛谷一/二/三与蜘蛛王后；实现排期待确认 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_white_cloud_mountain",
+      "kind": "map",
+      "display_name": "白云山",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "白云山"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_green_islet",
+      "kind": "map",
+      "display_name": "绿岛",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "绿岛"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_skyview_pavilion",
+      "kind": "map",
+      "display_name": "观天亭",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "观天亭"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_beast_island_1",
+      "kind": "map",
+      "display_name": "百兽岛一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "百兽岛一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "not_planned",
+      "design_status": "adapted",
+      "dependencies": [],
+      "notes": "本地有百兽岛一/二与船夫航线；实现排期待确认 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_rose_lake",
+      "kind": "map",
+      "display_name": "玫瑰湖",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "玫瑰湖"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_lost_highland_1",
+      "kind": "map",
+      "display_name": "失落高地一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "失落高地一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "map_hidden_spirit_island",
+      "kind": "map",
+      "display_name": "隐灵岛",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "隐灵岛"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "not_planned",
+      "design_status": "adapted",
+      "dependencies": [],
+      "notes": "本地仅有岛名 token；机制证据 gap 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_occupy_abyss",
+      "kind": "quest",
+      "display_name": "占领黑渊",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "我们要将魔族大军打败就得占领黑渊"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_destroy_totem",
+      "kind": "quest",
+      "display_name": "摧毁魔的图腾",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "首先要消灭魔军主将才能看到魔的图腾"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_kill_demon_prince",
+      "kind": "quest",
+      "display_name": "消灭魔王子",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "国王派出勇士潜入敌营地里消灭魔王子"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_rejoin_south",
+      "kind": "quest",
+      "display_name": "与南城军队会合",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭它们就可以与南城军队会合"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.49",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_rejoin_swamp",
+      "kind": "quest",
+      "display_name": "与沼泽军队会合",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭它们就可以与沼泽军队会合"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.49",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_ice_valley_campaign",
+      "kind": "quest",
+      "display_name": "冰封谷反攻",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭冰封谷的魔族军队"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_gobi_king",
+      "kind": "quest",
+      "display_name": "接应国王",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "我们需要打通戈壁与树心城的通路去接应国王"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_abyss_gate",
+      "kind": "quest",
+      "display_name": "军团准入黑渊",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "军团才能进入到黑渊"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_totem_guard",
+      "kind": "quest",
+      "display_name": "图腾守卫情报",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "他们的主要任务是看守魔的图腾"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_totem_weaken",
+      "kind": "quest",
+      "display_name": "削弱图腾防御",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "但魔的图腾摧毁被魔军保护得非常紧"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_main_black_abyss",
+      "kind": "quest",
+      "display_name": "黑渊调查",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.51",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "原创主线调查段，沿用黑渊地图 token"
+    },
+    {
+      "id": "quest_main_treeheart_supply",
+      "kind": "quest",
+      "display_name": "树心补给危机",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.48",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "总计划书 v1.48 指定首条新主线"
+    },
+    {
+      "id": "quest_main_port_lost_ship",
+      "kind": "quest",
+      "display_name": "港口失联货船",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.48",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "总计划书 v1.48 指定"
+    },
+    {
+      "id": "quest_main_totem_preparation",
+      "kind": "quest",
+      "display_name": "图腾战准备",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.51",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "情报/准备段，为图腾战铺垫"
+    },
+    {
+      "id": "quest_main_final_aftermath",
+      "kind": "quest",
+      "display_name": "终局后日谈",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.54",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "后日谈委托，v1.54 赛季内容"
+    },
+    {
+      "id": "quest_side_mining_pick",
+      "kind": "quest",
+      "display_name": "猎杀兽之镐",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "打败岛上的猎杀兽就可能得到镐"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_mine_ore",
+      "kind": "quest",
+      "display_name": "矿洞挖矿",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "进入到矿洞里使用镐可以挖到矿石"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_find_hermit",
+      "kind": "quest",
+      "display_name": "找寻隐者",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "找到隐者"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_green_islet_mechanism",
+      "kind": "quest",
+      "display_name": "绿岛机关兽",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "只有打败绿岛上的机关兽才能上到白云山"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_thunder_beast_trail",
+      "kind": "quest",
+      "display_name": "雷兽行踪",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "可能会找到雷兽的行径从而找到雷兽藏身之地"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_radar_tower",
+      "kind": "quest",
+      "display_name": "雷塔支柱",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "那里有个雷塔"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_ice_port_ferry",
+      "kind": "quest",
+      "display_name": "冰宫港口渡船",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "冰宫港口的船夫知道雷兽谷怎么去"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_spider_valley",
+      "kind": "quest",
+      "display_name": "蜘蛛谷清剿",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "大蜘蛛和蜘蛛王后还会爆些书店也没卖的技能书"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_dragon_chief",
+      "kind": "quest",
+      "display_name": "龙怪头目讨伐",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭龙怪头目"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_rescue_children",
+      "kind": "quest",
+      "display_name": "南城救援",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "把我的儿子和女儿都抓走了"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.49",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_revive_zone",
+      "kind": "quest",
+      "display_name": "郊区复活",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "可以到郊区去找郊区管理员复活幻兽"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.49",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_skill_book_low",
+      "kind": "quest",
+      "display_name": "初级锻造技能书",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "前往树心城技能导师处买一本初级锻造技能书"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_skill_book_mid",
+      "kind": "quest",
+      "display_name": "中级锻造技能书",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "找到他就能得到中级锻造技能书"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_side_rose_lake",
+      "kind": "quest",
+      "display_name": "玫瑰湖调查",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.53",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "原创支线，沿用玫瑰湖地图 token"
+    },
+    {
+      "id": "quest_side_lost_highland",
+      "kind": "quest",
+      "display_name": "失落高地侦察",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.52",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "原创支线，沿用失落高地地图 token"
+    },
+    {
+      "id": "quest_side_skyview_pavilion",
+      "kind": "quest",
+      "display_name": "观天亭密钥",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "键就可以进入到观天亭"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_adv_collect_herb",
+      "kind": "quest",
+      "display_name": "采集药材委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_defeat_monster",
+      "kind": "quest",
+      "display_name": "击败指定怪委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_explore_map",
+      "kind": "quest",
+      "display_name": "探索地图委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_deliver_item",
+      "kind": "quest",
+      "display_name": "交付物品委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_pet_training",
+      "kind": "quest",
+      "display_name": "幻兽培养委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_campaign_help",
+      "kind": "quest",
+      "display_name": "协助战役委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_ore_harvest",
+      "kind": "quest",
+      "display_name": "矿石采集委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_element_material",
+      "kind": "quest",
+      "display_name": "元素材料委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_lost_item",
+      "kind": "quest",
+      "display_name": "寻回失物委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_escort",
+      "kind": "quest",
+      "display_name": "护送委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_intel",
+      "kind": "quest",
+      "display_name": "情报交换委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_trade_round",
+      "kind": "quest",
+      "display_name": "交易跑腿委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_arena_sparring",
+      "kind": "quest",
+      "display_name": "切磋委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_adv_castle_supply",
+      "kind": "quest",
+      "display_name": "城堡补给委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": ""
+    },
+    {
+      "id": "quest_chal_black_knight",
+      "kind": "quest",
+      "display_name": "黑骑士试炼",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "打败黑骑士"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_legion_admin",
+      "kind": "quest",
+      "display_name": "军团管理员",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "军团管理员"
+      ],
+      "evidence_status": "local_version_partial",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": "仅名称/职位 token 确认，具体机制未确认 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_city_defense",
+      "kind": "quest",
+      "display_name": "守城演习",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "防守方需要将四面的敌人都打败才能胜利"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_swamp_guard",
+      "kind": "quest",
+      "display_name": "守卫沼泽",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "守卫沼泽"
+      ],
+      "evidence_status": "local_version_partial",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": "仅名称 token 确认，机制未确认 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_black_robe",
+      "kind": "quest",
+      "display_name": "黑衣圣兽师",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "黑衣圣兽师"
+      ],
+      "evidence_status": "local_version_partial",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": "仅名称 token 确认，机制未确认 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_sneak_raid",
+      "kind": "quest",
+      "display_name": "偷袭后路",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "偷袭"
+      ],
+      "evidence_status": "local_version_partial",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": "本地仅有'偷袭'动词 token，完整'偷袭后路'规则未确认 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_frozen_valley",
+      "kind": "quest",
+      "display_name": "冰封谷试炼",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "控制冰封谷"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_fleet",
+      "kind": "quest",
+      "display_name": "断舰行动",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "舰队主帅"
+      ],
+      "evidence_status": "local_version_partial",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": "本地有舰队主帅/舰队基地/舰队士兵，行动规则未确认 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_big_demon",
+      "kind": "quest",
+      "display_name": "大魔王挑战",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭大魔王"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_command_challenge",
+      "kind": "quest",
+      "display_name": "挑战指挥官",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "你可以挑战指挥官"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_wild_chief",
+      "kind": "quest",
+      "display_name": "野外头目讨伐",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭一个野外头目就能增加"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_chal_pk_ranked",
+      "kind": "quest",
+      "display_name": "大赛排名赛",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "比赛胜利者分为一、二、三名"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.45",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_donation_1",
+      "kind": "quest",
+      "display_name": "捐款任务一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "捐款任务一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.47",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_donation_2",
+      "kind": "quest",
+      "display_name": "捐款任务二",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "捐款任务二"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.47",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_donation_3",
+      "kind": "quest",
+      "display_name": "捐款任务三",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "捐款任务三"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.47",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_donation_4",
+      "kind": "quest",
+      "display_name": "捐款任务四",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "捐款任务四"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.47",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_training_1",
+      "kind": "quest",
+      "display_name": "新手训练一",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "新手训练一"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_training_2",
+      "kind": "quest",
+      "display_name": "新手训练二",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "新手训练二"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_training_3",
+      "kind": "quest",
+      "display_name": "新手训练三",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "新手训练三"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_training_4",
+      "kind": "quest",
+      "display_name": "新手训练四",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "新手训练四"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.3/2.4"
+    },
+    {
+      "id": "quest_daily_regular",
+      "kind": "quest",
+      "display_name": "日常任务",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "这里的日常任务有"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.44",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_honor",
+      "kind": "quest",
+      "display_name": "荣誉任务",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "我发布了荣誉任务"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.44",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_bounty",
+      "kind": "quest",
+      "display_name": "悬赏任务",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "悬赏任务"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.44",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_merit",
+      "kind": "quest",
+      "display_name": "军功任务",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "军功任务"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.44",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_rank",
+      "kind": "quest",
+      "display_name": "功勋任务",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "功勋任务"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.44",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "quest_daily_adventurer",
+      "kind": "quest",
+      "display_name": "冒险者日常委托",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.44",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "v1.44 日结后启用的冒险者日常池"
+    },
+    {
+      "id": "quest_weekly_market",
+      "kind": "quest",
+      "display_name": "周挑战",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.54",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "v1.54 每周两项高价值挑战"
+    },
+    {
+      "id": "npc_adv_lin_xia",
+      "kind": "npc",
+      "display_name": "林夏",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "见习采集者，委托以收集材料为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_su_yan",
+      "kind": "npc",
+      "display_name": "苏妍",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "情报向，委托以探索地图为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_liang_chen",
+      "kind": "npc",
+      "display_name": "梁辰",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "战士向，委托以击败指定怪为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_jiang_yue",
+      "kind": "npc",
+      "display_name": "江月",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "医师向，委托以交付药材/药品为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_qin_he",
+      "kind": "npc",
+      "display_name": "秦鹤",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "幻兽向，委托以幻兽培养为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_gu_ning",
+      "kind": "npc",
+      "display_name": "顾宁",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "守备向，委托以协助守城战役为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_ye_fei",
+      "kind": "npc",
+      "display_name": "叶飞",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "游侠向，委托以护送与寻回失物为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_bai_luo",
+      "kind": "npc",
+      "display_name": "白洛",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "锻造向，委托以矿石/玄铁收集为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_xiao_ran",
+      "kind": "npc",
+      "display_name": "萧然",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "交易向，委托以交易跑腿为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_tang_xue",
+      "kind": "npc",
+      "display_name": "唐雪",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "药剂向，委托以元素材料收集为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_he_ming",
+      "kind": "npc",
+      "display_name": "何明",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "商旅向，委托以情报交换为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_shen_yao",
+      "kind": "npc",
+      "display_name": "沈瑶",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.43",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "学者向，委托以竞技切磋为主",
+      "cohort": "first"
+    },
+    {
+      "id": "npc_adv_b1",
+      "kind": "npc",
+      "display_name": "周楚",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "老兵，委托以协助战役为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b2",
+      "kind": "npc",
+      "display_name": "孟瑶",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "采集者，委托以药圃材料为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b3",
+      "kind": "npc",
+      "display_name": "韩露",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "歌者，委托以送礼与关系为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b4",
+      "kind": "npc",
+      "display_name": "赵云帆",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "斥候，委托以探索新地图为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b5",
+      "kind": "npc",
+      "display_name": "楚云",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "铁匠，委托以玄铁/陨铁为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b6",
+      "kind": "npc",
+      "display_name": "沈碧",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "药圃主，委托以种植材料为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b7",
+      "kind": "npc",
+      "display_name": "陆承",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "护卫，委托以护送商队为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b8",
+      "kind": "npc",
+      "display_name": "许晴",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "商会联络，委托以跑腿交易为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b9",
+      "kind": "npc",
+      "display_name": "宋词",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "吟游者，委托以情报与信件为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b10",
+      "kind": "npc",
+      "display_name": "方远",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "猎人，委托以猎杀兽材料为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b11",
+      "kind": "npc",
+      "display_name": "罗琳",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "驯兽师，委托以幻兽培养为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b12",
+      "kind": "npc",
+      "display_name": "程曦",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "学者，委托以图鉴收集为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b13",
+      "kind": "npc",
+      "display_name": "莫言",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "观察者，委托以排行榜观察为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b14",
+      "kind": "npc",
+      "display_name": "严正",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "军需官，委托以军功贡献为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b15",
+      "kind": "npc",
+      "display_name": "柳如烟",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "舞者，委托以竞技表演为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b16",
+      "kind": "npc",
+      "display_name": "杜若",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "医师，委托以药品交付为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b17",
+      "kind": "npc",
+      "display_name": "裴行",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "铸甲师，委托以装备材料为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b18",
+      "kind": "npc",
+      "display_name": "郑和风",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "航海，委托以港口航线为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b19",
+      "kind": "npc",
+      "display_name": "温良",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "粮草官，委托以补给护送为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b20",
+      "kind": "npc",
+      "display_name": "谷雨",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "农艺，委托以牧场/药圃为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b21",
+      "kind": "npc",
+      "display_name": "史明",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "史官，委托以记录与情报为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b22",
+      "kind": "npc",
+      "display_name": "柯南星",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "星象师，委托以元素材料为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b23",
+      "kind": "npc",
+      "display_name": "花木兰",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "武将，委托以协助战役为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "npc_adv_b24",
+      "kind": "npc",
+      "display_name": "欧阳雪",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "not_planned",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "学者，委托以异兽研究为主（候补，不进入 v1.43 生产）",
+      "cohort": "backup"
+    },
+    {
+      "id": "item_moonlight_box",
+      "kind": "item",
+      "display_name": "初级月光宝盒",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "初级月光宝盒"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_lucky_charm",
+      "kind": "item",
+      "display_name": "永恒幸运符",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "永恒幸运符"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_exp_orb",
+      "kind": "item",
+      "display_name": "超级经验球",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "超级经验球"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_soul_crystal",
+      "kind": "item",
+      "display_name": "灵魂晶石",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "灵魂晶石"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_demon_soul_crystal",
+      "kind": "item",
+      "display_name": "幻魔晶石",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "幻魔晶石"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_war_soul_crystal",
+      "kind": "item",
+      "display_name": "魔魂晶石",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "魔魂晶石"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_element_gem",
+      "kind": "item",
+      "display_name": "元素宝石",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "元素宝石"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_attack_gem",
+      "kind": "item",
+      "display_name": "攻击宝石",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "攻击宝石"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_exp_gem",
+      "kind": "item",
+      "display_name": "经验宝石",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "经验宝石"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_xuantie_ore",
+      "kind": "item",
+      "display_name": "玄铁矿",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "玄铁矿"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_yunite_ore",
+      "kind": "item",
+      "display_name": "陨铁矿",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "陨铁矿"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_amethyst",
+      "kind": "item",
+      "display_name": "紫水晶",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "紫水晶"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_lucky_grass",
+      "kind": "item",
+      "display_name": "幸运幻化草",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "幸运幻化草"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_divine_beast_dan",
+      "kind": "item",
+      "display_name": "神兽内丹",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "神兽内丹"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_plasma_potion",
+      "kind": "item",
+      "display_name": "电浆药水",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "电浆药水"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_warrior_medal",
+      "kind": "item",
+      "display_name": "勇士勋章",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "勇士勋章"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_beast_king_orb",
+      "kind": "item",
+      "display_name": "兽王令",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "兽王令"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_sacred_beast_orb",
+      "kind": "item",
+      "display_name": "圣兽令",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "圣兽令"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_mystic_fruit",
+      "kind": "item",
+      "display_name": "奇异果",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "奇异果"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_rebirth_crystal",
+      "kind": "item",
+      "display_name": "幻兽转世水晶",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "幻兽转世水晶"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_fengwing_bell",
+      "kind": "item",
+      "display_name": "凤翼铃铛",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "上品凤翼铃铛"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "item_mysterious_item",
+      "kind": "item",
+      "display_name": "神秘物品",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "合成神秘物品"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_fly_combo",
+      "kind": "skill",
+      "display_name": "飞天连斩",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "飞天连斩"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_whirlwind_slash",
+      "kind": "skill",
+      "display_name": "旋风斩",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "旋风斩"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_blade_light_slash",
+      "kind": "skill",
+      "display_name": "刀光斩",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "刀光斩"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_fireball",
+      "kind": "skill",
+      "display_name": "火球术",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "火球术"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_thunderburst",
+      "kind": "skill",
+      "display_name": "爆雷术",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "爆雷术"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_lightning",
+      "kind": "skill",
+      "display_name": "电击术",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "电击术"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_thunderstrike",
+      "kind": "skill",
+      "display_name": "雷霆万钧",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "雷霆万钧"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_soul_slash",
+      "kind": "skill",
+      "display_name": "斩魂",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "斩魂"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "skill_berserk",
+      "kind": "skill",
+      "display_name": "狂暴",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "狂暴"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_thunder_beast",
+      "kind": "boss",
+      "display_name": "雷兽",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "雷兽非常厉害"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_spider_queen",
+      "kind": "boss",
+      "display_name": "蜘蛛王后",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "蜘蛛王后"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_demon_commander",
+      "kind": "boss",
+      "display_name": "魔军主将",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "魔军主将"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_demon_prince",
+      "kind": "boss",
+      "display_name": "魔王子",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "魔王子"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.51",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_great_demon",
+      "kind": "boss",
+      "display_name": "大魔王",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭大魔王"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_black_knight",
+      "kind": "boss",
+      "display_name": "黑骑士",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "打败黑骑士"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_death_general",
+      "kind": "boss",
+      "display_name": "死神战将",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "死神战将"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_beast_king",
+      "kind": "boss",
+      "display_name": "魔灵兽王",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "魔灵兽王"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.53",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_mechanism_beast",
+      "kind": "boss",
+      "display_name": "机关兽",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "机关兽"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.48",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_radar_tower",
+      "kind": "boss",
+      "display_name": "雷塔",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "消灭雷塔"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.50",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": " 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "boss_fleet_admiral",
+      "kind": "boss",
+      "display_name": "舰队主帅",
+      "source_version": "2.4",
+      "evidence_source": "docs/evidence/v142/moyu_2.4_strings.txt",
+      "evidence_tokens": [
+        "舰队主帅"
+      ],
+      "evidence_status": "local_version_confirmed",
+      "planned_version": "v1.52",
+      "design_status": "borrowed",
+      "dependencies": [],
+      "notes": "仅名称 token 确认，机制未确认（partial 口径） 证据版本=2.2/2.3/2.4"
+    },
+    {
+      "id": "sys_auction",
+      "kind": "system",
+      "display_name": "拍卖会",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.46",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "单机封闭市场，非原版还原"
+    },
+    {
+      "id": "sys_rankings",
+      "kind": "system",
+      "display_name": "排行榜",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.45",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "异步榜单，非联网"
+    },
+    {
+      "id": "sys_daily_ledger",
+      "kind": "system",
+      "display_name": "NPC日结经济",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.44",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "固定冒险者每日抽象日结"
+    },
+    {
+      "id": "sys_industry",
+      "kind": "system",
+      "display_name": "产业与城堡经营",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.47",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "矿场/药圃/港口货栈/幻兽牧场"
+    },
+    {
+      "id": "sys_season",
+      "kind": "system",
+      "display_name": "十四日赛季",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.54",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "赛季结算循环"
+    },
+    {
+      "id": "sys_collection",
+      "kind": "system",
+      "display_name": "收藏图鉴",
+      "source_version": "project",
+      "evidence_source": null,
+      "evidence_tokens": [],
+      "evidence_status": "singleplayer_extension",
+      "planned_version": "v1.53",
+      "design_status": "singleplayer_extension",
+      "dependencies": [],
+      "notes": "幻兽/装备/Boss/地图/信件/称号图鉴"
+    }
+  ]
+}

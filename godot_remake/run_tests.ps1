@@ -79,7 +79,8 @@ $scenes = @(
     "res://tests/test_value_audit_registry_scene.tscn",
     "res://tests/test_save_integrity_scene.tscn",
     "res://tests/test_release_candidate_scene.tscn",
-    "res://tests/test_release_acceptance_scene.tscn"
+    "res://tests/test_release_acceptance_scene.tscn",
+    "res://tests/test_moyu_expansion_registry_scene.tscn"
 )
 
 foreach ($scene in $scenes) {

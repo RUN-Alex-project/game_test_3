@@ -1,0 +1,172 @@
+{
+  "contract_version": "v22.0",
+  "baseline_save_version": "v21",
+  "activation_version": "v1.43",
+  "status": "NOT_ENABLED",
+  "status_note": "本文件仅定义未来 v22 的 expansion_state 数据合同，未接入 GameState / SAVE_SCHEMA_DEFAULTS / 存档版本。生产存档保持 v21，不增加任何持久字段。第一个真实启用版本为 v1.43（v21→v22 迁移版本）。",
+  "namespace": "GameState.expansion_state",
+  "namespace_rule": "从 v1.43 起，新长期系统状态统一放入 expansion_state；禁止把每个新系统零散加到 GameState 顶层。旧档迁移必须从固定 schema 默认值构建 DTO，不能读取当前运行中的 GameState 值；加载成功后一次性提交 DTO；失败时内存必须不变。",
+  "seed_rule": "确定性日结/随机统一输入：world_seed + game_day + system_id + entity_id + event_sequence",
+  "fields": [
+    {
+      "name": "revision",
+      "type": "int",
+      "default": 1,
+      "first_enabled_version": "v1.43",
+      "migration": "从固定默认值构建；不读取运行中 GameState。旧档 v21 无此字段，迁移时写入默认 1。",
+      "owning_service": "ExpansionStateService / SaveMigrationService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "expansion_state 结构版本号；未来字段变更时递增。"
+    },
+    {
+      "name": "world_seed",
+      "type": "int",
+      "default": 0,
+      "first_enabled_version": "v1.43",
+      "migration": "新档初始化时生成；旧档迁移写入默认 0 后由服务按规则重建（可复现）。",
+      "owning_service": "ExpansionStateService / DeterministicRngService",
+      "nullable": false,
+      "participates_in_deterministic_seed": true,
+      "notes": "确定性日结/世界事件的随机源；0 表示尚未播种。"
+    },
+    {
+      "name": "day_sequence",
+      "type": "int",
+      "default": 0,
+      "first_enabled_version": "v1.44",
+      "migration": "旧档无此字段，迁移写入 0；首个真实日结系统（v1.44）启用后递增。",
+      "owning_service": "DayCycleService",
+      "nullable": false,
+      "participates_in_deterministic_seed": true,
+      "notes": "游戏日序号，用于日结/日常池/世界事件确定性输入。"
+    },
+    {
+      "name": "adventurers",
+      "type": "dict<string, AdventurerState>",
+      "default": {},
+      "first_enabled_version": "v1.43",
+      "migration": "v1.43 从 data/adventurers.json 名册按稳定 ID 初始化 12 名首批；候补 24 名不进入 v1.43 生产。",
+      "owning_service": "AdventurerService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "固定冒险者状态：名册、关系阶段、背包摘要、幻兽摘要、动态。key=稳定 ASCII 冒险者 ID。"
+    },
+    {
+      "name": "relationships",
+      "type": "dict<string, RelationshipState>",
+      "default": {},
+      "first_enabled_version": "v1.43",
+      "migration": "旧档无此字段，迁移写入 {}。关系只能通过服务层修改；送礼只能走真实背包物品。",
+      "owning_service": "RelationshipService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "玩家↔固定冒险者关系：阶段（认识/朋友/知己/恋人/爱人）、数值、历史。key=冒险者 ID。"
+    },
+    {
+      "name": "mailbox",
+      "type": "list<Mail>",
+      "default": [],
+      "first_enabled_version": "v1.44",
+      "migration": "旧档无此字段，迁移写入 []。邮件附件必须真实存在；背包满时附件保留，领取失败不丢失。",
+      "owning_service": "MailService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "邮件含唯一 ID、发件人、附件、正文、创建日、领取状态、到期策略。"
+    },
+    {
+      "name": "commission_state",
+      "type": "dict<string, CommissionState>",
+      "default": {},
+      "first_enabled_version": "v1.43",
+      "migration": "旧档无此字段，迁移写入 {}。同一完成 operation_id 重放不得重复发奖。",
+      "owning_service": "CommissionService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "固定冒险者委托状态：进行中/已完成/已领取、完成 operation_id、跨日失效规则。key=委托实例 ID。"
+    },
+    {
+      "name": "rankings",
+      "type": "dict<string, RankingSnapshot>",
+      "default": {},
+      "first_enabled_version": "v1.45",
+      "migration": "旧档无此字段，迁移写入 {}；v1.45 从真实持久数据计算首批榜单（战斗力/幻兽/擂台/探索/商会信誉/领地贡献）。",
+      "owning_service": "RankingService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "榜单用实际持久数据计算，稳定同分规则为主值/次值/稳定 ID；保留前日名次与变化原因。"
+    },
+    {
+      "name": "season",
+      "type": "dict<string, SeasonState>",
+      "default": {},
+      "first_enabled_version": "v1.54",
+      "migration": "旧档无此字段，迁移写入 {}；v1.54 首个十四日赛季启用。赛季结算幂等。",
+      "owning_service": "SeasonService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "赛季期号、结算重点榜单、历史赛季记录。"
+    },
+    {
+      "name": "economy",
+      "type": "dict<string, EconomyLedger>",
+      "default": {},
+      "first_enabled_version": "v1.44",
+      "migration": "旧档无此字段，迁移写入 {}；v1.44 NPC 日结账本、v1.46 商会账本逐步启用。账本守恒。",
+      "owning_service": "EconomyService / LedgerService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "冒险者账本、商会账本、托管、信誉、凭证；无系统明确来源时物品/货币总量不可增加。"
+    },
+    {
+      "name": "properties",
+      "type": "dict<string, PropertyState>",
+      "default": {},
+      "first_enabled_version": "v1.47",
+      "migration": "旧档无此字段，迁移写入 {}；v1.47 产业/城堡/领地经营启用。产业每日结算一次，有上限/维护/来源。",
+      "owning_service": "PropertyService / IndustryService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "矿场/药圃/港口货栈/幻兽牧场、城堡设施、领地事件状态。"
+    },
+    {
+      "name": "auction",
+      "type": "dict<string, AuctionState>",
+      "default": {},
+      "first_enabled_version": "v1.46",
+      "migration": "旧档无此字段，迁移写入 {}；v1.46 单机封闭拍卖启用（singleplayer_extension）。上架/出价/流拍/成交/退款原子化。",
+      "owning_service": "AuctionService",
+      "nullable": false,
+      "participates_in_deterministic_seed": true,
+      "notes": "条目、出价托管、信誉/凭证资格、NPC 竞价预算/偏好/关系影响；每日≤6 普通+2 稀有，每周 1 主题拍卖。"
+    },
+    {
+      "name": "campaign",
+      "type": "dict<string, CampaignState>",
+      "default": {},
+      "first_enabled_version": "v1.48",
+      "migration": "旧档无此字段，迁移写入 {}；v1.48 大陆反攻章节状态启用。章节关键物不可丢失。",
+      "owning_service": "CampaignService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "大陆反攻进度、章节印记、区域占领、最终图腾战状态。"
+    },
+    {
+      "name": "collections",
+      "type": "dict<string, CollectionState>",
+      "default": {},
+      "first_enabled_version": "v1.53",
+      "migration": "旧档无此字段，迁移写入 {}；v1.53 收藏图鉴启用。图鉴奖励不得无限发金币/魔石。",
+      "owning_service": "CollectionService",
+      "nullable": false,
+      "participates_in_deterministic_seed": false,
+      "notes": "幻兽/装备/Boss/地图/信件/称号图鉴解锁状态与唯一奖励领取。"
+    }
+  ],
+  "migration_contract": {
+    "source_save_version": "v21",
+    "target_save_version": "v22",
+    "rule": "旧档迁移必须从固定 schema 默认值构建 DTO，不能读取当前运行中的 GameState 值；加载成功后一次性提交 DTO；失败时内存必须不变。",
+    "tests_required": ["固定默认值", "无运行状态泄露", "重复加载稳定", "缺字段", "坏档", "加载失败内存不变"]
+  }
+}

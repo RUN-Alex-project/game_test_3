@@ -144,8 +144,25 @@ for md in CONTROL_DOCS:
         if bad:
             errors.append(f"控制字符存在: {md} {[hex(b) for b in bad[:5]]}")
 
-# ---- 6. 测试数量统一（P1-4 拒签整改：机械读取 run_tests.ps1 的 $scenes 数组）----
+# ---- 6. 测试数量统一（v1.42：机械读取 run_tests.ps1 $scenes 数组 + 唯一测试基线文件，
+#      不再把 65/66 写成永久常量；历史版本记录中的旧数量不得被机械全局替换）----
+baseline_file = PROJECT / "docs" / "current_test_baseline.json"
 runner_path = PROJECT / "run_tests.ps1"
+AUTO = -1
+TOTAL = -1
+if not baseline_file.exists():
+    errors.append("current_test_baseline.json 不存在")
+else:
+    try:
+        bl = json.loads(baseline_file.read_text(encoding="utf-8"))
+        AUTO = int(bl.get("automated_scenes", -1))
+        TOTAL = int(bl.get("total_runs", -1))
+        if AUTO < 1 or TOTAL != AUTO + 1:
+            errors.append("current_test_baseline.json 数值异常（total_runs 应 = automated_scenes + 1）")
+    except Exception as e:
+        errors.append("current_test_baseline.json 解析失败: %s" % e)
+
+runner_count = -1
 if not runner_path.exists():
     errors.append("run_tests.ps1 不存在")
 else:
@@ -153,39 +170,45 @@ else:
     scenes_block = re.search(r"\$scenes = @\((.*?)\)\s*\n", runner_text, re.S)
     if scenes_block is None:
         errors.append("run_tests.ps1: 找不到 $scenes 数组块")
-        runner_count = -1
     else:
         scene_lines = re.findall(r'"res://tests/[^"]+\.tscn"', scenes_block.group(1))
         runner_count = len(scene_lines)
-    EXPECTED_SCENES = 65
-    if runner_count != EXPECTED_SCENES:
-        errors.append(f"run_tests.ps1 场景数组实际 {runner_count} 个（口径应为 {EXPECTED_SCENES} 个自动化场景 + 主场景冒烟 = 66 RUN；负向：runner 数量 64 或 66 均必须失败）")
-# 数量口径统一：所有状态/交付文档必须采用"65 个自动化场景 + 主场景冒烟，共 66 RUN"
-# 负向规则（PM 第二轮拒签）：
-#   - 文档写成 "65 RUN"（错误口径，应为 66 RUN）→ 必须失败；
-#   - 文档写成 "66 RUN" 但缺少 "65 个自动化场景" → 必须失败；
-#   - 旧口径（52/51/58/59/60）→ 必须失败。
-COUNT_DOCS = [
-    "README.md",
-    "开发进度.md",
-    "docs/综合整改报告.md",
+        if runner_count != AUTO:
+            errors.append(f"run_tests.ps1 场景数组实际 {runner_count} 个（测试基线应为 {AUTO} 个自动化场景 + 主场景冒烟 = {TOTAL} RUN；数量以 runner 实际为准，基线文件必须同步）")
+
+# 当前测试口径：由基线派生，不在 doc_gate 硬编码具体数字。
+CURRENT_PHRASE = f"{AUTO} 个自动化场景 + 主场景冒烟，共 {TOTAL} RUN"
+HIST_PHRASE = "65 个自动化场景 + 主场景冒烟，共 66 RUN"  # v1.41 冻结基线（历史）
+CURRENT_DOCS = ["README.md", "开发进度.md", "docs/综合整改报告.md"]
+HISTORICAL_DOCS = [
     "docs/v1.37-v1.41_全版本复验文档.md",
     "artifacts/releases/v1.41/最终交付报告_v1.41.md",
     "artifacts/releases/v1.41/已知问题_v1.41.md",
 ]
-for md in COUNT_DOCS:
-    p = PROJECT / md
-    if not p.exists():
-        continue
-    t = p.read_text(encoding="utf-8")
-    if "52 个自动化" in t or "51 个测试场景" in t or "58 场景" in t or "59 个自动化" in t or "59场景" in t or "59 场景" in t:
-        errors.append(f"{md}: 场景数表述为旧口径（52/51/58/59），应为 65 个自动化场景")
-    if "60 场景 + 冒烟" in t or "60 个场景" in t or "60 RUN" in t:
-        errors.append(f"{md}: 表述为旧口径 60 RUN，应为'65 个自动化场景 + 主场景冒烟，共 66 RUN'")
-    if "65 RUN" in t:
-        errors.append(f"{md}: 表述写成 65 RUN（错误口径，正确为 66 RUN；65 个自动化场景 + 冒烟 = 66 RUN）")
-    if "66 RUN" in t and "65 个自动化" not in t and "65个自动化" not in t and "65 自动化" not in t:
-        errors.append(f"{md}: 提到 66 RUN 必须伴随'65 个自动化场景'口径")
+if AUTO >= 1:
+    # 当前状态文档：必须引用与 runner 一致的当前数量，且不得残留 v1.41 旧口径。
+    for md in CURRENT_DOCS:
+        p = PROJECT / md
+        if not p.exists():
+            continue
+        t = p.read_text(encoding="utf-8")
+        if CURRENT_PHRASE not in t:
+            errors.append(f"{md}: 缺少当前测试口径 '{CURRENT_PHRASE}'（当前数量必须与 runner 一致）")
+        if HIST_PHRASE in t:
+            errors.append(f"{md}: 仍含 v1.41 旧口径 '{HIST_PHRASE}'（当前应为 '{CURRENT_PHRASE}'）")
+        # 把自动化场景数误写成 RUN 总数（少 1）→ 必须失败
+        if re.search(r"共\s*%d\s*RUN" % (TOTAL - 1), t):
+            errors.append(f"{md}: RUN 数仍写旧总数 {TOTAL - 1}，当前应为 {TOTAL}")
+    # 历史版本记录：不得被机械改成当前总数/当前口径（历史旧数量不得全局替换）。
+    for md in HISTORICAL_DOCS:
+        p = PROJECT / md
+        if not p.exists():
+            continue
+        t = p.read_text(encoding="utf-8")
+        if f"{TOTAL} RUN" in t:
+            errors.append(f"{md}: 历史记录被机械改成 {TOTAL} RUN（历史版本记录的旧数量不得全局替换）")
+        if CURRENT_PHRASE in t:
+            errors.append(f"{md}: 历史记录出现当前口径 '{CURRENT_PHRASE}'（历史版本记录不得被机械替换）")
 
 if errors:
     print("DOC_GATE FAIL:")
