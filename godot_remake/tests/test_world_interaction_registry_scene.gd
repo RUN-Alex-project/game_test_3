@@ -21,7 +21,7 @@ func _ready() -> void:
 	var maps_json: Variant = _load_json(MAPS_JSON_PATH)
 
 	# --- 1. 注册表结构 + token + gap ---
-	assert(reg.has("maps") and reg["maps"].size() == 28, "registry must have 28 maps")
+	assert(reg.has("maps") and reg["maps"].size() == 50, "registry must have 28 maps")
 	var json_ids: Array = []
 	for m in maps_json:
 		json_ids.append(str(m["id"]))
@@ -30,7 +30,7 @@ func _ready() -> void:
 	var gap_errors: Array = Support.validate_gap_mapping(reg)
 	assert(gap_errors.is_empty(), "gap errors: " + str(gap_errors.slice(0, 5)))
 
-	# --- 2. 28图双向精确比较 ---
+	# --- 2. 34图双向精确比较 ---
 	var main := preload("res://scenes/main.tscn").instantiate()
 	add_child(main)
 	await get_tree().process_frame
@@ -218,6 +218,10 @@ func _ready() -> void:
 		"lottery:": "lottery",
 		"war_soul_": "war_soul",
 		"territory:": "territory",
+		"evidence:": "chapter_evidence",
+		"scout:": "border_scout",
+		"ice:": "ice_investigate",
+		"abyss:": "abyss_investigate",
 	}
 	# 收集所有world entity action及其预期route
 	var world_action_cases: Array = []

@@ -1,0 +1,28 @@
+{
+  "contracts": [
+    {
+      "contract_id": "rc_note",
+      "min_tech": 10,
+      "soul_king": 1,
+      "min_bond": 0,
+      "reward_gold": 4,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    },
+    {
+      "contract_id": "rc_bond",
+      "min_tech": 10,
+      "soul_king": 0,
+      "min_bond": 1,
+      "reward_gold": 3,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    }
+  ],
+  "whitelist": [
+    "gold",
+    "fruit"
+  ],
+  "production_rate_cap": 6,
+  "technology_level_cap": 300
+}

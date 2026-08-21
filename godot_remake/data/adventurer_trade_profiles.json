@@ -1,0 +1,170 @@
+[
+  {
+    "adventurer_id": "npc_adv_lin_xia",
+    "preferred_items": [
+      "fruit"
+    ],
+    "disliked_items": [
+      "rose"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 12,
+    "min_reputation": 0,
+    "bid_aggression": 80,
+    "auction_start_gold": 80
+  },
+  {
+    "adventurer_id": "npc_adv_su_yan",
+    "preferred_items": [
+      "rose"
+    ],
+    "disliked_items": [
+      "fruit"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 8,
+    "min_reputation": 0,
+    "bid_aggression": 55,
+    "auction_start_gold": 85
+  },
+  {
+    "adventurer_id": "npc_adv_liang_chen",
+    "preferred_items": [
+      "silver_ore"
+    ],
+    "disliked_items": [
+      "exp_potion"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 15,
+    "min_reputation": 0,
+    "bid_aggression": 40,
+    "auction_start_gold": 90
+  },
+  {
+    "adventurer_id": "npc_adv_jiang_yue",
+    "preferred_items": [
+      "gold_ore"
+    ],
+    "disliked_items": [
+      "lava_potion"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 10,
+    "min_reputation": 0,
+    "bid_aggression": 50,
+    "auction_start_gold": 95
+  },
+  {
+    "adventurer_id": "npc_adv_qin_he",
+    "preferred_items": [
+      "exp_potion"
+    ],
+    "disliked_items": [
+      "moon_box"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 6,
+    "min_reputation": 0,
+    "bid_aggression": 35,
+    "auction_start_gold": 100
+  },
+  {
+    "adventurer_id": "npc_adv_gu_ning",
+    "preferred_items": [
+      "lava_potion"
+    ],
+    "disliked_items": [
+      "gold_ore"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 14,
+    "min_reputation": 0,
+    "bid_aggression": 60,
+    "auction_start_gold": 105
+  },
+  {
+    "adventurer_id": "npc_adv_ye_fei",
+    "preferred_items": [
+      "rose"
+    ],
+    "disliked_items": [
+      "silver_ore"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 18,
+    "min_reputation": 0,
+    "bid_aggression": 90,
+    "auction_start_gold": 110
+  },
+  {
+    "adventurer_id": "npc_adv_bai_luo",
+    "preferred_items": [
+      "plasma_potion"
+    ],
+    "disliked_items": [
+      "fruit"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 9,
+    "min_reputation": 0,
+    "bid_aggression": 45,
+    "auction_start_gold": 115
+  },
+  {
+    "adventurer_id": "npc_adv_xiao_ran",
+    "preferred_items": [
+      "moon_box"
+    ],
+    "disliked_items": [
+      "rose"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 5,
+    "min_reputation": 0,
+    "bid_aggression": 30,
+    "auction_start_gold": 120
+  },
+  {
+    "adventurer_id": "npc_adv_tang_xue",
+    "preferred_items": [
+      "fruit"
+    ],
+    "disliked_items": [
+      "gold_ore"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 7,
+    "min_reputation": 0,
+    "bid_aggression": 25,
+    "auction_start_gold": 125
+  },
+  {
+    "adventurer_id": "npc_adv_he_ming",
+    "preferred_items": [
+      "silver_ore"
+    ],
+    "disliked_items": [
+      "rose"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 11,
+    "min_reputation": 0,
+    "bid_aggression": 70,
+    "auction_start_gold": 130
+  },
+  {
+    "adventurer_id": "npc_adv_shen_yao",
+    "preferred_items": [
+      "lava_potion"
+    ],
+    "disliked_items": [
+      "exp_potion"
+    ],
+    "daily_trades": 2,
+    "quote_bias": 13,
+    "min_reputation": 0,
+    "bid_aggression": 65,
+    "auction_start_gold": 135
+  }
+]

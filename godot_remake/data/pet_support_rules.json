@@ -1,0 +1,9 @@
+{
+  "max_slots": 1,
+  "effects": [
+    "explore_log",
+    "trial_resist",
+    "contract_note"
+  ],
+  "default_effect": "trial_resist"
+}

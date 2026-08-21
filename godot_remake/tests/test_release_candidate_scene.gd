@@ -35,7 +35,7 @@ func _ready() -> void:
 	assert(mf != null, "maps.json must exist")
 	var maps: Variant = JSON.parse_string(mf.get_as_text())
 	var map_count := (maps as Array).size() if maps is Array else 0
-	assert(map_count == 28, "release must have 28 maps, got %d" % map_count)
+	assert(map_count == 50, "release must have 50 maps, got %d" % map_count)
 
 	# 3. exe 冒烟可重跑脚本存在（校验 exe SHA == manifest -> 启动 -> 日志 -> 退出码 -> SCRIPT ERROR -> PASS 标记）
 	assert(FileAccess.file_exists(SMOKE_SCRIPT_PATH), "exe 冒烟脚本必须存在且可重跑: " + SMOKE_SCRIPT_PATH)
@@ -185,7 +185,7 @@ func _ready() -> void:
 	_remove_dir_recursive(ProjectSettings.globalize_path(TMP_DIR))
 	assert(not DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(TMP_DIR)), "临时目录必须已删除（无残留）")
 
-	print("PASS v1.41 release candidate: preset+main scene, 28 maps, real release validator (byte SHA256 x manifest x SHA256SUMS, private-save, checklist, manifest, SHA/manifest duplicate rejection) forward + 9 tmp-copy mutation negatives, smoke script present")
+	print("PASS v1.41 release candidate: preset+main scene, 50 maps, real release validator (byte SHA256 x manifest x SHA256SUMS, private-save, checklist, manifest, SHA/manifest duplicate rejection) forward + 9 tmp-copy mutation negatives, smoke script present")
 	get_tree().quit(0)
 
 

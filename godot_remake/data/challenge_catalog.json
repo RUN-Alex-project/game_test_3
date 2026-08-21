@@ -1,0 +1,76 @@
+{
+  "expected_count": 9,
+  "challenges": [
+    {
+      "challenge_id": "ch_arena",
+      "map_id": "pk_arena",
+      "monster_id": "ch_arena_boss",
+      "unlock": "always",
+      "forbid_skills": [
+        "star_sword"
+      ],
+      "min_level": 1
+    },
+    {
+      "challenge_id": "ch_mine",
+      "map_id": "thunder_mine",
+      "monster_id": "ch_mine_boss",
+      "unlock": "level",
+      "min_level": 10,
+      "consume_item": "fruit",
+      "consume_qty": 1
+    },
+    {
+      "challenge_id": "ch_territory",
+      "map_id": "thunder_continent",
+      "monster_id": "ch_territory_boss",
+      "unlock": "contribution",
+      "min_contribution": 1,
+      "min_level": 1
+    },
+    {
+      "challenge_id": "ch_treeheart",
+      "map_id": "treeheart_outskirts",
+      "monster_id": "ch_treeheart_boss",
+      "unlock": "treeheart",
+      "min_level": 1
+    },
+    {
+      "challenge_id": "ch_harbor",
+      "map_id": "harbor_quay",
+      "monster_id": "ch_harbor_boss",
+      "unlock": "harbor",
+      "min_gold": 50,
+      "min_level": 1
+    },
+    {
+      "challenge_id": "ch_border",
+      "map_id": "border_watchpost",
+      "monster_id": "ch_border_boss",
+      "unlock": "border",
+      "min_level": 1
+    },
+    {
+      "challenge_id": "ch_ice",
+      "map_id": "ice_frontier",
+      "monster_id": "ch_ice_boss",
+      "unlock": "ice",
+      "need_mastery": "mastery_flying_slash",
+      "min_level": 1
+    },
+    {
+      "challenge_id": "ch_abyss",
+      "map_id": "abyss_gate",
+      "monster_id": "ch_abyss_boss",
+      "unlock": "abyss",
+      "min_level": 1
+    },
+    {
+      "challenge_id": "ch_memory",
+      "map_id": "demon_camp",
+      "monster_id": "ch_memory_boss",
+      "unlock": "king",
+      "min_level": 1
+    }
+  ]
+}

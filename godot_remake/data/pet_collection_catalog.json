@@ -1,0 +1,57 @@
+{
+  "expected_count": 6,
+  "entries": [
+    {
+      "collection_id": "col_ad_light",
+      "template_id": "attack_defense_light",
+      "reward_id": "cr_light",
+      "reward_gold": 5,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    },
+    {
+      "collection_id": "col_ad_heavy",
+      "template_id": "attack_defense_heavy",
+      "reward_id": "cr_heavy",
+      "reward_gold": 5,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    },
+    {
+      "collection_id": "col_strange",
+      "template_id": "strange_beast",
+      "reward_id": "cr_strange",
+      "reward_gold": 5,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    },
+    {
+      "collection_id": "col_year_pig",
+      "template_id": "year_pig",
+      "reward_id": "cr_pig",
+      "reward_gold": 5,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    },
+    {
+      "collection_id": "col_lulu",
+      "template_id": "lulu_pet",
+      "reward_id": "cr_lulu",
+      "reward_gold": 5,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    },
+    {
+      "collection_id": "col_holy",
+      "template_id": "holy_angel",
+      "reward_id": "cr_holy",
+      "reward_gold": 5,
+      "reward_item": "fruit",
+      "reward_qty": 1
+    }
+  ],
+  "whitelist": [
+    "gold",
+    "fruit"
+  ]
+}

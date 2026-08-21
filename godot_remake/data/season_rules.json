@@ -1,0 +1,10 @@
+{
+  "cycle_days": 14,
+  "history_cap": 4,
+  "max_daily_contracts": 3,
+  "daily_reward_gold_cap": 10,
+  "season_reward_gold_cap": 40,
+  "theme_reward_gold_cap": 20,
+  "time_source": "game_day",
+  "mail_gold": 2
+}

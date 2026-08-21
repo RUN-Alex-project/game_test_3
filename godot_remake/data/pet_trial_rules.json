@@ -1,0 +1,47 @@
+{
+  "trials": [
+    {
+      "trial_id": "pet_trial_1",
+      "map_id": "green_field",
+      "monster_id": "pet_trial_1_boss",
+      "tier": 1,
+      "need_king": false
+    },
+    {
+      "trial_id": "pet_trial_2",
+      "map_id": "thunder_mine",
+      "monster_id": "pet_trial_2_boss",
+      "tier": 2,
+      "need_king": false,
+      "min_level": 10
+    },
+    {
+      "trial_id": "pet_trial_3",
+      "map_id": "ice_frontier",
+      "monster_id": "pet_trial_3_boss",
+      "tier": 3,
+      "need_king": false
+    },
+    {
+      "trial_id": "pet_king",
+      "map_id": "abyss_gate",
+      "monster_id": "pet_king_boss",
+      "tier": 4,
+      "need_king": true
+    }
+  ],
+  "first": {
+    "gold": 6,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "weekly": {
+    "gold": 3,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "whitelist": [
+    "gold",
+    "fruit"
+  ]
+}

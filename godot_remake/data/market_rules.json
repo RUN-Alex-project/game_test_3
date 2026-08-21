@@ -1,0 +1,84 @@
+{
+  "catalog_version": 1,
+  "daily_slot_count": 6,
+  "theme_slot_count": 2,
+  "daily_player_trade_quota": 6,
+  "reputation_per_trade": 1,
+  "reputation_per_auction": 2,
+  "reputation_cap": 99,
+  "relationship_delta": 1,
+  "listing_fee": 5,
+  "sale_tax_bps": 500,
+  "reputation_levels": [
+    {
+      "level": 1,
+      "min": 0
+    },
+    {
+      "level": 2,
+      "min": 10
+    },
+    {
+      "level": 3,
+      "min": 30
+    }
+  ],
+  "weekly_themes": [
+    {
+      "weekday": 0,
+      "theme_id": "flora",
+      "item_ids": [
+        "rose",
+        "fruit"
+      ]
+    },
+    {
+      "weekday": 1,
+      "theme_id": "ore",
+      "item_ids": [
+        "silver_ore",
+        "gold_ore"
+      ]
+    },
+    {
+      "weekday": 2,
+      "theme_id": "brew",
+      "item_ids": [
+        "exp_potion",
+        "lava_potion"
+      ]
+    },
+    {
+      "weekday": 3,
+      "theme_id": "rare",
+      "item_ids": [
+        "moon_box",
+        "plasma_potion"
+      ]
+    },
+    {
+      "weekday": 4,
+      "theme_id": "flora2",
+      "item_ids": [
+        "fruit",
+        "rose"
+      ]
+    },
+    {
+      "weekday": 5,
+      "theme_id": "ore2",
+      "item_ids": [
+        "gold_ore",
+        "silver_ore"
+      ]
+    },
+    {
+      "weekday": 6,
+      "theme_id": "mix",
+      "item_ids": [
+        "lava_potion",
+        "rose"
+      ]
+    }
+  ]
+}

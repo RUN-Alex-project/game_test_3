@@ -1,0 +1,136 @@
+{
+  "version": "v1.55",
+  "flow_count": 10,
+  "flows": [
+    {
+      "flow_id": "flow_newgame",
+      "title": "new town battle bag palace",
+      "save_points": [
+        "after_battle",
+        "after_palace"
+      ],
+      "reload_points": [
+        "after_palace"
+      ],
+      "idempotent": [
+        "grocery_count"
+      ]
+    },
+    {
+      "flow_id": "flow_v21",
+      "title": "v21 load migrate v22",
+      "save_points": [
+        "after_v21_load",
+        "after_v22_save"
+      ],
+      "reload_points": [
+        "after_v22_save"
+      ],
+      "idempotent": [
+        "core_gold"
+      ]
+    },
+    {
+      "flow_id": "flow_v22_mid",
+      "title": "adventurer market ranking arena",
+      "save_points": [
+        "after_rank"
+      ],
+      "reload_points": [
+        "after_rank"
+      ],
+      "idempotent": [
+        "arena_seed"
+      ]
+    },
+    {
+      "flow_id": "flow_territory",
+      "title": "occupy day castle",
+      "save_points": [
+        "after_occupy"
+      ],
+      "reload_points": [
+        "after_occupy"
+      ],
+      "idempotent": [
+        "owned_territory"
+      ]
+    },
+    {
+      "flow_id": "flow_treeheart",
+      "title": "treeheart harbor weekly",
+      "save_points": [
+        "after_chapter"
+      ],
+      "reload_points": [
+        "after_chapter"
+      ],
+      "idempotent": [
+        "chapter_stage"
+      ]
+    },
+    {
+      "flow_id": "flow_border_ice",
+      "title": "border ice element",
+      "save_points": [
+        "after_ice"
+      ],
+      "reload_points": [
+        "after_ice"
+      ],
+      "idempotent": [
+        "ice_stage"
+      ]
+    },
+    {
+      "flow_id": "flow_finale",
+      "title": "abyss epilogue completed",
+      "save_points": [
+        "after_finale"
+      ],
+      "reload_points": [
+        "after_finale"
+      ],
+      "idempotent": [
+        "epilogue_lin"
+      ]
+    },
+    {
+      "flow_id": "flow_challenge_pet",
+      "title": "challenge pet research",
+      "save_points": [
+        "after_pet"
+      ],
+      "reload_points": [
+        "after_pet"
+      ],
+      "idempotent": [
+        "collection"
+      ]
+    },
+    {
+      "flow_id": "flow_season",
+      "title": "14 day season history",
+      "save_points": [
+        "after_season"
+      ],
+      "reload_points": [
+        "after_season"
+      ],
+      "idempotent": [
+        "history_cap"
+      ]
+    },
+    {
+      "flow_id": "flow_tight",
+      "title": "empty gold full bag corrupt future",
+      "save_points": [
+        "before_fail"
+      ],
+      "reload_points": [],
+      "idempotent": [
+        "gold_unchanged"
+      ]
+    }
+  ]
+}

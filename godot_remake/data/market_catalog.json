@@ -1,0 +1,68 @@
+{
+  "items": [
+    {
+      "item_id": "fruit",
+      "value": 25,
+      "min_quote": 10,
+      "max_quote": 80,
+      "allow_direct": true,
+      "allow_auction": true
+    },
+    {
+      "item_id": "rose",
+      "value": 40,
+      "min_quote": 15,
+      "max_quote": 100,
+      "allow_direct": true,
+      "allow_auction": true
+    },
+    {
+      "item_id": "silver_ore",
+      "value": 30,
+      "min_quote": 10,
+      "max_quote": 90,
+      "allow_direct": true,
+      "allow_auction": true
+    },
+    {
+      "item_id": "gold_ore",
+      "value": 80,
+      "min_quote": 40,
+      "max_quote": 200,
+      "allow_direct": true,
+      "allow_auction": true
+    },
+    {
+      "item_id": "exp_potion",
+      "value": 20,
+      "min_quote": 5,
+      "max_quote": 60,
+      "allow_direct": true,
+      "allow_auction": true
+    },
+    {
+      "item_id": "lava_potion",
+      "value": 50,
+      "min_quote": 20,
+      "max_quote": 120,
+      "allow_direct": true,
+      "allow_auction": true
+    },
+    {
+      "item_id": "plasma_potion",
+      "value": 70,
+      "min_quote": 30,
+      "max_quote": 150,
+      "allow_direct": true,
+      "allow_auction": true
+    },
+    {
+      "item_id": "moon_box",
+      "value": 90,
+      "min_quote": 40,
+      "max_quote": 180,
+      "allow_direct": true,
+      "allow_auction": true
+    }
+  ]
+}

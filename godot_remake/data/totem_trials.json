@@ -1,0 +1,24 @@
+{
+  "totems": [
+    {
+      "totem_id": "totem_guild",
+      "map_id": "totem_sanctum",
+      "need": "reputation",
+      "min": 1,
+      "consume_item": "fruit",
+      "consume_qty": 1
+    },
+    {
+      "totem_id": "totem_territory",
+      "map_id": "totem_sanctum",
+      "need": "contribution",
+      "min": 1
+    },
+    {
+      "totem_id": "totem_bond",
+      "map_id": "totem_sanctum",
+      "need": "bond",
+      "min": 2
+    }
+  ]
+}

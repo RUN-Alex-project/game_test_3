@@ -1,0 +1,15 @@
+{
+  "weekly": {
+    "gold": 10,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "whitelist": [
+    "gold",
+    "fruit",
+    "rose",
+    "ember_vial",
+    "frost_vial",
+    "spark_vial"
+  ]
+}

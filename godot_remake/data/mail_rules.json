@@ -1,0 +1,5 @@
+{
+  "default_expire_days": 7,
+  "expire_policy": "return_to_sender",
+  "max_attachments": 3
+}

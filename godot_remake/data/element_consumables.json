@@ -1,0 +1,24 @@
+{
+  "whitelist": [
+    "ember_vial",
+    "frost_vial",
+    "spark_vial"
+  ],
+  "items": {
+    "ember_vial": {
+      "element": "fire",
+      "per_battle": 1,
+      "per_day": 1
+    },
+    "frost_vial": {
+      "element": "ice",
+      "per_battle": 1,
+      "per_day": 1
+    },
+    "spark_vial": {
+      "element": "thunder",
+      "per_battle": 1,
+      "per_day": 1
+    }
+  }
+}

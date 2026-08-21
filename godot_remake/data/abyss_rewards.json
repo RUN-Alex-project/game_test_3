@@ -1,0 +1,19 @@
+{
+  "one_time": {
+    "gold": 80,
+    "item_id": "rose",
+    "qty": 1
+  },
+  "weekly": {
+    "gold": 15,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "whitelist": [
+    "gold",
+    "fruit",
+    "rose"
+  ],
+  "relationship_delta": 5,
+  "explore_score_delta": 1
+}

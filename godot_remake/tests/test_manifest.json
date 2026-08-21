@@ -469,6 +469,176 @@
         "windows",
         "linux"
       ]
+    },
+    {
+      "path": "res://tests/test_adventurer_registry_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_adventurer_relationship_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_adventurer_roster_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_day_cycle_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_mail_market_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_mail_trade_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_ranking_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_arena_match_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_ranking_arena_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_market_auction_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_market_auction_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_property_territory_economy_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_property_territory_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_treeheart_harbor_chapter_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_treeheart_harbor_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_south_border_story_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_south_border_main_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_ice_element_chapter_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_element_resolution_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_abyss_finale_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_challenge_mastery_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_pet_endgame_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ]
+    },
+    {
+      "path": "res://tests/test_season_epilogue_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "quit_after": 4000
+    },
+    {
+      "path": "res://tests/test_long_flow_v155_scene.tscn",
+      "platforms": [
+        "windows",
+        "linux"
+      ],
+      "quit_after": 8000
     }
   ]
 }

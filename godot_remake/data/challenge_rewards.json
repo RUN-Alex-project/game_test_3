@@ -1,0 +1,16 @@
+{
+  "first": {
+    "gold": 8,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "weekly": {
+    "gold": 4,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "whitelist": [
+    "gold",
+    "fruit"
+  ]
+}

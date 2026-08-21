@@ -928,6 +928,37 @@
             "pk_arena"
           ],
           "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_arena_boss",
+          "kind": "monster",
+          "display_name": "ch_arena_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_arena_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_arena_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_arena_boss",
+            "ch_arena_boss",
+            "image_1072",
+            "pk_arena"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
         }
       ]
     },
@@ -996,6 +1027,37 @@
           "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
           "evidence_tokens": [
             "image_0051",
+            "green_field"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:pet_trial_1_boss",
+          "kind": "monster",
+          "display_name": "pet_trial_1_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            180.0,
+            120.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:pet_trial_1_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "pet_trial_unit:pet_trial_1_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/pet_endgame_v153.txt",
+          "evidence_tokens": [
+            "battle:pet_trial_1_boss",
+            "pet_trial_1_boss",
+            "image_1072",
             "green_field"
           ],
           "implementation_source": "res://scripts/main_original.gd"
@@ -1638,6 +1700,37 @@
             "thunder_continent"
           ],
           "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_territory_boss",
+          "kind": "monster",
+          "display_name": "ch_territory_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_territory_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_territory_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_territory_boss",
+            "ch_territory_boss",
+            "image_1072",
+            "thunder_continent"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
         }
       ]
     },
@@ -1793,6 +1886,68 @@
           "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
           "evidence_tokens": [
             "image_0038",
+            "thunder_mine"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_mine_boss",
+          "kind": "monster",
+          "display_name": "ch_mine_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_mine_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_mine_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_mine_boss",
+            "ch_mine_boss",
+            "image_1072",
+            "thunder_mine"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:pet_trial_2_boss",
+          "kind": "monster",
+          "display_name": "pet_trial_2_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            180.0,
+            120.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:pet_trial_2_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "pet_trial_unit:pet_trial_2_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/pet_endgame_v153.txt",
+          "evidence_tokens": [
+            "battle:pet_trial_2_boss",
+            "pet_trial_2_boss",
+            "image_1072",
             "thunder_mine"
           ],
           "implementation_source": "res://scripts/main_original.gd"
@@ -3146,6 +3301,37 @@
             "demon_camp"
           ],
           "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_memory_boss",
+          "kind": "monster",
+          "display_name": "ch_memory_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_memory_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_memory_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_memory_boss",
+            "ch_memory_boss",
+            "image_1072",
+            "demon_camp"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
         }
       ]
     },
@@ -4381,6 +4567,38 @@
           },
           "runtime_required_level": 1,
           "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "treeheart_outskirts",
+          "name": "树心郊区",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "treeheart_outskirts",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
         }
       ],
       "entities": [
@@ -5229,6 +5447,2990 @@
           "implementation_source": "res://scripts/main_original.gd"
         }
       ]
+    },
+    {
+      "map_id": "treeheart_outskirts",
+      "name": "树心郊区",
+      "background": "res://assets/extracted/images/image_1299.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "treeheart_city",
+          "name": "树心城",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "treeheart_city",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "treeheart_core",
+          "name": "树心内核",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "treeheart_core",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:root_sickness"
+        },
+        {
+          "direction": "bottom",
+          "target_map_id": "harbor_quay",
+          "name": "港口码头",
+          "position": [
+            305.0,
+            403.0
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "harbor_quay",
+            "bottom"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:harbor_lead"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "chapter_lin",
+          "kind": "npc",
+          "display_name": "lin",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            280.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "chapter_lin",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "chapter_lin",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "evidence:root_bark",
+          "kind": "interactive_prop",
+          "display_name": "bark",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            250.0,
+            200.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "evidence:root_bark",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "evidence:root_bark",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "evidence:sick_leaf",
+          "kind": "interactive_prop",
+          "display_name": "leaf",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            400.0,
+            320.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "evidence:sick_leaf",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "evidence:sick_leaf",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_treeheart_boss",
+          "kind": "monster",
+          "display_name": "ch_treeheart_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_treeheart_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_treeheart_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_treeheart_boss",
+            "ch_treeheart_boss",
+            "image_1072",
+            "treeheart_outskirts"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "treeheart_core",
+      "name": "树心内核",
+      "background": "res://assets/extracted/images/image_1097.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "treeheart_outskirts",
+          "name": "树心郊区",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "treeheart_outskirts",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "chapter_qin",
+          "kind": "npc",
+          "display_name": "qin",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            120.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "chapter_qin",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "chapter_qin",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "evidence:core_resin",
+          "kind": "interactive_prop",
+          "display_name": "resin",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            480.0,
+            280.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "evidence:core_resin",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "evidence:core_resin",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "harbor_quay",
+      "name": "港口码头",
+      "background": "res://assets/extracted/images/image_1252.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "top",
+          "target_map_id": "treeheart_outskirts",
+          "name": "树心郊区",
+          "position": [
+            305.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "treeheart_outskirts",
+            "top"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "harbor_market",
+          "name": "港口市集",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "harbor_market",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:harbor_lead"
+        },
+        {
+          "direction": "bottom",
+          "target_map_id": "sea_cave",
+          "name": "海洞",
+          "position": [
+            305.0,
+            403.0
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "sea_cave",
+            "bottom"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:sea_cave_assault"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "chapter_su",
+          "kind": "npc",
+          "display_name": "su",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            500.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "chapter_su",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "chapter_su",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "evidence:smuggler_ledger",
+          "kind": "interactive_prop",
+          "display_name": "ledger",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            250.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "evidence:smuggler_ledger",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "evidence:smuggler_ledger",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_harbor_boss",
+          "kind": "monster",
+          "display_name": "ch_harbor_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_harbor_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_harbor_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_harbor_boss",
+            "ch_harbor_boss",
+            "image_1072",
+            "harbor_quay"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "harbor_market",
+      "name": "港口市集",
+      "background": "res://assets/extracted/images/image_1114.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "harbor_quay",
+          "name": "港口码头",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "harbor_quay",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:harbor_lead"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "chapter_weekly",
+          "kind": "npc",
+          "display_name": "weekly",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            200.0,
+            280.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "chapter_weekly",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "chapter_weekly",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "sea_cave",
+      "name": "海洞",
+      "background": "res://assets/extracted/images/image_1281.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "top",
+          "target_map_id": "harbor_quay",
+          "name": "港口码头",
+          "position": [
+            305.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "harbor_quay",
+            "top"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:harbor_lead"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "tide_shrine",
+          "name": "潮汐祭坛",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "tide_shrine",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:tide_shrine_finale"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "chapter_ye",
+          "kind": "npc",
+          "display_name": "ye",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            280.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "chapter_ye",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "chapter_ye",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:chapter_sea_boss",
+          "kind": "monster",
+          "display_name": "boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            480.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:chapter_sea_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "chapter_th_boss:chapter_sea_boss",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "battle:chapter_sea_boss",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "tide_shrine",
+      "name": "潮汐祭坛",
+      "background": "res://assets/extracted/images/image_1242.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "sea_cave",
+          "name": "海洞",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "sea_cave",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "chapter_th:sea_cave_assault"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "battle:chapter_tide_boss",
+          "kind": "monster",
+          "display_name": "boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:chapter_tide_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "chapter_th_boss:chapter_tide_boss",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/treeheart_harbor_v148.txt",
+          "evidence_tokens": [
+            "battle:chapter_tide_boss",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "south_city_gate",
+      "name": "南部城门",
+      "background": "res://assets/extracted/images/image_1271.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "right",
+          "target_map_id": "south_city_square",
+          "name": "南部广场",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "south_city_square",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:scouting"
+        },
+        {
+          "direction": "bottom",
+          "target_map_id": "border_watchpost",
+          "name": "边境哨所",
+          "position": [
+            305.0,
+            403.0
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_watchpost",
+            "bottom"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:scouting"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "border_cmd",
+          "kind": "npc",
+          "display_name": "cmd",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "border_cmd",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_cmd",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "south_city_square",
+      "name": "南部广场",
+      "background": "res://assets/extracted/images/image_1175.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "south_city_gate",
+          "name": "南部城门",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "south_city_gate",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "border_qm",
+          "kind": "npc",
+          "display_name": "qm",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            480.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "border_qm",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_qm",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "scout:scout_banner",
+          "kind": "interactive_prop",
+          "display_name": "banner",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "scout:scout_banner",
+          "action_route": "border_scout",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "scout:scout_banner",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "border_watchpost",
+      "name": "边境哨所",
+      "background": "res://assets/extracted/images/image_1294.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "top",
+          "target_map_id": "south_city_gate",
+          "name": "南部城门",
+          "position": [
+            305.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "south_city_gate",
+            "top"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "border_supply_route",
+          "name": "补给线",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_supply_route",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:supply"
+        },
+        {
+          "direction": "bottom",
+          "target_map_id": "border_ruins",
+          "name": "边境废墟",
+          "position": [
+            305.0,
+            403.0
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_ruins",
+            "bottom"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:defense"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "border_scout_npc",
+          "kind": "npc",
+          "display_name": "scout",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "border_scout_npc",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_scout_npc",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "border_tang",
+          "kind": "npc",
+          "display_name": "tang",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            500.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "border_tang",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_tang",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "scout:scout_tracks",
+          "kind": "interactive_prop",
+          "display_name": "tracks",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "scout:scout_tracks",
+          "action_route": "border_scout",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "scout:scout_tracks",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_border_boss",
+          "kind": "monster",
+          "display_name": "ch_border_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_border_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_border_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_border_boss",
+            "ch_border_boss",
+            "image_1072",
+            "border_watchpost"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "border_supply_route",
+      "name": "补给线",
+      "background": "res://assets/extracted/images/image_1276.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "border_watchpost",
+          "name": "边境哨所",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_watchpost",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:scouting"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "battle:border_skirmish_a",
+          "kind": "monster",
+          "display_name": "skirmish",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:border_skirmish_a",
+          "action_route": "scene_battle",
+          "appearance_condition": "border_unit:border_skirmish_a",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "battle:border_skirmish_a",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "border_ruins",
+      "name": "边境废墟",
+      "background": "res://assets/extracted/images/image_1268.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "top",
+          "target_map_id": "border_watchpost",
+          "name": "边境哨所",
+          "position": [
+            305.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_watchpost",
+            "top"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:scouting"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "border_command_tent",
+          "name": "指挥帐",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_command_tent",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:counterattack"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "border_liang",
+          "kind": "npc",
+          "display_name": "liang",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "border_liang",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_liang",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:border_skirmish_b",
+          "kind": "monster",
+          "display_name": "skirmish",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:border_skirmish_b",
+          "action_route": "scene_battle",
+          "appearance_condition": "border_unit:border_skirmish_b",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "battle:border_skirmish_b",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "border_command_tent",
+      "name": "指挥帐",
+      "background": "res://assets/extracted/images/image_1278.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "border_ruins",
+          "name": "边境废墟",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_ruins",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "border:defense"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "border_weekly",
+          "kind": "npc",
+          "display_name": "weekly",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "border_weekly",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "border_weekly",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:border_command_boss",
+          "kind": "monster",
+          "display_name": "boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:border_command_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "border_unit:border_command_boss",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/south_border_v149.txt",
+          "evidence_tokens": [
+            "battle:border_command_boss",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "ice_frontier",
+      "name": "冰原先遣",
+      "background": "res://assets/extracted/images/image_1287.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "right",
+          "target_map_id": "frozen_pass",
+          "name": "冻结隘口",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "frozen_pass",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "ice:ice_signal"
+        },
+        {
+          "direction": "bottom",
+          "target_map_id": "crystal_cavern",
+          "name": "晶石洞窟",
+          "position": [
+            305.0,
+            403.0
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "crystal_cavern",
+            "bottom"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "ice:cold_rescue"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "ice_shen",
+          "kind": "npc",
+          "display_name": "shen",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "ice_shen",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice_shen",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "ice:signal_shard",
+          "kind": "interactive_prop",
+          "display_name": "shard",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "ice:signal_shard",
+          "action_route": "ice_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice:signal_shard",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_ice_boss",
+          "kind": "monster",
+          "display_name": "ch_ice_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_ice_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_ice_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_ice_boss",
+            "ch_ice_boss",
+            "image_1072",
+            "ice_frontier"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:pet_trial_3_boss",
+          "kind": "monster",
+          "display_name": "pet_trial_3_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            180.0,
+            120.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:pet_trial_3_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "pet_trial_unit:pet_trial_3_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/pet_endgame_v153.txt",
+          "evidence_tokens": [
+            "battle:pet_trial_3_boss",
+            "pet_trial_3_boss",
+            "image_1072",
+            "ice_frontier"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "frozen_pass",
+      "name": "冻结隘口",
+      "background": "res://assets/extracted/images/image_1292.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "ice_frontier",
+          "name": "冰原先遣",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice_frontier",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "elemental_laboratory",
+          "name": "元素试验室",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "elemental_laboratory",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "ice:crystal_key"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "ice_bai",
+          "kind": "npc",
+          "display_name": "bai",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "ice_bai",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice_bai",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "ice:rescue_charm",
+          "kind": "interactive_prop",
+          "display_name": "charm",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "ice:rescue_charm",
+          "action_route": "ice_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice:rescue_charm",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "crystal_cavern",
+      "name": "晶石洞窟",
+      "background": "res://assets/extracted/images/image_1066.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "top",
+          "target_map_id": "ice_frontier",
+          "name": "冰原先遣",
+          "position": [
+            305.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice_frontier",
+            "top"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "ice:crystal_key",
+          "kind": "interactive_prop",
+          "display_name": "key",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "ice:crystal_key",
+          "action_route": "ice_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice:crystal_key",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "elemental_laboratory",
+      "name": "元素试验室",
+      "background": "res://assets/extracted/images/image_1091.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "frozen_pass",
+          "name": "冻结隘口",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "frozen_pass",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "ice:ice_signal"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "aurora_sanctum",
+          "name": "极光圣所",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "aurora_sanctum",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "ice:lab_trial"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "ice_weekly",
+          "kind": "npc",
+          "display_name": "weekly",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "ice_weekly",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "ice_weekly",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ice_lab_boss",
+          "kind": "monster",
+          "display_name": "boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ice_lab_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "ice_unit:ice_lab_boss",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "battle:ice_lab_boss",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ice_weekly_trial",
+          "kind": "monster",
+          "display_name": "trial",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ice_weekly_trial",
+          "action_route": "scene_battle",
+          "appearance_condition": "ice_unit:ice_weekly_trial",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "battle:ice_weekly_trial",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "aurora_sanctum",
+      "name": "极光圣所",
+      "background": "res://assets/extracted/images/image_1226.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "elemental_laboratory",
+          "name": "元素试验室",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "elemental_laboratory",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "ice:crystal_key"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "battle:ice_aurora_boss",
+          "kind": "monster",
+          "display_name": "boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ice_aurora_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "ice_unit:ice_aurora_boss",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/ice_element_v150.txt",
+          "evidence_tokens": [
+            "battle:ice_aurora_boss",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "abyss_gate",
+      "name": "深渊门",
+      "background": "res://assets/extracted/images/image_1236.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "right",
+          "target_map_id": "abyss_outer_ring",
+          "name": "深渊外环",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_outer_ring",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "abyss:summons"
+        },
+        {
+          "direction": "bottom",
+          "target_map_id": "abyss_echo_halls",
+          "name": "回响厅",
+          "position": [
+            305.0,
+            403.0
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_echo_halls",
+            "bottom"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "abyss:echoes"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "abyss_he",
+          "kind": "npc",
+          "display_name": "he",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "abyss_he",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_he",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "abyss:gate_seal",
+          "kind": "interactive_prop",
+          "display_name": "seal",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "abyss:gate_seal",
+          "action_route": "abyss_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss:gate_seal",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:ch_abyss_boss",
+          "kind": "monster",
+          "display_name": "ch_abyss_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            380.0,
+            280.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:ch_abyss_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "challenge_unit:ch_abyss_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/challenge_mastery_v152.txt",
+          "evidence_tokens": [
+            "battle:ch_abyss_boss",
+            "ch_abyss_boss",
+            "image_1072",
+            "abyss_gate"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:pet_king_boss",
+          "kind": "monster",
+          "display_name": "pet_king_boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            180.0,
+            120.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:pet_king_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "pet_trial_unit:pet_king_boss",
+          "classification": "local_original",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "unconfirmed",
+            "size": "unconfirmed"
+          },
+          "evidence_source": "res://docs/evidence/pet_endgame_v153.txt",
+          "evidence_tokens": [
+            "battle:pet_king_boss",
+            "pet_king_boss",
+            "image_1072",
+            "abyss_gate"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "abyss_outer_ring",
+      "name": "深渊外环",
+      "background": "res://assets/extracted/images/image_1242.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "abyss_gate",
+          "name": "深渊门",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_gate",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "totem_sanctum",
+          "name": "图腾圣所",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "totem_sanctum",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "abyss:totem_trials"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "abyss_jiang",
+          "kind": "npc",
+          "display_name": "jiang",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "abyss_jiang",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_jiang",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "abyss_echo_halls",
+      "name": "回响厅",
+      "background": "res://assets/extracted/images/image_1276.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "top",
+          "target_map_id": "abyss_gate",
+          "name": "深渊门",
+          "position": [
+            305.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_gate",
+            "top"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "battle:abyss_echo_assault",
+          "kind": "monster",
+          "display_name": "ea",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            180.0,
+            220.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:abyss_echo_assault",
+          "action_route": "scene_battle",
+          "appearance_condition": "abyss_unit:abyss_echo_assault",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "battle:abyss_echo_assault",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:abyss_echo_guard",
+          "kind": "monster",
+          "display_name": "eg",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            330.0,
+            220.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:abyss_echo_guard",
+          "action_route": "scene_battle",
+          "appearance_condition": "abyss_unit:abyss_echo_guard",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "battle:abyss_echo_guard",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:abyss_echo_mystery",
+          "kind": "monster",
+          "display_name": "em",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            480.0,
+            220.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:abyss_echo_mystery",
+          "action_route": "scene_battle",
+          "appearance_condition": "abyss_unit:abyss_echo_mystery",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "battle:abyss_echo_mystery",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:abyss_echo_totem",
+          "kind": "monster",
+          "display_name": "et",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            240.0,
+            340.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:abyss_echo_totem",
+          "action_route": "scene_battle",
+          "appearance_condition": "abyss_unit:abyss_echo_totem",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "battle:abyss_echo_totem",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:abyss_echo_commander",
+          "kind": "monster",
+          "display_name": "ec",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            420.0,
+            340.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:abyss_echo_commander",
+          "action_route": "scene_battle",
+          "appearance_condition": "abyss_unit:abyss_echo_commander",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "battle:abyss_echo_commander",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "totem_sanctum",
+      "name": "图腾圣所",
+      "background": "res://assets/extracted/images/image_1278.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "abyss_outer_ring",
+          "name": "深渊外环",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_outer_ring",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "abyss:summons"
+        },
+        {
+          "direction": "right",
+          "target_map_id": "abyss_heart",
+          "name": "深渊之心",
+          "position": [
+            657.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_heart",
+            "right"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "abyss:heart_assault"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "abyss_gu",
+          "kind": "npc",
+          "display_name": "gu",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "abyss_gu",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_gu",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "abyss:totem_guild",
+          "kind": "interactive_prop",
+          "display_name": "tg",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            220.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "abyss:totem_guild",
+          "action_route": "abyss_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss:totem_guild",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "abyss:totem_territory",
+          "kind": "interactive_prop",
+          "display_name": "tt",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            320.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "abyss:totem_territory",
+          "action_route": "abyss_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss:totem_territory",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "abyss:totem_bond",
+          "kind": "interactive_prop",
+          "display_name": "tb",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            420.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "abyss:totem_bond",
+          "action_route": "abyss_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss:totem_bond",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
+    },
+    {
+      "map_id": "abyss_heart",
+      "name": "深渊之心",
+      "background": "res://assets/extracted/images/image_1262.jpg",
+      "swf_scope": "UNCONFIRMED",
+      "exits": [
+        {
+          "direction": "left",
+          "target_map_id": "totem_sanctum",
+          "name": "图腾圣所",
+          "position": [
+            2.0,
+            230.0
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "runtime_confirmed",
+          "required_level": 1,
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "totem_sanctum",
+            "left"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "direction": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed",
+            "availability": "runtime_confirmed",
+            "required_level": "runtime_confirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "abyss:totem_trials"
+        }
+      ],
+      "entities": [
+        {
+          "entity_id": "abyss_weekly",
+          "kind": "npc",
+          "display_name": "weekly",
+          "asset": "res://assets/extracted/images/image_1076.png",
+          "position": [
+            80.0,
+            260.0
+          ],
+          "size": [
+            58.0,
+            111.0
+          ],
+          "action_id": "abyss_weekly",
+          "action_route": "npc_dialogue",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss_weekly",
+            "image_1076"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "abyss:heart_seal",
+          "kind": "interactive_prop",
+          "display_name": "hs",
+          "asset": "res://assets/extracted/images/image_1213.png",
+          "position": [
+            300.0,
+            240.0
+          ],
+          "size": [
+            48.0,
+            48.0
+          ],
+          "action_id": "abyss:heart_seal",
+          "action_route": "abyss_investigate",
+          "appearance_condition": "always",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "abyss:heart_seal",
+            "image_1213"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:abyss_heart_boss",
+          "kind": "monster",
+          "display_name": "boss",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:abyss_heart_boss",
+          "action_route": "scene_battle",
+          "appearance_condition": "abyss_unit:abyss_heart_boss",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "battle:abyss_heart_boss",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        },
+        {
+          "entity_id": "battle:abyss_weekly_trial",
+          "kind": "monster",
+          "display_name": "trial",
+          "asset": "res://assets/extracted/images/image_1072.png",
+          "position": [
+            450.0,
+            250.0
+          ],
+          "size": [
+            101.0,
+            132.0
+          ],
+          "action_id": "battle:abyss_weekly_trial",
+          "action_route": "scene_battle",
+          "appearance_condition": "abyss_unit:abyss_weekly_trial",
+          "classification": "singleplayer_extension",
+          "evidence_status": {
+            "asset": "runtime_confirmed",
+            "position": "runtime_confirmed",
+            "size": "runtime_confirmed"
+          },
+          "evidence_source": "res://docs/evidence/abyss_finale_v151.txt",
+          "evidence_tokens": [
+            "battle:abyss_weekly_trial",
+            "image_1072"
+          ],
+          "implementation_source": "res://scripts/main_original.gd"
+        }
+      ]
     }
   ],
   "dynamic_scenarios": [
@@ -5266,7 +8468,9 @@
       "expected_dynamic_present": [
         "fuwa_messenger"
       ],
-      "expected_dynamic_absent": []
+      "expected_dynamic_absent": [
+        "battle:ch_territory_boss"
+      ]
     },
     {
       "scenario_id": "fuwa_messenger_thunder_continent_absent",
@@ -5276,7 +8480,8 @@
       },
       "expected_dynamic_present": [],
       "expected_dynamic_absent": [
-        "fuwa_messenger"
+        "fuwa_messenger",
+        "battle:ch_territory_boss"
       ]
     },
     {
@@ -5447,7 +8652,8 @@
       },
       "expected_dynamic_present": [],
       "expected_dynamic_absent": [
-        "battle:pk_champion_60"
+        "battle:pk_champion_60",
+        "battle:ch_arena_boss"
       ]
     },
     {
@@ -5460,7 +8666,9 @@
       "expected_dynamic_present": [
         "battle:pk_champion_60"
       ],
-      "expected_dynamic_absent": []
+      "expected_dynamic_absent": [
+        "battle:ch_arena_boss"
+      ]
     },
     {
       "scenario_id": "pk_60_finished",
@@ -5473,7 +8681,8 @@
       },
       "expected_dynamic_present": [],
       "expected_dynamic_absent": [
-        "battle:pk_champion_60"
+        "battle:pk_champion_60",
+        "battle:ch_arena_boss"
       ]
     },
     {
@@ -5635,7 +8844,9 @@
         "battle:demon_guard",
         "battle:demon_assault"
       ],
-      "expected_dynamic_absent": []
+      "expected_dynamic_absent": [
+        "battle:ch_memory_boss"
+      ]
     },
     {
       "scenario_id": "demon_guard_dead",
@@ -5649,7 +8860,8 @@
         "battle:demon_assault"
       ],
       "expected_dynamic_absent": [
-        "battle:demon_guard"
+        "battle:demon_guard",
+        "battle:ch_memory_boss"
       ]
     },
     {
@@ -5663,7 +8875,9 @@
         "battle:demon_guard",
         "battle:demon_assault"
       ],
-      "expected_dynamic_absent": []
+      "expected_dynamic_absent": [
+        "battle:ch_memory_boss"
+      ]
     },
     {
       "scenario_id": "demon_assault_dead",
@@ -5677,7 +8891,8 @@
         "battle:demon_guard"
       ],
       "expected_dynamic_absent": [
-        "battle:demon_assault"
+        "battle:demon_assault",
+        "battle:ch_memory_boss"
       ]
     },
     {
@@ -5797,7 +9012,8 @@
       "expected_dynamic_present": [],
       "expected_dynamic_absent": [
         "battle:demon_guard",
-        "battle:demon_assault"
+        "battle:demon_assault",
+        "battle:ch_memory_boss"
       ]
     },
     {
@@ -5834,7 +9050,8 @@
         "territory:thunder_continent"
       ],
       "expected_dynamic_absent": [
-        "fuwa_messenger"
+        "fuwa_messenger",
+        "battle:ch_territory_boss"
       ]
     },
     {
@@ -5849,7 +9066,8 @@
         "territory:thunder_continent"
       ],
       "expected_dynamic_absent": [
-        "fuwa_messenger"
+        "fuwa_messenger",
+        "battle:ch_territory_boss"
       ]
     },
     {
@@ -5977,7 +9195,9 @@
       "expected_dynamic_present": [
         "battle:fuwa_beast"
       ],
-      "expected_dynamic_absent": []
+      "expected_dynamic_absent": [
+        "battle:pet_trial_1_boss"
+      ]
     },
     {
       "scenario_id": "grass_reward_default",
@@ -5996,6 +9216,489 @@
         "fuwa_completion"
       ],
       "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "treeheart_outskirts_default",
+      "map_id": "treeheart_outskirts",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:ch_treeheart_boss"
+      ]
+    },
+    {
+      "scenario_id": "treeheart_core_default",
+      "map_id": "treeheart_core",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "harbor_quay_default",
+      "map_id": "harbor_quay",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:ch_harbor_boss"
+      ]
+    },
+    {
+      "scenario_id": "harbor_market_default",
+      "map_id": "harbor_market",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "sea_cave_default",
+      "map_id": "sea_cave",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:chapter_sea_boss"
+      ]
+    },
+    {
+      "scenario_id": "sea_cave_boss_present",
+      "map_id": "sea_cave",
+      "fixture": {
+        "chapter_th.stage": "sea_cave_assault"
+      },
+      "expected_dynamic_present": [
+        "battle:chapter_sea_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "tide_shrine_default",
+      "map_id": "tide_shrine",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:chapter_tide_boss"
+      ]
+    },
+    {
+      "scenario_id": "tide_shrine_boss_present",
+      "map_id": "tide_shrine",
+      "fixture": {
+        "chapter_th.stage": "tide_shrine_finale"
+      },
+      "expected_dynamic_present": [
+        "battle:chapter_tide_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "south_city_gate_default",
+      "map_id": "south_city_gate",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "south_city_square_default",
+      "map_id": "south_city_square",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "border_watchpost_default",
+      "map_id": "border_watchpost",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:ch_border_boss"
+      ]
+    },
+    {
+      "scenario_id": "border_supply_default",
+      "map_id": "border_supply_route",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:border_skirmish_a"
+      ]
+    },
+    {
+      "scenario_id": "border_supply_skirmish",
+      "map_id": "border_supply_route",
+      "fixture": {
+        "border.stage": "defense"
+      },
+      "expected_dynamic_present": [
+        "battle:border_skirmish_a"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "border_ruins_default",
+      "map_id": "border_ruins",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:border_skirmish_b"
+      ]
+    },
+    {
+      "scenario_id": "border_ruins_skirmish",
+      "map_id": "border_ruins",
+      "fixture": {
+        "border.stage": "defense"
+      },
+      "expected_dynamic_present": [
+        "battle:border_skirmish_b"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "border_tent_default",
+      "map_id": "border_command_tent",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:border_command_boss"
+      ]
+    },
+    {
+      "scenario_id": "border_tent_boss",
+      "map_id": "border_command_tent",
+      "fixture": {
+        "border.stage": "counterattack"
+      },
+      "expected_dynamic_present": [
+        "battle:border_command_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "ice_frontier_default",
+      "map_id": "ice_frontier",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:ch_ice_boss",
+        "battle:pet_trial_3_boss"
+      ]
+    },
+    {
+      "scenario_id": "frozen_pass_default",
+      "map_id": "frozen_pass",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "crystal_cavern_default",
+      "map_id": "crystal_cavern",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "ice_lab_default",
+      "map_id": "elemental_laboratory",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:ice_lab_boss",
+        "battle:ice_weekly_trial"
+      ]
+    },
+    {
+      "scenario_id": "ice_lab_boss",
+      "map_id": "elemental_laboratory",
+      "fixture": {
+        "ice.stage": "lab_trial"
+      },
+      "expected_dynamic_present": [
+        "battle:ice_lab_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:ice_weekly_trial"
+      ]
+    },
+    {
+      "scenario_id": "ice_lab_weekly",
+      "map_id": "elemental_laboratory",
+      "fixture": {
+        "ice.stage": "weekly_element_trial"
+      },
+      "expected_dynamic_present": [
+        "battle:ice_weekly_trial"
+      ],
+      "expected_dynamic_absent": [
+        "battle:ice_lab_boss"
+      ]
+    },
+    {
+      "scenario_id": "aurora_default",
+      "map_id": "aurora_sanctum",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:ice_aurora_boss"
+      ]
+    },
+    {
+      "scenario_id": "aurora_boss",
+      "map_id": "aurora_sanctum",
+      "fixture": {
+        "ice.stage": "aurora_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ice_aurora_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "abyss_gate_default",
+      "map_id": "abyss_gate",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:ch_abyss_boss",
+        "battle:pet_king_boss"
+      ]
+    },
+    {
+      "scenario_id": "abyss_outer_default",
+      "map_id": "abyss_outer_ring",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "abyss_echo_default",
+      "map_id": "abyss_echo_halls",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:abyss_echo_assault",
+        "battle:abyss_echo_guard",
+        "battle:abyss_echo_mystery",
+        "battle:abyss_echo_totem",
+        "battle:abyss_echo_commander"
+      ]
+    },
+    {
+      "scenario_id": "abyss_echo_live",
+      "map_id": "abyss_echo_halls",
+      "fixture": {
+        "abyss.stage": "echoes"
+      },
+      "expected_dynamic_present": [
+        "battle:abyss_echo_assault",
+        "battle:abyss_echo_guard",
+        "battle:abyss_echo_mystery",
+        "battle:abyss_echo_totem",
+        "battle:abyss_echo_commander"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "totem_default",
+      "map_id": "totem_sanctum",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "abyss_heart_default",
+      "map_id": "abyss_heart",
+      "fixture": {},
+      "expected_dynamic_present": [],
+      "expected_dynamic_absent": [
+        "battle:abyss_heart_boss",
+        "battle:abyss_weekly_trial"
+      ]
+    },
+    {
+      "scenario_id": "abyss_heart_boss",
+      "map_id": "abyss_heart",
+      "fixture": {
+        "abyss.stage": "final_battle"
+      },
+      "expected_dynamic_present": [
+        "battle:abyss_heart_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:abyss_weekly_trial"
+      ]
+    },
+    {
+      "scenario_id": "abyss_heart_weekly",
+      "map_id": "abyss_heart",
+      "fixture": {
+        "abyss.stage": "weekly_abyss"
+      },
+      "expected_dynamic_present": [
+        "battle:abyss_weekly_trial"
+      ],
+      "expected_dynamic_absent": [
+        "battle:abyss_heart_boss"
+      ]
+    },
+    {
+      "scenario_id": "ch_ch_arena_boss_live",
+      "map_id": "pk_arena",
+      "fixture": {
+        "challenge_active": "ch_arena_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_arena_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:pk_champion_60"
+      ]
+    },
+    {
+      "scenario_id": "ch_ch_mine_boss_live",
+      "map_id": "thunder_mine",
+      "fixture": {
+        "challenge_active": "ch_mine_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_mine_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:pet_trial_2_boss"
+      ]
+    },
+    {
+      "scenario_id": "ch_ch_territory_boss_live",
+      "map_id": "thunder_continent",
+      "fixture": {
+        "challenge_active": "ch_territory_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_territory_boss",
+        "fuwa_messenger"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "ch_ch_treeheart_boss_live",
+      "map_id": "treeheart_outskirts",
+      "fixture": {
+        "challenge_active": "ch_treeheart_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_treeheart_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "ch_ch_harbor_boss_live",
+      "map_id": "harbor_quay",
+      "fixture": {
+        "challenge_active": "ch_harbor_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_harbor_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "ch_ch_border_boss_live",
+      "map_id": "border_watchpost",
+      "fixture": {
+        "challenge_active": "ch_border_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_border_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "ch_ch_ice_boss_live",
+      "map_id": "ice_frontier",
+      "fixture": {
+        "challenge_active": "ch_ice_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_ice_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:pet_trial_3_boss"
+      ]
+    },
+    {
+      "scenario_id": "ch_ch_abyss_boss_live",
+      "map_id": "abyss_gate",
+      "fixture": {
+        "challenge_active": "ch_abyss_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_abyss_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:pet_king_boss"
+      ]
+    },
+    {
+      "scenario_id": "ch_ch_memory_boss_live",
+      "map_id": "demon_camp",
+      "fixture": {
+        "challenge_active": "ch_memory_boss"
+      },
+      "expected_dynamic_present": [
+        "battle:ch_memory_boss",
+        "battle:demon_guard",
+        "battle:demon_assault"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "pt_pet_trial_1_live",
+      "map_id": "green_field",
+      "fixture": {
+        "pet_trial_active": "pet_trial_1"
+      },
+      "expected_dynamic_present": [
+        "battle:pet_trial_1_boss"
+      ],
+      "expected_dynamic_absent": []
+    },
+    {
+      "scenario_id": "pt_pet_trial_2_live",
+      "map_id": "thunder_mine",
+      "fixture": {
+        "pet_trial_active": "pet_trial_2"
+      },
+      "expected_dynamic_present": [
+        "battle:pet_trial_2_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:ch_mine_boss"
+      ]
+    },
+    {
+      "scenario_id": "pt_pet_trial_3_live",
+      "map_id": "ice_frontier",
+      "fixture": {
+        "pet_trial_active": "pet_trial_3"
+      },
+      "expected_dynamic_present": [
+        "battle:pet_trial_3_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:ch_ice_boss"
+      ]
+    },
+    {
+      "scenario_id": "pt_pet_king_live",
+      "map_id": "abyss_gate",
+      "fixture": {
+        "pet_trial_active": "pet_king"
+      },
+      "expected_dynamic_present": [
+        "battle:pet_king_boss"
+      ],
+      "expected_dynamic_absent": [
+        "battle:ch_abyss_boss"
+      ]
     }
   ],
   "evidence_gaps": [

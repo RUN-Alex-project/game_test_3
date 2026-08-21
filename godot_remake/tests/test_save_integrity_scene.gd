@@ -25,9 +25,9 @@ func _ready() -> void:
 	assert(sf != null, "schema registry must be readable")
 	var schema: Variant = JSON.parse_string(sf.get_as_text())
 	assert(schema is Dictionary, "schema registry must be a dict")
-	assert(int((schema as Dictionary).get("schema_decision", {}).get("version", 0)) == 21, "schema must stay v21")
-	assert(not bool((schema as Dictionary).get("schema_decision", {}).get("upgrade", true)), "schema must not upgrade to v22")
-	# P0-2 拒签整改：schema 注册表与生产 SAVE_SCHEMA_KEYS/SAVE_SCHEMA_DEFAULTS 双向一致（38 项）
+	assert(int((schema as Dictionary).get("schema_decision", {}).get("version", 0)) == 22, "schema must be v22")
+	assert(bool((schema as Dictionary).get("schema_decision", {}).get("upgrade", false)), "schema must upgrade to v22")
+	# P0-2 拒签整改：schema 注册表与生产 SAVE_SCHEMA_KEYS/SAVE_SCHEMA_DEFAULTS 双向一致（39 项）
 	var reg_fields: Array = (schema as Dictionary).get("fields", [])
 	var reg_ids: Array = []
 	var reg_type_by_id := {}
@@ -101,6 +101,8 @@ func _ready() -> void:
 	assert(GameState.load_game(), "minimal v21 save must load")
 	assert(GameState.gold == 100 and GameState.level == 5, "minimal save must restore core fields")
 	assert(GameState.current_map_id == "cassano_city", "minimal save must default map to cassano")
+	assert(int(GameState.expansion_state.get("world_seed", 0)) == 1297043285, "v21 migrate must use contract seed")
+	assert((GameState.expansion_state.get("adventurers", {}) as Dictionary).size() == 12, "v21 migrate must hydrate 12 adventurers")
 
 	# 3. 损坏输入：错误顶层类型（JSON 数组，parse 成功但非 Dictionary）-> 拒绝（内存不变）
 	GameState.save_path = "user://test_v140_corrupt.json"

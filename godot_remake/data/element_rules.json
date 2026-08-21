@@ -1,0 +1,50 @@
+{
+  "resist_min": -50,
+  "resist_max": 80,
+  "stack_cap": 2,
+  "min_final_damage": 1,
+  "elements": {
+    "fire": {
+      "enabled": true,
+      "display_key": "elem.fire"
+    },
+    "ice": {
+      "enabled": true,
+      "display_key": "elem.ice"
+    },
+    "thunder": {
+      "enabled": true,
+      "display_key": "elem.thunder"
+    },
+    "wind": {
+      "enabled": false,
+      "display_key": "elem.wind"
+    },
+    "earth": {
+      "enabled": false,
+      "display_key": "elem.earth"
+    }
+  },
+  "affinity": {
+    "fire>ice": 0.25,
+    "ice>thunder": 0.25,
+    "thunder>fire": 0.25,
+    "ice>fire": -0.25,
+    "thunder>ice": -0.25,
+    "fire>thunder": -0.25
+  },
+  "fields": {
+    "ice_field": {
+      "modifier": -0.1,
+      "rule_id": "field:ice_field"
+    },
+    "lab_field": {
+      "modifier": 0.1,
+      "rule_id": "field:lab_field"
+    },
+    "aurora_field": {
+      "modifier": 0.15,
+      "rule_id": "field:aurora_field"
+    }
+  }
+}

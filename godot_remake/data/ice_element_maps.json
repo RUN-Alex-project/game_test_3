@@ -1,0 +1,86 @@
+{
+  "maps": [
+    {
+      "id": "ice_frontier",
+      "background": "res://assets/extracted/images/image_1287.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "frozen_pass",
+          "direction": "right"
+        },
+        {
+          "target": "crystal_cavern",
+          "direction": "bottom"
+        }
+      ]
+    },
+    {
+      "id": "frozen_pass",
+      "background": "res://assets/extracted/images/image_1292.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "ice_frontier",
+          "direction": "left"
+        },
+        {
+          "target": "elemental_laboratory",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "crystal_cavern",
+      "background": "res://assets/extracted/images/image_1066.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "ice_frontier",
+          "direction": "top"
+        }
+      ]
+    },
+    {
+      "id": "elemental_laboratory",
+      "background": "res://assets/extracted/images/image_1091.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "frozen_pass",
+          "direction": "left"
+        },
+        {
+          "target": "aurora_sanctum",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "aurora_sanctum",
+      "background": "res://assets/extracted/images/image_1226.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "elemental_laboratory",
+          "direction": "left"
+        }
+      ]
+    }
+  ]
+}

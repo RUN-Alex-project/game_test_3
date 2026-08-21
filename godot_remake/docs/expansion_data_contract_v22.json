@@ -2,8 +2,8 @@
   "contract_version": "v22.0",
   "baseline_save_version": "v21",
   "activation_version": "v1.43",
-  "status": "NOT_ENABLED",
-  "status_note": "本文件仅定义未来 v22 的 expansion_state 数据合同，未接入 GameState / SAVE_SCHEMA_DEFAULTS / 存档版本。生产存档保持 v21，不增加任何持久字段。第一个真实启用版本为 v1.43（v21→v22 迁移版本）。",
+  "status": "ENABLED",
+  "status_note": "v1.43 启用 expansion_state：revision/world_seed/adventurers/relationships/commission_state。v1.44 启用 day_sequence/mailbox/economy.adventurer_ledgers 与 daily_settlement_log。v1.45 启用 rankings 与 season.arena_seed_state。存档仍为 v22。v1.46 启用 market 与 auction。v1.47 启用 properties 与 territory_economy。v1.48 启用 chapters.treeheart_harbor。",
   "namespace": "GameState.expansion_state",
   "namespace_rule": "从 v1.43 起，新长期系统状态统一放入 expansion_state；禁止把每个新系统零散加到 GameState 顶层。旧档迁移必须从固定 schema 默认值构建 DTO，不能读取当前运行中的 GameState 值；加载成功后一次性提交 DTO；失败时内存必须不变。",
   "seed_rule": "确定性日结/随机统一输入：world_seed + game_day + system_id + entity_id + event_sequence",
@@ -113,7 +113,7 @@
       "default": {},
       "first_enabled_version": "v1.44",
       "migration": "旧档无此字段，迁移写入 {}；v1.44 NPC 日结账本、v1.46 商会账本逐步启用。账本守恒。",
-      "owning_service": "EconomyService / LedgerService",
+      "owning_service": "DayCycleService / MarketService",
       "nullable": false,
       "participates_in_deterministic_seed": false,
       "notes": "冒险者账本、商会账本、托管、信誉、凭证；无系统明确来源时物品/货币总量不可增加。"
@@ -124,10 +124,10 @@
       "default": {},
       "first_enabled_version": "v1.47",
       "migration": "旧档无此字段，迁移写入 {}；v1.47 产业/城堡/领地经营启用。产业每日结算一次，有上限/维护/来源。",
-      "owning_service": "PropertyService / IndustryService",
+      "owning_service": "PropertyService / AssignmentService",
       "nullable": false,
       "participates_in_deterministic_seed": false,
-      "notes": "矿场/药圃/港口货栈/幻兽牧场、城堡设施、领地事件状态。"
+      "notes": "Castle level, warehouse, assignment slots, upgrade operation ids."
     },
     {
       "name": "auction",
@@ -161,12 +161,52 @@
       "nullable": false,
       "participates_in_deterministic_seed": false,
       "notes": "幻兽/装备/Boss/地图/信件/称号图鉴解锁状态与唯一奖励领取。"
+    },
+    {
+      "name": "market",
+      "type": "dict<string, GuildMarketState>",
+      "default": {},
+      "first_enabled_version": "v1.46",
+      "migration": "Old saves without this field hydrate to empty then GuildMarketService.normalize defaults.",
+      "owning_service": "GuildMarketService / AuctionService / EconomyLedgerService",
+      "nullable": false,
+      "participates_in_deterministic_seed": true,
+      "notes": "Guild reputation, daily catalog, trade orders, auction listings, ledger, operation ids. Auction listings mirrored to expansion_state.auction."
+    },
+    {
+      "name": "territory_economy",
+      "type": "dict<string, TerritoryEconomyState>",
+      "default": {},
+      "first_enabled_version": "v1.47",
+      "migration": "Old saves without this field hydrate to empty then TerritoryEconomyService.normalize defaults.",
+      "owning_service": "TerritoryEconomyService / TerritoryLedgerService / AssignmentService",
+      "nullable": false,
+      "participates_in_deterministic_seed": true,
+      "notes": "Six-land stocks, governance, events, contribution, daily/weekly ledger. IDs match TerritoryService."
+    },
+    {
+      "name": "chapters",
+      "type": "dict<string, ChapterState>",
+      "default": {},
+      "first_enabled_version": "v1.48",
+      "migration": "Old saves without this field hydrate to empty then StoryChapterService.normalize defaults.",
+      "owning_service": "StoryChapterService / EvidenceCollectionService / ChapterEncounterService / WeeklyContractService",
+      "nullable": false,
+      "participates_in_deterministic_seed": true,
+      "notes": "treeheart_harbor stage/branch/evidence/boss/weekly/ledger. campaign field remains unused empty."
     }
   ],
   "migration_contract": {
     "source_save_version": "v21",
     "target_save_version": "v22",
     "rule": "旧档迁移必须从固定 schema 默认值构建 DTO，不能读取当前运行中的 GameState 值；加载成功后一次性提交 DTO；失败时内存必须不变。",
-    "tests_required": ["固定默认值", "无运行状态泄露", "重复加载稳定", "缺字段", "坏档", "加载失败内存不变"]
+    "tests_required": [
+      "固定默认值",
+      "无运行状态泄露",
+      "重复加载稳定",
+      "缺字段",
+      "坏档",
+      "加载失败内存不变"
+    ]
   }
 }

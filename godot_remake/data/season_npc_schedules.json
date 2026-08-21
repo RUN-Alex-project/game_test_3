@@ -1,0 +1,54 @@
+{
+  "npcs": [
+    "npc_adv_lin_xia",
+    "npc_adv_su_yan",
+    "npc_adv_qin_he",
+    "npc_adv_ye_fei",
+    "npc_adv_liang_chen",
+    "npc_adv_jiang_yue",
+    "npc_adv_gu_ning",
+    "npc_adv_bai_luo"
+  ],
+  "events": [
+    {
+      "event_id": "ep_lin",
+      "adv_id": "npc_adv_lin_xia",
+      "delta": 1
+    },
+    {
+      "event_id": "ep_su",
+      "adv_id": "npc_adv_su_yan",
+      "delta": 1
+    },
+    {
+      "event_id": "ep_qin",
+      "adv_id": "npc_adv_qin_he",
+      "delta": 1
+    },
+    {
+      "event_id": "ep_ye",
+      "adv_id": "npc_adv_ye_fei",
+      "delta": 1
+    },
+    {
+      "event_id": "ep_liang",
+      "adv_id": "npc_adv_liang_chen",
+      "delta": 1
+    },
+    {
+      "event_id": "ep_jiang",
+      "adv_id": "npc_adv_jiang_yue",
+      "delta": 1
+    },
+    {
+      "event_id": "ep_gu",
+      "adv_id": "npc_adv_gu_ning",
+      "delta": 1
+    },
+    {
+      "event_id": "ep_bai",
+      "adv_id": "npc_adv_bai_luo",
+      "delta": 1
+    }
+  ]
+}

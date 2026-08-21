@@ -1,0 +1,52 @@
+{
+  "chapter_id": "abyss_finale",
+  "snapshot_version": 1,
+  "stages": [
+    "locked",
+    "summons",
+    "abyss_entry",
+    "echoes",
+    "totem_trials",
+    "heart_assault",
+    "final_battle",
+    "epilogue_pending",
+    "completed",
+    "weekly_abyss"
+  ],
+  "npcs": {
+    "abyss_he": {
+      "adventurer_id": "npc_adv_he_ming",
+      "role": "summoner"
+    },
+    "abyss_jiang": {
+      "adventurer_id": "npc_adv_jiang_yue",
+      "role": "guide"
+    },
+    "abyss_gu": {
+      "adventurer_id": "npc_adv_gu_ning",
+      "role": "priest"
+    },
+    "abyss_weekly": {
+      "role": "weekly"
+    }
+  },
+  "probes": [
+    {
+      "probe_id": "gate_seal",
+      "map_id": "abyss_gate",
+      "stage": "abyss_entry"
+    },
+    {
+      "probe_id": "heart_seal",
+      "map_id": "abyss_heart",
+      "stage": "heart_assault"
+    }
+  ],
+  "echoes_required": 3,
+  "totems_required": 3,
+  "allies": [
+    "npc_adv_he_ming",
+    "npc_adv_jiang_yue",
+    "npc_adv_gu_ning"
+  ]
+}

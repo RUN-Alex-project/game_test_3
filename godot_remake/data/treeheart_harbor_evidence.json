@@ -1,0 +1,36 @@
+{
+  "points": [
+    {
+      "evidence_id": "root_bark",
+      "map_id": "treeheart_outskirts",
+      "stage": "root_sickness",
+      "asset": "res://assets/extracted/images/image_1213.png",
+      "position": [250, 200],
+      "size": [48, 48]
+    },
+    {
+      "evidence_id": "sick_leaf",
+      "map_id": "treeheart_outskirts",
+      "stage": "root_sickness",
+      "asset": "res://assets/extracted/images/image_1213.png",
+      "position": [400, 320],
+      "size": [48, 48]
+    },
+    {
+      "evidence_id": "core_resin",
+      "map_id": "treeheart_core",
+      "stage": "root_sickness",
+      "asset": "res://assets/extracted/images/image_1213.png",
+      "position": [480, 280],
+      "size": [48, 48]
+    },
+    {
+      "evidence_id": "smuggler_ledger",
+      "map_id": "harbor_quay",
+      "stage": "harbor_lead",
+      "asset": "res://assets/extracted/images/image_1213.png",
+      "position": [300, 250],
+      "size": [48, 48]
+    }
+  ]
+}

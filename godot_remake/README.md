@@ -133,7 +133,7 @@ PK 赛场、后花园、抽奖房、树心城和战魂封印谜宫是特殊入�
 
 ## 5. 存档与数据修改
 
-- 存档位于 Godot 的 `user://savegame.json`，当前 schema 版本为 **v21**。
+- 存档位于 Godot 的 `user://savegame.json`，当前 schema 版本为 **v22**。
 - 保存采用临时文件、校验、备份和原子替换；读取采用 DTO 先校验、再一次性提交，坏档不会直接覆盖当前内存状态。
 - `data/*.json` 是游戏配置，不是存档。建议先备份，再修改一个字段，运行对应测试验证。
 - 不要手工编辑 `user://savegame.json` 来跳过流程；如果必须诊断坏档，先复制文件并保留原始内容。
@@ -147,9 +147,9 @@ cd E:\deepseek-work\TKS3_mod\godot_remake
 .\run_tests.ps1
 ```
 
-`tests/test_manifest.json` 是唯一测试清单，当前登记 66 个自动化场景，最后再运行一次主场景冒烟，共 67 RUN；`run_tests.ps1`（Windows）与 `run_tests.sh`（Linux）都是 `tools/run_tests.py` 的薄入口。runner 会检查退出码、`PASS` 完成标记、脚本错误、失败标记、ObjectDB 泄漏和不可写测试数据。场景清单以 manifest 实际内容为准，不要在文档中手写另一套数量。
+`tests/test_manifest.json` 是唯一测试清单，当前登记 90 个自动化场景，最后再运行一次主场景冒烟，共 91 RUN；`run_tests.ps1`（Windows）与 `run_tests.sh`（Linux）都是 `tools/run_tests.py` 的薄入口。runner 会检查退出码、`PASS` 完成标记、脚本错误、失败标记、ObjectDB 泄漏和不可写测试数据。场景清单以 manifest 实际内容为准，不要在文档中手写另一套数量。
 
-当前测试口径：**66 个自动化场景 + 主场景冒烟，共 67 RUN**（数量由 `docs/doc_gate.py` 从 `tests/test_manifest.json` 机械读取，基线见 `docs/current_test_baseline.json`；历史版本数量冻结不机械替换）。
+当前测试口径：**90 个自动化场景 + 主场景冒烟，共 91 RUN**（数量由 `docs/doc_gate.py` 从 `tests/test_manifest.json` 机械读取，基线见 `docs/current_test_baseline.json`；历史版本数量冻结不机械替换）。
 
 ### Linux / WSL 快速开始（简版）
 

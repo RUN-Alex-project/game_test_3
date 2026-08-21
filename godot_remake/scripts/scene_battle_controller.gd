@@ -240,6 +240,7 @@ func cancel_battle() -> void:
 	enemy_panel.hide()
 	# v1.37：战斗取消 -> 旧 session 事件全部失效（延迟反馈被 FEEDBACK_STALE_SESSION_EVENT 拒绝）。
 	FeedbackService.end_session(feedback_session_id)
+	GameState.abandon_active_arena_match("cancel")
 
 
 ## map_change 事件处理器（整改06）：真实地图切换（main_original._apply_current_map）调用，
@@ -538,7 +539,7 @@ func _attack(skill_id: String = "") -> void:
 			elif effective_skill_id == "star_sword":
 				skill_sound = "skill_star_sword"
 			FeedbackService.emit("skill_started", {"attack_sequence": sequence, "skill_id": effective_skill_id, "sound_name": skill_sound})
-	var multiplier := GameState.skill_service.active_damage_multiplier(GameState.learned_skills, effective_skill_id)
+	var multiplier := GameState.skill_damage_multiplier(effective_skill_id)
 	FeedbackService.emit("player_attack_started", {
 		"attack_sequence": sequence,
 		"skill_id": effective_skill_id,

@@ -1,0 +1,57 @@
+{
+  "maps": [
+    {
+      "id": "treeheart_outskirts",
+      "background": "res://assets/extracted/images/image_1299.jpg",
+      "spawn": [235, 310],
+      "exits": [
+        {"target": "treeheart_city", "direction": "left"},
+        {"target": "treeheart_core", "direction": "right"},
+        {"target": "harbor_quay", "direction": "bottom"}
+      ]
+    },
+    {
+      "id": "treeheart_core",
+      "background": "res://assets/extracted/images/image_1097.jpg",
+      "spawn": [310, 280],
+      "exits": [
+        {"target": "treeheart_outskirts", "direction": "left"}
+      ]
+    },
+    {
+      "id": "harbor_quay",
+      "background": "res://assets/extracted/images/image_1252.jpg",
+      "spawn": [310, 280],
+      "exits": [
+        {"target": "treeheart_outskirts", "direction": "top"},
+        {"target": "harbor_market", "direction": "right"},
+        {"target": "sea_cave", "direction": "bottom"}
+      ]
+    },
+    {
+      "id": "harbor_market",
+      "background": "res://assets/extracted/images/image_1114.jpg",
+      "spawn": [310, 280],
+      "exits": [
+        {"target": "harbor_quay", "direction": "left"}
+      ]
+    },
+    {
+      "id": "sea_cave",
+      "background": "res://assets/extracted/images/image_1281.jpg",
+      "spawn": [310, 280],
+      "exits": [
+        {"target": "harbor_quay", "direction": "top"},
+        {"target": "tide_shrine", "direction": "right"}
+      ]
+    },
+    {
+      "id": "tide_shrine",
+      "background": "res://assets/extracted/images/image_1242.jpg",
+      "spawn": [310, 280],
+      "exits": [
+        {"target": "sea_cave", "direction": "left"}
+      ]
+    }
+  ]
+}

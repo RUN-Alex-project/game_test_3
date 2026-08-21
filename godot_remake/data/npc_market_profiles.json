@@ -1,0 +1,230 @@
+[
+  {
+    "adventurer_id": "npc_adv_lin_xia",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_su_yan",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_liang_chen",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_jiang_yue",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_qin_he",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_gu_ning",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_ye_fei",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_bai_luo",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_xiao_ran",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_tang_xue",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_he_ming",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  },
+  {
+    "adventurer_id": "npc_adv_shen_yao",
+    "daily_budget": 200,
+    "max_buy_per_day": 3,
+    "wants": [
+      "rose",
+      "fruit"
+    ],
+    "buy_prices": {
+      "rose": 10,
+      "fruit": 20,
+      "silver_ore": 40
+    },
+    "sell_prices": {
+      "rose": 15,
+      "fruit": 25,
+      "silver_ore": 50
+    }
+  }
+]

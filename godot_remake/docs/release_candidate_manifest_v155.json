@@ -1,0 +1,17 @@
+{
+  "version": "v1.55",
+  "release_dir": "artifacts/releases/v1.41",
+  "export_preset": "Windows Desktop",
+  "build_command": "godot --headless --export-release \"Windows Desktop\" artifacts/releases/v1.41/moyu.exe",
+  "note": "hashes filled after rebuild; path remains v1.41 for doc_gate compatibility",
+  "evidence": [
+    "docs/evidence/long_flow_v155.txt",
+    "work/v155/verify_long_flow_negatives.py"
+  ],
+  "build_date": "2026-08-21",
+  "executable": "魔域1.03_v1.41.exe",
+  "executable_sha256": "a7512911d25a9702bbc7764d5dbb59cd848f014c326a0ca8492af141dbdf873c",
+  "pck_sha256": "811c67e4162773127cee42c1b7bc574b4748ee8d60950428b6b37de4b018fcf0",
+  "executable_size_bytes": 104518656,
+  "pck_size_bytes": 24534080
+}

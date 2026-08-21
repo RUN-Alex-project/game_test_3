@@ -1,0 +1,29 @@
+{
+  "max_level": 3,
+  "daily_governance_actions": 1,
+  "governance_gold_cost": 50,
+  "max_governance": 3,
+  "levels": [
+    {
+      "level": 1,
+      "warehouse_cap": 10,
+      "gold_cost": 0,
+      "stone_cost": 0,
+      "nobility_level": 0
+    },
+    {
+      "level": 2,
+      "warehouse_cap": 20,
+      "gold_cost": 200,
+      "stone_cost": 0,
+      "nobility_level": 0
+    },
+    {
+      "level": 3,
+      "warehouse_cap": 40,
+      "gold_cost": 800,
+      "stone_cost": 0,
+      "nobility_level": 1
+    }
+  ]
+}

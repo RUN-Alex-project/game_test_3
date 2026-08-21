@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    {
+      "mastery_id": "mastery_flying_slash",
+      "skill_id": "flying_slash",
+      "max_rank": 1,
+      "bonus": 0.05,
+      "cost_item": "fruit",
+      "cost_qty": 1,
+      "cost_gold": 0
+    },
+    {
+      "mastery_id": "mastery_star_sword",
+      "skill_id": "star_sword",
+      "max_rank": 1,
+      "bonus": 0.05,
+      "cost_item": "fruit",
+      "cost_qty": 1,
+      "cost_gold": 0
+    },
+    {
+      "mastery_id": "mastery_fighting_spirit",
+      "skill_id": "fighting_spirit",
+      "max_rank": 1,
+      "bonus": 0.05,
+      "cost_item": "",
+      "cost_qty": 0,
+      "cost_gold": 10
+    },
+    {
+      "mastery_id": "mastery_combo",
+      "skill_id": "flying_slash",
+      "max_rank": 1,
+      "bonus": 0.02,
+      "cost_item": "",
+      "cost_qty": 0,
+      "cost_gold": 20,
+      "require_skills": [
+        "flying_slash",
+        "star_sword"
+      ]
+    }
+  ]
+}

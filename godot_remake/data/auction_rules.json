@@ -1,0 +1,10 @@
+{
+  "listing_days": 2,
+  "min_raise": 10,
+  "listing_fee": 5,
+  "sale_tax_bps": 500,
+  "max_open_listings": 8,
+  "npc_min_aggression": 40,
+  "mail_expire_days": 7,
+  "system_sender": "guild_market"
+}

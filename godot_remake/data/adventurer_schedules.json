@@ -1,0 +1,158 @@
+[
+  {
+    "adventurer_id": "npc_adv_lin_xia",
+    "actions": [
+      {
+        "id": "gather",
+        "weight": 4
+      },
+      {
+        "id": "rest",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_su_yan",
+    "actions": [
+      {
+        "id": "rest",
+        "weight": 3
+      },
+      {
+        "id": "commission",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_liang_chen",
+    "actions": [
+      {
+        "id": "hunt",
+        "weight": 4
+      },
+      {
+        "id": "arena_prep",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_jiang_yue",
+    "actions": [
+      {
+        "id": "trade",
+        "weight": 3
+      },
+      {
+        "id": "rest",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_qin_he",
+    "actions": [
+      {
+        "id": "train",
+        "weight": 4
+      },
+      {
+        "id": "rest",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_gu_ning",
+    "actions": [
+      {
+        "id": "commission",
+        "weight": 3
+      },
+      {
+        "id": "rest",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_ye_fei",
+    "actions": [
+      {
+        "id": "hunt",
+        "weight": 2
+      },
+      {
+        "id": "rest",
+        "weight": 2
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_bai_luo",
+    "actions": [
+      {
+        "id": "trade",
+        "weight": 4
+      },
+      {
+        "id": "gather",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_xiao_ran",
+    "actions": [
+      {
+        "id": "gather",
+        "weight": 3
+      },
+      {
+        "id": "trade",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_tang_xue",
+    "actions": [
+      {
+        "id": "rest",
+        "weight": 4
+      },
+      {
+        "id": "train",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_he_ming",
+    "actions": [
+      {
+        "id": "hunt",
+        "weight": 3
+      },
+      {
+        "id": "trade",
+        "weight": 1
+      }
+    ]
+  },
+  {
+    "adventurer_id": "npc_adv_shen_yao",
+    "actions": [
+      {
+        "id": "train",
+        "weight": 3
+      },
+      {
+        "id": "commission",
+        "weight": 1
+      }
+    ]
+  }
+]

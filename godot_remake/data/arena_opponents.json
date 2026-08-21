@@ -1,0 +1,134 @@
+[
+  {
+    "adventurer_id": "npc_adv_lin_xia",
+    "level": 8,
+    "max_hp": 36,
+    "attack": 12,
+    "defense": 6,
+    "combat_power": 40,
+    "pet_power": 5,
+    "explore_score": 2,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_su_yan",
+    "level": 10,
+    "max_hp": 44,
+    "attack": 14,
+    "defense": 7,
+    "combat_power": 55,
+    "pet_power": 8,
+    "explore_score": 4,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_liang_chen",
+    "level": 18,
+    "max_hp": 80,
+    "attack": 22,
+    "defense": 12,
+    "combat_power": 90,
+    "pet_power": 20,
+    "explore_score": 3,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_jiang_yue",
+    "level": 14,
+    "max_hp": 60,
+    "attack": 18,
+    "defense": 10,
+    "combat_power": 70,
+    "pet_power": 12,
+    "explore_score": 5,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_qin_he",
+    "level": 12,
+    "max_hp": 52,
+    "attack": 16,
+    "defense": 9,
+    "combat_power": 60,
+    "pet_power": 15,
+    "explore_score": 1,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_gu_ning",
+    "level": 11,
+    "max_hp": 48,
+    "attack": 15,
+    "defense": 8,
+    "combat_power": 50,
+    "pet_power": 10,
+    "explore_score": 6,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_ye_fei",
+    "level": 9,
+    "max_hp": 40,
+    "attack": 13,
+    "defense": 7,
+    "combat_power": 45,
+    "pet_power": 6,
+    "explore_score": 2,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_bai_luo",
+    "level": 16,
+    "max_hp": 72,
+    "attack": 20,
+    "defense": 11,
+    "combat_power": 80,
+    "pet_power": 18,
+    "explore_score": 4,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_xiao_ran",
+    "level": 7,
+    "max_hp": 32,
+    "attack": 11,
+    "defense": 5,
+    "combat_power": 35,
+    "pet_power": 4,
+    "explore_score": 3,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_tang_xue",
+    "level": 6,
+    "max_hp": 28,
+    "attack": 10,
+    "defense": 5,
+    "combat_power": 25,
+    "pet_power": 3,
+    "explore_score": 1,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_he_ming",
+    "level": 15,
+    "max_hp": 64,
+    "attack": 19,
+    "defense": 10,
+    "combat_power": 75,
+    "pet_power": 14,
+    "explore_score": 5,
+    "arena_score": 0
+  },
+  {
+    "adventurer_id": "npc_adv_shen_yao",
+    "level": 13,
+    "max_hp": 56,
+    "attack": 17,
+    "defense": 9,
+    "combat_power": 65,
+    "pet_power": 16,
+    "explore_score": 7,
+    "arena_score": 0
+  }
+]

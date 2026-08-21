@@ -19,6 +19,9 @@ func _init(target_monster_id: String, stats: Dictionary, seed_value: int = 0, mo
 	combat = CombatService.new(seed_value)
 	monster_id = target_monster_id
 	monster = combat.get_monster(monster_id).duplicate(true)
+	var overlay: Dictionary = GameState.arena_combat_overlay(monster_id)
+	if not overlay.is_empty():
+		monster = overlay.duplicate(true)
 	for stat_name: String in ["level", "max_hp", "attack", "defense", "combat_power"]:
 		if monster.has(stat_name) and monster_modifiers.has(stat_name):
 			monster[stat_name] = maxi(1, roundi(float(monster[stat_name]) * float(monster_modifiers[stat_name])))
@@ -51,6 +54,8 @@ func perform_turn(player_variance: float = 1.0, monster_variance: float = 1.0, d
 		int(monster.get("defense", 0)),
 		player_variance,
 	)
+	var element_hit: Dictionary = GameState.apply_element_to_damage(monster_id, player_damage)
+	player_damage = int(element_hit.get("final", player_damage))
 	monster_hp = maxi(0, monster_hp - player_damage)
 	# In the SWF, combined pets merge attack/defense into the player. They are
 	# animated alongside the player but do not apply a second independent hit.

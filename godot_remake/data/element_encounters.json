@@ -1,0 +1,28 @@
+{
+  "encounters": [
+    {
+      "monster_id": "ice_lab_boss",
+      "element": "ice",
+      "resist": 40,
+      "field_id": "lab_field",
+      "stage": "lab_trial",
+      "kind": "boss"
+    },
+    {
+      "monster_id": "ice_aurora_boss",
+      "element": "thunder",
+      "resist": 30,
+      "field_id": "aurora_field",
+      "stage": "aurora_boss",
+      "kind": "boss"
+    },
+    {
+      "monster_id": "ice_weekly_trial",
+      "element": "fire",
+      "resist": 20,
+      "field_id": "lab_field",
+      "stage": "weekly_element_trial",
+      "kind": "weekly"
+    }
+  ]
+}

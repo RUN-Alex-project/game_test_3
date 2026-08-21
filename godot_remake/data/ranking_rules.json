@@ -1,0 +1,51 @@
+{
+  "boards": [
+    {
+      "id": "combat_power",
+      "display_name": "战斗力榜",
+      "primary": "combat_power",
+      "secondary": "level",
+      "preview": false
+    },
+    {
+      "id": "pet",
+      "display_name": "幻兽榜",
+      "primary": "pet_power",
+      "secondary": "combat_power",
+      "preview": false
+    },
+    {
+      "id": "arena",
+      "display_name": "擂台榜",
+      "primary": "arena_score",
+      "secondary": "combat_power",
+      "preview": false
+    },
+    {
+      "id": "explore",
+      "display_name": "探索榜",
+      "primary": "explore_score",
+      "secondary": "combat_power",
+      "preview": false
+    },
+    {
+      "id": "merchant_reputation",
+      "display_name": "商会信誉榜",
+      "primary": "merchant_reputation",
+      "secondary": "combat_power",
+      "preview": false
+    },
+    {
+      "id": "territory_contribution",
+      "display_name": "领地贡献榜",
+      "primary": "territory_contribution",
+      "secondary": "combat_power",
+      "preview": false
+    }
+  ],
+  "tie_fields": [
+    "primary",
+    "secondary",
+    "stable_id"
+  ]
+}

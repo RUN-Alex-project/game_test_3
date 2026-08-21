@@ -1,0 +1,19 @@
+{
+  "whitelist": [
+    "gold",
+    "fruit",
+    "rose"
+  ],
+  "weekly_reward": {
+    "gold": 15,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "boss_rewards": {
+    "border_command_boss": {
+      "gold": 30,
+      "item_id": "fruit",
+      "qty": 1
+    }
+  }
+}

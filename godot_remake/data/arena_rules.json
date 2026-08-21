@@ -1,0 +1,24 @@
+{
+  "min_score": 0,
+  "max_score": 9999,
+  "modes": {
+    "practice": {
+      "affects_score": false,
+      "score_win": 0,
+      "relationship_delta": 0,
+      "records_schedule": false
+    },
+    "challenge": {
+      "affects_score": true,
+      "score_win": 10,
+      "relationship_delta": 2,
+      "records_schedule": false
+    },
+    "season": {
+      "affects_score": false,
+      "score_win": 0,
+      "relationship_delta": 0,
+      "records_schedule": true
+    }
+  }
+}

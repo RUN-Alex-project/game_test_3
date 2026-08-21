@@ -1,0 +1,63 @@
+{
+  "chapter_id": "ice_element",
+  "stages": [
+    "locked",
+    "ice_signal",
+    "cold_rescue",
+    "crystal_key",
+    "lab_trial",
+    "aurora_boss",
+    "weekly_element_trial"
+  ],
+  "npcs": {
+    "ice_shen": {
+      "adventurer_id": "npc_adv_shen_yao",
+      "role": "researcher"
+    },
+    "ice_bai": {
+      "adventurer_id": "npc_adv_bai_luo",
+      "role": "guide"
+    },
+    "ice_weekly": {
+      "role": "weekly"
+    }
+  },
+  "probes": [
+    {
+      "probe_id": "signal_shard",
+      "map_id": "ice_frontier",
+      "stage": "ice_signal"
+    },
+    {
+      "probe_id": "rescue_charm",
+      "map_id": "frozen_pass",
+      "stage": "cold_rescue"
+    },
+    {
+      "probe_id": "crystal_key",
+      "map_id": "crystal_cavern",
+      "stage": "crystal_key",
+      "requires_item": "frost_vial"
+    }
+  ],
+  "knowledge": [
+    "fire",
+    "ice",
+    "thunder"
+  ],
+  "puzzle_item": "frost_vial",
+  "bosses": [
+    "ice_lab_boss",
+    "ice_aurora_boss"
+  ],
+  "lab_reward": {
+    "gold": 30,
+    "item_id": "fruit",
+    "qty": 1
+  },
+  "aurora_reward": {
+    "gold": 50,
+    "item_id": "rose",
+    "qty": 1
+  }
+}

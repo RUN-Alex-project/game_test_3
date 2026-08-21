@@ -1,0 +1,29 @@
+{
+  "duration_days": 3,
+  "posts": [
+    {
+      "post_id": "steward",
+      "map_id": "cassano_city"
+    },
+    {
+      "post_id": "foreman",
+      "map_id": "thunder_continent"
+    },
+    {
+      "post_id": "quartermaster",
+      "map_id": "desert"
+    },
+    {
+      "post_id": "herbalist",
+      "map_id": "dream_swamp"
+    },
+    {
+      "post_id": "curator",
+      "map_id": "ice_palace"
+    },
+    {
+      "post_id": "navigator",
+      "map_id": "avit_island"
+    }
+  ]
+}

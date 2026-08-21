@@ -1,0 +1,28 @@
+{
+  "units": [
+    {
+      "monster_id": "border_skirmish_a",
+      "kind": "defense",
+      "map_id": "border_supply_route",
+      "stage": "defense"
+    },
+    {
+      "monster_id": "border_skirmish_b",
+      "kind": "defense",
+      "map_id": "border_ruins",
+      "stage": "defense"
+    },
+    {
+      "monster_id": "border_command_boss",
+      "kind": "boss",
+      "map_id": "border_command_tent",
+      "stage": "counterattack"
+    },
+    {
+      "monster_id": "border_weekly_elite",
+      "kind": "weekly",
+      "map_id": "border_command_tent",
+      "stage": "weekly_contract"
+    }
+  ]
+}

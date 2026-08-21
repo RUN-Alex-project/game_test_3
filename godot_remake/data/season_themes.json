@@ -1,0 +1,12 @@
+{
+  "themes": [
+    {
+      "theme_id": "theme_harvest",
+      "title": "harvest"
+    },
+    {
+      "theme_id": "theme_ember",
+      "title": "ember"
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "events": [
+    {
+      "event_id": "evt_cassano_city_trade_boom",
+      "map_id": "cassano_city",
+      "rarity": "common",
+      "cooldown_days": 2,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 1,
+          "contribution_delta": 1
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 2,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_cassano_city_rare_tax",
+      "map_id": "cassano_city",
+      "rarity": "rare",
+      "cooldown_days": 3,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 2,
+          "contribution_delta": 2
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 3,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_thunder_continent_mine_collapse",
+      "map_id": "thunder_continent",
+      "rarity": "common",
+      "cooldown_days": 2,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 1,
+          "contribution_delta": 1
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 2,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_thunder_continent_vein_burst",
+      "map_id": "thunder_continent",
+      "rarity": "rare",
+      "cooldown_days": 3,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 2,
+          "contribution_delta": 2
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 3,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_desert_drought",
+      "map_id": "desert",
+      "rarity": "common",
+      "cooldown_days": 2,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 1,
+          "contribution_delta": 1
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 2,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_desert_oasis_find",
+      "map_id": "desert",
+      "rarity": "rare",
+      "cooldown_days": 3,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 2,
+          "contribution_delta": 2
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 3,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_dream_swamp_blight",
+      "map_id": "dream_swamp",
+      "rarity": "common",
+      "cooldown_days": 2,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 1,
+          "contribution_delta": 1
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 2,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_dream_swamp_rare_herb",
+      "map_id": "dream_swamp",
+      "rarity": "rare",
+      "cooldown_days": 3,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 2,
+          "contribution_delta": 2
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 3,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_ice_palace_relic_dispute",
+      "map_id": "ice_palace",
+      "rarity": "common",
+      "cooldown_days": 2,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 1,
+          "contribution_delta": 1
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 2,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_ice_palace_frozen_cache",
+      "map_id": "ice_palace",
+      "rarity": "rare",
+      "cooldown_days": 3,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 2,
+          "contribution_delta": 2
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 3,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_avit_island_sea_storm",
+      "map_id": "avit_island",
+      "rarity": "common",
+      "cooldown_days": 2,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 1,
+          "contribution_delta": 1
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 2,
+          "contribution_delta": 0
+        }
+      ]
+    },
+    {
+      "event_id": "evt_avit_island_fair_wind",
+      "map_id": "avit_island",
+      "rarity": "rare",
+      "cooldown_days": 3,
+      "choices": [
+        {
+          "choice_id": "handle",
+          "gold_cost": 0,
+          "stock_delta": 2,
+          "contribution_delta": 2
+        },
+        {
+          "choice_id": "fail_pay",
+          "gold_cost": 50,
+          "stock_delta": 3,
+          "contribution_delta": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "max_slots": 1,
+  "whitelist": [
+    "challenge_mark"
+  ],
+  "affixes": {
+    "challenge_mark": {
+      "attack_bonus": 0
+    }
+  }
+}

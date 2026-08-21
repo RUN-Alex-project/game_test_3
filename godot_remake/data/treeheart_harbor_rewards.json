@@ -1,0 +1,9 @@
+{
+  "whitelist": ["gold", "fruit", "rose"],
+  "evidence_items": [],
+  "boss_rewards": {
+    "chapter_sea_boss": {"gold": 50, "item_id": "fruit", "qty": 1},
+    "chapter_tide_boss": {"gold": 100, "item_id": "rose", "qty": 1}
+  },
+  "weekly_reward": {"gold": 20, "item_id": "fruit", "qty": 1}
+}

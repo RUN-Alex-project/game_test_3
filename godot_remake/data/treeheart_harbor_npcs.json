@@ -1,0 +1,39 @@
+{
+  "actors": [
+    {
+      "action_id": "chapter_lin",
+      "map_id": "treeheart_outskirts",
+      "asset": "res://assets/extracted/images/image_1076.png",
+      "position": [80, 280],
+      "size": [58, 111]
+    },
+    {
+      "action_id": "chapter_qin",
+      "map_id": "treeheart_core",
+      "asset": "res://assets/extracted/images/image_1076.png",
+      "position": [120, 260],
+      "size": [58, 111]
+    },
+    {
+      "action_id": "chapter_su",
+      "map_id": "harbor_quay",
+      "asset": "res://assets/extracted/images/image_1076.png",
+      "position": [500, 260],
+      "size": [58, 111]
+    },
+    {
+      "action_id": "chapter_ye",
+      "map_id": "sea_cave",
+      "asset": "res://assets/extracted/images/image_1076.png",
+      "position": [80, 280],
+      "size": [58, 111]
+    },
+    {
+      "action_id": "chapter_weekly",
+      "map_id": "harbor_market",
+      "asset": "res://assets/extracted/images/image_1076.png",
+      "position": [200, 280],
+      "size": [58, 111]
+    }
+  ]
+}

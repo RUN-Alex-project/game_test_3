@@ -1,0 +1,16 @@
+{
+  "bosses": [
+    {
+      "monster_id": "chapter_sea_boss",
+      "map_id": "sea_cave",
+      "stage": "sea_cave_assault",
+      "next_stage": "tide_shrine_finale"
+    },
+    {
+      "monster_id": "chapter_tide_boss",
+      "map_id": "tide_shrine",
+      "stage": "tide_shrine_finale",
+      "next_stage": "treeheart_weekly_contract"
+    }
+  ]
+}

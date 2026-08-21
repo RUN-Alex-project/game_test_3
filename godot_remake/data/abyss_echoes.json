@@ -1,0 +1,39 @@
+{
+  "encounters": [
+    {
+      "monster_id": "abyss_echo_assault",
+      "kind": "echo",
+      "stage": "echoes"
+    },
+    {
+      "monster_id": "abyss_echo_guard",
+      "kind": "echo",
+      "stage": "echoes"
+    },
+    {
+      "monster_id": "abyss_echo_mystery",
+      "kind": "echo",
+      "stage": "echoes"
+    },
+    {
+      "monster_id": "abyss_echo_totem",
+      "kind": "echo",
+      "stage": "echoes"
+    },
+    {
+      "monster_id": "abyss_echo_commander",
+      "kind": "echo",
+      "stage": "echoes"
+    },
+    {
+      "monster_id": "abyss_heart_boss",
+      "kind": "final",
+      "stage": "final_battle"
+    },
+    {
+      "monster_id": "abyss_weekly_trial",
+      "kind": "weekly",
+      "stage": "weekly_abyss"
+    }
+  ]
+}

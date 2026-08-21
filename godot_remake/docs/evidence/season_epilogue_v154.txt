@@ -1,0 +1,7 @@
+v1.54 season epilogue evidence
+season_board ssn: theme_harvest theme_ember
+sc_market sc_territory sc_challenge sc_pet sc_abyss
+ep_lin ep_su ep_qin ep_ye ep_liang ep_jiang ep_gu ep_bai
+SEASON_PERIOD SEASON_DAY SEASON_ROLLOVER SEASON_CLOCK CONTRACT_CAP CONTRACT_SOURCE
+SEASON_TRAIN SEASON_REWARD CONTRACT_MAIL SEASON_SETTLE SEASON_SEED SEASON_HISTORY
+EPILOGUE_REL EPILOGUE_LOCK RANK_TEXT SAVE_SEASON

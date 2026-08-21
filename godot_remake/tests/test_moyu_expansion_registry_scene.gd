@@ -204,8 +204,8 @@ func _verify_contract() -> void:
 	if contract.is_empty():
 		_fail("ERR_CONTRACT_JSON_PARSE", "contract JSON 未解析或为空")
 		return
-	if str(contract.get("status", "")) != "NOT_ENABLED":
-		_fail("ERR_CONTRACT_ENABLED", "v22 合同必须保持 NOT_ENABLED，当前=%s" % str(contract.get("status")))
+	if str(contract.get("status", "")) != "ENABLED":
+		_fail("ERR_CONTRACT_ENABLED", "v22 合同在 v1.43 必须为 ENABLED，当前=%s" % str(contract.get("status")))
 	var fields: Array = contract.get("fields", [])
 	if fields.size() == 0:
 		_fail("ERR_CONTRACT_FIELD_MISS", "合同 fields 为空")
@@ -293,7 +293,7 @@ func _finish() -> void:
 		print("REGISTRY_FAIL: " + "; ".join(_errors))
 		get_tree().quit(1)
 		return
-	print("PASS moyu_expansion_registry: JSON 解析、ID 唯一、枚举合法、token 精确命中、无伪造来源、规模达标、v22 合同未启用且类型/服务正确、与 maps/quests 无冲突（registry 全部条目 %s）"
+	print("PASS moyu_expansion_registry: JSON 解析、ID 唯一、枚举合法、token 精确命中、无伪造来源、规模达标、v22 合同已启用且类型/服务正确、与 maps/quests 无冲突（registry 全部条目 %s）"
 		% _read_entry_count_label())
 	get_tree().quit(0)
 

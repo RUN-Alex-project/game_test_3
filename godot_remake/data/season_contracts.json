@@ -1,0 +1,29 @@
+{
+  "contracts": [
+    {
+      "contract_id": "sc_market",
+      "source": "market",
+      "gold": 2
+    },
+    {
+      "contract_id": "sc_territory",
+      "source": "territory",
+      "gold": 2
+    },
+    {
+      "contract_id": "sc_challenge",
+      "source": "challenge",
+      "gold": 2
+    },
+    {
+      "contract_id": "sc_pet",
+      "source": "pet",
+      "gold": 2
+    },
+    {
+      "contract_id": "sc_abyss",
+      "source": "abyss",
+      "gold": 2
+    }
+  ]
+}

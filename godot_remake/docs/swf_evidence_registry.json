@@ -1331,117 +1331,1399 @@
 		}
 	],
 	"image_assets": [
-		{"image_id": "image_0038", "file": "res://assets/extracted/images/image_0038.jpg", "known_uses": ["雷鸣矿洞四个挖矿点图标"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0038"}]},
-		{"image_id": "image_0049", "file": "res://assets/extracted/images/image_0049.png", "known_uses": ["普通怪巨杰士/雪原统领/地下城首领站立帧（sprite124 通用怪第1种）"], "evidence_source": "main_original.gd+ manifest(49,36,152x115)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0049"}]},
-		{"image_id": "image_0051", "file": "res://assets/extracted/images/image_0051.png", "known_uses": ["雷角风牙兽（草原福娃事件Boss，main_original.gd）", "龙怪（雷鸣大陆普通怪，main_original.gd）", "attack_defense_heavy 幻兽模板 icon 字段（data/pets.json）", "legacy battle_panel/main.gd 暴雪骑士长与蜘蛛王后艾达（隐藏旧面板）"], "evidence_source": "main_original.gd+ data/pets.json(attack_defense_heavy) + battle_panel.gd+ main.gd(legacy)", "scope": "active+legacy", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0051"}, {"path": "res://data/pets.json", "token": "image_0051"}, {"path": "res://scripts/battle_panel.gd", "token": "image_0051"}, {"path": "res://scripts/main.gd", "token": "image_0051"}]},
-		{"image_id": "image_0053", "file": "res://assets/extracted/images/image_0053.png", "known_uses": ["普通怪冰妖剑士"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0053"}]},
-		{"image_id": "image_0055", "file": "res://assets/extracted/images/image_0055.png", "known_uses": ["普通怪杰克灯笼"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0055"}]},
-		{"image_id": "image_0057", "file": "res://assets/extracted/images/image_0057.png", "known_uses": ["普通怪提风"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0057"}]},
-		{"image_id": "image_0059", "file": "res://assets/extracted/images/image_0059.png", "known_uses": ["普通怪望齿魔人"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0059"}]},
-		{"image_id": "image_0061", "file": "res://assets/extracted/images/image_0061.png", "known_uses": ["普通怪角蜥"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0061"}]},
-		{"image_id": "image_0063", "file": "res://assets/extracted/images/image_0063.png", "known_uses": ["蜘蛛（迷梦沼泽，45级）"], "evidence_source": "main_original.gd+ version_log v1.9", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0063"}]},
-		{"image_id": "image_0065", "file": "res://assets/extracted/images/image_0065.png", "known_uses": ["普通怪塔亚龙"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0065"}]},
-		{"image_id": "image_0067", "file": "res://assets/extracted/images/image_0067.png", "known_uses": ["普通怪死亡骑士"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0067"}]},
-		{"image_id": "image_0069", "file": "res://assets/extracted/images/image_0069.png", "known_uses": ["普通怪鱼妖"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0069"}]},
-		{"image_id": "image_0071", "file": "res://assets/extracted/images/image_0071.png", "known_uses": ["普通怪恐兽"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0071"}]},
-		{"image_id": "image_0073", "file": "res://assets/extracted/images/image_0073.png", "known_uses": ["普通怪巨斧怪"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0073"}]},
-		{"image_id": "image_0075", "file": "res://assets/extracted/images/image_0075.png", "known_uses": ["蜘蛛王后艾达（亚维特岛，80级）"], "evidence_source": "main_original.gd+ version_log v1.9", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0075"}]},
-		{"image_id": "image_0077", "file": "res://assets/extracted/images/image_0077.png", "known_uses": ["普通怪刺虫人"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0077"}]},
-		{"image_id": "image_0079", "file": "res://assets/extracted/images/image_0079.png", "known_uses": ["普通怪四牙怪"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0079"}]},
-		{"image_id": "image_0081", "file": "res://assets/extracted/images/image_0081.png", "known_uses": ["普通怪炎女"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0081"}]},
-		{"image_id": "image_0083", "file": "res://assets/extracted/images/image_0083.png", "known_uses": ["普通怪蝎怪"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0083"}]},
-		{"image_id": "image_0085", "file": "res://assets/extracted/images/image_0085.png", "known_uses": ["普通怪暗黑弥塞亚"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0085"}]},
-		{"image_id": "image_0087", "file": "res://assets/extracted/images/image_0087.png", "known_uses": ["普通怪暗黑格拉斯"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0087"}]},
-		{"image_id": "image_0089", "file": "res://assets/extracted/images/image_0089.png", "known_uses": ["普通怪叹息骑士"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0089"}]},
-		{"image_id": "image_0097", "file": "res://assets/extracted/images/image_0097.png", "known_uses": ["魔军突击队（最终战）"], "evidence_source": "main_original.gd+ manifest(97,36,101x132)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0097"}]},
-		{"image_id": "image_0099", "file": "res://assets/extracted/images/image_0099.png", "known_uses": ["魔军守卫军（最终战）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0099"}]},
-		{"image_id": "image_0101", "file": "res://assets/extracted/images/image_0101.png", "known_uses": ["无名氏（战魂封印谜宫守卫，sprite124 第28帧）"], "evidence_source": "main_original.gd+ version_log v1.8 + manifest(101,36,91x167)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0101"}]},
-		{"image_id": "image_0103", "file": "res://assets/extracted/images/image_0103.png", "known_uses": ["魔军图腾兽（最终战）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0103"}]},
-		{"image_id": "image_0105", "file": "res://assets/extracted/images/image_0105.png", "known_uses": ["魔军主帅（最终战）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0105"}]},
-		{"image_id": "image_0116", "file": "res://assets/extracted/images/image_0116.png", "known_uses": ["魔的能量（最终目标）"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0116"}]},
-		{"image_id": "image_0127", "file": "res://assets/extracted/images/image_0127.png", "known_uses": ["通用 Boss 攻击帧 A（186x173）/ legacy 暴雪勇士"], "evidence_source": "scene_battle_controller.gd+ manifest(127,36,186x173)", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0127"}]},
-		{"image_id": "image_0129", "file": "res://assets/extracted/images/image_0129.png", "known_uses": ["通用 Boss 攻击帧 B（186x173）/ 雪原骑兵/地下城三层首领"], "evidence_source": "main_original.gd+ manifest(129,36,186x173)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0129"}]},
-		{"image_id": "image_0431", "file": "res://assets/extracted/images/image_0431.png", "known_uses": ["legacy main.gd 幻兽师（隐藏旧面板，非运行时）"], "evidence_source": "main.gd(legacy)", "scope": "legacy", "source_refs": [{"path": "res://scripts/main.gd", "token": "image_0431"}]},
-		{"image_id": "image_0447", "file": "res://assets/extracted/images/image_0447.png", "known_uses": ["legacy battle_panel 人物攻击帧（隐藏旧面板，非运行时）"], "evidence_source": "battle_panel.gd(legacy)", "scope": "legacy", "source_refs": [{"path": "res://scripts/battle_panel.gd", "token": "image_0447"}]},
-		{"image_id": "image_0449", "file": "res://assets/extracted/images/image_0449.png", "known_uses": ["legacy battle_panel 怪物图（隐藏旧面板，非运行时）"], "evidence_source": "battle_panel.gd(legacy)", "scope": "legacy", "source_refs": [{"path": "res://scripts/battle_panel.gd", "token": "image_0449"}]},
-		{"image_id": "image_0455", "file": "res://assets/extracted/images/image_0455.png", "known_uses": ["人物待机帧 A（idle frame A）"], "evidence_source": "main_original.gd+ test_player_native_motion + manifest(455,36,57x161)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0455"}]},
-		{"image_id": "image_0457", "file": "res://assets/extracted/images/image_0457.png", "known_uses": ["人物待机帧 B（idle frame B）"], "evidence_source": "main_original.gd+ test_player_native_motion", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0457"}]},
-		{"image_id": "image_0465", "file": "res://assets/extracted/images/image_0465.png", "known_uses": ["人物向下行走帧 A"], "evidence_source": "test_player_native_motion + manifest(465,36,73x136)"},
-		{"image_id": "image_0467", "file": "res://assets/extracted/images/image_0467.png", "known_uses": ["人物向下行走帧 B"], "evidence_source": "test_player_native_motion"},
-		{"image_id": "image_0470", "file": "res://assets/extracted/images/image_0470.png", "known_uses": ["人物向上行走帧 A"], "evidence_source": "test_player_native_motion + manifest(470,36,73x136)"},
-		{"image_id": "image_0472", "file": "res://assets/extracted/images/image_0472.png", "known_uses": ["人物向上行走帧 B"], "evidence_source": "test_player_native_motion"},
-		{"image_id": "image_0475", "file": "res://assets/extracted/images/image_0475.png", "known_uses": ["人物向左行走帧 A"], "evidence_source": "test_player_native_motion + manifest(475,36,146x124)"},
-		{"image_id": "image_0477", "file": "res://assets/extracted/images/image_0477.png", "known_uses": ["人物向左过渡帧"], "evidence_source": "test_player_native_motion"},
-		{"image_id": "image_0479", "file": "res://assets/extracted/images/image_0479.png", "known_uses": ["人物向左迈步帧"], "evidence_source": "test_player_native_motion"},
-		{"image_id": "image_0482", "file": "res://assets/extracted/images/image_0482.png", "known_uses": ["人物向右行走帧 A（独立素材，非镜像）"], "evidence_source": "test_player_native_motion + manifest(482,36,149x126)"},
-		{"image_id": "image_0484", "file": "res://assets/extracted/images/image_0484.png", "known_uses": ["人物向右过渡帧"], "evidence_source": "test_player_native_motion"},
-		{"image_id": "image_0486", "file": "res://assets/extracted/images/image_0486.png", "known_uses": ["人物向右迈步帧"], "evidence_source": "test_player_native_motion"},
-		{"image_id": "image_0503", "file": "res://assets/extracted/images/image_0503.png", "known_uses": ["人物攻击挥剑帧 1/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0503"}]},
-		{"image_id": "image_0505", "file": "res://assets/extracted/images/image_0505.png", "known_uses": ["人物攻击挥剑帧 2/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0505"}]},
-		{"image_id": "image_0507", "file": "res://assets/extracted/images/image_0507.png", "known_uses": ["人物攻击挥剑帧 3/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0507"}]},
-		{"image_id": "image_0509", "file": "res://assets/extracted/images/image_0509.png", "known_uses": ["人物攻击挥剑帧 4/4"], "evidence_source": "scene_battle_controller.gd", "source_refs": [{"path": "res://scripts/scene_battle_controller.gd", "token": "image_0509"}]},
-		{"image_id": "image_0553", "file": "res://assets/extracted/images/image_0553.jpg", "known_uses": ["装备窗战魂标志 war_soul_badge"], "evidence_source": "equipment_panel.gd", "source_refs": [{"path": "res://scripts/equipment_panel.gd", "token": "image_0553"}]},
-		{"image_id": "image_0556", "file": "res://assets/extracted/images/image_0556.jpg", "known_uses": ["装备窗天魂套装标志 soul_set_badge"], "evidence_source": "equipment_panel.gd", "source_refs": [{"path": "res://scripts/equipment_panel.gd", "token": "image_0556"}]},
-		{"image_id": "image_0558", "file": "res://assets/extracted/images/image_0558.jpg", "known_uses": ["装备窗地魂套装标志（切换态）"], "evidence_source": "equipment_panel.gd", "source_refs": [{"path": "res://scripts/equipment_panel.gd", "token": "image_0558"}]},
-		{"image_id": "image_0698", "file": "res://assets/extracted/images/image_0698.jpg", "known_uses": ["技能图标 飞天连斩"], "evidence_source": "skill_panel.gd+ test_native_skill_panel + manifest(698,21,40x40)", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0698"}]},
-		{"image_id": "image_0703", "file": "res://assets/extracted/images/image_0703.jpg", "known_uses": ["技能图标（原版保留栏 2）"], "evidence_source": "skill_panel.gd", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0703"}]},
-		{"image_id": "image_0708", "file": "res://assets/extracted/images/image_0708.jpg", "known_uses": ["技能图标 星魔剑"], "evidence_source": "skill_panel.gd", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0708"}]},
-		{"image_id": "image_0713", "file": "res://assets/extracted/images/image_0713.jpg", "known_uses": ["技能图标（原版保留栏 4）"], "evidence_source": "skill_panel.gd", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0713"}]},
-		{"image_id": "image_0718", "file": "res://assets/extracted/images/image_0718.jpg", "known_uses": ["技能图标 斗志昂扬"], "evidence_source": "skill_panel.gd+ test_native_skill_panel", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0718"}]},
-		{"image_id": "image_0726", "file": "res://assets/extracted/images/image_0726.png", "known_uses": ["技能图标 爱的力量"], "evidence_source": "skill_panel.gd+ test_native_skill_panel", "source_refs": [{"path": "res://scripts/skill_panel.gd", "token": "image_0726"}]},
-		{"image_id": "image_0738", "file": "res://assets/extracted/images/image_0738.jpg", "known_uses": ["幻兽头像 攻防型光幻兽 attack_defense_light"], "evidence_source": "pet_panel.gd+ test_native_pet_bag + manifest(738,21,63x58)", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0738"}]},
-		{"image_id": "image_0740", "file": "res://assets/extracted/images/image_0740.jpg", "known_uses": ["幻兽头像 奇异兽 strange_beast"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0740"}]},
-		{"image_id": "image_0742", "file": "res://assets/extracted/images/image_0742.jpg", "known_uses": ["幻兽头像 噜噜 lulu_pet"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0742"}]},
-		{"image_id": "image_0744", "file": "res://assets/extracted/images/image_0744.jpg", "known_uses": ["幻兽头像 攻防型重幻兽 attack_defense_heavy（pet_panel PORTRAITS 覆盖 pets.json 的 image_0051）"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0744"}]},
-		{"image_id": "image_0746", "file": "res://assets/extracted/images/image_0746.jpg", "known_uses": ["幻兽头像默认回退图"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0746"}]},
-		{"image_id": "image_0748", "file": "res://assets/extracted/images/image_0748.jpg", "known_uses": ["幻兽头像 年猪 year_pig"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0748"}]},
-		{"image_id": "image_0750", "file": "res://assets/extracted/images/image_0750.jpg", "known_uses": ["幻兽头像 圣天使 holy_angel"], "evidence_source": "pet_panel.gd", "source_refs": [{"path": "res://scripts/pet_panel.gd", "token": "image_0750"}]},
-		{"image_id": "image_0875", "file": "res://assets/extracted/images/image_0875.jpg", "known_uses": ["顶部人物卡玩家头像"], "evidence_source": "main_original.gd+ manifest(875,21,64x64)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_0875"}]},
-		{"image_id": "image_1066", "file": "res://assets/extracted/images/image_1066.jpg", "known_uses": ["雷鸣大陆背景"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1072", "file": "res://assets/extracted/images/image_1072.png", "known_uses": ["通用 Boss 站立图（101x132，七等级Boss/PK擂主/领地挑战者共用）"], "evidence_source": "main_original _add_actor + manifest(1072,36,101x132) + version_log v1.9", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1072"}]},
-		{"image_id": "image_1076", "file": "res://assets/extracted/images/image_1076.png", "known_uses": ["日常任务官/PK赛报名官/地图占领报名官人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1076"}]},
-		{"image_id": "image_1086", "file": "res://assets/extracted/images/image_1086.png", "known_uses": ["2008奥运使者（五福娃事件）"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1086"}]},
-		{"image_id": "image_1091", "file": "res://assets/extracted/images/image_1091.jpg", "known_uses": ["雷鸣矿洞背景"], "evidence_source": "maps.json + version_log v1.4"},
-		{"image_id": "image_1097", "file": "res://assets/extracted/images/image_1097.jpg", "known_uses": ["草原/草原2背景（五福娃事件图）"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1101", "file": "res://assets/extracted/images/image_1101.png", "known_uses": ["福娃贝贝"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1101"}]},
-		{"image_id": "image_1104", "file": "res://assets/extracted/images/image_1104.png", "known_uses": ["福娃欢欢"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1104"}]},
-		{"image_id": "image_1106", "file": "res://assets/extracted/images/image_1106.png", "known_uses": ["福娃迎迎"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1106"}]},
-		{"image_id": "image_1108", "file": "res://assets/extracted/images/image_1108.png", "known_uses": ["福娃妮妮"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1108"}]},
-		{"image_id": "image_1110", "file": "res://assets/extracted/images/image_1110.png", "known_uses": ["福娃晶晶"], "evidence_source": "main_original.gd+ version_log v1.5", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1110"}]},
-		{"image_id": "image_1114", "file": "res://assets/extracted/images/image_1114.jpg", "known_uses": ["卡萨诺城背景（默认背景）"], "evidence_source": "main_original.gd+ maps.json + manifest(1114,21,700x550)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1114"}]},
-		{"image_id": "image_1126", "file": "res://assets/extracted/images/image_1126.png", "known_uses": ["经验导师人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1126"}]},
-		{"image_id": "image_1130", "file": "res://assets/extracted/images/image_1130.png", "known_uses": ["仓库管理员人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1130"}]},
-		{"image_id": "image_1134", "file": "res://assets/extracted/images/image_1134.png", "known_uses": ["收藏商店/公主侍女/丫环人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1134"}]},
-		{"image_id": "image_1138", "file": "res://assets/extracted/images/image_1138.png", "known_uses": ["收藏家人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1138"}]},
-		{"image_id": "image_1142", "file": "res://assets/extracted/images/image_1142.png", "known_uses": ["装备打造师/首相人物图"], "evidence_source": "main_original.gd+ version_log v1.1/v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1142"}]},
-		{"image_id": "image_1147", "file": "res://assets/extracted/images/image_1147.png", "known_uses": ["幻兽幻化师/抽奖官人物图"], "evidence_source": "main_original.gd+ version_log v1.6", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1147"}]},
-		{"image_id": "image_1151", "file": "res://assets/extracted/images/image_1151.png", "known_uses": ["宝石合成师人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1151"}]},
-		{"image_id": "image_1156", "file": "res://assets/extracted/images/image_1156.png", "known_uses": ["杂货商人物图"], "evidence_source": "main_original.gd+ version_log v1.10", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1156"}]},
-		{"image_id": "image_1171", "file": "res://assets/extracted/images/image_1171.png", "known_uses": ["幻兽研究所人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1171"}]},
-		{"image_id": "image_1175", "file": "res://assets/extracted/images/image_1175.jpg", "known_uses": ["皇宫/后花园/抽奖房背景"], "evidence_source": "maps.json + test_garden_lottery"},
-		{"image_id": "image_1177", "file": "res://assets/extracted/images/image_1177.png", "known_uses": ["元帅人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1177"}]},
-		{"image_id": "image_1191", "file": "res://assets/extracted/images/image_1191.png", "known_uses": ["国王人物图（救王后回宫）"], "evidence_source": "main_original.gd+ test_palace", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1191"}]},
-		{"image_id": "image_1197", "file": "res://assets/extracted/images/image_1197.png", "known_uses": ["皇宫装饰图 1"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1197"}]},
-		{"image_id": "image_1198", "file": "res://assets/extracted/images/image_1198.png", "known_uses": ["皇宫/后花园/抽奖房装饰图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1198"}]},
-		{"image_id": "image_1201", "file": "res://assets/extracted/images/image_1201.png", "known_uses": ["公主人物图"], "evidence_source": "main_original.gd", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1201"}]},
-		{"image_id": "image_1213", "file": "res://assets/extracted/images/image_1213.png", "known_uses": ["抽奖房宝箱关闭帧/战魂封印之箱"], "evidence_source": "main_original.gd+ version_log v1.6/v1.8 + manifest(1213,36,100x100)", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1213"}]},
-		{"image_id": "image_1226", "file": "res://assets/extracted/images/image_1226.jpg", "known_uses": ["戈壁背景"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1231", "file": "res://assets/extracted/images/image_1231.png", "known_uses": ["戈壁探险家人物图（战魂任务期间）"], "evidence_source": "main_original.gd+ version_log v1.8", "source_refs": [{"path": "res://scripts/main_original.gd", "token": "image_1231"}]},
-		{"image_id": "image_1236", "file": "res://assets/extracted/images/image_1236.jpg", "known_uses": ["迷梦沼泽背景"], "evidence_source": "maps.json"},
-		{"image_id": "image_1242", "file": "res://assets/extracted/images/image_1242.jpg", "known_uses": ["冰宫背景"], "evidence_source": "maps.json"},
-		{"image_id": "image_1252", "file": "res://assets/extracted/images/image_1252.jpg", "known_uses": ["亚维特岛背景"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1262", "file": "res://assets/extracted/images/image_1262.jpg", "known_uses": ["火山背景"], "evidence_source": "maps.json"},
-		{"image_id": "image_1268", "file": "res://assets/extracted/images/image_1268.jpg", "known_uses": ["深渊迷宫背景"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1271", "file": "res://assets/extracted/images/image_1271.jpg", "known_uses": ["雪域边境/魔中军阵地背景"], "evidence_source": "maps.json + version_log v1.3"},
-		{"image_id": "image_1276", "file": "res://assets/extracted/images/image_1276.jpg", "known_uses": ["魔左军/魔右军阵地背景"], "evidence_source": "maps.json + version_log v1.3"},
-		{"image_id": "image_1278", "file": "res://assets/extracted/images/image_1278.jpg", "known_uses": ["魔军帅旗/能量塔禁地背景"], "evidence_source": "maps.json + version_log v1.3"},
-		{"image_id": "image_1281", "file": "res://assets/extracted/images/image_1281.jpg", "known_uses": ["地下城一层背景"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1287", "file": "res://assets/extracted/images/image_1287.jpg", "known_uses": ["地下城二层背景"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1292", "file": "res://assets/extracted/images/image_1292.jpg", "known_uses": ["地下城三层背景"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "image_1294", "file": "res://assets/extracted/images/image_1294.jpg", "known_uses": ["PK 赛场 1/2/3 背景"], "evidence_source": "maps.json + version_log v1.7"},
-		{"image_id": "image_1297", "file": "res://assets/extracted/images/image_1297.jpg", "known_uses": ["战魂封印谜宫背景"], "evidence_source": "maps.json + version_log v1.8"},
-		{"image_id": "image_1299", "file": "res://assets/extracted/images/image_1299.jpg", "known_uses": ["树心城背景（五福娃最终交任务）"], "evidence_source": "maps.json + version_log v1.5"},
-		{"image_id": "boss_hit_native", "file": "res://assets/extracted/derived/boss_hit_native.png", "known_uses": ["通用 Boss 受击帧（由 SWF shape133 栅格化生成，123x148）"], "evidence_source": "test_monster_hit + version_log v1.15 + assets/extracted/derived"}
+		{
+			"image_id": "image_0038",
+			"file": "res://assets/extracted/images/image_0038.jpg",
+			"known_uses": [
+				"雷鸣矿洞四个挖矿点图标"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0038"
+				}
+			]
+		},
+		{
+			"image_id": "image_0049",
+			"file": "res://assets/extracted/images/image_0049.png",
+			"known_uses": [
+				"普通怪巨杰士/雪原统领/地下城首领站立帧（sprite124 通用怪第1种）"
+			],
+			"evidence_source": "main_original.gd+ manifest(49,36,152x115)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0049"
+				}
+			]
+		},
+		{
+			"image_id": "image_0051",
+			"file": "res://assets/extracted/images/image_0051.png",
+			"known_uses": [
+				"雷角风牙兽（草原福娃事件Boss，main_original.gd）",
+				"龙怪（雷鸣大陆普通怪，main_original.gd）",
+				"attack_defense_heavy 幻兽模板 icon 字段（data/pets.json）",
+				"legacy battle_panel/main.gd 暴雪骑士长与蜘蛛王后艾达（隐藏旧面板）"
+			],
+			"evidence_source": "main_original.gd+ data/pets.json(attack_defense_heavy) + battle_panel.gd+ main.gd(legacy)",
+			"scope": "active+legacy",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0051"
+				},
+				{
+					"path": "res://data/pets.json",
+					"token": "image_0051"
+				},
+				{
+					"path": "res://scripts/battle_panel.gd",
+					"token": "image_0051"
+				},
+				{
+					"path": "res://scripts/main.gd",
+					"token": "image_0051"
+				}
+			]
+		},
+		{
+			"image_id": "image_0053",
+			"file": "res://assets/extracted/images/image_0053.png",
+			"known_uses": [
+				"普通怪冰妖剑士"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0053"
+				}
+			]
+		},
+		{
+			"image_id": "image_0055",
+			"file": "res://assets/extracted/images/image_0055.png",
+			"known_uses": [
+				"普通怪杰克灯笼"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0055"
+				}
+			]
+		},
+		{
+			"image_id": "image_0057",
+			"file": "res://assets/extracted/images/image_0057.png",
+			"known_uses": [
+				"普通怪提风"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0057"
+				}
+			]
+		},
+		{
+			"image_id": "image_0059",
+			"file": "res://assets/extracted/images/image_0059.png",
+			"known_uses": [
+				"普通怪望齿魔人"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0059"
+				}
+			]
+		},
+		{
+			"image_id": "image_0061",
+			"file": "res://assets/extracted/images/image_0061.png",
+			"known_uses": [
+				"普通怪角蜥"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0061"
+				}
+			]
+		},
+		{
+			"image_id": "image_0063",
+			"file": "res://assets/extracted/images/image_0063.png",
+			"known_uses": [
+				"蜘蛛（迷梦沼泽，45级）"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.9",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0063"
+				}
+			]
+		},
+		{
+			"image_id": "image_0065",
+			"file": "res://assets/extracted/images/image_0065.png",
+			"known_uses": [
+				"普通怪塔亚龙"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0065"
+				}
+			]
+		},
+		{
+			"image_id": "image_0067",
+			"file": "res://assets/extracted/images/image_0067.png",
+			"known_uses": [
+				"普通怪死亡骑士"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0067"
+				}
+			]
+		},
+		{
+			"image_id": "image_0069",
+			"file": "res://assets/extracted/images/image_0069.png",
+			"known_uses": [
+				"普通怪鱼妖"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0069"
+				}
+			]
+		},
+		{
+			"image_id": "image_0071",
+			"file": "res://assets/extracted/images/image_0071.png",
+			"known_uses": [
+				"普通怪恐兽"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0071"
+				}
+			]
+		},
+		{
+			"image_id": "image_0073",
+			"file": "res://assets/extracted/images/image_0073.png",
+			"known_uses": [
+				"普通怪巨斧怪"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0073"
+				}
+			]
+		},
+		{
+			"image_id": "image_0075",
+			"file": "res://assets/extracted/images/image_0075.png",
+			"known_uses": [
+				"蜘蛛王后艾达（亚维特岛，80级）"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.9",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0075"
+				}
+			]
+		},
+		{
+			"image_id": "image_0077",
+			"file": "res://assets/extracted/images/image_0077.png",
+			"known_uses": [
+				"普通怪刺虫人"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0077"
+				}
+			]
+		},
+		{
+			"image_id": "image_0079",
+			"file": "res://assets/extracted/images/image_0079.png",
+			"known_uses": [
+				"普通怪四牙怪"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0079"
+				}
+			]
+		},
+		{
+			"image_id": "image_0081",
+			"file": "res://assets/extracted/images/image_0081.png",
+			"known_uses": [
+				"普通怪炎女"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0081"
+				}
+			]
+		},
+		{
+			"image_id": "image_0083",
+			"file": "res://assets/extracted/images/image_0083.png",
+			"known_uses": [
+				"普通怪蝎怪"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0083"
+				}
+			]
+		},
+		{
+			"image_id": "image_0085",
+			"file": "res://assets/extracted/images/image_0085.png",
+			"known_uses": [
+				"普通怪暗黑弥塞亚"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0085"
+				}
+			]
+		},
+		{
+			"image_id": "image_0087",
+			"file": "res://assets/extracted/images/image_0087.png",
+			"known_uses": [
+				"普通怪暗黑格拉斯"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0087"
+				}
+			]
+		},
+		{
+			"image_id": "image_0089",
+			"file": "res://assets/extracted/images/image_0089.png",
+			"known_uses": [
+				"普通怪叹息骑士"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0089"
+				}
+			]
+		},
+		{
+			"image_id": "image_0097",
+			"file": "res://assets/extracted/images/image_0097.png",
+			"known_uses": [
+				"魔军突击队（最终战）"
+			],
+			"evidence_source": "main_original.gd+ manifest(97,36,101x132)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0097"
+				}
+			]
+		},
+		{
+			"image_id": "image_0099",
+			"file": "res://assets/extracted/images/image_0099.png",
+			"known_uses": [
+				"魔军守卫军（最终战）"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0099"
+				}
+			]
+		},
+		{
+			"image_id": "image_0101",
+			"file": "res://assets/extracted/images/image_0101.png",
+			"known_uses": [
+				"无名氏（战魂封印谜宫守卫，sprite124 第28帧）"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.8 + manifest(101,36,91x167)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0101"
+				}
+			]
+		},
+		{
+			"image_id": "image_0103",
+			"file": "res://assets/extracted/images/image_0103.png",
+			"known_uses": [
+				"魔军图腾兽（最终战）"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0103"
+				}
+			]
+		},
+		{
+			"image_id": "image_0105",
+			"file": "res://assets/extracted/images/image_0105.png",
+			"known_uses": [
+				"魔军主帅（最终战）"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0105"
+				}
+			]
+		},
+		{
+			"image_id": "image_0116",
+			"file": "res://assets/extracted/images/image_0116.png",
+			"known_uses": [
+				"魔的能量（最终目标）"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0116"
+				}
+			]
+		},
+		{
+			"image_id": "image_0127",
+			"file": "res://assets/extracted/images/image_0127.png",
+			"known_uses": [
+				"通用 Boss 攻击帧 A（186x173）/ legacy 暴雪勇士"
+			],
+			"evidence_source": "scene_battle_controller.gd+ manifest(127,36,186x173)",
+			"source_refs": [
+				{
+					"path": "res://scripts/scene_battle_controller.gd",
+					"token": "image_0127"
+				}
+			]
+		},
+		{
+			"image_id": "image_0129",
+			"file": "res://assets/extracted/images/image_0129.png",
+			"known_uses": [
+				"通用 Boss 攻击帧 B（186x173）/ 雪原骑兵/地下城三层首领"
+			],
+			"evidence_source": "main_original.gd+ manifest(129,36,186x173)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0129"
+				}
+			]
+		},
+		{
+			"image_id": "image_0431",
+			"file": "res://assets/extracted/images/image_0431.png",
+			"known_uses": [
+				"legacy main.gd 幻兽师（隐藏旧面板，非运行时）"
+			],
+			"evidence_source": "main.gd(legacy)",
+			"scope": "legacy",
+			"source_refs": [
+				{
+					"path": "res://scripts/main.gd",
+					"token": "image_0431"
+				}
+			]
+		},
+		{
+			"image_id": "image_0447",
+			"file": "res://assets/extracted/images/image_0447.png",
+			"known_uses": [
+				"legacy battle_panel 人物攻击帧（隐藏旧面板，非运行时）"
+			],
+			"evidence_source": "battle_panel.gd(legacy)",
+			"scope": "legacy",
+			"source_refs": [
+				{
+					"path": "res://scripts/battle_panel.gd",
+					"token": "image_0447"
+				}
+			]
+		},
+		{
+			"image_id": "image_0449",
+			"file": "res://assets/extracted/images/image_0449.png",
+			"known_uses": [
+				"legacy battle_panel 怪物图（隐藏旧面板，非运行时）"
+			],
+			"evidence_source": "battle_panel.gd(legacy)",
+			"scope": "legacy",
+			"source_refs": [
+				{
+					"path": "res://scripts/battle_panel.gd",
+					"token": "image_0449"
+				}
+			]
+		},
+		{
+			"image_id": "image_0455",
+			"file": "res://assets/extracted/images/image_0455.png",
+			"known_uses": [
+				"人物待机帧 A（idle frame A）"
+			],
+			"evidence_source": "main_original.gd+ test_player_native_motion + manifest(455,36,57x161)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0455"
+				}
+			]
+		},
+		{
+			"image_id": "image_0457",
+			"file": "res://assets/extracted/images/image_0457.png",
+			"known_uses": [
+				"人物待机帧 B（idle frame B）"
+			],
+			"evidence_source": "main_original.gd+ test_player_native_motion",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0457"
+				}
+			]
+		},
+		{
+			"image_id": "image_0465",
+			"file": "res://assets/extracted/images/image_0465.png",
+			"known_uses": [
+				"人物向下行走帧 A"
+			],
+			"evidence_source": "test_player_native_motion + manifest(465,36,73x136)"
+		},
+		{
+			"image_id": "image_0467",
+			"file": "res://assets/extracted/images/image_0467.png",
+			"known_uses": [
+				"人物向下行走帧 B"
+			],
+			"evidence_source": "test_player_native_motion"
+		},
+		{
+			"image_id": "image_0470",
+			"file": "res://assets/extracted/images/image_0470.png",
+			"known_uses": [
+				"人物向上行走帧 A"
+			],
+			"evidence_source": "test_player_native_motion + manifest(470,36,73x136)"
+		},
+		{
+			"image_id": "image_0472",
+			"file": "res://assets/extracted/images/image_0472.png",
+			"known_uses": [
+				"人物向上行走帧 B"
+			],
+			"evidence_source": "test_player_native_motion"
+		},
+		{
+			"image_id": "image_0475",
+			"file": "res://assets/extracted/images/image_0475.png",
+			"known_uses": [
+				"人物向左行走帧 A"
+			],
+			"evidence_source": "test_player_native_motion + manifest(475,36,146x124)"
+		},
+		{
+			"image_id": "image_0477",
+			"file": "res://assets/extracted/images/image_0477.png",
+			"known_uses": [
+				"人物向左过渡帧"
+			],
+			"evidence_source": "test_player_native_motion"
+		},
+		{
+			"image_id": "image_0479",
+			"file": "res://assets/extracted/images/image_0479.png",
+			"known_uses": [
+				"人物向左迈步帧"
+			],
+			"evidence_source": "test_player_native_motion"
+		},
+		{
+			"image_id": "image_0482",
+			"file": "res://assets/extracted/images/image_0482.png",
+			"known_uses": [
+				"人物向右行走帧 A（独立素材，非镜像）"
+			],
+			"evidence_source": "test_player_native_motion + manifest(482,36,149x126)"
+		},
+		{
+			"image_id": "image_0484",
+			"file": "res://assets/extracted/images/image_0484.png",
+			"known_uses": [
+				"人物向右过渡帧"
+			],
+			"evidence_source": "test_player_native_motion"
+		},
+		{
+			"image_id": "image_0486",
+			"file": "res://assets/extracted/images/image_0486.png",
+			"known_uses": [
+				"人物向右迈步帧"
+			],
+			"evidence_source": "test_player_native_motion"
+		},
+		{
+			"image_id": "image_0503",
+			"file": "res://assets/extracted/images/image_0503.png",
+			"known_uses": [
+				"人物攻击挥剑帧 1/4"
+			],
+			"evidence_source": "scene_battle_controller.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/scene_battle_controller.gd",
+					"token": "image_0503"
+				}
+			]
+		},
+		{
+			"image_id": "image_0505",
+			"file": "res://assets/extracted/images/image_0505.png",
+			"known_uses": [
+				"人物攻击挥剑帧 2/4"
+			],
+			"evidence_source": "scene_battle_controller.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/scene_battle_controller.gd",
+					"token": "image_0505"
+				}
+			]
+		},
+		{
+			"image_id": "image_0507",
+			"file": "res://assets/extracted/images/image_0507.png",
+			"known_uses": [
+				"人物攻击挥剑帧 3/4"
+			],
+			"evidence_source": "scene_battle_controller.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/scene_battle_controller.gd",
+					"token": "image_0507"
+				}
+			]
+		},
+		{
+			"image_id": "image_0509",
+			"file": "res://assets/extracted/images/image_0509.png",
+			"known_uses": [
+				"人物攻击挥剑帧 4/4"
+			],
+			"evidence_source": "scene_battle_controller.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/scene_battle_controller.gd",
+					"token": "image_0509"
+				}
+			]
+		},
+		{
+			"image_id": "image_0553",
+			"file": "res://assets/extracted/images/image_0553.jpg",
+			"known_uses": [
+				"装备窗战魂标志 war_soul_badge"
+			],
+			"evidence_source": "equipment_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/equipment_panel.gd",
+					"token": "image_0553"
+				}
+			]
+		},
+		{
+			"image_id": "image_0556",
+			"file": "res://assets/extracted/images/image_0556.jpg",
+			"known_uses": [
+				"装备窗天魂套装标志 soul_set_badge"
+			],
+			"evidence_source": "equipment_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/equipment_panel.gd",
+					"token": "image_0556"
+				}
+			]
+		},
+		{
+			"image_id": "image_0558",
+			"file": "res://assets/extracted/images/image_0558.jpg",
+			"known_uses": [
+				"装备窗地魂套装标志（切换态）"
+			],
+			"evidence_source": "equipment_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/equipment_panel.gd",
+					"token": "image_0558"
+				}
+			]
+		},
+		{
+			"image_id": "image_0698",
+			"file": "res://assets/extracted/images/image_0698.jpg",
+			"known_uses": [
+				"技能图标 飞天连斩"
+			],
+			"evidence_source": "skill_panel.gd+ test_native_skill_panel + manifest(698,21,40x40)",
+			"source_refs": [
+				{
+					"path": "res://scripts/skill_panel.gd",
+					"token": "image_0698"
+				}
+			]
+		},
+		{
+			"image_id": "image_0703",
+			"file": "res://assets/extracted/images/image_0703.jpg",
+			"known_uses": [
+				"技能图标（原版保留栏 2）"
+			],
+			"evidence_source": "skill_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/skill_panel.gd",
+					"token": "image_0703"
+				}
+			]
+		},
+		{
+			"image_id": "image_0708",
+			"file": "res://assets/extracted/images/image_0708.jpg",
+			"known_uses": [
+				"技能图标 星魔剑"
+			],
+			"evidence_source": "skill_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/skill_panel.gd",
+					"token": "image_0708"
+				}
+			]
+		},
+		{
+			"image_id": "image_0713",
+			"file": "res://assets/extracted/images/image_0713.jpg",
+			"known_uses": [
+				"技能图标（原版保留栏 4）"
+			],
+			"evidence_source": "skill_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/skill_panel.gd",
+					"token": "image_0713"
+				}
+			]
+		},
+		{
+			"image_id": "image_0718",
+			"file": "res://assets/extracted/images/image_0718.jpg",
+			"known_uses": [
+				"技能图标 斗志昂扬"
+			],
+			"evidence_source": "skill_panel.gd+ test_native_skill_panel",
+			"source_refs": [
+				{
+					"path": "res://scripts/skill_panel.gd",
+					"token": "image_0718"
+				}
+			]
+		},
+		{
+			"image_id": "image_0726",
+			"file": "res://assets/extracted/images/image_0726.png",
+			"known_uses": [
+				"技能图标 爱的力量"
+			],
+			"evidence_source": "skill_panel.gd+ test_native_skill_panel",
+			"source_refs": [
+				{
+					"path": "res://scripts/skill_panel.gd",
+					"token": "image_0726"
+				}
+			]
+		},
+		{
+			"image_id": "image_0738",
+			"file": "res://assets/extracted/images/image_0738.jpg",
+			"known_uses": [
+				"幻兽头像 攻防型光幻兽 attack_defense_light"
+			],
+			"evidence_source": "pet_panel.gd+ test_native_pet_bag + manifest(738,21,63x58)",
+			"source_refs": [
+				{
+					"path": "res://scripts/pet_panel.gd",
+					"token": "image_0738"
+				}
+			]
+		},
+		{
+			"image_id": "image_0740",
+			"file": "res://assets/extracted/images/image_0740.jpg",
+			"known_uses": [
+				"幻兽头像 奇异兽 strange_beast"
+			],
+			"evidence_source": "pet_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/pet_panel.gd",
+					"token": "image_0740"
+				}
+			]
+		},
+		{
+			"image_id": "image_0742",
+			"file": "res://assets/extracted/images/image_0742.jpg",
+			"known_uses": [
+				"幻兽头像 噜噜 lulu_pet"
+			],
+			"evidence_source": "pet_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/pet_panel.gd",
+					"token": "image_0742"
+				}
+			]
+		},
+		{
+			"image_id": "image_0744",
+			"file": "res://assets/extracted/images/image_0744.jpg",
+			"known_uses": [
+				"幻兽头像 攻防型重幻兽 attack_defense_heavy（pet_panel PORTRAITS 覆盖 pets.json 的 image_0051）"
+			],
+			"evidence_source": "pet_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/pet_panel.gd",
+					"token": "image_0744"
+				}
+			]
+		},
+		{
+			"image_id": "image_0746",
+			"file": "res://assets/extracted/images/image_0746.jpg",
+			"known_uses": [
+				"幻兽头像默认回退图"
+			],
+			"evidence_source": "pet_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/pet_panel.gd",
+					"token": "image_0746"
+				}
+			]
+		},
+		{
+			"image_id": "image_0748",
+			"file": "res://assets/extracted/images/image_0748.jpg",
+			"known_uses": [
+				"幻兽头像 年猪 year_pig"
+			],
+			"evidence_source": "pet_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/pet_panel.gd",
+					"token": "image_0748"
+				}
+			]
+		},
+		{
+			"image_id": "image_0750",
+			"file": "res://assets/extracted/images/image_0750.jpg",
+			"known_uses": [
+				"幻兽头像 圣天使 holy_angel"
+			],
+			"evidence_source": "pet_panel.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/pet_panel.gd",
+					"token": "image_0750"
+				}
+			]
+		},
+		{
+			"image_id": "image_0875",
+			"file": "res://assets/extracted/images/image_0875.jpg",
+			"known_uses": [
+				"顶部人物卡玩家头像"
+			],
+			"evidence_source": "main_original.gd+ manifest(875,21,64x64)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_0875"
+				}
+			]
+		},
+		{
+			"image_id": "image_1066",
+			"file": "res://assets/extracted/images/image_1066.jpg",
+			"known_uses": [
+				"雷鸣大陆背景"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1072",
+			"file": "res://assets/extracted/images/image_1072.png",
+			"known_uses": [
+				"通用 Boss 站立图（101x132，七等级Boss/PK擂主/领地挑战者共用）"
+			],
+			"evidence_source": "main_original _add_actor + manifest(1072,36,101x132) + version_log v1.9",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1072"
+				}
+			]
+		},
+		{
+			"image_id": "image_1076",
+			"file": "res://assets/extracted/images/image_1076.png",
+			"known_uses": [
+				"日常任务官/PK赛报名官/地图占领报名官人物图"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1076"
+				}
+			]
+		},
+		{
+			"image_id": "image_1086",
+			"file": "res://assets/extracted/images/image_1086.png",
+			"known_uses": [
+				"2008奥运使者（五福娃事件）"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.5",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1086"
+				}
+			]
+		},
+		{
+			"image_id": "image_1091",
+			"file": "res://assets/extracted/images/image_1091.jpg",
+			"known_uses": [
+				"雷鸣矿洞背景"
+			],
+			"evidence_source": "maps.json + version_log v1.4"
+		},
+		{
+			"image_id": "image_1097",
+			"file": "res://assets/extracted/images/image_1097.jpg",
+			"known_uses": [
+				"草原/草原2背景（五福娃事件图）"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1101",
+			"file": "res://assets/extracted/images/image_1101.png",
+			"known_uses": [
+				"福娃贝贝"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.5",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1101"
+				}
+			]
+		},
+		{
+			"image_id": "image_1104",
+			"file": "res://assets/extracted/images/image_1104.png",
+			"known_uses": [
+				"福娃欢欢"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.5",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1104"
+				}
+			]
+		},
+		{
+			"image_id": "image_1106",
+			"file": "res://assets/extracted/images/image_1106.png",
+			"known_uses": [
+				"福娃迎迎"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.5",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1106"
+				}
+			]
+		},
+		{
+			"image_id": "image_1108",
+			"file": "res://assets/extracted/images/image_1108.png",
+			"known_uses": [
+				"福娃妮妮"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.5",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1108"
+				}
+			]
+		},
+		{
+			"image_id": "image_1110",
+			"file": "res://assets/extracted/images/image_1110.png",
+			"known_uses": [
+				"福娃晶晶"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.5",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1110"
+				}
+			]
+		},
+		{
+			"image_id": "image_1114",
+			"file": "res://assets/extracted/images/image_1114.jpg",
+			"known_uses": [
+				"卡萨诺城背景（默认背景）"
+			],
+			"evidence_source": "main_original.gd+ maps.json + manifest(1114,21,700x550)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1114"
+				}
+			]
+		},
+		{
+			"image_id": "image_1126",
+			"file": "res://assets/extracted/images/image_1126.png",
+			"known_uses": [
+				"经验导师人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.10",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1126"
+				}
+			]
+		},
+		{
+			"image_id": "image_1130",
+			"file": "res://assets/extracted/images/image_1130.png",
+			"known_uses": [
+				"仓库管理员人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.10",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1130"
+				}
+			]
+		},
+		{
+			"image_id": "image_1134",
+			"file": "res://assets/extracted/images/image_1134.png",
+			"known_uses": [
+				"收藏商店/公主侍女/丫环人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.10",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1134"
+				}
+			]
+		},
+		{
+			"image_id": "image_1138",
+			"file": "res://assets/extracted/images/image_1138.png",
+			"known_uses": [
+				"收藏家人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.10",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1138"
+				}
+			]
+		},
+		{
+			"image_id": "image_1142",
+			"file": "res://assets/extracted/images/image_1142.png",
+			"known_uses": [
+				"装备打造师/首相人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.1/v1.10",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1142"
+				}
+			]
+		},
+		{
+			"image_id": "image_1147",
+			"file": "res://assets/extracted/images/image_1147.png",
+			"known_uses": [
+				"幻兽幻化师/抽奖官人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.6",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1147"
+				}
+			]
+		},
+		{
+			"image_id": "image_1151",
+			"file": "res://assets/extracted/images/image_1151.png",
+			"known_uses": [
+				"宝石合成师人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.10",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1151"
+				}
+			]
+		},
+		{
+			"image_id": "image_1156",
+			"file": "res://assets/extracted/images/image_1156.png",
+			"known_uses": [
+				"杂货商人物图"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.10",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1156"
+				}
+			]
+		},
+		{
+			"image_id": "image_1171",
+			"file": "res://assets/extracted/images/image_1171.png",
+			"known_uses": [
+				"幻兽研究所人物图"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1171"
+				}
+			]
+		},
+		{
+			"image_id": "image_1175",
+			"file": "res://assets/extracted/images/image_1175.jpg",
+			"known_uses": [
+				"皇宫/后花园/抽奖房背景"
+			],
+			"evidence_source": "maps.json + test_garden_lottery"
+		},
+		{
+			"image_id": "image_1177",
+			"file": "res://assets/extracted/images/image_1177.png",
+			"known_uses": [
+				"元帅人物图"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1177"
+				}
+			]
+		},
+		{
+			"image_id": "image_1191",
+			"file": "res://assets/extracted/images/image_1191.png",
+			"known_uses": [
+				"国王人物图（救王后回宫）"
+			],
+			"evidence_source": "main_original.gd+ test_palace",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1191"
+				}
+			]
+		},
+		{
+			"image_id": "image_1197",
+			"file": "res://assets/extracted/images/image_1197.png",
+			"known_uses": [
+				"皇宫装饰图 1"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1197"
+				}
+			]
+		},
+		{
+			"image_id": "image_1198",
+			"file": "res://assets/extracted/images/image_1198.png",
+			"known_uses": [
+				"皇宫/后花园/抽奖房装饰图"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1198"
+				}
+			]
+		},
+		{
+			"image_id": "image_1201",
+			"file": "res://assets/extracted/images/image_1201.png",
+			"known_uses": [
+				"公主人物图"
+			],
+			"evidence_source": "main_original.gd",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1201"
+				}
+			]
+		},
+		{
+			"image_id": "image_1213",
+			"file": "res://assets/extracted/images/image_1213.png",
+			"known_uses": [
+				"抽奖房宝箱关闭帧/战魂封印之箱"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.6/v1.8 + manifest(1213,36,100x100)",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1213"
+				}
+			]
+		},
+		{
+			"image_id": "image_1226",
+			"file": "res://assets/extracted/images/image_1226.jpg",
+			"known_uses": [
+				"戈壁背景"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1231",
+			"file": "res://assets/extracted/images/image_1231.png",
+			"known_uses": [
+				"戈壁探险家人物图（战魂任务期间）"
+			],
+			"evidence_source": "main_original.gd+ version_log v1.8",
+			"source_refs": [
+				{
+					"path": "res://scripts/main_original.gd",
+					"token": "image_1231"
+				}
+			]
+		},
+		{
+			"image_id": "image_1236",
+			"file": "res://assets/extracted/images/image_1236.jpg",
+			"known_uses": [
+				"迷梦沼泽背景"
+			],
+			"evidence_source": "maps.json"
+		},
+		{
+			"image_id": "image_1242",
+			"file": "res://assets/extracted/images/image_1242.jpg",
+			"known_uses": [
+				"冰宫背景"
+			],
+			"evidence_source": "maps.json"
+		},
+		{
+			"image_id": "image_1252",
+			"file": "res://assets/extracted/images/image_1252.jpg",
+			"known_uses": [
+				"亚维特岛背景"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1262",
+			"file": "res://assets/extracted/images/image_1262.jpg",
+			"known_uses": [
+				"火山背景"
+			],
+			"evidence_source": "maps.json"
+		},
+		{
+			"image_id": "image_1268",
+			"file": "res://assets/extracted/images/image_1268.jpg",
+			"known_uses": [
+				"深渊迷宫背景"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1271",
+			"file": "res://assets/extracted/images/image_1271.jpg",
+			"known_uses": [
+				"雪域边境/魔中军阵地背景"
+			],
+			"evidence_source": "maps.json + version_log v1.3"
+		},
+		{
+			"image_id": "image_1276",
+			"file": "res://assets/extracted/images/image_1276.jpg",
+			"known_uses": [
+				"魔左军/魔右军阵地背景"
+			],
+			"evidence_source": "maps.json + version_log v1.3"
+		},
+		{
+			"image_id": "image_1278",
+			"file": "res://assets/extracted/images/image_1278.jpg",
+			"known_uses": [
+				"魔军帅旗/能量塔禁地背景"
+			],
+			"evidence_source": "maps.json + version_log v1.3"
+		},
+		{
+			"image_id": "image_1281",
+			"file": "res://assets/extracted/images/image_1281.jpg",
+			"known_uses": [
+				"地下城一层背景"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1287",
+			"file": "res://assets/extracted/images/image_1287.jpg",
+			"known_uses": [
+				"地下城二层背景"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1292",
+			"file": "res://assets/extracted/images/image_1292.jpg",
+			"known_uses": [
+				"地下城三层背景"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "image_1294",
+			"file": "res://assets/extracted/images/image_1294.jpg",
+			"known_uses": [
+				"PK 赛场 1/2/3 背景"
+			],
+			"evidence_source": "maps.json + version_log v1.7"
+		},
+		{
+			"image_id": "image_1297",
+			"file": "res://assets/extracted/images/image_1297.jpg",
+			"known_uses": [
+				"战魂封印谜宫背景"
+			],
+			"evidence_source": "maps.json + version_log v1.8"
+		},
+		{
+			"image_id": "image_1299",
+			"file": "res://assets/extracted/images/image_1299.jpg",
+			"known_uses": [
+				"树心城背景（五福娃最终交任务）"
+			],
+			"evidence_source": "maps.json + version_log v1.5"
+		},
+		{
+			"image_id": "boss_hit_native",
+			"file": "res://assets/extracted/derived/boss_hit_native.png",
+			"known_uses": [
+				"通用 Boss 受击帧（由 SWF shape133 栅格化生成，123x148）"
+			],
+			"evidence_source": "test_monster_hit + version_log v1.15 + assets/extracted/derived"
+		}
 	],
 	"maps": [
 		{
@@ -1555,6 +2837,94 @@
 		{
 			"map_id": "war_soul_seal_maze",
 			"background": "image_1297.jpg"
+		},
+		{
+			"map_id": "treeheart_outskirts",
+			"background": "image_1299.jpg"
+		},
+		{
+			"map_id": "treeheart_core",
+			"background": "image_1097.jpg"
+		},
+		{
+			"map_id": "harbor_quay",
+			"background": "image_1252.jpg"
+		},
+		{
+			"map_id": "harbor_market",
+			"background": "image_1114.jpg"
+		},
+		{
+			"map_id": "sea_cave",
+			"background": "image_1281.jpg"
+		},
+		{
+			"map_id": "tide_shrine",
+			"background": "image_1242.jpg"
+		},
+		{
+			"map_id": "south_city_gate",
+			"background": "image_1271.jpg"
+		},
+		{
+			"map_id": "south_city_square",
+			"background": "image_1175.jpg"
+		},
+		{
+			"map_id": "border_watchpost",
+			"background": "image_1294.jpg"
+		},
+		{
+			"map_id": "border_supply_route",
+			"background": "image_1276.jpg"
+		},
+		{
+			"map_id": "border_ruins",
+			"background": "image_1268.jpg"
+		},
+		{
+			"map_id": "border_command_tent",
+			"background": "image_1278.jpg"
+		},
+		{
+			"map_id": "ice_frontier",
+			"background": "image_1287.jpg"
+		},
+		{
+			"map_id": "frozen_pass",
+			"background": "image_1292.jpg"
+		},
+		{
+			"map_id": "crystal_cavern",
+			"background": "image_1066.jpg"
+		},
+		{
+			"map_id": "elemental_laboratory",
+			"background": "image_1091.jpg"
+		},
+		{
+			"map_id": "aurora_sanctum",
+			"background": "image_1226.jpg"
+		},
+		{
+			"map_id": "abyss_gate",
+			"background": "image_1236.jpg"
+		},
+		{
+			"map_id": "abyss_outer_ring",
+			"background": "image_1242.jpg"
+		},
+		{
+			"map_id": "abyss_echo_halls",
+			"background": "image_1276.jpg"
+		},
+		{
+			"map_id": "totem_sanctum",
+			"background": "image_1278.jpg"
+		},
+		{
+			"map_id": "abyss_heart",
+			"background": "image_1262.jpg"
 		}
 	],
 	"evidence_gaps": [

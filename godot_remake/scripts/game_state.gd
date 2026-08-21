@@ -26,6 +26,7 @@ const ProgressionService = preload("res://scripts/progression_service.gd")
 const QuestService = preload("res://scripts/quest_service.gd")
 const SkillService = preload("res://scripts/skill_service.gd")
 const TerritoryService = preload("res://scripts/territory_service.gd")
+const ExpansionStateService = preload("res://scripts/expansion_state_service.gd")
 const FINAL_CAMPAIGN_FLAG_BY_MONSTER := {
 	"demon_assault":"assault_alive",
 	"demon_guard":"guard_alive",
@@ -83,6 +84,8 @@ var progression_service := ProgressionService.new()
 var quest_service := QuestService.new()
 var skill_service := SkillService.new()
 var territory_service := TerritoryService.new()
+var expansion_state_service := ExpansionStateService.new()
+var expansion_state: Dictionary = {}
 var save_path: String = SAVE_PATH
 var pets: Array[Dictionary] = []
 var next_pet_instance_id: int = 1
@@ -142,6 +145,9 @@ func _ready() -> void:
 	_initialize_inventory()
 	_initialize_pets()
 	quest_states = quest_service.default_states()
+	expansion_state = expansion_state_service.default_enabled_state()
+	ensure_guild_catalog()
+	refresh_rankings()
 
 
 func _load_item_database() -> void:
@@ -512,6 +518,1558 @@ func consume_item(item_id: String, quantity: int = 1) -> bool:
 	return true
 
 
+func _commission_world_snapshot() -> Dictionary:
+	var max_pet := 1
+	for pet: Dictionary in pets:
+		max_pet = maxi(max_pet, int(pet.get("level", 1)))
+	return {
+		"item_counts": {
+			"silver_ore": count_item("silver_ore"),
+			"fruit": count_item("fruit"),
+		},
+		"current_map_id": current_map_id,
+		"max_pet_level": max_pet,
+		"owned_territory": owned_territory,
+	}
+
+
+func gift_adventurer(adv_id: String, item_id: String, operation_id: String) -> Dictionary:
+	if str(get_item_definition(item_id).get("category", "")) == "equipment":
+		return {"success": false, "code": "ERR_GIFT_BOUND"}
+	if not item_database.has(item_id):
+		return {"success": false, "code": "ERR_UNKNOWN_ITEM"}
+	if count_item(item_id) < 1:
+		return {"success": false, "code": "ERR_GIFT_MISSING_ITEM"}
+	var result: Dictionary = expansion_state_service.relationship_service.apply_gift(
+		expansion_state, adv_id, item_id, current_day, operation_id)
+	if not bool(result.get("success", false)):
+		return result
+	if bool(result.get("replayed", false)):
+		return result
+	if not consume_item(item_id, 1):
+		return {"success": false, "code": "ERR_GIFT_MISSING_ITEM"}
+	expansion_state = result.expansion
+	var credited: Dictionary = expansion_state_service.market_service.credit_item(
+		expansion_state, adv_id, item_id, 1, "player_bag", current_day, "gift_ledger:%s" % operation_id)
+	if bool(credited.get("success", false)) and not bool(credited.get("replayed", false)):
+		expansion_state = credited.expansion
+	social_changed.emit()
+	return result
+
+
+func accept_commission(comm_id: String, operation_id: String) -> Dictionary:
+	var result: Dictionary = expansion_state_service.commission_service.accept(expansion_state, comm_id, operation_id)
+	if bool(result.get("success", false)) and not bool(result.get("replayed", false)):
+		expansion_state = result.expansion
+		var synced: Dictionary = expansion_state_service.commission_service.sync_world(expansion_state, _commission_world_snapshot())
+		if bool(synced.get("changed", false)):
+			expansion_state = synced.expansion
+		social_changed.emit()
+	return result
+
+
+func claim_commission(comm_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.commission_service.claim(
+		expansion_state, comm_id, operation_id, _commission_world_snapshot())
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	var consume_id := str(preview.get("consume_item_id", ""))
+	var consume_qty := int(preview.get("consume_quantity", 0))
+	if consume_id != "" and count_item(consume_id) < consume_qty:
+		return {"success": false, "code": "ERR_COMM_MISSING_ITEM"}
+	if consume_id != "" and not consume_item(consume_id, consume_qty):
+		return {"success": false, "code": "ERR_COMM_MISSING_ITEM"}
+	expansion_state = preview.expansion
+	var rel: Dictionary = expansion_state_service.relationship_service.apply_relationship_reward(
+		expansion_state,
+		str(preview.get("adventurer_id", "")),
+		int(preview.get("relationship", 0)),
+		current_day,
+		operation_id,
+		"commission:%s" % comm_id)
+	if bool(rel.get("success", false)):
+		expansion_state = rel.expansion
+	social_changed.emit()
+	return {"success": true, "code": "OK"}
+
+
+func note_map_visit() -> void:
+	var synced: Dictionary = expansion_state_service.commission_service.sync_world(expansion_state, _commission_world_snapshot())
+	if bool(synced.get("changed", false)):
+		expansion_state = synced.expansion
+		social_changed.emit()
+	var rankings: Dictionary = expansion_state_service.ranking_service.normalize(expansion_state.get("rankings", {}))
+	var visited: Dictionary = {}
+	if rankings.get("visited_maps") is Dictionary:
+		visited = (rankings["visited_maps"] as Dictionary).duplicate(true)
+	if not current_map_id.is_empty():
+		visited[current_map_id] = true
+	rankings["visited_maps"] = visited
+	var ratings: Dictionary = {}
+	if rankings.get("player_ratings") is Dictionary:
+		ratings = (rankings["player_ratings"] as Dictionary).duplicate(true)
+	ratings["explore_score"] = visited.size()
+	rankings["player_ratings"] = ratings
+	expansion_state["rankings"] = rankings
+	refresh_rankings()
+
+
+func can_add_item(item_id: String, quantity: int = 1) -> bool:
+	if not item_database.has(item_id) or quantity <= 0:
+		return false
+	var working: Array[Dictionary] = []
+	for item: Dictionary in inventory:
+		working.append(item.duplicate(true))
+	if get_item_definition(item_id).get("category", "") == "equipment":
+		var empty_slots := 0
+		for index in working.size():
+			if working[index].is_empty():
+				empty_slots += 1
+		return empty_slots >= quantity
+	var remaining := quantity
+	for item: Dictionary in working:
+		if item.get("item_id", "") == item_id and int(item.get("quantity", 1)) < 99:
+			remaining -= mini(99 - int(item.get("quantity", 1)), remaining)
+			if remaining == 0:
+				return true
+	for index in working.size():
+		if working[index].is_empty():
+			remaining -= mini(99, remaining)
+			if remaining == 0:
+				return true
+	return false
+
+
+func send_player_mail(adv_id: String, item_id: String, operation_id: String) -> Dictionary:
+	if str(get_item_definition(item_id).get("category", "")) == "equipment":
+		return {"success": false, "code": "ERR_MAIL_BOUND"}
+	if not item_database.has(item_id):
+		return {"success": false, "code": "ERR_UNKNOWN_ITEM"}
+	if count_item(item_id) < 1:
+		return {"success": false, "code": "ERR_MAIL_MISSING_ITEM"}
+	var preview: Dictionary = expansion_state_service.mail_service.enqueue_player_send(
+		expansion_state, adv_id, item_id, 1, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not consume_item(item_id, 1):
+		return {"success": false, "code": "ERR_MAIL_MISSING_ITEM"}
+	expansion_state = preview.expansion
+	social_changed.emit()
+	return preview
+
+
+func claim_mail(mail_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.mail_service.claim(expansion_state, mail_id, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	var attachments: Array = preview.get("attachments", [])
+	for raw_att: Variant in attachments:
+		if not raw_att is Dictionary:
+			continue
+		var item_id := str(raw_att.get("item_id", ""))
+		var qty := int(raw_att.get("quantity", 0))
+		if item_id.is_empty() or qty <= 0:
+			continue
+		if not can_add_item(item_id, qty):
+			return {"success": false, "code": "ERR_MAIL_BAG_FULL"}
+	for raw_att: Variant in attachments:
+		if not raw_att is Dictionary:
+			continue
+		var item_id := str(raw_att.get("item_id", ""))
+		var qty := int(raw_att.get("quantity", 0))
+		if item_id.is_empty() or qty <= 0:
+			continue
+		if not add_item(item_id, qty):
+			return {"success": false, "code": "ERR_MAIL_BAG_FULL"}
+	expansion_state = preview.expansion
+	social_changed.emit()
+	return preview
+
+
+func buy_from_adventurer(adv_id: String, item_id: String, quantity: int, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.market_service.buy_from_adventurer(
+		expansion_state, adv_id, item_id, quantity, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	var cost := int(preview.get("gold_cost", 0))
+	if gold < cost:
+		return {"success": false, "code": "ERR_MARKET_GOLD"}
+	if not can_add_item(item_id, quantity):
+		return {"success": false, "code": "ERR_MARKET_BAG_FULL"}
+	gold -= cost
+	if not add_item(item_id, quantity):
+		gold += cost
+		return {"success": false, "code": "ERR_MARKET_BAG_FULL"}
+	expansion_state = preview.expansion
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func sell_to_adventurer(adv_id: String, item_id: String, quantity: int, operation_id: String) -> Dictionary:
+	if str(get_item_definition(item_id).get("category", "")) == "equipment":
+		return {"success": false, "code": "ERR_MARKET_UNTRADABLE"}
+	if count_item(item_id) < quantity:
+		return {"success": false, "code": "ERR_MARKET_MISSING_ITEM"}
+	var preview: Dictionary = expansion_state_service.market_service.sell_to_adventurer(
+		expansion_state, adv_id, item_id, quantity, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not consume_item(item_id, quantity):
+		return {"success": false, "code": "ERR_MARKET_MISSING_ITEM"}
+	gold += int(preview.get("gold_gain", 0))
+	expansion_state = preview.expansion
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func ensure_guild_catalog() -> Dictionary:
+	var preview: Dictionary = expansion_state_service.guild_market_service.ensure_catalog(expansion_state, current_day)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func accept_guild_offer(offer_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.guild_market_service.accept_offer(
+		expansion_state, offer_id, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	var gold_delta := int(preview.get("gold_delta", 0))
+	var item_id := str(preview.get("item_id", ""))
+	var qty := int(preview.get("item_qty", 0))
+	var item_dir := str(preview.get("item_dir", ""))
+	if item_dir == "player_gain":
+		if gold + gold_delta < 0:
+			return {"success": false, "code": "AUCTION_FUNDS"}
+		if not can_add_item(item_id, qty):
+			return {"success": false, "code": "ERR_MARKET_BAG_FULL"}
+		gold += gold_delta
+		if not add_item(item_id, qty):
+			gold -= gold_delta
+			return {"success": false, "code": "ERR_MARKET_BAG_FULL"}
+	elif item_dir == "player_give":
+		if count_item(item_id) < qty:
+			return {"success": false, "code": "AUCTION_FUNDS"}
+		if not consume_item(item_id, qty):
+			return {"success": false, "code": "AUCTION_FUNDS"}
+		gold += gold_delta
+	else:
+		return {"success": false, "code": "MARKET_UNKNOWN_NPC"}
+	expansion_state = preview.expansion
+	var adv_id := str(preview.get("adventurer_id", ""))
+	if not adv_id.is_empty():
+		var rel: Dictionary = expansion_state_service.relationship_service.apply_relationship_reward(
+			expansion_state, adv_id, 1, current_day, "guild_rel:%s" % operation_id, "guild_trade")
+		if bool(rel.get("success", false)):
+			expansion_state = rel.expansion
+	_apply_pending_auction_gold()
+	refresh_rankings()
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func create_guild_trade(adv_id: String, item_id: String, quantity: int, quote: int, operation_id: String) -> Dictionary:
+	if count_item(item_id) < quantity:
+		return {"success": false, "code": "AUCTION_FUNDS"}
+	var preview: Dictionary = expansion_state_service.guild_market_service.create_player_trade(
+		expansion_state, adv_id, item_id, quantity, quote, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not consume_item(item_id, quantity):
+		return {"success": false, "code": "AUCTION_FUNDS"}
+	gold += int(preview.get("gold_delta", 0))
+	expansion_state = preview.expansion
+	var rel: Dictionary = expansion_state_service.relationship_service.apply_relationship_reward(
+		expansion_state, adv_id, 1, current_day, "guild_rel:%s" % operation_id, "guild_trade")
+	if bool(rel.get("success", false)):
+		expansion_state = rel.expansion
+	refresh_rankings()
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func list_auction_item(item_id: String, quantity: int, start_price: int, operation_id: String) -> Dictionary:
+	var fee := int(expansion_state_service.auction_service.rules.get("listing_fee", 5))
+	if gold < fee:
+		return {"success": false, "code": "AUCTION_FUNDS"}
+	if count_item(item_id) < quantity:
+		return {"success": false, "code": "AUCTION_FUNDS"}
+	var preview: Dictionary = expansion_state_service.auction_service.create_listing(
+		expansion_state, "player", item_id, quantity, start_price, current_day, operation_id, "player_bag")
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not consume_item(item_id, quantity):
+		return {"success": false, "code": "AUCTION_FUNDS"}
+	gold -= fee
+	expansion_state = preview.expansion
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func bid_auction(listing_id: String, amount: int, operation_id: String) -> Dictionary:
+	if gold < amount:
+		return {"success": false, "code": "AUCTION_FUNDS"}
+	var preview: Dictionary = expansion_state_service.auction_service.place_bid(
+		expansion_state, listing_id, "player", amount, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	gold -= amount
+	gold += int(preview.get("refund_gold", 0))
+	expansion_state = preview.expansion
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func cancel_auction_listing(listing_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.auction_service.cancel_listing(
+		expansion_state, listing_id, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	var item_id := str(preview.get("item_id", ""))
+	var qty := int(preview.get("item_qty", 0))
+	if not item_id.is_empty() and qty > 0:
+		if not can_add_item(item_id, qty):
+			return {"success": false, "code": "ERR_MARKET_BAG_FULL"}
+		if not add_item(item_id, qty):
+			return {"success": false, "code": "ERR_MARKET_BAG_FULL"}
+	expansion_state = preview.expansion
+	social_changed.emit()
+	return preview
+
+
+func _apply_pending_auction_gold() -> void:
+	var market: Dictionary = expansion_state_service.guild_market_service.normalize(expansion_state.get("market", {}))
+	var pending := int(market.get("pending_player_gold", 0))
+	if pending == 0:
+		return
+	gold += pending
+	market["pending_player_gold"] = 0
+	expansion_state["market"] = market
+	currency_changed.emit()
+
+
+func player_ranking_row() -> Dictionary:
+	var stats: Dictionary = get_player_stats()
+	var rankings: Dictionary = expansion_state_service.ranking_service.normalize(expansion_state.get("rankings", {}))
+	var ratings: Dictionary = rankings.get("player_ratings", {})
+	if not ratings is Dictionary:
+		ratings = {}
+	var visited: Dictionary = rankings.get("visited_maps", {})
+	var explore := visited.size() if visited is Dictionary else int(ratings.get("explore_score", 0))
+	return {
+		"id": "player",
+		"stable_id": "player",
+		"level": level,
+		"combat_power": int(stats.get("combat_power", 0)),
+		"pet_power": int(stats.get("pet_combat_power", 0)),
+		"explore_score": explore,
+		"arena_score": int(ratings.get("arena_score", 0)),
+		"merchant_reputation": int(expansion_state.get("market", {}).get("reputation", ratings.get("merchant_reputation", 0))),
+		"territory_contribution": _territory_contribution_value(),
+	}
+
+
+func refresh_rankings() -> Dictionary:
+	var rebuilt: Dictionary = expansion_state_service.ranking_service.rebuild(
+		expansion_state, player_ranking_row(), current_day)
+	if bool(rebuilt.get("success", false)):
+		expansion_state = rebuilt.expansion
+	return rebuilt
+
+
+func get_ranking_board(board_id: String) -> Dictionary:
+	var boards: Variant = expansion_state.get("rankings", {}).get("boards", {})
+	if not boards is Dictionary:
+		return {}
+	var raw: Variant = boards.get(board_id, {})
+	return raw.duplicate(true) if raw is Dictionary else {}
+
+
+func get_arena_reports() -> Array:
+	var reports: Variant = expansion_state.get("rankings", {}).get("reports", [])
+	return reports.duplicate(true) if reports is Array else []
+
+
+func arena_combat_overlay(monster_id: String) -> Dictionary:
+	return expansion_state_service.arena_service.overlay_for(expansion_state, monster_id)
+
+
+func begin_arena_match(adv_id: String, mode: String, operation_id: String) -> Dictionary:
+	var rankings: Dictionary = expansion_state_service.ranking_service.normalize(expansion_state.get("rankings", {}))
+	var token := int(rankings.get("session_token", 0)) + 1
+	var snap: Dictionary = expansion_state_service.snapshot_service.player_snapshot(get_player_stats(), player_ranking_row())
+	var preview: Dictionary = expansion_state_service.arena_service.begin_match(
+		expansion_state, adv_id, mode, current_day, operation_id, snap, token)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func settle_arena_match(match_id: String, victory: bool, operation_id: String) -> Dictionary:
+	var token := int(expansion_state.get("rankings", {}).get("session_token", 0))
+	var preview: Dictionary = expansion_state_service.arena_service.settle(
+		expansion_state, match_id, victory, token, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	expansion_state = preview.expansion
+	var rel_delta := int(preview.get("relationship_delta", 0))
+	var adv_id := str(preview.get("adventurer_id", ""))
+	if rel_delta > 0 and not adv_id.is_empty():
+		var rel: Dictionary = expansion_state_service.relationship_service.apply_relationship_reward(
+			expansion_state, adv_id, rel_delta, current_day, operation_id, "arena:%s" % match_id)
+		if bool(rel.get("success", false)):
+			expansion_state = rel.expansion
+	refresh_rankings()
+	social_changed.emit()
+	return preview
+
+
+func abandon_arena_match(match_id: String, reason: String = "cancel") -> Dictionary:
+	var token := int(expansion_state.get("rankings", {}).get("session_token", 0))
+	var preview: Dictionary = expansion_state_service.arena_service.abandon(
+		expansion_state, match_id, reason, token)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func abandon_active_arena_match(reason: String = "cancel") -> Dictionary:
+	var active := str(expansion_state.get("rankings", {}).get("active_match_id", ""))
+	if active.is_empty():
+		return {"success": true, "code": "NO_ACTIVE", "expansion": expansion_state}
+	return abandon_arena_match(active, reason)
+
+func _territory_contribution_value() -> int:
+	var contrib := int(expansion_state.get("territory_economy", {}).get("contribution", 0))
+	if contrib < 1 and not owned_territory.is_empty():
+		return 1
+	return contrib
+
+
+func upgrade_castle(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.property_service.upgrade(
+		expansion_state, int(get_nobility_rank().get("level", 0)), gold, magic_stones, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	var gold_cost := int(preview.get("gold_cost", 0))
+	var stone_cost := int(preview.get("stone_cost", 0))
+	if gold < gold_cost or magic_stones < stone_cost:
+		return {"success": false, "code": "PROPERTY_UPGRADE_ATOMIC", "expansion": expansion_state}
+	gold -= gold_cost
+	magic_stones -= stone_cost
+	expansion_state = preview.expansion
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func assign_adventurer(adv_id: String, post_id: String, operation_id: String) -> Dictionary:
+	var rel := int(expansion_state.get("relationships", {}).get(adv_id, {}).get("value", 0))
+	var preview: Dictionary = expansion_state_service.assignment_service.assign(
+		expansion_state, adv_id, post_id, current_day, rel, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		social_changed.emit()
+	return preview
+
+
+func dismiss_assignment(assignment_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.assignment_service.dismiss(
+		expansion_state, assignment_id, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		social_changed.emit()
+	return preview
+
+
+func collect_territory_output(map_id: String, operation_id: String) -> Dictionary:
+	if owned_territory != map_id:
+		return {"success": false, "code": "TERRITORY_NOT_OWNED", "expansion": expansion_state}
+	var spec: Dictionary = expansion_state_service.territory_economy_service.spec_of(map_id)
+	var resource_id := str(spec.get("resource_id", "gold"))
+	var econ: Dictionary = expansion_state_service.territory_economy_service.normalize(expansion_state.get("territory_economy", {}))
+	var territories: Dictionary = (econ.get("territories", {}) as Dictionary).duplicate(true)
+	var row: Dictionary = (territories.get(map_id, {}) as Dictionary).duplicate(true)
+	var stocks: Dictionary = (row.get("stocks", {}) as Dictionary).duplicate(true)
+	var qty := int(stocks.get(resource_id, 0))
+	if qty <= 0:
+		return {"success": false, "code": "TERRITORY_NOT_OWNED", "expansion": expansion_state}
+	var preview: Dictionary = expansion_state_service.property_service.collect_to_warehouse(
+		expansion_state, map_id, resource_id, qty, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	var leftover := int(preview.get("leftover", 0))
+	stocks[resource_id] = leftover
+	row["stocks"] = stocks
+	territories[map_id] = row
+	econ["territories"] = territories
+	var state: Dictionary = preview.expansion.duplicate(true)
+	state["territory_economy"] = econ
+	expansion_state = state
+	social_changed.emit()
+	territory_changed.emit()
+	return preview
+
+
+func resolve_territory_event(map_id: String, choice_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.territory_economy_service.resolve_event(
+		expansion_state, map_id, choice_id, current_day, gold, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("replayed", false)):
+		return preview
+	var gold_cost := int(preview.get("gold_cost", 0))
+	if gold < gold_cost:
+		return {"success": false, "code": "TERRITORY_EVENT_FAIL", "expansion": expansion_state}
+	gold -= gold_cost
+	expansion_state = preview.expansion
+	currency_changed.emit()
+	social_changed.emit()
+	return preview
+
+
+func withdraw_castle_gold(qty: int, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.property_service.withdraw_gold(
+		expansion_state, qty, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	gold += int(preview.get("gold_gain", 0))
+	expansion_state = preview.expansion
+	currency_changed.emit()
+	return preview
+
+
+func withdraw_castle_item(item_id: String, qty: int, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.property_service.withdraw_item(
+		expansion_state, item_id, qty, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if not add_item(item_id, qty):
+		return {"success": false, "code": "PROPERTY_WAREHOUSE_FULL", "expansion": expansion_state}
+	expansion_state = preview.expansion
+	social_changed.emit()
+	return preview
+
+
+
+
+
+func chapter_runtime() -> Dictionary:
+	return expansion_state_service.story_chapter_service.runtime_of(expansion_state)
+
+
+func chapter_board_text() -> String:
+	var row: Dictionary = chapter_runtime()
+	return "TH %s br=%s ev=%d %s %s" % [str(row.get("stage", "locked")), str(row.get("branch", "-")), (row.get("collected_evidence_ids", []) as Array).size(), border_board_text(), ice_board_text()]
+
+
+func chapter_stage_is(stage_id: String) -> bool:
+	return str(chapter_runtime().get("stage", "locked")) == stage_id
+
+
+func chapter_boss_visible(monster_id: String) -> bool:
+	return expansion_state_service.chapter_encounter_service.boss_visible(expansion_state, monster_id)
+
+
+func apply_chapter_fixture(stage_id: String) -> void:
+	expansion_state = expansion_state_service.story_chapter_service.set_stage_for_fixture(expansion_state, stage_id)
+
+
+func talk_chapter_npc(action_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.story_chapter_service.talk_npc(expansion_state, action_id, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		social_changed.emit()
+		quests_changed.emit()
+	return preview
+
+
+func collect_chapter_evidence(evidence_id: String, operation_id: String) -> Dictionary:
+	var stage := str(chapter_runtime().get("stage", "locked"))
+	var preview: Dictionary = expansion_state_service.evidence_collection_service.collect(
+		expansion_state, evidence_id, current_map_id, stage, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func choose_smuggler_branch(branch_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.story_chapter_service.choose_branch(
+		expansion_state, branch_id, current_day, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		social_changed.emit()
+		quests_changed.emit()
+	return preview
+
+
+func settle_chapter_boss(monster_id: String, victory: bool, operation_id: String) -> Dictionary:
+	var gate: Dictionary = expansion_state_service.chapter_encounter_service.settle(
+		expansion_state, monster_id, victory, operation_id)
+	if bool(gate.get("grant_reward", false)):
+		var spec: Dictionary = expansion_state_service.chapter_encounter_service.reward_spec(monster_id)
+		var item_id := str(spec.get("item_id", ""))
+		if not item_id.is_empty() and not expansion_state_service.chapter_encounter_service.whitelist_ok(item_id):
+			return {"success": false, "code": "CHAPTER_REWARD_WHITELIST", "expansion": expansion_state}
+		gold += int(spec.get("gold", 0))
+		if not item_id.is_empty():
+			if not add_item(item_id, int(spec.get("qty", 1))):
+				loot_queue.append(item_id)
+		currency_changed.emit()
+	if not bool(gate.get("success", false)):
+		return gate
+	var applied: Dictionary = expansion_state_service.story_chapter_service.apply_boss_victory(
+		expansion_state, monster_id, operation_id)
+	if not bool(applied.get("success", false)):
+		return applied
+	expansion_state = applied.expansion
+	quests_changed.emit()
+	return applied
+
+
+
+func border_runtime() -> Dictionary:
+	return expansion_state_service.border_story_service.runtime_of(expansion_state)
+
+
+func border_board_text() -> String:
+	var row: Dictionary = border_runtime()
+	return "SB %s sc=%d op=%d" % [str(row.get("stage", "locked")), (row.get("scout_ids", []) as Array).size(), (row.get("defense_ops", []) as Array).size()]
+
+
+func border_board_lines() -> Array:
+	var row: Dictionary = border_runtime()
+	var wk: Dictionary = row.get("weekly_contract", {})
+	var ops := PackedStringArray()
+	for item in row.get("defense_ops", []):
+		ops.append(str(item))
+	return [
+		"stage=%s" % str(row.get("stage", "locked")),
+		"scouts=%d" % (row.get("scout_ids", []) as Array).size(),
+		"supply=%s" % str(bool(row.get("supply_submitted", false))),
+		"defense=%s" % ",".join(ops),
+		"weekly=%s" % str(wk.get("settled", false)),
+		"ledger=%d" % (row.get("border_ledger", []) as Array).size(),
+	]
+
+
+func apply_border_fixture(stage_id: String) -> void:
+	expansion_state = expansion_state_service.border_story_service.set_stage_for_fixture(expansion_state, stage_id)
+
+
+func border_unit_visible(monster_id: String) -> bool:
+	return expansion_state_service.border_defense_service.visible(expansion_state, monster_id)
+
+
+func talk_border_npc(action_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.border_story_service.talk_npc(expansion_state, action_id, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func collect_border_scout(scout_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.border_story_service.collect_scout(
+		expansion_state, scout_id, current_map_id, str(border_runtime().get("stage", "")), operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func submit_border_supply(operation_id: String) -> Dictionary:
+	var spec: Dictionary = expansion_state_service.supply_service.spec()
+	var item_id := str(spec.get("item_id", "fruit"))
+	var preview: Dictionary = expansion_state_service.supply_service.preview_submit(
+		expansion_state, item_id, count_item(item_id), str(border_runtime().get("stage", "")))
+	if not bool(preview.get("success", false)):
+		return preview
+	var qty := int(preview.get("qty", 1))
+	if not consume_item(item_id, qty):
+		return {"success": false, "code": "BORDER_SUPPLY_QTY", "expansion": expansion_state}
+	expansion_state = preview.expansion
+	quests_changed.emit()
+	return preview
+
+
+func begin_border_session(monster_id: String, session_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.border_defense_service.begin_session(expansion_state, monster_id, session_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func settle_border_battle(monster_id: String, victory: bool, session_id: String) -> Dictionary:
+	var gate: Dictionary = expansion_state_service.border_defense_service.settle(expansion_state, monster_id, victory, session_id)
+	if not bool(gate.get("success", false)):
+		return gate
+	var kind := str(gate.get("kind", ""))
+	if kind == "defense":
+		var applied: Dictionary = expansion_state_service.border_story_service.apply_defense_op(expansion_state, monster_id, "def:%s" % monster_id)
+		if bool(applied.get("success", false)):
+			expansion_state = applied.expansion
+			quests_changed.emit()
+		return applied
+	if kind == "boss":
+		var applied: Dictionary = expansion_state_service.border_story_service.apply_boss_victory(expansion_state, monster_id, "boss:%s" % monster_id)
+		if not bool(applied.get("success", false)):
+			return applied
+		expansion_state = applied.expansion
+		var spec: Dictionary = expansion_state_service.border_story_service.rules.get("resolved_reward", {})
+		var rewarded: Dictionary = expansion_state_service.border_story_service.apply_resolved_rewards(
+			expansion_state, int(spec.get("gold", 0)), int(spec.get("military_merit", 0)), int(spec.get("reputation", 0)), int(spec.get("contribution", 0)), owned_territory)
+		if str(rewarded.get("code", "")) == "BORDER_MERIT_DUP":
+			return rewarded
+		if bool(rewarded.get("success", false)):
+			expansion_state = rewarded.expansion
+			gold += int(rewarded.get("gold", 0))
+			military_merit += int(rewarded.get("merit", 0))
+			currency_changed.emit()
+			progression_changed.emit()
+		quests_changed.emit()
+		return rewarded
+	return gate
+
+
+func claim_border_weekly(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.border_weekly_service.claim(expansion_state, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("gold", 0))
+	var item_id := str(preview.get("item_id", ""))
+	if not item_id.is_empty():
+		if not add_item(item_id, int(preview.get("qty", 1))):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	quests_changed.emit()
+	return preview
+
+
+func ice_runtime() -> Dictionary:
+	return expansion_state_service.ice_story_service.runtime_of(expansion_state)
+
+
+func ice_board_text() -> String:
+	var row: Dictionary = ice_runtime()
+	return "IE %s pr=%d kn=%d" % [str(row.get("stage", "locked")), (row.get("probe_ids", []) as Array).size(), (row.get("knowledge_ids", []) as Array).size()]
+
+
+func ice_board_lines() -> Array:
+	var row: Dictionary = ice_runtime()
+	var report: Dictionary = row.get("last_element_report", {})
+	return [
+		"stage=%s" % str(row.get("stage", "locked")),
+		"probes=%s" % ",".join(row.get("probe_ids", [])),
+		"knowledge=%s" % ",".join(row.get("knowledge_ids", [])),
+		"weekly=%s" % str((row.get("weekly_contract", {}) as Dictionary).get("claimed", false)),
+		"rule=%s" % str(report.get("rule_id", "-")),
+		"base=%s mod=%s final=%s" % [str(report.get("base", 0)), str(report.get("modifier", 0)), str(report.get("final", 0))],
+		"ledger=%d" % (row.get("ice_ledger", []) as Array).size(),
+	]
+
+
+func apply_ice_fixture(stage_id: String) -> void:
+	expansion_state = expansion_state_service.ice_story_service.set_stage_for_fixture(expansion_state, stage_id)
+
+
+func ice_unit_visible(monster_id: String) -> bool:
+	return expansion_state_service.ice_encounter_service.visible(expansion_state, monster_id)
+
+
+func talk_ice_npc(action_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.ice_story_service.talk_npc(expansion_state, action_id, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func collect_ice_probe(probe_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.ice_story_service.collect_probe(
+		expansion_state, probe_id, current_map_id, str(ice_runtime().get("stage", "")), count_item("frost_vial"), operation_id)
+	if bool(preview.get("consume", false)):
+		consume_item("frost_vial", 1)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func begin_ice_session(monster_id: String, session_id: String) -> Dictionary:
+	var spec: Dictionary = expansion_state_service.element_resolution_service.encounter_of(monster_id)
+	if spec.is_empty():
+		return {"success": false, "code": "ICE_BOSS_STAGE", "expansion": expansion_state}
+	if not expansion_state_service.ice_encounter_service.allow_engage(expansion_state, monster_id):
+		return {"success": false, "code": "ICE_BOSS_STAGE", "expansion": expansion_state}
+	var snapshot := {
+		"monster_id": monster_id,
+		"field_id": str(spec.get("field_id", "")),
+		"defender_element": str(spec.get("element", "")),
+		"resist": float(spec.get("resist", 0)),
+		"attacker_element": str(ice_runtime().get("attacker_charge", "")),
+		"captured_day": current_day,
+	}
+	var preview: Dictionary = expansion_state_service.ice_story_service.begin_session(expansion_state, monster_id, session_id, snapshot)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func settle_ice_battle(monster_id: String, victory: bool, session_id: String) -> Dictionary:
+	var gate: Dictionary = expansion_state_service.ice_encounter_service.settle(expansion_state, monster_id, victory, session_id)
+	if not bool(gate.get("success", false)):
+		return gate
+	var kind := str(gate.get("kind", ""))
+	if kind == "weekly":
+		return claim_ice_weekly("weekly_fight:%s:%d" % [monster_id, current_day])
+	var applied: Dictionary = expansion_state_service.ice_story_service.apply_boss_victory(expansion_state, monster_id, "boss:%s" % monster_id)
+	if bool(applied.get("success", false)):
+		expansion_state = applied.expansion
+		var spec: Dictionary = {}
+		if monster_id == "ice_lab_boss":
+			spec = expansion_state_service.ice_story_service.rules.get("lab_reward", {})
+		elif monster_id == "ice_aurora_boss":
+			spec = expansion_state_service.ice_story_service.rules.get("aurora_reward", {})
+		gold += int(spec.get("gold", 0))
+		var item_id := str(spec.get("item_id", ""))
+		if not item_id.is_empty():
+			if not add_item(item_id, int(spec.get("qty", 1))):
+				loot_queue.append(item_id)
+		currency_changed.emit()
+		quests_changed.emit()
+	return applied
+
+
+func claim_ice_weekly(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.ice_weekly_service.claim(expansion_state, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("gold", 0))
+	var item_id := str(preview.get("item_id", ""))
+	if not item_id.is_empty():
+		if not add_item(item_id, int(preview.get("qty", 1))):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	quests_changed.emit()
+	return preview
+
+
+
+func abyss_runtime() -> Dictionary:
+	return expansion_state_service.abyss_finale_service.runtime_of(expansion_state)
+
+
+func abyss_board_text() -> String:
+	var row: Dictionary = abyss_runtime()
+	return "AF %s e=%d t=%d" % [str(row.get("stage", "locked")), (row.get("echo_completed_ids", []) as Array).size(), (row.get("totem_completed_ids", []) as Array).size()]
+
+
+func abyss_board_lines() -> Array:
+	var row: Dictionary = abyss_runtime()
+	return [
+		"stage=%s" % str(row.get("stage", "locked")),
+		"echoes=%s" % ",".join(row.get("echo_completed_ids", [])),
+		"totems=%s" % ",".join(row.get("totem_completed_ids", [])),
+		"allies=%s" % ",".join(row.get("chosen_allies", [])),
+		"final=%s epi=%s" % [str(row.get("final_battle_status", "")), str(row.get("epilogue_status", ""))],
+		"one_time=%s weekly=%s" % [str(row.get("one_time_reward_claimed", false)), str((row.get("weekly_abyss", {}) as Dictionary).get("claimed", false))],
+		"game_won=%s" % str(story_flags.get("game_won", false)),
+		"ledger=%d" % (row.get("abyss_ledger", []) as Array).size(),
+	]
+
+
+func apply_abyss_fixture(stage_id: String) -> void:
+	expansion_state = expansion_state_service.abyss_finale_service.set_stage_for_fixture(expansion_state, stage_id)
+
+
+func abyss_unit_visible(monster_id: String) -> bool:
+	return expansion_state_service.echo_encounter_service.visible(expansion_state, monster_id)
+
+
+func abyss_prereq_inputs() -> Dictionary:
+	var max_bond := 0
+	var rels: Dictionary = expansion_state.get("relationships", {})
+	if rels is Dictionary:
+		for adv_id in rels.keys():
+			var rel_row: Variant = rels[adv_id]
+			if rel_row is Dictionary:
+				max_bond = maxi(max_bond, int((rel_row as Dictionary).get("value", 0)))
+	var market: Dictionary = expansion_state.get("market", {}) if expansion_state.get("market") is Dictionary else {}
+	var econ: Dictionary = expansion_state.get("territory_economy", {}) if expansion_state.get("territory_economy") is Dictionary else {}
+	return {
+		"treeheart_stage": str(expansion_state_service.story_chapter_service.runtime_of(expansion_state).get("stage", "locked")),
+		"south_stage": str(expansion_state_service.border_story_service.runtime_of(expansion_state).get("stage", "locked")),
+		"ice_stage": str(ice_runtime().get("stage", "locked")),
+		"max_bond": max_bond,
+		"reputation": int(market.get("reputation", 0)),
+		"contribution": int(econ.get("contribution", 0)),
+	}
+
+
+func seed_abyss_prereqs() -> void:
+	apply_ice_fixture("weekly_element_trial")
+	var state: Dictionary = expansion_state.duplicate(true)
+	var rels: Dictionary = (state.get("relationships", {}) as Dictionary).duplicate(true)
+	var he: Dictionary = (rels.get("npc_adv_he_ming", {}) as Dictionary).duplicate(true)
+	he["value"] = 5
+	rels["npc_adv_he_ming"] = he
+	state["relationships"] = rels
+	var market: Dictionary = (state.get("market", {}) as Dictionary).duplicate(true)
+	market["reputation"] = 2
+	state["market"] = market
+	var econ: Dictionary = (state.get("territory_economy", {}) as Dictionary).duplicate(true)
+	econ["contribution"] = 2
+	state["territory_economy"] = econ
+	expansion_state = state
+
+
+func try_enter_abyss(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.abyss_finale_service.try_enter(expansion_state, abyss_prereq_inputs(), operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func talk_abyss_npc(action_id: String, operation_id: String) -> Dictionary:
+	if str(abyss_runtime().get("stage", "")) == "epilogue_pending" and action_id == "abyss_he":
+		return commit_abyss_epilogue(operation_id)
+	var preview: Dictionary = expansion_state_service.abyss_finale_service.talk_npc(expansion_state, action_id, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func collect_abyss_probe(probe_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.abyss_finale_service.collect_probe(
+		expansion_state, probe_id, current_map_id, str(abyss_runtime().get("stage", "")), operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		quests_changed.emit()
+	return preview
+
+
+func run_abyss_totem(totem_id: String, operation_id: String) -> Dictionary:
+	var live := {
+		"reputation": int(abyss_prereq_inputs().get("reputation", 0)),
+		"contribution": int(abyss_prereq_inputs().get("contribution", 0)),
+		"bond": int(abyss_prereq_inputs().get("max_bond", 0)),
+	}
+	var snapshot: Dictionary = live.duplicate(true)
+	var preview: Dictionary = expansion_state_service.totem_trial_service.run(
+		expansion_state, totem_id, current_map_id, str(abyss_runtime().get("stage", "")), live, snapshot, count_item("fruit"), operation_id)
+	if bool(preview.get("consume", false)) and bool(preview.get("success", false)):
+		consume_item(str(preview.get("consume_item", "fruit")), int(preview.get("consume_qty", 1)))
+	if not bool(preview.get("success", false)):
+		return preview
+	var marked: Dictionary = expansion_state_service.abyss_finale_service.mark_totem(
+		preview.expansion, totem_id, snapshot, operation_id)
+	if bool(marked.get("success", false)):
+		expansion_state = marked.expansion
+		quests_changed.emit()
+	return marked
+
+
+func begin_abyss_session(monster_id: String, session_id: String) -> Dictionary:
+	if not expansion_state_service.echo_encounter_service.is_abyss_unit(monster_id):
+		if expansion_state_service.echo_encounter_service.REJECT_UNKNOWN_ECHO:
+			return {"success": false, "code": "ABYSS_ECHO_UNKNOWN", "expansion": expansion_state}
+	if not expansion_state_service.echo_encounter_service.allow_engage(expansion_state, monster_id):
+		return {"success": false, "code": "ABYSS_PRECONDITION", "expansion": expansion_state}
+	var preview: Dictionary = expansion_state_service.abyss_finale_service.begin_session(expansion_state, monster_id, session_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func settle_abyss_battle(monster_id: String, victory: bool, session_id: String, player_dead: bool = false) -> Dictionary:
+	if not expansion_state_service.echo_encounter_service.is_abyss_unit(monster_id):
+		if expansion_state_service.echo_encounter_service.REJECT_UNKNOWN_ECHO and monster_id.begins_with("abyss_"):
+			return {"success": false, "code": "ABYSS_ECHO_UNKNOWN", "expansion": expansion_state}
+		return {"success": false, "code": "NOT_ABYSS", "expansion": expansion_state}
+	var gate: Dictionary = expansion_state_service.echo_encounter_service.settle(expansion_state, monster_id, victory, session_id, player_dead)
+	if not bool(gate.get("success", false)):
+		return gate
+	var kind := str(gate.get("kind", ""))
+	if kind == "weekly":
+		return claim_abyss_weekly("weekly_fight:%s:%d" % [monster_id, current_day])
+	if kind == "final":
+		if not expansion_state_service.echo_encounter_service.BLOCK_DIRECT_GAME_WON:
+			story_flags["game_won"] = true
+			story_changed.emit()
+		var applied: Dictionary = expansion_state_service.abyss_finale_service.apply_heart_victory(expansion_state, "boss:%s" % monster_id)
+		if bool(applied.get("success", false)):
+			expansion_state = applied.expansion
+			quests_changed.emit()
+		return applied
+	var echoed: Dictionary = expansion_state_service.abyss_finale_service.apply_echo_victory(expansion_state, monster_id, "echo:%s" % monster_id)
+	if bool(echoed.get("success", false)):
+		expansion_state = echoed.expansion
+		quests_changed.emit()
+	return echoed
+
+
+func commit_abyss_epilogue(operation_id: String) -> Dictionary:
+	var allies: Array = abyss_runtime().get("chosen_allies", [])
+	var preview: Dictionary = expansion_state_service.finale_epilogue_service.commit(expansion_state, current_day, operation_id, allies)
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("gold", 0))
+	var item_id := str(preview.get("item_id", ""))
+	if not item_id.is_empty():
+		if not add_item(item_id, int(preview.get("qty", 1))):
+			loot_queue.append(item_id)
+	if bool(preview.get("write_game_won", false)):
+		story_flags["game_won"] = true
+		story_changed.emit()
+	currency_changed.emit()
+	quests_changed.emit()
+	return preview
+
+
+func claim_abyss_one_time(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.abyss_finale_service.mark_one_time(expansion_state, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func claim_abyss_weekly(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.abyss_finale_service.claim_weekly(expansion_state, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	var spec: Dictionary = expansion_state_service.finale_epilogue_service.rewards.get("weekly", {})
+	gold += int(spec.get("gold", 0))
+	var item_id := str(spec.get("item_id", ""))
+	if not item_id.is_empty():
+		if not add_item(item_id, int(spec.get("qty", 1))):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	quests_changed.emit()
+	return preview
+
+
+func ice_set_live_field(field_id: String) -> void:
+	var row: Dictionary = ice_runtime()
+	row["live_field_id"] = field_id
+	expansion_state = expansion_state_service.ice_story_service._write(expansion_state, row)
+
+
+func use_element_consumable(item_id: String) -> Dictionary:
+	var in_battle := not str(ice_runtime().get("active_session_id", "")).is_empty()
+	var preview: Dictionary = expansion_state_service.element_consumable_service.use(
+		expansion_state, item_id, in_battle, str(ice_runtime().get("active_session_id", "")), current_day, count_item(item_id))
+	if bool(preview.get("consume", false)):
+		if not consume_item(item_id, 1):
+			return {"success": false, "code": "ELEMENT_CONSUMABLE_CTX", "expansion": expansion_state}
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+
+func challenge_runtime() -> Dictionary:
+	return expansion_state_service.challenge_service.normalize(expansion_state.get("challenges", {}))
+
+
+func challenge_ctx() -> Dictionary:
+	var th := str(expansion_state_service.story_chapter_service.runtime_of(expansion_state).get("stage", "locked"))
+	var south := str(expansion_state_service.border_story_service.runtime_of(expansion_state).get("stage", "locked"))
+	var ice_st := str(ice_runtime().get("stage", "locked"))
+	var abyss_st := str(abyss_runtime().get("stage", "locked"))
+	var econ: Dictionary = expansion_state.get("territory_economy", {}) if expansion_state.get("territory_economy") is Dictionary else {}
+	return {
+		"level": level,
+		"gold": gold,
+		"fruit": count_item("fruit"),
+		"contribution": int(econ.get("contribution", 0)),
+		"week": expansion_state_service.challenge_rotation_service.week_index(current_day),
+		"treeheart_ok": th != "locked",
+		"harbor_ok": th in ["harbor_lead", "smuggler_choice", "sea_cave_assault", "tide_shrine_finale", "treeheart_weekly_contract"],
+		"border_ok": south != "locked",
+		"ice_ok": ice_st != "locked",
+		"abyss_ok": abyss_st != "locked",
+		"king_rescued": bool(story_flags.get("king_rescued", false)),
+	}
+
+
+func seed_challenge_prereqs() -> void:
+	level = 30
+	gold = maxi(gold, 200)
+	story_flags["king_rescued"] = true
+	apply_chapter_fixture("harbor_lead")
+	apply_border_fixture("scouting")
+	apply_ice_fixture("ice_signal")
+	apply_abyss_fixture("summons")
+	var state: Dictionary = expansion_state.duplicate(true)
+	var econ: Dictionary = (state.get("territory_economy", {}) as Dictionary).duplicate(true)
+	econ["contribution"] = 2
+	state["territory_economy"] = econ
+	expansion_state = state
+	learned_skills["flying_slash"] = maxi(int(learned_skills.get("flying_slash", 0)), 1)
+	learned_skills["star_sword"] = maxi(int(learned_skills.get("star_sword", 0)), 1)
+	learned_skills["fighting_spirit"] = maxi(int(learned_skills.get("fighting_spirit", 0)), 1)
+	add_item("fruit", 5)
+
+
+func challenge_board_lines() -> Array:
+	var row: Dictionary = challenge_runtime()
+	var rot: Array = expansion_state_service.challenge_rotation_service.weekly_ids(current_day)
+	return [
+		"active=%s mode=%s" % [str(row.get("active_challenge_id", "")), str(row.get("active_mode", ""))],
+		"weekly=%s" % ",".join(rot),
+		"first=%s" % ",".join((row.get("first_claimed", {}) as Dictionary).keys()),
+		"records=%d" % (row.get("records", {}) as Dictionary).size(),
+		"mastery=%s" % ",".join((expansion_state_service.warrior_mastery_service.ranks_of(expansion_state) as Dictionary).keys()),
+		"equip=%d" % (GameState.expansion_state_service.equipment_mastery_service.normalize(expansion_state.get("equipment_mastery", {})).get("slots", {}) as Dictionary).size(),
+		"ledger=%d" % (row.get("challenge_ledger", []) as Array).size(),
+	]
+
+
+func challenge_unit_visible(monster_id: String) -> bool:
+	return expansion_state_service.challenge_service.visible(expansion_state, monster_id)
+
+
+func active_challenge_monster() -> String:
+	var cid := str(challenge_runtime().get("active_challenge_id", ""))
+	var spec: Dictionary = expansion_state_service.challenge_service.spec_of(cid)
+	return str(spec.get("monster_id", ""))
+
+
+func skill_damage_multiplier(skill_id: String) -> float:
+	var base := 1.0
+	if not skill_id.is_empty():
+		base = skill_service.active_damage_multiplier(learned_skills, skill_id)
+	var bonus := expansion_state_service.warrior_mastery_service.bonus_for(expansion_state, skill_id)
+	return base * (1.0 + bonus)
+
+
+func try_start_challenge(challenge_id: String, mode: String, operation_id: String) -> Dictionary:
+	var snap: Dictionary = expansion_state_service.warrior_mastery_service.ranks_of(expansion_state).duplicate(true)
+	var preview: Dictionary = expansion_state_service.challenge_service.begin(
+		expansion_state, challenge_id, mode, "", challenge_ctx(), snap, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if bool(preview.get("consume", false)):
+		consume_item(str(preview.get("consume_item", "fruit")), int(preview.get("consume_qty", 1)))
+	expansion_state = preview.expansion
+	var map_id := str(preview.get("map_id", ""))
+	if not map_id.is_empty():
+		current_map_id = map_id
+	quests_changed.emit()
+	return preview
+
+
+func begin_challenge_session(monster_id: String, session_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.challenge_service.attach_session(expansion_state, monster_id, session_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func settle_challenge_battle(monster_id: String, victory: bool, session_id: String) -> Dictionary:
+	var weekly: Array = expansion_state_service.challenge_rotation_service.weekly_ids(current_day)
+	var preview: Dictionary = expansion_state_service.challenge_service.settle(expansion_state, monster_id, victory, session_id, weekly)
+	if str(preview.get("code", "")) == "NOT_CHALLENGE":
+		return preview
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("first_gold", 0)) + int(preview.get("weekly_gold", 0))
+	var item_id := str(preview.get("item_id", ""))
+	var qty := int(preview.get("qty", 0))
+	if not item_id.is_empty() and qty > 0:
+		if not add_item(item_id, qty):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	quests_changed.emit()
+	return preview
+
+
+func unlock_warrior_mastery(mastery_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.warrior_mastery_service.unlock(
+		expansion_state, mastery_id, learned_skills, gold, count_item("fruit"), operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	if int(preview.get("gold_cost", 0)) > 0:
+		gold -= int(preview.get("gold_cost", 0))
+		currency_changed.emit()
+	if bool(preview.get("consume", false)):
+		consume_item(str(preview.get("consume_item", "fruit")), int(preview.get("consume_qty", 1)))
+	expansion_state = preview.expansion
+	skills_changed.emit()
+	return preview
+
+
+func bind_equipment_affix(slot_id: String, affix_id: String, challenge_id: String, operation_id: String) -> Dictionary:
+	var item: Dictionary = equipment.get(slot_id, {}) if equipment.get(slot_id) is Dictionary else {}
+	var preview: Dictionary = expansion_state_service.equipment_mastery_service.bind(
+		expansion_state, slot_id, item, affix_id, challenge_id, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		equipment_changed.emit()
+	return preview
+
+
+
+func pet_endgame_runtime() -> Dictionary:
+	return expansion_state_service.pet_collection_service.normalize(expansion_state.get("pet_endgame", {}))
+
+
+func seed_pet_endgame_prereqs() -> void:
+	level = maxi(level, 30)
+	gold = maxi(gold, 200)
+	add_item("fruit", 8)
+	add_item("soul_king", 3)
+	_add_pet_instance("year_pig")
+	_add_pet_instance("lulu_pet")
+	var state: Dictionary = expansion_state.duplicate(true)
+	var rels: Dictionary = (state.get("relationships", {}) as Dictionary).duplicate(true)
+	var lin: Dictionary = {}
+	if rels.get("npc_adv_lin_xia") is Dictionary:
+		lin = (rels["npc_adv_lin_xia"] as Dictionary).duplicate(true)
+	lin["value"] = maxi(int(lin.get("value", 0)), 2)
+	rels["npc_adv_lin_xia"] = lin
+	state["relationships"] = rels
+	expansion_state = state
+
+
+func _pet_max_bond() -> int:
+	var m := 0
+	var rels: Variant = expansion_state.get("relationships", {})
+	if rels is Dictionary:
+		for adv_id in (rels as Dictionary).keys():
+			var row: Variant = (rels as Dictionary).get(adv_id, {})
+			if row is Dictionary:
+				m = maxi(m, int((row as Dictionary).get("value", 0)))
+	return m
+
+
+func _deployed_pet_ids() -> Array:
+	var ids: Array = []
+	for pet: Dictionary in pets:
+		if bool(pet.get("deployed", false)):
+			ids.append(int(pet.get("instance_id", 0)))
+	return ids
+
+
+func pet_endgame_lines() -> Array:
+	var row: Dictionary = pet_endgame_runtime()
+	var owned: Dictionary = expansion_state_service.pet_collection_service.owned_from_pets(pets)
+	return [
+		"owned=%d" % owned.size(),
+		"claimed=%d" % (row.get("rewards_claimed", {}) as Dictionary).size(),
+		"support=%d" % int(row.get("support_instance_id", 0)),
+		"trial=%s" % str(row.get("active_trial_id", "")),
+		"first=%d" % (row.get("first_claimed", {}) as Dictionary).size(),
+		"contracts=%d" % (row.get("contracts_claimed", {}) as Dictionary).size(),
+		"ledger=%d" % (row.get("pet_ledger", []) as Array).size(),
+	]
+
+
+func claim_collection_reward(collection_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.pet_collection_service.claim(
+		expansion_state, collection_id, pets, operation_id)
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("gold", 0))
+	var item_id := str(preview.get("item_id", ""))
+	var qty := int(preview.get("qty", 0))
+	if not item_id.is_empty() and qty > 0:
+		if not add_item(item_id, qty):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	return preview
+
+
+func set_pet_support(instance_id: int, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.pet_support_service.set_support(
+		expansion_state, instance_id, pets, _deployed_pet_ids(), operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func support_effect_value(context: String) -> int:
+	return expansion_state_service.pet_support_service.effect_value(expansion_state, context)
+
+
+func pet_trial_unit_visible(monster_id: String) -> bool:
+	return expansion_state_service.pet_trial_service.visible(expansion_state, monster_id)
+
+
+func active_pet_trial_monster() -> String:
+	var tid := str(pet_endgame_runtime().get("active_trial_id", ""))
+	var spec: Dictionary = expansion_state_service.pet_trial_service.spec_of(tid)
+	return str(spec.get("monster_id", ""))
+
+
+func try_start_pet_trial(trial_id: String, operation_id: String) -> Dictionary:
+	var row: Dictionary = pet_endgame_runtime()
+	var snap := {
+		"effect": str(row.get("support_effect", "")),
+		"week": expansion_state_service.pet_trial_service.week_index(current_day),
+		"instance_id": int(row.get("support_instance_id", 0)),
+	}
+	var preview: Dictionary = expansion_state_service.pet_trial_service.begin(
+		expansion_state, trial_id, "", {"level": level}, snap, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	var map_id := str(preview.get("map_id", ""))
+	if not map_id.is_empty():
+		current_map_id = map_id
+	quests_changed.emit()
+	return preview
+
+
+func begin_pet_trial_session(monster_id: String, session_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.pet_trial_service.attach_session(expansion_state, monster_id, session_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func settle_pet_trial_battle(monster_id: String, victory: bool, session_id: String) -> Dictionary:
+	var weekly: Array = expansion_state_service.pet_trial_service.weekly_ids(current_day)
+	var week := expansion_state_service.pet_trial_service.week_index(current_day)
+	var preview: Dictionary = expansion_state_service.pet_trial_service.settle(
+		expansion_state, monster_id, victory, session_id, weekly, week)
+	if str(preview.get("code", "")) == "NOT_PET_TRIAL":
+		return preview
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("first_gold", 0)) + int(preview.get("weekly_gold", 0))
+	var item_id := str(preview.get("item_id", ""))
+	var qty := int(preview.get("qty", 0))
+	if not item_id.is_empty() and qty > 0:
+		if not add_item(item_id, qty):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	quests_changed.emit()
+	return preview
+
+
+func claim_research_contract(contract_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.research_contract_service.claim(
+		expansion_state, contract_id, research, count_item("soul_king"), _pet_max_bond(),
+		int(research.get("production_rate", 0)), operation_id)
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not bool(preview.get("success", false)):
+		return preview
+	var need := int(preview.get("consume_soul_king", 0))
+	if need > 0 and not consume_item("soul_king", need):
+		return {"success": false, "code": "RESEARCH_CONTRACT_COST", "expansion": expansion_state}
+	expansion_state = preview.expansion
+	gold += int(preview.get("gold", 0))
+	var item_id := str(preview.get("item_id", ""))
+	var qty := int(preview.get("qty", 0))
+	if not item_id.is_empty() and qty > 0:
+		if not add_item(item_id, qty):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	return preview
+
+
+func season_runtime() -> Dictionary:
+	return expansion_state_service.season_cycle_service.normalize(expansion_state.get("season", {}))
+
+
+func season_ctx() -> Dictionary:
+	var ch: Dictionary = challenge_runtime()
+	var pe: Dictionary = pet_endgame_runtime()
+	var abyss_ok := expansion_state_service.abyss_finale_service.stage_at_least(expansion_state, "summons")
+	return {
+		"gold": gold,
+		"owned_territory": owned_territory,
+		"challenge_first": (ch.get("first_claimed", {}) as Dictionary).size(),
+		"pet_claimed": (pe.get("rewards_claimed", {}) as Dictionary).size(),
+		"abyss_ok": abyss_ok,
+	}
+
+
+func seed_season_prereqs() -> void:
+	gold = maxi(gold, 50)
+	owned_territory = "cassano_city"
+	seed_challenge_prereqs()
+	try_start_challenge("ch_arena", "official", "ssn:ch")
+	var spec: Dictionary = expansion_state_service.challenge_service.spec_of("ch_arena")
+	var mid := str(spec.get("monster_id", ""))
+	begin_challenge_session(mid, "ssn:chs")
+	settle_challenge_battle(mid, true, "ssn:chs")
+	seed_pet_endgame_prereqs()
+	claim_collection_reward("col_ad_light", "ssn:col")
+	expansion_state = expansion_state_service.abyss_finale_service.set_stage_for_fixture(expansion_state, "completed")
+	expansion_state = expansion_state_service.season_cycle_service.ensure(expansion_state, current_day, int(expansion_state.get("world_seed", 1)))
+
+
+func season_board_lines() -> Array:
+	var row: Dictionary = season_runtime()
+	var snap: Dictionary = row.get("season_rank_snapshot", {}) as Dictionary
+	return [
+		"today=%d/%d season=%d" % [int(row.get("day_index", 0)), expansion_state_service.season_cycle_service.CYCLE_DAYS, int(row.get("season_id", 0))],
+		"calendar start=%d now=%d" % [int(row.get("start_day", 0)), current_day],
+		"theme=%s" % str(row.get("theme_id", "")),
+		"contracts=%s" % ",".join(row.get("daily_contract_ids", [])),
+		"npc=%s" % ",".join((row.get("npc_schedule_snapshot", {}) as Dictionary).keys()),
+		"rank live=%s score=%d text=%s" % [str(bool(snap.get("live", false))), int(snap.get("score", 0)), str(snap.get("text", ""))],
+		"reward daily=%d season=%d theme=%d" % [int(row.get("daily_gold_granted", 0)), int(row.get("season_gold_granted", 0)), int(row.get("theme_gold_granted", 0))],
+		"history=%d epilogue=%d ledger=%d" % [(row.get("season_history", []) as Array).size(), (row.get("epilogue_event_ids", {}) as Dictionary).size(), (row.get("season_ledger", []) as Array).size()],
+	]
+
+
+func season_rollover() -> Dictionary:
+	var preview: Dictionary = expansion_state_service.season_cycle_service.rollover(
+		expansion_state, current_day, int(expansion_state.get("world_seed", 1)))
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+
+func complete_season_contract(contract_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.season_cycle_service.complete_contract(
+		expansion_state, contract_id, season_ctx(), operation_id)
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("gold", 0))
+	currency_changed.emit()
+	return preview
+
+
+func claim_season_mail(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.season_cycle_service.claim_mail(expansion_state, operation_id)
+	if bool(preview.get("replayed", false)):
+		return preview
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	gold += int(preview.get("gold", 0))
+	currency_changed.emit()
+	return preview
+
+
+func run_epilogue_event(event_id: String, operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.epilogue_event_service.run(
+		expansion_state, event_id, current_day, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+	return preview
+
+func unbind_equipment_affix(slot_id: String, operation_id: String) -> Dictionary:
+	var item: Dictionary = equipment.get(slot_id, {}) if equipment.get(slot_id) is Dictionary else {}
+	var preview: Dictionary = expansion_state_service.equipment_mastery_service.unbind(
+		expansion_state, slot_id, item, operation_id)
+	if bool(preview.get("success", false)):
+		expansion_state = preview.expansion
+		equipment_changed.emit()
+	return preview
+
+
+func apply_element_to_damage(monster_id: String, base_damage: int) -> Dictionary:
+	var svc = expansion_state_service.element_resolution_service
+	if not svc.is_registered(monster_id):
+		var leaked: Dictionary = svc.resolve({
+			"base_damage": base_damage,
+			"monster_id": monster_id,
+			"attacker_element": "fire",
+			"field_id": "ice_field",
+			"resist": 0,
+			"defender_element": "ice",
+		})
+		if bool(leaked.get("applied", false)) and int(leaked.get("final", base_damage)) != base_damage:
+			return leaked
+		return {"success": true, "code": "OK", "base": base_damage, "modifier": 0.0, "final": base_damage, "rule_id": "none", "applied": false}
+	var row: Dictionary = ice_runtime()
+	var snap: Dictionary = row.get("element_snapshot", {}) if svc.REQUIRE_SNAPSHOT else {}
+	if snap.is_empty() or not svc.REQUIRE_SNAPSHOT:
+		var spec: Dictionary = svc.encounter_of(monster_id)
+		snap = {
+			"monster_id": monster_id,
+			"field_id": str(row.get("live_field_id", "")) if not str(row.get("live_field_id", "")).is_empty() else str(spec.get("field_id", "")),
+			"defender_element": str(spec.get("element", "")),
+			"resist": float(spec.get("resist", 0)),
+			"attacker_element": str(row.get("attacker_charge", "")),
+		}
+	var event := {
+		"base_damage": base_damage,
+		"monster_id": monster_id,
+		"attacker_element": str(snap.get("attacker_element", "")),
+		"defender_element": str(snap.get("defender_element", "")),
+		"resist": float(snap.get("resist", 0)),
+		"field_id": str(snap.get("field_id", "")),
+		"stacks": 1,
+	}
+	var resolved: Dictionary = svc.resolve(event)
+	var report: Dictionary = svc.format_report(resolved)
+	row = ice_runtime()
+	row["last_element_report"] = report
+	expansion_state = expansion_state_service.ice_story_service._write(expansion_state, row)
+	return resolved
+
+func claim_chapter_weekly(operation_id: String) -> Dictionary:
+	var preview: Dictionary = expansion_state_service.weekly_contract_service.claim(
+		expansion_state, current_day, operation_id)
+	if not bool(preview.get("success", false)):
+		return preview
+	expansion_state = preview.expansion
+	var item_id := str(preview.get("item_id", ""))
+	if not item_id.is_empty() and not expansion_state_service.chapter_encounter_service.whitelist_ok(item_id):
+		return {"success": false, "code": "CHAPTER_REWARD_WHITELIST", "expansion": expansion_state}
+	gold += int(preview.get("gold", 0))
+	if not item_id.is_empty():
+		if not add_item(item_id, int(preview.get("qty", 1))):
+			loot_queue.append(item_id)
+	currency_changed.emit()
+	quests_changed.emit()
+	return preview
+
+
+
 func exchange_first_inventory_equipment_for_exp_balls() -> Dictionary:
 	for slot_index in inventory.size():
 		var entry: Dictionary = inventory[slot_index]
@@ -594,6 +2152,9 @@ func use_inventory_item(slot_index: int) -> bool:
 			inventory_changed.emit()
 			return false
 		return true
+	if effect == "element_charge":
+		var charged: Dictionary = use_element_consumable(item_id)
+		return bool(charged.get("success", false))
 	if effect == "full_heal":
 		var maximum_hp := int(get_player_stats().get("max_hp", 1))
 		if player_current_hp >= maximum_hp or not consume_item(item_id, 1):
@@ -1507,6 +3068,7 @@ func refresh_fuwa_messenger_for_new_day(forced_roll: int = -1) -> String:
 	return str(fuwa_event.messenger_map)
 
 func advance_day() -> Dictionary:
+	var ended_day := current_day
 	current_day += 1
 	current_time_used = 0
 	completed_daily_tasks.clear()
@@ -1534,6 +3096,26 @@ func advance_day() -> Dictionary:
 	if revived:
 		demon_campaign = default_demon_campaign()
 		story_changed.emit()
+	var settled: Dictionary = expansion_state_service.day_cycle_service.settle_ended_day(expansion_state, ended_day)
+	if bool(settled.get("success", false)):
+		expansion_state = settled.expansion
+	var expired: Dictionary = expansion_state_service.assignment_service.expire_due(expansion_state, ended_day)
+	if bool(expired.get("success", false)):
+		expansion_state = expired.expansion
+	var territory_settled: Dictionary = expansion_state_service.territory_economy_service.settle_ended_day(
+		expansion_state, ended_day, owned_territory)
+	if bool(territory_settled.get("success", false)):
+		expansion_state = territory_settled.expansion
+	expansion_state = expansion_state_service.weekly_contract_service.ensure_week(expansion_state, current_day)
+	expansion_state = expansion_state_service.border_weekly_service.ensure_week(expansion_state, current_day)
+	expansion_state = expansion_state_service.ice_weekly_service.ensure_week(expansion_state, current_day)
+	expansion_state = expansion_state_service.season_cycle_service.ensure(expansion_state, current_day, int(expansion_state.get("world_seed", 1)))
+	var season_roll: Dictionary = expansion_state_service.season_cycle_service.rollover(expansion_state, current_day, int(expansion_state.get("world_seed", 1)))
+	if bool(season_roll.get("success", false)):
+		expansion_state = season_roll.expansion
+	_apply_pending_auction_gold()
+	ensure_guild_catalog()
+	refresh_rankings()
 	pets_changed.emit()
 	social_changed.emit()
 	quests_changed.emit()
@@ -1594,6 +3176,40 @@ func can_enter_map(map_id: String) -> bool:
 		return false
 	if map_id == "energy_tower" and bool(demon_campaign.get("commander_alive", true)):
 		return false
+	if map_id in ["treeheart_core"] and not expansion_state_service.story_chapter_service.stage_at_least(expansion_state, "root_sickness"):
+		return false
+	if map_id in ["harbor_quay", "harbor_market"] and not expansion_state_service.story_chapter_service.stage_at_least(expansion_state, "harbor_lead"):
+		return false
+	if map_id == "sea_cave" and not expansion_state_service.story_chapter_service.stage_at_least(expansion_state, "sea_cave_assault"):
+		return false
+	if map_id == "tide_shrine" and not expansion_state_service.story_chapter_service.stage_at_least(expansion_state, "tide_shrine_finale"):
+		return false
+	if map_id in ["south_city_square", "border_watchpost"] and not expansion_state_service.border_story_service.stage_at_least(expansion_state, "scouting"):
+		return false
+	if map_id == "border_supply_route" and not expansion_state_service.border_story_service.stage_at_least(expansion_state, "supply"):
+		return false
+	if map_id == "border_ruins" and not expansion_state_service.border_story_service.stage_at_least(expansion_state, "defense"):
+		return false
+	if map_id == "border_command_tent" and not expansion_state_service.border_story_service.stage_at_least(expansion_state, "counterattack"):
+		return false
+	if map_id == "frozen_pass" and not expansion_state_service.ice_story_service.stage_at_least(expansion_state, "ice_signal"):
+		return false
+	if map_id == "crystal_cavern" and not expansion_state_service.ice_story_service.stage_at_least(expansion_state, "cold_rescue"):
+		return false
+	if map_id == "elemental_laboratory" and not expansion_state_service.ice_story_service.stage_at_least(expansion_state, "crystal_key"):
+		return false
+	if map_id == "aurora_sanctum" and not expansion_state_service.ice_story_service.stage_at_least(expansion_state, "lab_trial"):
+		return false
+	if map_id == "abyss_gate" and not expansion_state_service.abyss_finale_service.stage_at_least(expansion_state, "summons"):
+		return false
+	if map_id == "abyss_outer_ring" and not expansion_state_service.abyss_finale_service.stage_at_least(expansion_state, "summons"):
+		return false
+	if map_id == "abyss_echo_halls" and not expansion_state_service.abyss_finale_service.stage_at_least(expansion_state, "echoes"):
+		return false
+	if map_id == "totem_sanctum" and not expansion_state_service.abyss_finale_service.stage_at_least(expansion_state, "totem_trials"):
+		return false
+	if map_id == "abyss_heart" and not expansion_state_service.abyss_finale_service.stage_at_least(expansion_state, "heart_assault"):
+		return false
 	return level >= int(MAP_LEVEL_REQUIREMENTS.get(map_id, 1))
 
 
@@ -1634,6 +3250,40 @@ func map_entry_availability_rule(map_id: String) -> String:
 		return "king_rescued"
 	if map_id == "energy_tower":
 		return "commander_defeated"
+	if map_id == "treeheart_core":
+		return "chapter_th:root_sickness"
+	if map_id in ["harbor_quay", "harbor_market"]:
+		return "chapter_th:harbor_lead"
+	if map_id == "sea_cave":
+		return "chapter_th:sea_cave_assault"
+	if map_id == "tide_shrine":
+		return "chapter_th:tide_shrine_finale"
+	if map_id in ["south_city_square", "border_watchpost"]:
+		return "border:scouting"
+	if map_id == "border_supply_route":
+		return "border:supply"
+	if map_id == "border_ruins":
+		return "border:defense"
+	if map_id == "border_command_tent":
+		return "border:counterattack"
+	if map_id == "frozen_pass":
+		return "ice:ice_signal"
+	if map_id == "crystal_cavern":
+		return "ice:cold_rescue"
+	if map_id == "elemental_laboratory":
+		return "ice:crystal_key"
+	if map_id == "aurora_sanctum":
+		return "ice:lab_trial"
+	if map_id == "abyss_gate":
+		return "level_only"
+	if map_id == "abyss_outer_ring":
+		return "abyss:summons"
+	if map_id == "abyss_echo_halls":
+		return "abyss:echoes"
+	if map_id == "totem_sanctum":
+		return "abyss:totem_trials"
+	if map_id == "abyss_heart":
+		return "abyss:heart_assault"
 	return "level_only"
 
 
@@ -1871,6 +3521,10 @@ func apply_victory_rewards(rewards: Dictionary) -> Dictionary:
 	if quest_result.get("changed", false):
 		quest_states = quest_result.states
 		quests_changed.emit()
+	var commission_kill: Dictionary = expansion_state_service.commission_service.record_kill(expansion_state, str(rewards.get("monster_id", "")))
+	if bool(commission_kill.get("changed", false)):
+		expansion_state = commission_kill.expansion
+		social_changed.emit()
 	var story_result: Dictionary = {}
 	match str(rewards.get("monster_id", "")):
 		"dungeon_boss": unlocked_maps["dungeon_floor_2"] = true
@@ -1973,13 +3627,13 @@ const SAVE_SCHEMA_KEYS := ["version", "gold", "magic_stones", "inventory", "ware
 	"unlocked_maps", "learned_skills", "last_princess_gift_day", "last_princess_chat_day",
 	"last_military_salary_day", "last_pk_race_day", "pk_race_active", "war_soul_maze_active",
 	"war_soul_guardian_revealed", "story_flags", "fuwa_event", "demon_campaign", "owned_territory",
-	"last_territory_challenge_day", "last_territory_reward_day"]
+	"last_territory_challenge_day", "last_territory_reward_day", "expansion_state"]
 
 ## 固定 schema 默认值（不使用当前运行中 GameState 值作为旧档默认）。
 ## 内部默认（story_flags/fuwa_event/demon_campaign/unlocked_maps/equipment 槽位）全部集中于此，
 ## default_demon_campaign()/default_fuwa_event() 也从本表派生，杜绝两处默认漂移。
 const SAVE_SCHEMA_DEFAULTS := {
-	"version": 21, "gold": 0, "magic_stones": 0, "inventory": [], "warehouse": [],
+	"version": 22, "gold": 0, "magic_stones": 0, "inventory": [], "warehouse": [],
 	"level": 1, "experience": 0, "military_merit": 0, "nobility_merit": 0, "affection": 0,
 	"current_day": 1, "current_time_used": 0, "completed_daily_tasks": {}, "current_map_id": "cassano_city",
 	"equipment": {"weapon": {}, "helmet": {}, "necklace": {}, "armor": {}, "bracelet": {}, "boots": {}},
@@ -1999,6 +3653,15 @@ const SAVE_SCHEMA_DEFAULTS := {
 		"totem_alive": true, "commander_alive": true, "energy_alive": true},
 	"owned_territory": "",
 	"last_territory_challenge_day": 0, "last_territory_reward_day": 0,
+	"expansion_state": {
+		"revision": 1, "world_seed": 0, "day_sequence": 0,
+		"adventurers": {}, "relationships": {}, "mailbox": [],
+		"commission_state": {}, "rankings": {}, "season": {},
+		"economy": {}, "properties": {}, "auction": {},
+		"campaign": {}, "collections": {},
+		"market": {}, "territory_economy": {}, "chapters": {},
+		"challenges": {}, "warrior_mastery": {}, "equipment_mastery": {}, "pet_endgame": {},
+	},
 }
 
 ## IO 故障注入钩子（测试可注入故障点；生产为空字符串=正常）
@@ -2167,13 +3830,13 @@ func _is_authoritative_save(path: String) -> bool:
 	if not parsed is Dictionary:
 		return false
 	var d: Dictionary = parsed
-	# 核心身份：version 必须存在且 1..21
+	# 核心身份：version 必须存在且 1..22（v21 旧档可迁移）
 	if not d.has("version"):
 		return false
 	var version_value: Variant = d.get("version")
 	if not (version_value is int or version_value is float):
 		return false
-	if int(version_value) < 1 or int(version_value) > 21:
+	if int(version_value) < 1 or int(version_value) > 22:
 		return false
 	# 核心身份字段（任一缺失即不足以作为权威正式档）
 	for core_key: String in ["gold", "level"]:
@@ -2185,7 +3848,7 @@ func _is_authoritative_save(path: String) -> bool:
 
 func _build_save_payload() -> Dictionary:
 	return {
-		"version": 21, "gold": gold, "magic_stones": magic_stones,
+		"version": 22, "gold": gold, "magic_stones": magic_stones,
 		"inventory": inventory, "warehouse": warehouse, "level": level,
 		"experience": experience, "military_merit": military_merit,
 		"nobility_merit": nobility_merit, "affection": affection,
@@ -2205,6 +3868,7 @@ func _build_save_payload() -> Dictionary:
 		"demon_campaign": demon_campaign, "owned_territory": owned_territory,
 		"last_territory_challenge_day": last_territory_challenge_day,
 		"last_territory_reward_day": last_territory_reward_day,
+		"expansion_state": expansion_state.duplicate(true),
 	}
 
 
@@ -2231,7 +3895,7 @@ func _validate_save_schema_impl(parsed: Variant, strict: bool) -> bool:
 	if not parsed is Dictionary:
 		return false
 	var d: Dictionary = parsed
-	# 严格模式：键完整性（save_game 临时文件必须有全部 38 键）
+	# 严格模式：键完整性（save_game 临时文件必须有全部 39 键）
 	if strict:
 		for key: String in SAVE_SCHEMA_KEYS:
 			if not d.has(key):
@@ -2251,8 +3915,8 @@ func _validate_save_schema_impl(parsed: Variant, strict: bool) -> bool:
 	# 范围规则（存在字段必须满足；负数/越界一律拒绝，不 clamp 不截断）
 	if d.has("version"):
 		var version_i := int(d.get("version"))
-		if version_i < 1 or version_i > 21:
-			return false  # 宽松模式：version 1..21 允许（支持旧版迁移）；严格模式由调用方检查 == 21
+		if version_i < 1 or version_i > 22:
+			return false  # 宽松模式：version 1..22 允许（支持 v21→v22 迁移）
 	for nonneg_field: String in ["gold", "magic_stones", "experience", "military_merit",
 		"nobility_merit", "affection", "player_current_hp", "player_current_stamina",
 		"last_princess_gift_day", "last_princess_chat_day", "last_military_salary_day",
@@ -2273,7 +3937,7 @@ func _validate_save_schema_impl(parsed: Variant, strict: bool) -> bool:
 		if d.has(afield) and not d.get(afield) is Array: return false
 	for dfield: String in ["completed_daily_tasks", "equipment", "base_stats", "research",
 		"quest_states", "unlocked_maps", "learned_skills", "story_flags", "fuwa_event",
-		"demon_campaign"]:
+		"demon_campaign", "expansion_state"]:
 		if d.has(dfield) and not d.get(dfield) is Dictionary: return false
 	if d.has("inventory") and (d.get("inventory") as Array).size() > INVENTORY_SIZE: return false
 	if d.has("warehouse") and (d.get("warehouse") as Array).size() > WAREHOUSE_SIZE: return false
@@ -2400,7 +4064,7 @@ func load_game() -> bool:
 	if not p.has("version"):
 		return false
 	var version_value: Variant = p.get("version")
-	if not (version_value is int or version_value is float) or int(version_value) < 1 or int(version_value) > 21:
+	if not (version_value is int or version_value is float) or int(version_value) < 1 or int(version_value) > 22:
 		return false
 	# 核心身份字段（与 _is_authoritative_save 同判据，防止 {} 等残缺文件通过）
 	for core_key: String in ["gold", "level"]:
@@ -2410,16 +4074,17 @@ func load_game() -> bool:
 	var dto := _build_load_dto(p)
 	if dto.is_empty():
 		return false  # 字段完整性失败：内存不变
-	# DTO 键完整性：38 个持久键必须齐全（pets/research/next_pet_instance_id 已进 DTO）
+	# DTO 键完整性：39 个持久键必须齐全
 	for key: String in SAVE_SCHEMA_KEYS:
 		if not dto.has(key):
 			return false
 	# ========== 全部校验通过：一次性提交内存（纯赋值，无计算无中间读取）==========
 	_commit_load_dto(dto)
+	refresh_rankings()
 	return true
 
 
-## DTO 纯构造：只读存档 p 与只读配置表/服务，返回 38 键完整 DTO；
+## DTO 纯构造：只读存档 p 与只读配置表/服务，返回 39 键完整 DTO；
 ## 任何字段完整性失败返回 {}（调用方保持内存不变）。
 func _build_load_dto(p: Dictionary) -> Dictionary:
 	var loaded_inventory: Variant = p.get("inventory", [])
@@ -2542,6 +4207,11 @@ func _build_load_dto(p: Dictionary) -> Dictionary:
 	# inventory/warehouse 规范化（固定容器尺寸）
 	dto["inventory"] = _normalize_container(loaded_inventory, INVENTORY_SIZE)
 	dto["warehouse"] = _normalize_container(loaded_warehouse, WAREHOUSE_SIZE)
+	# expansion_state：只读存档字段 + 固定合同默认；禁止读取运行中 GameState.expansion_state
+	var built_expansion: Dictionary = expansion_state_service.build_from_save(p.get("expansion_state", null))
+	if built_expansion.is_empty():
+		return {}
+	dto["expansion_state"] = built_expansion
 	return dto
 
 
@@ -2588,6 +4258,8 @@ func _commit_load_dto(dto: Dictionary) -> void:
 	next_pet_instance_id = int(dto["next_pet_instance_id"])
 	inventory = dto["inventory"]
 	warehouse = dto["warehouse"]
+	expansion_state = dto["expansion_state"]
+	ensure_guild_catalog()
 	pending_territory_challenge = ""
 	# 信号
 	inventory_changed.emit()

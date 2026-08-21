@@ -1,0 +1,18 @@
+v1.50 ice_element evidence tokens
+ice_frontier frozen_pass crystal_cavern elemental_laboratory aurora_sanctum
+ice_signal cold_rescue crystal_key lab_trial aurora_boss weekly_element_trial
+signal_shard rescue_charm crystal_key frost_vial ember_vial spark_vial
+ice_lab_boss ice_aurora_boss ice_weekly_trial
+npc_adv_shen_yao npc_adv_bai_luo ice_shen ice_bai ice_weekly
+ELEMENT_UNKNOWN ELEMENT_RESIST_RANGE ELEMENT_NEG_DAMAGE ELEMENT_NONFINITE
+ELEMENT_FIELD_LEAK ELEMENT_SNAPSHOT ELEMENT_CONSUMABLE_CD ELEMENT_REPORT
+ICE_PUZZLE_CONSUME ICE_BOSS_STAGE BATTLE_CANCEL_ADVANCE ICE_WEEKLY_DUP
+MAP_ID_MISMATCH SAVE_ICE_STAGE
+fire ice thunder wind earth
+
+image_1076 image_1213 image_1072
+ice_shen ice_bai ice_weekly
+ice:signal_shard ice:rescue_charm ice:crystal_key
+battle:ice_lab_boss battle:ice_aurora_boss battle:ice_weekly_trial
+ice_frontier frozen_pass crystal_cavern elemental_laboratory aurora_sanctum
+left right top bottom

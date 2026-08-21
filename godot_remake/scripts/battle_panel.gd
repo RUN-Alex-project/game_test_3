@@ -98,7 +98,7 @@ func start_battle(monster_id: String) -> void:
 func _attack(skill_id: String = "") -> void:
 	if session == null or session.finished:
 		return
-	var skill_multiplier := GameState.skill_service.active_damage_multiplier(GameState.learned_skills, skill_id)
+	var skill_multiplier := GameState.skill_damage_multiplier(skill_id)
 	AudioService.play("attack")
 	_play_attack_animation()
 	var result: Dictionary = session.perform_turn(1.0, 1.0, -1.0, skill_multiplier)

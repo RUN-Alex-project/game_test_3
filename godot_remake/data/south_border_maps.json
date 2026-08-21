@@ -1,0 +1,104 @@
+{
+  "maps": [
+    {
+      "id": "south_city_gate",
+      "background": "res://assets/extracted/images/image_1271.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "south_city_square",
+          "direction": "right"
+        },
+        {
+          "target": "border_watchpost",
+          "direction": "bottom"
+        }
+      ]
+    },
+    {
+      "id": "south_city_square",
+      "background": "res://assets/extracted/images/image_1175.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "south_city_gate",
+          "direction": "left"
+        }
+      ]
+    },
+    {
+      "id": "border_watchpost",
+      "background": "res://assets/extracted/images/image_1294.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "south_city_gate",
+          "direction": "top"
+        },
+        {
+          "target": "border_supply_route",
+          "direction": "right"
+        },
+        {
+          "target": "border_ruins",
+          "direction": "bottom"
+        }
+      ]
+    },
+    {
+      "id": "border_supply_route",
+      "background": "res://assets/extracted/images/image_1276.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "border_watchpost",
+          "direction": "left"
+        }
+      ]
+    },
+    {
+      "id": "border_ruins",
+      "background": "res://assets/extracted/images/image_1268.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "border_watchpost",
+          "direction": "top"
+        },
+        {
+          "target": "border_command_tent",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "border_command_tent",
+      "background": "res://assets/extracted/images/image_1278.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "border_ruins",
+          "direction": "left"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "chapter_id": "treeheart_harbor",
+  "stages": [
+    "locked",
+    "treeheart_rumor",
+    "root_sickness",
+    "harbor_lead",
+    "smuggler_choice",
+    "sea_cave_assault",
+    "tide_shrine_finale",
+    "treeheart_weekly_contract"
+  ],
+  "npcs": {
+    "chapter_lin": {
+      "adventurer_id": "npc_adv_lin_xia",
+      "role": "investigate"
+    },
+    "chapter_qin": {
+      "adventurer_id": "npc_adv_qin_he",
+      "role": "coordinate"
+    },
+    "chapter_su": {
+      "adventurer_id": "npc_adv_su_yan",
+      "role": "identify"
+    },
+    "chapter_ye": {
+      "adventurer_id": "npc_adv_ye_fei",
+      "role": "escort"
+    },
+    "chapter_weekly": {
+      "adventurer_id": "npc_adv_su_yan",
+      "role": "weekly"
+    }
+  },
+  "branches": {
+    "report": {
+      "relationship_id": "npc_adv_lin_xia",
+      "relationship_delta": 2,
+      "reputation_delta": 2
+    },
+    "track": {
+      "relationship_id": "npc_adv_su_yan",
+      "relationship_delta": 2,
+      "reputation_delta": 0
+    }
+  }
+}

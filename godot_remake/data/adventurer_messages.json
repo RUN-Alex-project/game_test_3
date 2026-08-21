@@ -1,0 +1,34 @@
+{
+  "rest": {
+    "subject": "今日休整",
+    "body": "我今天休息，顺便写信给你。"
+  },
+  "gather": {
+    "subject": "采集记录",
+    "body": "今天去采了一些材料，先记在账上。"
+  },
+  "hunt": {
+    "subject": "猎猎记录",
+    "body": "今天打了猎物，战利品入账。"
+  },
+  "trade": {
+    "subject": "交易记录",
+    "body": "今天把货换成了金币。"
+  },
+  "train": {
+    "subject": "训练记录",
+    "body": "今天在训练，没有给你带东西。"
+  },
+  "commission": {
+    "subject": "委托记录",
+    "body": "今天在忙委托，没有新的战利品。"
+  },
+  "arena_prep": {
+    "subject": "磕台准备",
+    "body": "今天只做了磕台准备，不加积分。"
+  },
+  "gift_reply": {
+    "subject": "收到礼物",
+    "body": "礼物我收下了，谢谢。"
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "version": "v1.55",
+  "policy": "verify_frozen_only",
+  "items": [
+    {
+      "audit_id": "a_exp10",
+      "value_id": "player_exp_multiplier",
+      "old": 10,
+      "candidate": 10,
+      "status": "approved_frozen",
+      "affects": "combat",
+      "test_id": "flow_newgame"
+    },
+    {
+      "audit_id": "a_boss_merit",
+      "value_id": "boss_military_multiplier",
+      "old": 10,
+      "candidate": 10,
+      "status": "approved_frozen",
+      "affects": "combat",
+      "test_id": "flow_newgame"
+    },
+    {
+      "audit_id": "a_quality",
+      "value_id": "quality_success_rate",
+      "old": 1.0,
+      "candidate": 1.0,
+      "status": "approved_frozen",
+      "affects": "enhancement",
+      "test_id": "flow_challenge_pet"
+    },
+    {
+      "audit_id": "a_magic_soul",
+      "value_id": "magic_soul_success_rate",
+      "old": 1.0,
+      "candidate": 1.0,
+      "status": "approved_frozen",
+      "affects": "enhancement",
+      "test_id": "flow_challenge_pet"
+    },
+    {
+      "audit_id": "a_war_soul",
+      "value_id": "war_soul_crystal_success_rate",
+      "old": 0.5,
+      "candidate": 0.5,
+      "status": "approved_frozen",
+      "affects": "enhancement",
+      "test_id": "flow_challenge_pet"
+    },
+    {
+      "audit_id": "a_rose99",
+      "value_id": "rose_99",
+      "old": 50,
+      "candidate": 50,
+      "status": "approved_frozen",
+      "affects": "relationship",
+      "test_id": "flow_v22_mid"
+    },
+    {
+      "audit_id": "a_research_cap",
+      "value_id": "research_tech_cap",
+      "old": 300,
+      "candidate": 300,
+      "status": "approved_frozen",
+      "affects": "research",
+      "test_id": "flow_challenge_pet"
+    },
+    {
+      "audit_id": "a_research_daily",
+      "value_id": "research_daily_cap",
+      "old": 6,
+      "candidate": 6,
+      "status": "approved_frozen",
+      "affects": "research",
+      "test_id": "flow_challenge_pet"
+    },
+    {
+      "audit_id": "a_grocery",
+      "value_id": "grocery_option_count",
+      "old": 3,
+      "candidate": 3,
+      "status": "approved_frozen",
+      "affects": "shop",
+      "test_id": "flow_newgame"
+    },
+    {
+      "audit_id": "a_save_keys",
+      "value_id": "save_schema_keys",
+      "old": 39,
+      "candidate": 39,
+      "status": "approved_frozen",
+      "affects": "save",
+      "test_id": "flow_v21"
+    }
+  ]
+}

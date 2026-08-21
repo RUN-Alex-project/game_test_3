@@ -1,0 +1,19 @@
+{
+  "weeks": [
+    [
+      "ch_arena",
+      "ch_mine",
+      "ch_territory"
+    ],
+    [
+      "ch_treeheart",
+      "ch_harbor",
+      "ch_border"
+    ],
+    [
+      "ch_ice",
+      "ch_abyss",
+      "ch_memory"
+    ]
+  ]
+}

@@ -1,0 +1,11 @@
+v1.53 pet endgame evidence
+col_ad_light col_ad_heavy col_strange col_year_pig col_lulu col_holy
+pet_trial_1 pet_trial_2 pet_trial_3 pet_king
+pet_trial_1_boss pet_trial_2_boss pet_trial_3_boss pet_king_boss
+battle:pet_trial_1_boss battle:pet_trial_2_boss battle:pet_trial_3_boss battle:pet_king_boss
+green_field thunder_mine ice_frontier abyss_gate
+image_1072 pet_endgame_board trial_resist explore_log contract_note
+rc_note rc_bond cr_light cr_heavy
+PET_COLLECTION_DUP PET_COLLECTION_UNKNOWN PET_COLLECTION_FAKE PET_COLLECTION_REWARD_DUP
+PET_SUPPORT_OWNED PET_SUPPORT_DEPLOYED PET_SUPPORT_SECOND PET_SUPPORT_SCENE PET_SUPPORT_SNAPSHOT
+PET_TRIAL_CANCEL PET_TRIAL_WEEKLY_DUP PET_TRIAL_KING RESEARCH_CONTRACT_COST SAVE_PET_ID

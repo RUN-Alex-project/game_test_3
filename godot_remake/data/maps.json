@@ -1,631 +1,1043 @@
 [
     {
-        "id":  "cassano_city",
-        "name":  "卡萨诺城",
-        "background":  "res://assets/extracted/images/image_1114.jpg",
-        "spawn":  [
-                      292,
-                      225
-                  ],
-        "exits":  [
-                      {
-                          "target":  "avit_island",
-                          "name":  "亚维特岛"
-                      },
-                      {
-                          "target":  "palace",
-                          "name":  "进入皇宫"
-                      },
-                      {
-                          "target":  "thunder_continent",
-                          "name":  "雷鸣大陆"
-                      },
-                      {
-                          "target":  "desert",
-                          "name":  "戈壁"
-                      }
-                  ],
-        "encounters":  [
-                           "territory_cassano_guard"
-                       ]
+        "id": "cassano_city",
+        "name": "卡萨诺城",
+        "background": "res://assets/extracted/images/image_1114.jpg",
+        "spawn": [
+            292,
+            225
+        ],
+        "exits": [
+            {
+                "target": "avit_island",
+                "name": "亚维特岛"
+            },
+            {
+                "target": "palace",
+                "name": "进入皇宫"
+            },
+            {
+                "target": "thunder_continent",
+                "name": "雷鸣大陆"
+            },
+            {
+                "target": "desert",
+                "name": "戈壁"
+            }
+        ],
+        "encounters": [
+            "territory_cassano_guard"
+        ]
     },
     {
-        "id":  "palace",
-        "name":  "皇宫",
-        "background":  "res://assets/extracted/images/image_1175.jpg",
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      },
-                      {
-                          "target":  "ice_palace",
-                          "name":  "前往冰宫"
-                      },
-                      {
-                          "target":  "palace_garden",
-                          "name":  "进入后花园"
-                      }
-                  ],
-        "encounters":  [
-
-                       ]
+        "id": "palace",
+        "name": "皇宫",
+        "background": "res://assets/extracted/images/image_1175.jpg",
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            },
+            {
+                "target": "ice_palace",
+                "name": "前往冰宫"
+            },
+            {
+                "target": "palace_garden",
+                "name": "进入后花园"
+            }
+        ],
+        "encounters": []
     },
     {
-        "id":  "pk_arena",
-        "name":  "PK赛场1层",
-        "background":  "res://assets/extracted/images/image_1294.jpg",
-        "spawn":  [
-                      345,
-                      315
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      }
-                  ],
-        "encounters":  [
-                           "pk_champion_60"
-                       ]
+        "id": "pk_arena",
+        "name": "PK赛场1层",
+        "background": "res://assets/extracted/images/image_1294.jpg",
+        "spawn": [
+            345,
+            315
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            }
+        ],
+        "encounters": [
+            "pk_champion_60"
+        ]
     },
     {
-        "id":  "green_field",
-        "name":  "草原",
-        "background":  "res://assets/extracted/images/image_1097.jpg",
-        "spawn":  [
-                      180,
-                      380
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      }
-                  ],
-        "encounters":  [
-                           "fuwa_beast"
-                       ]
+        "id": "green_field",
+        "name": "草原",
+        "background": "res://assets/extracted/images/image_1097.jpg",
+        "spawn": [
+            180,
+            380
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            }
+        ],
+        "encounters": [
+            "fuwa_beast"
+        ]
     },
     {
-        "id":  "grass_reward",
-        "name":  "草原2",
-        "background":  "res://assets/extracted/images/image_1097.jpg",
-        "spawn":  [
-                      180,
-                      380
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      }
-                  ],
-        "encounters":  [
-
-                       ]
+        "id": "grass_reward",
+        "name": "草原2",
+        "background": "res://assets/extracted/images/image_1097.jpg",
+        "spawn": [
+            180,
+            380
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            }
+        ],
+        "encounters": []
     },
     {
-        "id":  "dungeon",
-        "name":  "地下城一层",
-        "background":  "res://assets/extracted/images/image_1281.jpg",
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      },
-                      {
-                          "target":  "dungeon_floor_2",
-                          "name":  "进入地下城二层"
-                      }
-                  ],
-        "encounters":  [
-                           "dungeon_boss"
-                       ]
+        "id": "dungeon",
+        "name": "地下城一层",
+        "background": "res://assets/extracted/images/image_1281.jpg",
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            },
+            {
+                "target": "dungeon_floor_2",
+                "name": "进入地下城二层"
+            }
+        ],
+        "encounters": [
+            "dungeon_boss"
+        ]
     },
     {
-        "id":  "dungeon_floor_2",
-        "name":  "地下城二层",
-        "background":  "res://assets/extracted/images/image_1287.jpg",
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "dungeon",
-                          "name":  "返回地下城一层"
-                      },
-                      {
-                          "target":  "dungeon_floor_3",
-                          "name":  "进入地下城三层"
-                      }
-                  ],
-        "encounters":  [
-                           "dungeon_boss_2"
-                       ]
+        "id": "dungeon_floor_2",
+        "name": "地下城二层",
+        "background": "res://assets/extracted/images/image_1287.jpg",
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "dungeon",
+                "name": "返回地下城一层"
+            },
+            {
+                "target": "dungeon_floor_3",
+                "name": "进入地下城三层"
+            }
+        ],
+        "encounters": [
+            "dungeon_boss_2"
+        ]
     },
     {
-        "id":  "dungeon_floor_3",
-        "name":  "地下城三层",
-        "background":  "res://assets/extracted/images/image_1292.jpg",
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "dungeon_floor_2",
-                          "name":  "返回地下城二层"
-                      }
-                  ],
-        "encounters":  [
-                           "dungeon_boss_3"
-                       ]
+        "id": "dungeon_floor_3",
+        "name": "地下城三层",
+        "background": "res://assets/extracted/images/image_1292.jpg",
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "dungeon_floor_2",
+                "name": "返回地下城二层"
+            }
+        ],
+        "encounters": [
+            "dungeon_boss_3"
+        ]
     },
     {
-        "id":  "thunder_continent",
-        "name":  "雷鸣大陆",
-        "background":  "res://assets/extracted/images/image_1066.jpg",
-        "required_level":  10,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      },
-                      {
-                          "target":  "thunder_mine",
-                          "name":  "进入雷鸣矿洞"
-                      },
-                      {
-                          "target":  "desert",
-                          "name":  "前往戈壁"
-                      }
-                  ],
-        "encounters":  [
-                           "thunder_giant",
-                           "thunder_dragon",
-                           "thunder_boss_10",
-                           "territory_thunder_guard"
-                       ]
+        "id": "thunder_continent",
+        "name": "雷鸣大陆",
+        "background": "res://assets/extracted/images/image_1066.jpg",
+        "required_level": 10,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            },
+            {
+                "target": "thunder_mine",
+                "name": "进入雷鸣矿洞"
+            },
+            {
+                "target": "desert",
+                "name": "前往戈壁"
+            }
+        ],
+        "encounters": [
+            "thunder_giant",
+            "thunder_dragon",
+            "thunder_boss_10",
+            "territory_thunder_guard"
+        ]
     },
     {
-        "id":  "thunder_mine",
-        "name":  "雷鸣矿洞",
-        "background":  "res://assets/extracted/images/image_1091.jpg",
-        "required_level":  10,
-        "spawn":  [
-                      360,
-                      360
-                  ],
-        "exits":  [
-                      {
-                          "target":  "thunder_continent",
-                          "name":  "返回雷鸣大陆"
-                      }
-                  ],
-        "encounters":  [
-
-                       ]
+        "id": "thunder_mine",
+        "name": "雷鸣矿洞",
+        "background": "res://assets/extracted/images/image_1091.jpg",
+        "required_level": 10,
+        "spawn": [
+            360,
+            360
+        ],
+        "exits": [
+            {
+                "target": "thunder_continent",
+                "name": "返回雷鸣大陆"
+            }
+        ],
+        "encounters": []
     },
     {
-        "id":  "desert",
-        "name":  "戈壁",
-        "background":  "res://assets/extracted/images/image_1226.jpg",
-        "required_level":  20,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "thunder_continent",
-                          "name":  "返回雷鸣大陆"
-                      },
-                      {
-                          "target":  "dream_swamp",
-                          "name":  "前往迷梦沼泽"
-                      }
-                  ],
-        "encounters":  [
-                           "desert_ice_swordsman",
-                           "desert_jack_lantern",
-                           "desert_typhon",
-                           "desert_boss_20",
-                           "territory_desert_guard"
-                       ]
+        "id": "desert",
+        "name": "戈壁",
+        "background": "res://assets/extracted/images/image_1226.jpg",
+        "required_level": 20,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "thunder_continent",
+                "name": "返回雷鸣大陆"
+            },
+            {
+                "target": "dream_swamp",
+                "name": "前往迷梦沼泽"
+            }
+        ],
+        "encounters": [
+            "desert_ice_swordsman",
+            "desert_jack_lantern",
+            "desert_typhon",
+            "desert_boss_20",
+            "territory_desert_guard"
+        ]
     },
     {
-        "id":  "dream_swamp",
-        "name":  "迷梦沼泽",
-        "background":  "res://assets/extracted/images/image_1236.jpg",
-        "required_level":  30,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "desert",
-                          "name":  "返回戈壁"
-                      },
-                      {
-                          "target":  "ice_palace",
-                          "name":  "前往冰宫"
-                      }
-                  ],
-        "encounters":  [
-                           "swamp_fanged_demon",
-                           "swamp_horned_lizard",
-                           "swamp_boss_30",
-                           "spider",
-                           "territory_swamp_guard"
-                       ]
+        "id": "dream_swamp",
+        "name": "迷梦沼泽",
+        "background": "res://assets/extracted/images/image_1236.jpg",
+        "required_level": 30,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "desert",
+                "name": "返回戈壁"
+            },
+            {
+                "target": "ice_palace",
+                "name": "前往冰宫"
+            }
+        ],
+        "encounters": [
+            "swamp_fanged_demon",
+            "swamp_horned_lizard",
+            "swamp_boss_30",
+            "spider",
+            "territory_swamp_guard"
+        ]
     },
     {
-        "id":  "ice_palace",
-        "name":  "冰宫",
-        "background":  "res://assets/extracted/images/image_1242.jpg",
-        "required_level":  50,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "dream_swamp",
-                          "name":  "返回迷梦沼泽"
-                      },
-                      {
-                          "target":  "avit_island",
-                          "name":  "前往亚维特岛"
-                      },
-                      {
-                          "target":  "palace",
-                          "name":  "返回皇宫"
-                      },
-                      {
-                          "target":  "ice_border",
-                          "name":  "雪域边境"
-                      }
-                  ],
-        "encounters":  [
-                           "ice_taya_dragon",
-                           "ice_death_knight",
-                           "ice_boss_50",
-                           "territory_ice_guard"
-                       ]
+        "id": "ice_palace",
+        "name": "冰宫",
+        "background": "res://assets/extracted/images/image_1242.jpg",
+        "required_level": 50,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "dream_swamp",
+                "name": "返回迷梦沼泽"
+            },
+            {
+                "target": "avit_island",
+                "name": "前往亚维特岛"
+            },
+            {
+                "target": "palace",
+                "name": "返回皇宫"
+            },
+            {
+                "target": "ice_border",
+                "name": "雪域边境"
+            }
+        ],
+        "encounters": [
+            "ice_taya_dragon",
+            "ice_death_knight",
+            "ice_boss_50",
+            "territory_ice_guard"
+        ]
     },
     {
-        "id":  "ice_border",
-        "name":  "雪域边境",
-        "background":  "res://assets/extracted/images/image_1271.jpg",
-        "required_level":  50,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "ice_palace",
-                          "name":  "返回冰宫"
-                      },
-                      {
-                          "target":  "demon_camp",
-                          "name":  "进入魔中军阵地"
-                      }
-                  ],
-        "encounters":  [
-                           "snow_warrior",
-                           "snow_cavalry",
-                           "snow_officer"
-                       ]
+        "id": "ice_border",
+        "name": "雪域边境",
+        "background": "res://assets/extracted/images/image_1271.jpg",
+        "required_level": 50,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "ice_palace",
+                "name": "返回冰宫"
+            },
+            {
+                "target": "demon_camp",
+                "name": "进入魔中军阵地"
+            }
+        ],
+        "encounters": [
+            "snow_warrior",
+            "snow_cavalry",
+            "snow_officer"
+        ]
     },
     {
-        "id":  "demon_camp",
-        "name":  "魔中军阵地",
-        "background":  "res://assets/extracted/images/image_1271.jpg",
-        "required_level":  50,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "ice_border",
-                          "name":  "返回雪域边境"
-                      },
-                      {
-                          "target":  "demon_right",
-                          "name":  "进入魔右军阵地"
-                      },
-                      {
-                          "target":  "demon_left",
-                          "name":  "进入魔左军阵地"
-                      },
-                      {
-                          "target":  "demon_banner",
-                          "name":  "进入魔军帅旗"
-                      }
-                  ],
-        "encounters":  [
-                           "demon_guard",
-                           "demon_assault"
-                       ]
+        "id": "demon_camp",
+        "name": "魔中军阵地",
+        "background": "res://assets/extracted/images/image_1271.jpg",
+        "required_level": 50,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "ice_border",
+                "name": "返回雪域边境"
+            },
+            {
+                "target": "demon_right",
+                "name": "进入魔右军阵地"
+            },
+            {
+                "target": "demon_left",
+                "name": "进入魔左军阵地"
+            },
+            {
+                "target": "demon_banner",
+                "name": "进入魔军帅旗"
+            }
+        ],
+        "encounters": [
+            "demon_guard",
+            "demon_assault"
+        ]
     },
     {
-        "id":  "demon_left",
-        "name":  "魔左军阵地",
-        "background":  "res://assets/extracted/images/image_1276.jpg",
-        "required_level":  50,
-        "spawn":  [
-                      367,
-                      360
-                  ],
-        "exits":  [
-                      {
-                          "target":  "demon_camp",
-                          "name":  "返回魔中军阵地"
-                      }
-                  ],
-        "encounters":  [
-                           "demon_totem"
-                       ]
+        "id": "demon_left",
+        "name": "魔左军阵地",
+        "background": "res://assets/extracted/images/image_1276.jpg",
+        "required_level": 50,
+        "spawn": [
+            367,
+            360
+        ],
+        "exits": [
+            {
+                "target": "demon_camp",
+                "name": "返回魔中军阵地"
+            }
+        ],
+        "encounters": [
+            "demon_totem"
+        ]
     },
     {
-        "id":  "demon_right",
-        "name":  "魔右军阵地",
-        "background":  "res://assets/extracted/images/image_1276.jpg",
-        "required_level":  50,
-        "spawn":  [
-                      345,
-                      80
-                  ],
-        "exits":  [
-                      {
-                          "target":  "demon_camp",
-                          "name":  "返回魔中军阵地"
-                      }
-                  ],
-        "encounters":  [
-                           "demon_mystery"
-                       ]
+        "id": "demon_right",
+        "name": "魔右军阵地",
+        "background": "res://assets/extracted/images/image_1276.jpg",
+        "required_level": 50,
+        "spawn": [
+            345,
+            80
+        ],
+        "exits": [
+            {
+                "target": "demon_camp",
+                "name": "返回魔中军阵地"
+            }
+        ],
+        "encounters": [
+            "demon_mystery"
+        ]
     },
     {
-        "id":  "demon_banner",
-        "name":  "魔军帅旗",
-        "background":  "res://assets/extracted/images/image_1278.jpg",
-        "required_level":  50,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "demon_camp",
-                          "name":  "返回魔中军阵地"
-                      },
-                      {
-                          "target":  "energy_tower",
-                          "name":  "进入能量塔禁地"
-                      }
-                  ],
-        "encounters":  [
-                           "demon_commander"
-                       ]
+        "id": "demon_banner",
+        "name": "魔军帅旗",
+        "background": "res://assets/extracted/images/image_1278.jpg",
+        "required_level": 50,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "demon_camp",
+                "name": "返回魔中军阵地"
+            },
+            {
+                "target": "energy_tower",
+                "name": "进入能量塔禁地"
+            }
+        ],
+        "encounters": [
+            "demon_commander"
+        ]
     },
     {
-        "id":  "energy_tower",
-        "name":  "能量塔禁地",
-        "background":  "res://assets/extracted/images/image_1278.jpg",
-        "required_level":  50,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "demon_banner",
-                          "name":  "返回魔军帅旗"
-                      }
-                  ],
-        "encounters":  [
-                           "demon_energy"
-                       ]
+        "id": "energy_tower",
+        "name": "能量塔禁地",
+        "background": "res://assets/extracted/images/image_1278.jpg",
+        "required_level": 50,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "demon_banner",
+                "name": "返回魔军帅旗"
+            }
+        ],
+        "encounters": [
+            "demon_energy"
+        ]
     },
     {
-        "id":  "avit_island",
-        "name":  "亚维特岛",
-        "background":  "res://assets/extracted/images/image_1252.jpg",
-        "required_level":  70,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "ice_palace",
-                          "name":  "返回冰宫"
-                      },
-                      {
-                          "target":  "volcano",
-                          "name":  "前往火山"
-                      }
-                  ],
-        "encounters":  [
-                           "avit_fish_demon",
-                           "avit_terror_beast",
-                           "avit_giant_axe",
-                           "avit_thorn_bug",
-                           "avit_boss_70",
-                           "spider_queen",
-                           "territory_avit_guard"
-                       ]
+        "id": "avit_island",
+        "name": "亚维特岛",
+        "background": "res://assets/extracted/images/image_1252.jpg",
+        "required_level": 70,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "ice_palace",
+                "name": "返回冰宫"
+            },
+            {
+                "target": "volcano",
+                "name": "前往火山"
+            }
+        ],
+        "encounters": [
+            "avit_fish_demon",
+            "avit_terror_beast",
+            "avit_giant_axe",
+            "avit_thorn_bug",
+            "avit_boss_70",
+            "spider_queen",
+            "territory_avit_guard"
+        ]
     },
     {
-        "id":  "volcano",
-        "name":  "火山",
-        "background":  "res://assets/extracted/images/image_1262.jpg",
-        "required_level":  90,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "avit_island",
-                          "name":  "返回亚维特岛"
-                      },
-                      {
-                          "target":  "abyss_maze",
-                          "name":  "前往深渊迷宫"
-                      }
-                  ],
-        "encounters":  [
-                           "volcano_four_fang",
-                           "volcano_fire_woman",
-                           "volcano_scorpion",
-                           "volcano_boss_90"
-                       ]
+        "id": "volcano",
+        "name": "火山",
+        "background": "res://assets/extracted/images/image_1262.jpg",
+        "required_level": 90,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "avit_island",
+                "name": "返回亚维特岛"
+            },
+            {
+                "target": "abyss_maze",
+                "name": "前往深渊迷宫"
+            }
+        ],
+        "encounters": [
+            "volcano_four_fang",
+            "volcano_fire_woman",
+            "volcano_scorpion",
+            "volcano_boss_90"
+        ]
     },
     {
-        "id":  "abyss_maze",
-        "name":  "深渊迷宫",
-        "background":  "res://assets/extracted/images/image_1268.jpg",
-        "required_level":  100,
-        "spawn":  [
-                      90,
-                      260
-                  ],
-        "exits":  [
-                      {
-                          "target":  "volcano",
-                          "name":  "返回火山"
-                      }
-                  ],
-        "encounters":  [
-                           "abyss_dark_messiah",
-                           "abyss_dark_grass",
-                           "abyss_sigh_knight",
-                           "abyss_boss_100"
-                       ]
+        "id": "abyss_maze",
+        "name": "深渊迷宫",
+        "background": "res://assets/extracted/images/image_1268.jpg",
+        "required_level": 100,
+        "spawn": [
+            90,
+            260
+        ],
+        "exits": [
+            {
+                "target": "volcano",
+                "name": "返回火山"
+            }
+        ],
+        "encounters": [
+            "abyss_dark_messiah",
+            "abyss_dark_grass",
+            "abyss_sigh_knight",
+            "abyss_boss_100"
+        ]
     },
     {
-        "id":  "treeheart_city",
-        "name":  "树心城",
-        "background":  "res://assets/extracted/images/image_1299.jpg",
-        "spawn":  [
-                      235,
-                      310
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      }
-                  ],
-        "encounters":  [
-
-                       ]
+        "id": "treeheart_city",
+        "name": "树心城",
+        "background": "res://assets/extracted/images/image_1299.jpg",
+        "spawn": [
+            235,
+            310
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            },
+            {
+                "target": "treeheart_outskirts",
+                "name": "树心郊区"
+            }
+        ],
+        "encounters": []
     },
     {
-        "id":  "palace_garden",
-        "name":  "后花园",
-        "background":  "res://assets/extracted/images/image_1175.jpg",
-        "spawn":  [
-                      355,
-                      380
-                  ],
-        "exits":  [
-                      {
-                          "target":  "palace",
-                          "name":  "返回皇宫"
-                      }
-                  ],
-        "encounters":  [
-
-                       ]
+        "id": "palace_garden",
+        "name": "后花园",
+        "background": "res://assets/extracted/images/image_1175.jpg",
+        "spawn": [
+            355,
+            380
+        ],
+        "exits": [
+            {
+                "target": "palace",
+                "name": "返回皇宫"
+            }
+        ],
+        "encounters": []
     },
     {
-        "id":  "lottery_room",
-        "name":  "抽奖房",
-        "background":  "res://assets/extracted/images/image_1175.jpg",
-        "spawn":  [
-                      345,
-                      315
-                  ],
-        "exits":  [
-                      {
-                          "target":  "palace",
-                          "name":  "返回皇宫"
-                      }
-                  ],
-        "encounters":  [
-
-                       ]
+        "id": "lottery_room",
+        "name": "抽奖房",
+        "background": "res://assets/extracted/images/image_1175.jpg",
+        "spawn": [
+            345,
+            315
+        ],
+        "exits": [
+            {
+                "target": "palace",
+                "name": "返回皇宫"
+            }
+        ],
+        "encounters": []
     },
     {
-        "id":  "pk_arena_2",
-        "name":  "PK赛场2层",
-        "background":  "res://assets/extracted/images/image_1294.jpg",
-        "spawn":  [
-                      345,
-                      315
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      }
-                  ],
-        "encounters":  [
-                           "pk_champion_100"
-                       ]
+        "id": "pk_arena_2",
+        "name": "PK赛场2层",
+        "background": "res://assets/extracted/images/image_1294.jpg",
+        "spawn": [
+            345,
+            315
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            }
+        ],
+        "encounters": [
+            "pk_champion_100"
+        ]
     },
     {
-        "id":  "pk_arena_3",
-        "name":  "PK赛场3层",
-        "background":  "res://assets/extracted/images/image_1294.jpg",
-        "spawn":  [
-                      345,
-                      315
-                  ],
-        "exits":  [
-                      {
-                          "target":  "cassano_city",
-                          "name":  "返回卡萨诺城"
-                      }
-                  ],
-        "encounters":  [
-                           "pk_champion_130"
-                       ]
+        "id": "pk_arena_3",
+        "name": "PK赛场3层",
+        "background": "res://assets/extracted/images/image_1294.jpg",
+        "spawn": [
+            345,
+            315
+        ],
+        "exits": [
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
+            }
+        ],
+        "encounters": [
+            "pk_champion_130"
+        ]
     },
     {
-        "id":  "war_soul_seal_maze",
-        "name":  "战魂封印谜宫",
-        "background":  "res://assets/extracted/images/image_1297.jpg",
-        "required_level":  1,
-        "spawn":  [
-                      190,
-                      245
-                  ],
-        "exits":  [
-
-                  ],
-        "encounters":  [
-                           "nameless_war_soul_keeper"
-                       ]
+        "id": "war_soul_seal_maze",
+        "name": "战魂封印谜宫",
+        "background": "res://assets/extracted/images/image_1297.jpg",
+        "required_level": 1,
+        "spawn": [
+            190,
+            245
+        ],
+        "exits": [],
+        "encounters": [
+            "nameless_war_soul_keeper"
+        ]
+    },
+    {
+        "id": "treeheart_outskirts",
+        "name": "树心郊区",
+        "background": "res://assets/extracted/images/image_1299.jpg",
+        "spawn": [
+            235,
+            310
+        ],
+        "exits": [
+            {
+                "target": "treeheart_city",
+                "name": "treeheart_city"
+            },
+            {
+                "target": "treeheart_core",
+                "name": "树心内核"
+            },
+            {
+                "target": "harbor_quay",
+                "name": "港口码头"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "treeheart_core",
+        "name": "树心内核",
+        "background": "res://assets/extracted/images/image_1097.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "treeheart_outskirts",
+                "name": "树心郊区"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "harbor_quay",
+        "name": "港口码头",
+        "background": "res://assets/extracted/images/image_1252.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "treeheart_outskirts",
+                "name": "树心郊区"
+            },
+            {
+                "target": "harbor_market",
+                "name": "港口市集"
+            },
+            {
+                "target": "sea_cave",
+                "name": "海洞"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "harbor_market",
+        "name": "港口市集",
+        "background": "res://assets/extracted/images/image_1114.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "harbor_quay",
+                "name": "港口码头"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "sea_cave",
+        "name": "海洞",
+        "background": "res://assets/extracted/images/image_1281.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "harbor_quay",
+                "name": "港口码头"
+            },
+            {
+                "target": "tide_shrine",
+                "name": "潮汐祭坛"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "tide_shrine",
+        "name": "潮汐祭坛",
+        "background": "res://assets/extracted/images/image_1242.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "sea_cave",
+                "name": "海洞"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "south_city_gate",
+        "background": "res://assets/extracted/images/image_1271.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "south_city_square",
+                "direction": "right"
+            },
+            {
+                "target": "border_watchpost",
+                "direction": "bottom"
+            }
+        ],
+        "name": "南部城门",
+        "encounters": []
+    },
+    {
+        "id": "south_city_square",
+        "background": "res://assets/extracted/images/image_1175.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "south_city_gate",
+                "direction": "left"
+            }
+        ],
+        "name": "南部广场",
+        "encounters": []
+    },
+    {
+        "id": "border_watchpost",
+        "background": "res://assets/extracted/images/image_1294.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "south_city_gate",
+                "direction": "top"
+            },
+            {
+                "target": "border_supply_route",
+                "direction": "right"
+            },
+            {
+                "target": "border_ruins",
+                "direction": "bottom"
+            }
+        ],
+        "name": "边境哨所",
+        "encounters": []
+    },
+    {
+        "id": "border_supply_route",
+        "background": "res://assets/extracted/images/image_1276.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "border_watchpost",
+                "direction": "left"
+            }
+        ],
+        "name": "补给线",
+        "encounters": []
+    },
+    {
+        "id": "border_ruins",
+        "background": "res://assets/extracted/images/image_1268.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "border_watchpost",
+                "direction": "top"
+            },
+            {
+                "target": "border_command_tent",
+                "direction": "right"
+            }
+        ],
+        "name": "边境废墟",
+        "encounters": []
+    },
+    {
+        "id": "border_command_tent",
+        "background": "res://assets/extracted/images/image_1278.jpg",
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "border_ruins",
+                "direction": "left"
+            }
+        ],
+        "name": "指挥帐",
+        "encounters": []
+    },
+    {
+        "id": "ice_frontier",
+        "name": "冰原先遣",
+        "background": "res://assets/extracted/images/image_1287.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "frozen_pass",
+                "name": "冻结隘口"
+            },
+            {
+                "target": "crystal_cavern",
+                "name": "晶石洞窟"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "frozen_pass",
+        "name": "冻结隘口",
+        "background": "res://assets/extracted/images/image_1292.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "ice_frontier",
+                "name": "冰原先遣"
+            },
+            {
+                "target": "elemental_laboratory",
+                "name": "元素试验室"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "crystal_cavern",
+        "name": "晶石洞窟",
+        "background": "res://assets/extracted/images/image_1066.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "ice_frontier",
+                "name": "冰原先遣"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "elemental_laboratory",
+        "name": "元素试验室",
+        "background": "res://assets/extracted/images/image_1091.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "frozen_pass",
+                "name": "冻结隘口"
+            },
+            {
+                "target": "aurora_sanctum",
+                "name": "极光圣所"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "aurora_sanctum",
+        "name": "极光圣所",
+        "background": "res://assets/extracted/images/image_1226.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "elemental_laboratory",
+                "name": "元素试验室"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "abyss_gate",
+        "name": "深渊门",
+        "background": "res://assets/extracted/images/image_1236.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "abyss_outer_ring",
+                "name": "深渊外环"
+            },
+            {
+                "target": "abyss_echo_halls",
+                "name": "回响厅"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "abyss_outer_ring",
+        "name": "深渊外环",
+        "background": "res://assets/extracted/images/image_1242.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "abyss_gate",
+                "name": "深渊门"
+            },
+            {
+                "target": "totem_sanctum",
+                "name": "图腾圣所"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "abyss_echo_halls",
+        "name": "回响厅",
+        "background": "res://assets/extracted/images/image_1276.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "abyss_gate",
+                "name": "深渊门"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "totem_sanctum",
+        "name": "图腾圣所",
+        "background": "res://assets/extracted/images/image_1278.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "abyss_outer_ring",
+                "name": "深渊外环"
+            },
+            {
+                "target": "abyss_heart",
+                "name": "深渊之心"
+            }
+        ],
+        "encounters": []
+    },
+    {
+        "id": "abyss_heart",
+        "name": "深渊之心",
+        "background": "res://assets/extracted/images/image_1262.jpg",
+        "required_level": 1,
+        "spawn": [
+            310,
+            280
+        ],
+        "exits": [
+            {
+                "target": "totem_sanctum",
+                "name": "图腾圣所"
+            }
+        ],
+        "encounters": []
     }
 ]

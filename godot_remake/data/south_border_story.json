@@ -1,0 +1,66 @@
+{
+  "chapter_id": "south_border",
+  "stages": [
+    "locked",
+    "scouting",
+    "supply",
+    "defense",
+    "counterattack",
+    "resolved",
+    "weekly_contract"
+  ],
+  "npcs": {
+    "border_cmd": {
+      "role": "commander"
+    },
+    "border_qm": {
+      "role": "quartermaster"
+    },
+    "border_scout_npc": {
+      "role": "scout_officer"
+    },
+    "border_tang": {
+      "adventurer_id": "npc_adv_tang_xue",
+      "role": "scout"
+    },
+    "border_liang": {
+      "adventurer_id": "npc_adv_liang_chen",
+      "role": "defense"
+    },
+    "border_weekly": {
+      "role": "weekly"
+    }
+  },
+  "scouts": [
+    {
+      "scout_id": "scout_tracks",
+      "map_id": "border_watchpost",
+      "stage": "scouting"
+    },
+    {
+      "scout_id": "scout_banner",
+      "map_id": "south_city_square",
+      "stage": "scouting"
+    }
+  ],
+  "supply": {
+    "item_id": "fruit",
+    "qty": 2,
+    "discount_qty": 1,
+    "relationship_id": "npc_adv_tang_xue",
+    "relationship_min": 2
+  },
+  "defense_ops": [
+    "border_skirmish_a",
+    "border_skirmish_b"
+  ],
+  "bosses": [
+    "border_command_boss"
+  ],
+  "resolved_reward": {
+    "gold": 40,
+    "military_merit": 20,
+    "reputation": 1,
+    "contribution": 1
+  }
+}

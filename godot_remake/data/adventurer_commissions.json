@@ -1,0 +1,88 @@
+[
+  {
+    "id": "comm_collect_ore",
+    "adventurer_id": "npc_adv_lin_xia",
+    "kind": "collect",
+    "display_name": "采集银矿",
+    "goal": {
+      "type": "collect_item",
+      "item_id": "silver_ore",
+      "quantity": 1
+    },
+    "reward": {
+      "relationship": 3,
+      "gold": 0
+    }
+  },
+  {
+    "id": "comm_explore_thunder",
+    "adventurer_id": "npc_adv_su_yan",
+    "kind": "explore",
+    "display_name": "探查雷鸣大陆",
+    "goal": {
+      "type": "explore_map",
+      "map_id": "thunder_continent"
+    },
+    "reward": {
+      "relationship": 3,
+      "gold": 0
+    }
+  },
+  {
+    "id": "comm_kill_spider",
+    "adventurer_id": "npc_adv_liang_chen",
+    "kind": "kill",
+    "display_name": "清剿蜘蛛",
+    "goal": {
+      "type": "kill",
+      "monster_id": "spider",
+      "quantity": 1
+    },
+    "reward": {
+      "relationship": 3,
+      "gold": 0
+    }
+  },
+  {
+    "id": "comm_deliver_fruit",
+    "adventurer_id": "npc_adv_jiang_yue",
+    "kind": "deliver",
+    "display_name": "送一枚果子",
+    "goal": {
+      "type": "deliver_item",
+      "item_id": "fruit",
+      "quantity": 1
+    },
+    "reward": {
+      "relationship": 3,
+      "gold": 0
+    }
+  },
+  {
+    "id": "comm_pet_train",
+    "adventurer_id": "npc_adv_qin_he",
+    "kind": "pet",
+    "display_name": "把幻兽练到2级",
+    "goal": {
+      "type": "pet_level",
+      "min_level": 2
+    },
+    "reward": {
+      "relationship": 3,
+      "gold": 0
+    }
+  },
+  {
+    "id": "comm_campaign_assist",
+    "adventurer_id": "npc_adv_gu_ning",
+    "kind": "campaign",
+    "display_name": "协助占领一处领地",
+    "goal": {
+      "type": "own_territory"
+    },
+    "reward": {
+      "relationship": 3,
+      "gold": 0
+    }
+  }
+]

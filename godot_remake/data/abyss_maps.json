@@ -1,0 +1,86 @@
+{
+  "maps": [
+    {
+      "id": "abyss_gate",
+      "background": "res://assets/extracted/images/image_1236.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "abyss_outer_ring",
+          "direction": "right"
+        },
+        {
+          "target": "abyss_echo_halls",
+          "direction": "bottom"
+        }
+      ]
+    },
+    {
+      "id": "abyss_outer_ring",
+      "background": "res://assets/extracted/images/image_1242.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "abyss_gate",
+          "direction": "left"
+        },
+        {
+          "target": "totem_sanctum",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "abyss_echo_halls",
+      "background": "res://assets/extracted/images/image_1276.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "abyss_gate",
+          "direction": "top"
+        }
+      ]
+    },
+    {
+      "id": "totem_sanctum",
+      "background": "res://assets/extracted/images/image_1278.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "abyss_outer_ring",
+          "direction": "left"
+        },
+        {
+          "target": "abyss_heart",
+          "direction": "right"
+        }
+      ]
+    },
+    {
+      "id": "abyss_heart",
+      "background": "res://assets/extracted/images/image_1262.jpg",
+      "spawn": [
+        310,
+        280
+      ],
+      "exits": [
+        {
+          "target": "totem_sanctum",
+          "direction": "left"
+        }
+      ]
+    }
+  ]
+}

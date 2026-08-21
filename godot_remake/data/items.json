@@ -1,442 +1,463 @@
 [
     {
-        "id":  "skill_red",
-        "name":  "飞天连斩",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "双击学习，造成120%伤害。",
-        "price_gold":  500000,
-        "use_effect":  "skill_book"
+        "id": "skill_red",
+        "name": "飞天连斩",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "双击学习，造成120%伤害。",
+        "price_gold": 500000,
+        "use_effect": "skill_book"
     },
     {
-        "id":  "skill_green",
-        "name":  "星魔剑",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "双击学习，造成120%伤害。",
-        "price_gold":  800000,
-        "use_effect":  "skill_book"
+        "id": "skill_green",
+        "name": "星魔剑",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "双击学习，造成120%伤害。",
+        "price_gold": 800000,
+        "use_effect": "skill_book"
     },
     {
-        "id":  "exp_potion",
-        "name":  "经验药水",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "使用后获得经验。",
-        "price_gold":  20000
+        "id": "exp_potion",
+        "name": "经验药水",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "使用后获得经验。",
+        "price_gold": 20000
     },
     {
-        "id":  "fruit",
-        "name":  "果子",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "使用后立即把人物生命值恢复到满。",
-        "price_gold":  1000,
-        "use_effect":  "full_heal"
+        "id": "fruit",
+        "name": "果子",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "使用后立即把人物生命值恢复到满。",
+        "price_gold": 1000,
+        "use_effect": "full_heal"
     },
     {
-        "id":  "exp_ball",
-        "name":  "满经验球",
-        "icon":  "res://assets/extracted/images/image_0038.jpg",
-        "description":  "容量 27,000，已经充满，可用于幻兽训练与幻化。",
-        "price_magic_stones":  29
+        "id": "exp_ball",
+        "name": "满经验球",
+        "icon": "res://assets/extracted/images/image_0038.jpg",
+        "description": "容量 27,000，已经充满，可用于幻兽训练与幻化。",
+        "price_magic_stones": 29
     },
     {
-        "id":  "rose",
-        "name":  "玫瑰",
-        "icon":  "res://assets/extracted/images/image_0042.jpg",
-        "description":  "赠送后提高亲密度。",
-        "price_magic_stones":  9
+        "id": "rose",
+        "name": "玫瑰",
+        "icon": "res://assets/extracted/images/image_0042.jpg",
+        "description": "赠送后提高亲密度。",
+        "price_magic_stones": 9
     },
     {
-        "id":  "rose_bouquet_999",
-        "name":  "999朵白玫瑰",
-        "icon":  "res://assets/extracted/images/image_0042.jpg",
-        "description":  "五福娃事件奖励，双击拆为999朵玫瑰。",
-        "use_effect":  "rose_bundle",
-        "amount":  999
+        "id": "rose_bouquet_999",
+        "name": "999朵白玫瑰",
+        "icon": "res://assets/extracted/images/image_0042.jpg",
+        "description": "五福娃事件奖励，双击拆为999朵玫瑰。",
+        "use_effect": "rose_bundle",
+        "amount": 999
     },
     {
-        "id":  "lava_potion",
-        "name":  "熔浆药水",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "双击后将人物直接提升至100级。",
-        "use_effect":  "level_to",
-        "amount":  100
+        "id": "lava_potion",
+        "name": "熔浆药水",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "双击后将人物直接提升至100级。",
+        "use_effect": "level_to",
+        "amount": 100
     },
     {
-        "id":  "skill_fighting_spirit",
-        "name":  "斗志抑扬",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "双击学习，战斗力+5%。",
-        "use_effect":  "skill_book"
+        "id": "skill_fighting_spirit",
+        "name": "斗志抑扬",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "双击学习，战斗力+5%。",
+        "use_effect": "skill_book"
     },
     {
-        "id":  "skill_flying_slash",
-        "name":  "飞天连斩",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "双击学习，造成120%伤害。",
-        "use_effect":  "skill_book"
+        "id": "skill_flying_slash",
+        "name": "飞天连斩",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "双击学习，造成120%伤害。",
+        "use_effect": "skill_book"
     },
     {
-        "id":  "skill_star_sword",
-        "name":  "星魔剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "双击学习，造成120%伤害。",
-        "use_effect":  "skill_book"
+        "id": "skill_star_sword",
+        "name": "星魔剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "双击学习，造成120%伤害。",
+        "use_effect": "skill_book"
     },
     {
-        "id":  "advanced_fighting_spirit",
-        "name":  "高级斗志抑扬",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "双击升级，战斗力+35%。",
-        "use_effect":  "skill_book"
+        "id": "advanced_fighting_spirit",
+        "name": "高级斗志抑扬",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "双击升级，战斗力+35%。",
+        "use_effect": "skill_book"
     },
     {
-        "id":  "advanced_star_sword",
-        "name":  "高级星魔剑",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "双击升级，造成150%伤害。",
-        "use_effect":  "skill_book"
+        "id": "advanced_star_sword",
+        "name": "高级星魔剑",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "双击升级，造成150%伤害。",
+        "use_effect": "skill_book"
     },
     {
-        "id":  "advanced_flying_slash",
-        "name":  "高级飞天连斩",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "双击升级，造成150%伤害。",
-        "use_effect":  "skill_book"
+        "id": "advanced_flying_slash",
+        "name": "高级飞天连斩",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "双击升级，造成150%伤害。",
+        "use_effect": "skill_book"
     },
     {
-        "id":  "enhanced_moon_box",
-        "name":  "月光宝盒增强版",
-        "icon":  "res://assets/extracted/images/image_0038.jpg",
-        "description":  "用于装备品质提升。"
+        "id": "enhanced_moon_box",
+        "name": "月光宝盒增强版",
+        "icon": "res://assets/extracted/images/image_0038.jpg",
+        "description": "用于装备品质提升。"
     },
     {
-        "id":  "war_soul_heart",
-        "name":  "战魂之心",
-        "icon":  "res://assets/extracted/images/image_0042.jpg",
-        "description":  "用于战魂系统。"
+        "id": "war_soul_heart",
+        "name": "战魂之心",
+        "icon": "res://assets/extracted/images/image_0042.jpg",
+        "description": "用于战魂系统。"
     },
     {
-        "id":  "war_soul_crystal",
-        "name":  "战魂晶石",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "激活战魂，基础成功率50%。"
+        "id": "war_soul_crystal",
+        "name": "战魂晶石",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "激活战魂，基础成功率50%。"
     },
     {
-        "id":  "magic_soul_crystal",
-        "name":  "魔魂晶石",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "用于提升装备魔魂等级。",
-        "price_magic_stones":  49
+        "id": "magic_soul_crystal",
+        "name": "魔魂晶石",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "用于提升装备魔魂等级。",
+        "price_magic_stones": 49
     },
     {
-        "id":  "soul_crystal",
-        "name":  "灵魂晶石",
-        "icon":  "res://assets/extracted/images/image_0038.jpg",
-        "description":  "地图保护者每日奖励中的原版品质材料。"
+        "id": "soul_crystal",
+        "name": "灵魂晶石",
+        "icon": "res://assets/extracted/images/image_0038.jpg",
+        "description": "地图保护者每日奖励中的原版品质材料。"
     },
     {
-        "id":  "soul_king",
-        "name":  "灵魂王",
-        "icon":  "res://assets/extracted/images/image_0042.jpg",
-        "description":  "幻兽研究所提高产量任务所需材料。",
-        "price_magic_stones":  999
+        "id": "soul_king",
+        "name": "灵魂王",
+        "icon": "res://assets/extracted/images/image_0042.jpg",
+        "description": "幻兽研究所提高产量任务所需材料。",
+        "price_magic_stones": 999
     },
     {
-        "id":  "advanced_exp_stone",
-        "name":  "高级经验石",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "公主关系前期的原版周日礼物，可用于装备养成。"
+        "id": "advanced_exp_stone",
+        "name": "高级经验石",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "公主关系前期的原版周日礼物，可用于装备养成。"
     },
     {
-        "id":  "advanced_combat_stone",
-        "name":  "高级战斗力石",
-        "icon":  "res://assets/extracted/images/image_0038.jpg",
-        "description":  "公主关系中期的原版周日礼物，可用于装备养成。"
+        "id": "advanced_combat_stone",
+        "name": "高级战斗力石",
+        "icon": "res://assets/extracted/images/image_0038.jpg",
+        "description": "公主关系中期的原版周日礼物，可用于装备养成。"
     },
     {
-        "id":  "plasma_potion",
-        "name":  "电浆药水",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "双击后将人物幸运值提高到100。",
-        "use_effect":  "luck_to",
-        "amount":  100
+        "id": "plasma_potion",
+        "name": "电浆药水",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "双击后将人物幸运值提高到100。",
+        "use_effect": "luck_to",
+        "amount": 100
     },
     {
-        "id":  "dungeon_plus9_sword",
-        "name":  "极品1星+9地下城剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "地下城二层原版奖励装备。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  55,
-        "combat_power":  110,
-        "preset_quality_level":  1,
-        "preset_magic_soul_level":  9
+        "id": "dungeon_plus9_sword",
+        "name": "极品1星+9地下城剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "地下城二层原版奖励装备。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 55,
+        "combat_power": 110,
+        "preset_quality_level": 1,
+        "preset_magic_soul_level": 9
     },
     {
-        "id":  "dungeon_plus12_sword",
-        "name":  "极品1星+12地下城剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "地下城三层原版奖励装备。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  75,
-        "combat_power":  150,
-        "preset_quality_level":  1,
-        "preset_magic_soul_level":  12
+        "id": "dungeon_plus12_sword",
+        "name": "极品1星+12地下城剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "地下城三层原版奖励装备。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 75,
+        "combat_power": 150,
+        "preset_quality_level": 1,
+        "preset_magic_soul_level": 12
     },
     {
-        "id":  "territory_quality3_plus9_sword",
-        "name":  "极品3星+9领地剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "低阶地图保护者每日奖励，极品3星、魔魂+9、1孔。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  85,
-        "combat_power":  170,
-        "preset_quality_level":  3,
-        "preset_magic_soul_level":  9
+        "id": "territory_quality3_plus9_sword",
+        "name": "极品3星+9领地剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "低阶地图保护者每日奖励，极品3星、魔魂+9、1孔。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 85,
+        "combat_power": 170,
+        "preset_quality_level": 3,
+        "preset_magic_soul_level": 9
     },
     {
-        "id":  "territory_quality3_plus12_sword",
-        "name":  "极品3星+12领地剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "冰宫保护者每日奖励，极品3星、魔魂+12、1孔。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  105,
-        "combat_power":  210,
-        "preset_quality_level":  3,
-        "preset_magic_soul_level":  12
+        "id": "territory_quality3_plus12_sword",
+        "name": "极品3星+12领地剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "冰宫保护者每日奖励，极品3星、魔魂+12、1孔。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 105,
+        "combat_power": 210,
+        "preset_quality_level": 3,
+        "preset_magic_soul_level": 12
     },
     {
-        "id":  "territory_quality4_plus9_sword",
-        "name":  "极品4星+9领地剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "亚维特岛保护者每日奖励，极品4星、魔魂+9、1孔。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  120,
-        "combat_power":  240,
-        "preset_quality_level":  4,
-        "preset_magic_soul_level":  9
+        "id": "territory_quality4_plus9_sword",
+        "name": "极品4星+9领地剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "亚维特岛保护者每日奖励，极品4星、魔魂+9、1孔。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 120,
+        "combat_power": 240,
+        "preset_quality_level": 4,
+        "preset_magic_soul_level": 9
     },
     {
-        "id":  "territory_quality4_plus12_sword",
-        "name":  "极品4星+12领地剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "卡萨诺城保护者每日奖励，极品4星、魔魂+12、1孔。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  145,
-        "combat_power":  290,
-        "preset_quality_level":  4,
-        "preset_magic_soul_level":  12
+        "id": "territory_quality4_plus12_sword",
+        "name": "极品4星+12领地剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "卡萨诺城保护者每日奖励，极品4星、魔魂+12、1孔。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 145,
+        "combat_power": 290,
+        "preset_quality_level": 4,
+        "preset_magic_soul_level": 12
     },
     {
-        "id":  "novice_sword",
-        "name":  "新手长剑",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "基础武器。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  25,
-        "combat_power":  50
+        "id": "novice_sword",
+        "name": "新手长剑",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "基础武器。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 25,
+        "combat_power": 50
     },
     {
-        "id":  "novice_armor",
-        "name":  "新手铠甲",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "基础铠甲。",
-        "category":  "equipment",
-        "equipment_slot":  "armor",
-        "defense":  18,
-        "max_hp":  120,
-        "combat_power":  42
+        "id": "novice_armor",
+        "name": "新手铠甲",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "基础铠甲。",
+        "category": "equipment",
+        "equipment_slot": "armor",
+        "defense": 18,
+        "max_hp": 120,
+        "combat_power": 42
     },
     {
-        "id":  "silver_ore",
-        "name":  "银矿",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "含有银的矿石，卖给卡萨诺城的杂货商可以得到不少金币。",
-        "category":  "ore"
+        "id": "silver_ore",
+        "name": "银矿",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "含有银的矿石，卖给卡萨诺城的杂货商可以得到不少金币。",
+        "category": "ore"
     },
     {
-        "id":  "gold_ore",
-        "name":  "金矿",
-        "icon":  "res://assets/extracted/images/image_0038.jpg",
-        "description":  "含有金的矿石，卡萨诺城的收藏家正在以高价魔石收购。",
-        "category":  "ore"
+        "id": "gold_ore",
+        "name": "金矿",
+        "icon": "res://assets/extracted/images/image_0038.jpg",
+        "description": "含有金的矿石，卡萨诺城的收藏家正在以高价魔石收购。",
+        "category": "ore"
     },
     {
-        "id":  "illusion_heart",
-        "name":  "幻魔之心",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "抽奖房稀有材料。"
+        "id": "illusion_heart",
+        "name": "幻魔之心",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "抽奖房稀有材料。"
     },
     {
-        "id":  "magic_soul_heart",
-        "name":  "魔魂之心",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "抽奖房稀有材料。"
+        "id": "magic_soul_heart",
+        "name": "魔魂之心",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "抽奖房稀有材料。"
     },
     {
-        "id":  "rose_bouquet_99",
-        "name":  "99朵白玫瑰",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "使用后增加好感度。",
-        "use_effect":  "rose_bundle",
-        "amount":  99
+        "id": "rose_bouquet_99",
+        "name": "99朵白玫瑰",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "使用后增加好感度。",
+        "use_effect": "rose_bundle",
+        "amount": 99
     },
     {
-        "id":  "lottery_weapon",
-        "name":  "抽奖房武器",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "抽奖房随机装备。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  90,
-        "combat_power":  180
+        "id": "lottery_weapon",
+        "name": "抽奖房武器",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "抽奖房随机装备。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 90,
+        "combat_power": 180
     },
     {
-        "id":  "lottery_helmet",
-        "name":  "抽奖房头盔",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "抽奖房随机装备。",
-        "category":  "equipment",
-        "equipment_slot":  "helmet",
-        "defense":  25,
-        "max_hp":  80,
-        "combat_power":  80
+        "id": "lottery_helmet",
+        "name": "抽奖房头盔",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "抽奖房随机装备。",
+        "category": "equipment",
+        "equipment_slot": "helmet",
+        "defense": 25,
+        "max_hp": 80,
+        "combat_power": 80
     },
     {
-        "id":  "lottery_necklace",
-        "name":  "抽奖房项链",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "抽奖房随机装备。",
-        "category":  "equipment",
-        "equipment_slot":  "necklace",
-        "attack":  20,
-        "defense":  10,
-        "combat_power":  70
+        "id": "lottery_necklace",
+        "name": "抽奖房项链",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "抽奖房随机装备。",
+        "category": "equipment",
+        "equipment_slot": "necklace",
+        "attack": 20,
+        "defense": 10,
+        "combat_power": 70
     },
     {
-        "id":  "lottery_armor",
-        "name":  "抽奖房衣服",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "抽奖房随机装备。",
-        "category":  "equipment",
-        "equipment_slot":  "armor",
-        "defense":  40,
-        "max_hp":  240,
-        "combat_power":  100
+        "id": "lottery_armor",
+        "name": "抽奖房衣服",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "抽奖房随机装备。",
+        "category": "equipment",
+        "equipment_slot": "armor",
+        "defense": 40,
+        "max_hp": 240,
+        "combat_power": 100
     },
     {
-        "id":  "lottery_bracelet",
-        "name":  "抽奖房手镯",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "抽奖房随机装备。",
-        "category":  "equipment",
-        "equipment_slot":  "bracelet",
-        "attack":  30,
-        "combat_power":  75
+        "id": "lottery_bracelet",
+        "name": "抽奖房手镯",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "抽奖房随机装备。",
+        "category": "equipment",
+        "equipment_slot": "bracelet",
+        "attack": 30,
+        "combat_power": 75
     },
     {
-        "id":  "lottery_boots",
-        "name":  "抽奖房战靴",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "抽奖房随机装备。",
-        "category":  "equipment",
-        "equipment_slot":  "boots",
-        "defense":  20,
-        "max_hp":  100,
-        "combat_power":  65
+        "id": "lottery_boots",
+        "name": "抽奖房战靴",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "抽奖房随机装备。",
+        "category": "equipment",
+        "equipment_slot": "boots",
+        "defense": 20,
+        "max_hp": 100,
+        "combat_power": 65
     },
     {
-        "id":  "illusion_crystal",
-        "name":  "幻魔晶石",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "20个可在宝石合成师处合成为幻魔之心。"
+        "id": "illusion_crystal",
+        "name": "幻魔晶石",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "20个可在宝石合成师处合成为幻魔之心。"
     },
     {
-        "id":  "intermediate_exp_stone",
-        "name":  "中级经验石",
-        "icon":  "res://assets/extracted/images/image_0033.jpg",
-        "description":  "20个可在宝石合成师处合成为高级经验石。"
+        "id": "intermediate_exp_stone",
+        "name": "中级经验石",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "20个可在宝石合成师处合成为高级经验石。"
     },
     {
-        "id":  "intermediate_combat_stone",
-        "name":  "中级战斗力石",
-        "icon":  "res://assets/extracted/images/image_0038.jpg",
-        "description":  "20个可在宝石合成师处合成为高级战斗力石。"
+        "id": "intermediate_combat_stone",
+        "name": "中级战斗力石",
+        "icon": "res://assets/extracted/images/image_0038.jpg",
+        "description": "20个可在宝石合成师处合成为高级战斗力石。"
     },
     {
-        "id":  "moon_box",
-        "name":  "月光宝盒",
-        "icon":  "res://assets/extracted/images/image_0038.jpg",
-        "description":  "60级及以下普通BOSS可能掉落的原版开洞材料。"
+        "id": "moon_box",
+        "name": "月光宝盒",
+        "icon": "res://assets/extracted/images/image_0038.jpg",
+        "description": "60级及以下普通BOSS可能掉落的原版开洞材料。"
     },
     {
-        "id":  "field_weapon",
-        "name":  "野外武器",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "普通怪物或BOSS掉落的随机等级装备。",
-        "category":  "equipment",
-        "equipment_slot":  "weapon",
-        "attack":  70,
-        "combat_power":  90
+        "id": "field_weapon",
+        "name": "野外武器",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "普通怪物或BOSS掉落的随机等级装备。",
+        "category": "equipment",
+        "equipment_slot": "weapon",
+        "attack": 70,
+        "combat_power": 90
     },
     {
-        "id":  "field_helmet",
-        "name":  "野外头盔",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "普通怪物或BOSS掉落的随机等级装备。",
-        "category":  "equipment",
-        "equipment_slot":  "helmet",
-        "defense":  20,
-        "max_hp":  60,
-        "combat_power":  45
+        "id": "field_helmet",
+        "name": "野外头盔",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "普通怪物或BOSS掉落的随机等级装备。",
+        "category": "equipment",
+        "equipment_slot": "helmet",
+        "defense": 20,
+        "max_hp": 60,
+        "combat_power": 45
     },
     {
-        "id":  "field_necklace",
-        "name":  "野外项链",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "普通怪物或BOSS掉落的随机等级装备。",
-        "category":  "equipment",
-        "equipment_slot":  "necklace",
-        "attack":  18,
-        "defense":  8,
-        "combat_power":  40
+        "id": "field_necklace",
+        "name": "野外项链",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "普通怪物或BOSS掉落的随机等级装备。",
+        "category": "equipment",
+        "equipment_slot": "necklace",
+        "attack": 18,
+        "defense": 8,
+        "combat_power": 40
     },
     {
-        "id":  "field_armor",
-        "name":  "野外衣服",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "普通怪物或BOSS掉落的随机等级装备。",
-        "category":  "equipment",
-        "equipment_slot":  "armor",
-        "defense":  35,
-        "max_hp":  180,
-        "combat_power":  60
+        "id": "field_armor",
+        "name": "野外衣服",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "普通怪物或BOSS掉落的随机等级装备。",
+        "category": "equipment",
+        "equipment_slot": "armor",
+        "defense": 35,
+        "max_hp": 180,
+        "combat_power": 60
     },
     {
-        "id":  "field_bracelet",
-        "name":  "野外手镯",
-        "icon":  "res://assets/extracted/images/image_0021.jpg",
-        "description":  "普通怪物或BOSS掉落的随机等级装备。",
-        "category":  "equipment",
-        "equipment_slot":  "bracelet",
-        "attack":  25,
-        "combat_power":  45
+        "id": "field_bracelet",
+        "name": "野外手镯",
+        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "description": "普通怪物或BOSS掉落的随机等级装备。",
+        "category": "equipment",
+        "equipment_slot": "bracelet",
+        "attack": 25,
+        "combat_power": 45
     },
     {
-        "id":  "field_boots",
-        "name":  "野外战靴",
-        "icon":  "res://assets/extracted/images/image_0024.jpg",
-        "description":  "普通怪物或BOSS掉落的随机等级装备。",
-        "category":  "equipment",
-        "equipment_slot":  "boots",
-        "defense":  16,
-        "max_hp":  80,
-        "combat_power":  40
+        "id": "field_boots",
+        "name": "野外战靴",
+        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "description": "普通怪物或BOSS掉落的随机等级装备。",
+        "category": "equipment",
+        "equipment_slot": "boots",
+        "defense": 16,
+        "max_hp": 80,
+        "combat_power": 40
+    },
+    {
+        "id": "ember_vial",
+        "name": "火绒瓶",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "element fire charge",
+        "use_effect": "element_charge"
+    },
+    {
+        "id": "frost_vial",
+        "name": "霜绒瓶",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "element ice charge",
+        "use_effect": "element_charge"
+    },
+    {
+        "id": "spark_vial",
+        "name": "雷绒瓶",
+        "icon": "res://assets/extracted/images/image_0033.jpg",
+        "description": "element thunder charge",
+        "use_effect": "element_charge"
     }
 ]

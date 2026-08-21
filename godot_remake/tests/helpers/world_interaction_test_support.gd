@@ -30,6 +30,7 @@ static func snapshot_game_state() -> Dictionary:
 		"last_territory_reward_day": GameState.last_territory_reward_day,
 		"completed_daily_tasks": GameState.completed_daily_tasks.duplicate(true),
 		"warehouse": GameState.warehouse.duplicate(true),
+		"expansion_state": GameState.expansion_state.duplicate(true),
 	}
 
 static func restore_game_state(snap: Dictionary) -> void:
@@ -56,6 +57,8 @@ static func restore_game_state(snap: Dictionary) -> void:
 	GameState.last_territory_challenge_day = int(snap.get("last_territory_challenge_day", 0))
 	GameState.last_territory_reward_day = int(snap.get("last_territory_reward_day", 0))
 	GameState.completed_daily_tasks = snap.get("completed_daily_tasks", {}).duplicate(true)
+	if snap.get("expansion_state") is Dictionary:
+		GameState.expansion_state = snap.get("expansion_state").duplicate(true)
 
 # --- 深度比较快照恢复 ---
 static func game_state_restore_differences(before: Dictionary) -> Array:
@@ -159,6 +162,7 @@ static func apply_fixture(fixture: Variant) -> void:
 	GameState.last_territory_reward_day = 0
 	GameState.last_pk_race_day = 0
 	GameState.completed_daily_tasks.clear()
+	GameState.expansion_state = GameState.expansion_state_service.default_enabled_state()
 	if not fixture is Dictionary:
 		return
 	var fd: Dictionary = fixture
@@ -174,6 +178,23 @@ static func apply_fixture(fixture: Variant) -> void:
 			GameState.war_soul_guardian_revealed = bool(val)
 		elif key == "pk_race_active":
 			GameState.pk_race_active = bool(val)
+		elif key == "pet_trial_active":
+			var ptid := str(val)
+			GameState.seed_pet_endgame_prereqs()
+			if ptid == "pet_king":
+				for tid in ["pet_trial_1", "pet_trial_2", "pet_trial_3"]:
+					var sp: Dictionary = GameState.expansion_state_service.pet_trial_service.spec_of(tid)
+					var smid := str(sp.get("monster_id", ""))
+					GameState.try_start_pet_trial(tid, "fix:%s" % tid)
+					GameState.begin_pet_trial_session(smid, "fixs:%s" % tid)
+					GameState.settle_pet_trial_battle(smid, true, "fixs:%s" % tid)
+			GameState.try_start_pet_trial(ptid, "fix:%s" % ptid)
+		elif key == "challenge_active":
+			var boss := str(val)
+			var cid := GameState.expansion_state_service.challenge_service.challenge_id_of(boss)
+			GameState.seed_challenge_prereqs()
+			GameState.unlock_warrior_mastery("mastery_flying_slash", "fix:ms")
+			GameState.try_start_challenge(cid, "official", "fix:%s" % cid)
 		elif key == "last_pk_race_day":
 			GameState.last_pk_race_day = int(val)
 		elif key == "level":
@@ -187,6 +208,22 @@ static func apply_fixture(fixture: Variant) -> void:
 		elif key.begins_with("demon_campaign."):
 			var dkey: String = key.trim_prefix("demon_campaign.")
 			GameState.demon_campaign[dkey] = val
+		elif key.begins_with("chapter_th."):
+			var ckey: String = key.trim_prefix("chapter_th.")
+			if ckey == "stage":
+				GameState.apply_chapter_fixture(str(val))
+		elif key.begins_with("border."):
+			var bkey: String = key.trim_prefix("border.")
+			if bkey == "stage":
+				GameState.apply_border_fixture(str(val))
+		elif key.begins_with("ice."):
+			var ikey: String = key.trim_prefix("ice.")
+			if ikey == "stage":
+				GameState.apply_ice_fixture(str(val))
+		elif key.begins_with("abyss."):
+			var akey: String = key.trim_prefix("abyss.")
+			if akey == "stage":
+				GameState.apply_abyss_fixture(str(val))
 
 # --- 运行时实体快照 ---
 static func runtime_entity_snapshot(main: Node) -> Dictionary:
@@ -319,6 +356,18 @@ static func expected_entity_snapshot(reg_map: Variant) -> Dictionary:
 
 
 static func _condition_active(cond: String, map_id: String) -> bool:
+	if cond.begins_with("border_unit:"):
+		return GameState.border_unit_visible(cond.trim_prefix("border_unit:"))
+	if cond.begins_with("ice_unit:"):
+		return GameState.ice_unit_visible(cond.trim_prefix("ice_unit:"))
+	if cond.begins_with("abyss_unit:"):
+		return GameState.abyss_unit_visible(cond.trim_prefix("abyss_unit:"))
+	if cond.begins_with("challenge_unit:"):
+		return GameState.challenge_unit_visible(cond.trim_prefix("challenge_unit:"))
+	if cond.begins_with("pet_trial_unit:"):
+		return GameState.pet_trial_unit_visible(cond.trim_prefix("pet_trial_unit:"))
+	if cond.begins_with("chapter_th_boss:"):
+		return GameState.chapter_boss_visible(cond.trim_prefix("chapter_th_boss:"))
 	if "king_rescued" in cond:
 		return bool(GameState.story_flags.get("king_rescued", false))
 	if "should_show_fuwa_messenger" in cond:

@@ -206,4 +206,4 @@ func _refresh() -> void:
 		var button: Button = quest_buttons[quest_id]
 		button.text = {"available":"接取", "active":"进行中", "ready":"领取", "completed":"已完成"}.get(status, "查看")
 		button.disabled = status in ["active", "completed"]
-	footer_label.text = "第%d天　主线完成度 %d/%d　日常任务跨日重置" % [GameState.current_day, int(flow.step), int(flow.total)]
+	footer_label.text = "第%d天　主线完成度 %d/%d　%s" % [GameState.current_day, int(flow.step), int(flow.total), GameState.chapter_board_text()]

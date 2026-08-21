@@ -1,0 +1,71 @@
+{
+  "rare_weight": 10,
+  "territories": [
+    {
+      "map_id": "cassano_city",
+      "industry": "town_trade",
+      "resource_id": "gold",
+      "base_output": 10,
+      "stock_cap": 80,
+      "assignment_bonus": 1,
+      "relationship_bonus": 1,
+      "relationship_threshold": 2,
+      "post_id": "steward"
+    },
+    {
+      "map_id": "thunder_continent",
+      "industry": "thunder_mine",
+      "resource_id": "soul_crystal",
+      "base_output": 2,
+      "stock_cap": 20,
+      "assignment_bonus": 1,
+      "relationship_bonus": 1,
+      "relationship_threshold": 2,
+      "post_id": "foreman"
+    },
+    {
+      "map_id": "desert",
+      "industry": "desert_supply",
+      "resource_id": "fruit",
+      "base_output": 3,
+      "stock_cap": 30,
+      "assignment_bonus": 1,
+      "relationship_bonus": 1,
+      "relationship_threshold": 2,
+      "post_id": "quartermaster"
+    },
+    {
+      "map_id": "dream_swamp",
+      "industry": "swamp_herbs",
+      "resource_id": "rose",
+      "base_output": 2,
+      "stock_cap": 20,
+      "assignment_bonus": 1,
+      "relationship_bonus": 1,
+      "relationship_threshold": 2,
+      "post_id": "herbalist"
+    },
+    {
+      "map_id": "ice_palace",
+      "industry": "ice_relics",
+      "resource_id": "soul_king",
+      "base_output": 1,
+      "stock_cap": 10,
+      "assignment_bonus": 1,
+      "relationship_bonus": 1,
+      "relationship_threshold": 2,
+      "post_id": "curator"
+    },
+    {
+      "map_id": "avit_island",
+      "industry": "avit_route",
+      "resource_id": "exp_ball",
+      "base_output": 2,
+      "stock_cap": 20,
+      "assignment_bonus": 1,
+      "relationship_bonus": 1,
+      "relationship_threshold": 2,
+      "post_id": "navigator"
+    }
+  ]
+}

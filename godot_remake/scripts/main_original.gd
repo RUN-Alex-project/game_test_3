@@ -15,6 +15,19 @@ const DialoguePanel = preload("res://scripts/dialogue_panel.gd")
 const WorldService = preload("res://scripts/world_service.gd")
 const EndingPanel = preload("res://scripts/ending_panel.gd")
 const NativeExitButton = preload("res://scripts/native_exit_button.gd")
+const AdventurerRosterPanel = preload("res://scripts/adventurer_roster_panel.gd")
+const AdventurerMailPanel = preload("res://scripts/adventurer_mail_panel.gd")
+const AdventurerTradePanel = preload("res://scripts/adventurer_trade_panel.gd")
+const RankingPanel = preload("res://scripts/ranking_panel.gd")
+const ArenaPanel = preload("res://scripts/arena_panel.gd")
+const GuildMarketPanel = preload("res://scripts/guild_market_panel.gd")
+const PropertyTerritoryPanel = preload("res://scripts/property_territory_panel.gd")
+const BorderCommandPanel = preload("res://scripts/border_command_panel.gd")
+const IceCodexPanel = preload("res://scripts/ice_codex_panel.gd")
+const AbyssBoardPanel = preload("res://scripts/abyss_board_panel.gd")
+const ChallengeBoardPanel = preload("res://scripts/challenge_board_panel.gd")
+const PetEndgamePanel = preload("res://scripts/pet_endgame_panel.gd")
+const SeasonBoardPanel = preload("res://scripts/season_board_panel.gd")
 
 var player: TextureRect
 var background: TextureRect
@@ -35,6 +48,20 @@ var skill_panel: PanelContainer
 var scene_battle_controller: Control
 var dialogue_panel: PanelContainer
 var ending_panel: Panel
+var adventurer_roster_panel: PanelContainer
+var adventurer_mail_panel: PanelContainer
+var adventurer_trade_panel: PanelContainer
+var ranking_panel: PanelContainer
+var arena_panel: PanelContainer
+var guild_market_panel: PanelContainer
+var property_territory_panel: PanelContainer
+var border_command_panel: PanelContainer
+var ice_codex_panel: PanelContainer
+var abyss_board_panel: PanelContainer
+var challenge_board_panel: PanelContainer
+var pet_endgame_panel: PanelContainer
+var season_board_panel: PanelContainer
+var arena_proxy: TextureRect
 var item_tooltip_panel: PanelContainer
 var item_tooltip_text: RichTextLabel
 var monster_tooltip_panel: Panel
@@ -579,6 +606,68 @@ func _build_panels() -> void:
 	dialogue_panel.action_requested.connect(_handle_dialogue_action)
 	add_child(dialogue_panel)
 	dialogue_panel.hide()
+	adventurer_roster_panel = AdventurerRosterPanel.new()
+	adventurer_roster_panel.message_changed.connect(_set_status)
+	adventurer_roster_panel.mail_requested.connect(_open_adventurer_mail)
+	adventurer_roster_panel.trade_requested.connect(_open_adventurer_trade)
+	add_child(adventurer_roster_panel)
+	adventurer_roster_panel.hide()
+	adventurer_mail_panel = AdventurerMailPanel.new()
+	adventurer_mail_panel.message_changed.connect(_set_status)
+	add_child(adventurer_mail_panel)
+	adventurer_mail_panel.hide()
+	adventurer_trade_panel = AdventurerTradePanel.new()
+	adventurer_trade_panel.message_changed.connect(_set_status)
+	add_child(adventurer_trade_panel)
+	adventurer_trade_panel.hide()
+	ranking_panel = RankingPanel.new()
+	ranking_panel.message_changed.connect(_set_status)
+	add_child(ranking_panel)
+	ranking_panel.hide()
+	arena_panel = ArenaPanel.new()
+	arena_panel.message_changed.connect(_set_status)
+	arena_panel.start_requested.connect(_start_arena_match)
+	add_child(arena_panel)
+	arena_panel.hide()
+	guild_market_panel = GuildMarketPanel.new()
+	guild_market_panel.message_changed.connect(_set_status)
+	add_child(guild_market_panel)
+	guild_market_panel.hide()
+	property_territory_panel = PropertyTerritoryPanel.new()
+	property_territory_panel.message_changed.connect(_set_status)
+	add_child(property_territory_panel)
+	property_territory_panel.hide()
+	border_command_panel = BorderCommandPanel.new()
+	border_command_panel.message_changed.connect(_set_status)
+	add_child(border_command_panel)
+	border_command_panel.hide()
+	ice_codex_panel = IceCodexPanel.new()
+	ice_codex_panel.message_changed.connect(_set_status)
+	add_child(ice_codex_panel)
+	ice_codex_panel.hide()
+	abyss_board_panel = AbyssBoardPanel.new()
+	abyss_board_panel.message_changed.connect(_set_status)
+	add_child(abyss_board_panel)
+	abyss_board_panel.hide()
+	challenge_board_panel = ChallengeBoardPanel.new()
+	challenge_board_panel.message_changed.connect(_set_status)
+	add_child(challenge_board_panel)
+	challenge_board_panel.hide()
+	pet_endgame_panel = PetEndgamePanel.new()
+	pet_endgame_panel.message_changed.connect(_set_status)
+	add_child(pet_endgame_panel)
+	pet_endgame_panel.hide()
+	season_board_panel = SeasonBoardPanel.new()
+	season_board_panel.message_changed.connect(_set_status)
+	add_child(season_board_panel)
+	season_board_panel.hide()
+	arena_proxy = TextureRect.new()
+	arena_proxy.name = "arena_proxy"
+	arena_proxy.visible = false
+	arena_proxy.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	arena_proxy.position = Vector2(280, 180)
+	arena_proxy.size = Vector2(80, 80)
+	add_child(arena_proxy)
 	ending_panel = EndingPanel.new()
 	add_child(ending_panel)
 
@@ -741,7 +830,7 @@ func _add_actor(actor_name: String, texture_path: String, actor_position: Vector
 	actor.size = actor_size
 	actor.mouse_filter = Control.MOUSE_FILTER_STOP
 	actor.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	var entity_kind := "monster" if action_id.begins_with("battle:") else ("interactive_prop" if (action_id.begins_with("lottery:") or action_id.begins_with("mine:") or action_id == "war_soul_chest" or action_id == "fuwa_reward") else "npc")
+	var entity_kind := "monster" if action_id.begins_with("battle:") else ("interactive_prop" if (action_id.begins_with("lottery:") or action_id.begins_with("mine:") or action_id == "war_soul_chest" or action_id == "fuwa_reward" or action_id.begins_with("evidence:") or action_id.begins_with("scout:") or (action_id.begins_with("ice:") and not action_id.begins_with("ice_")) or (action_id.begins_with("abyss:") and not action_id.begins_with("abyss_"))) else "npc")
 	actor.set_meta("world_entity_id", action_id)
 	actor.set_meta("world_entity_kind", entity_kind)
 	actor.set_meta("world_action_id", action_id)
@@ -855,6 +944,30 @@ func _dispatch_world_action(action_id: String, event: InputEvent) -> Dictionary:
 	if action_id.begins_with("territory:"):
 		_open_actor_dialogue(action_id)
 		return {"route": "territory", "code": "OK"}
+	if action_id.begins_with("evidence:"):
+		_collect_chapter_evidence(action_id)
+		return {"route": "chapter_evidence", "code": "OK"}
+	if action_id.begins_with("scout:"):
+		_collect_border_scout(action_id)
+		return {"route": "border_scout", "code": "OK"}
+	if action_id.begins_with("ice:") and not action_id.begins_with("ice_"):
+		_collect_ice_probe(action_id)
+		return {"route": "ice_investigate", "code": "OK"}
+	if action_id.begins_with("abyss:") and not action_id.begins_with("abyss_"):
+		_collect_abyss_world(action_id)
+		return {"route": "abyss_investigate", "code": "OK"}
+	if action_id.begins_with("abyss_"):
+		_open_actor_dialogue(action_id)
+		return {"route": "npc_dialogue", "code": "OK"}
+	if action_id.begins_with("ice_"):
+		_open_actor_dialogue(action_id)
+		return {"route": "npc_dialogue", "code": "OK"}
+	if action_id.begins_with("border_"):
+		_open_actor_dialogue(action_id)
+		return {"route": "npc_dialogue", "code": "OK"}
+	if action_id.begins_with("chapter_"):
+		_open_actor_dialogue(action_id)
+		return {"route": "npc_dialogue", "code": "OK"}
 	# dialogue action由_handle_dialogue_action处理，不经过此处
 	var known_world_actors: Array = [
 		"grocery","stone_shop","collector","warehouse","daily_officer",
@@ -893,6 +1006,15 @@ func _mine_at_node(_action_id: String) -> void:
 
 func _open_actor_dialogue(action_id: String) -> void:
 	_hide_all_panels()
+	if action_id.begins_with("chapter_"):
+		_handle_dialogue_action(action_id)
+		return
+	if action_id.begins_with("border_"):
+		_handle_dialogue_action(action_id)
+		return
+	if action_id.begins_with("ice_"):
+		_handle_dialogue_action(action_id)
+		return
 	var actions: Array[Dictionary] = []
 	var speaker := ""
 	var words := ""
@@ -908,7 +1030,7 @@ func _open_actor_dialogue(action_id: String) -> void:
 		"collector":
 			speaker = "收藏家"
 			words = "我们家族世代收藏稀有物品。金矿、灵魂王、电浆药水、白玫瑰、月光宝盒、满经验球和极品装备，都可以拿来与我交易。"
-			actions = [{"label":"我有些好东西要卖","action":"stone_sell"},{"label":"离开","action":"close"}]
+			actions = [{"label":"我有些好东西要卖","action":"stone_sell"},{"label":"商会事务","action":"guild_market"},{"label":"离开","action":"close"}]
 		"warehouse":
 			speaker = "仓库管理员"
 			words = "需要存放或取出物品吗？背包和仓库可以直接拖动整理。"
@@ -1035,6 +1157,7 @@ func _open_territory_dialogue(map_id: String) -> void:
 		{"label":"查看每日奖励", "action":"territory_reward:%s" % map_id},
 		{"label":"领取今日奖励", "action":"territory_claim:%s" % map_id},
 		{"label":"我要挑战", "action":"territory_challenge:%s" % map_id},
+		{"label":"领地与城堡", "action":"property_board"},
 		{"label":"离开", "action":"close"},
 	]
 	dialogue_panel.open_dialogue("地图占领报名官", words, actions)
@@ -1318,6 +1441,62 @@ func _perform_prime_donation(amount_str: String) -> void:
 	_open_prime_donate_dialogue()
 
 
+func _with_abyss_gate(actions: Array[Dictionary]) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for entry in actions:
+		if str(entry.get("action", "")) == "close" and not inserted:
+			out.append({"label": "\u6df1\u6e0a\u7ec8\u5c40", "action": "enter_abyss"})
+			out.append({"label": "\u7ec8\u5c40\u9762\u677f", "action": "abyss_board"})
+			inserted = true
+		out.append(entry)
+	if not inserted:
+		out.append({"label": "\u6df1\u6e0a\u7ec8\u5c40", "action": "enter_abyss"})
+		out.append({"label": "\u7ec8\u5c40\u9762\u677f", "action": "abyss_board"})
+	return out
+
+
+func _enter_abyss() -> void:
+	var gate: Dictionary = GameState.try_enter_abyss("ui:enter_abyss:%d" % GameState.current_day)
+	if not bool(gate.get("success", false)):
+		_set_status(str(gate.get("code", "ABYSS_PRECONDITION")))
+		return
+	_hide_all_panels()
+	GameState.current_map_id = "abyss_gate"
+	AudioService.play("change_map")
+	_apply_current_map()
+	_set_status("abyss_gate")
+
+
+func _open_abyss_board() -> void:
+	_hide_all_panels()
+	abyss_board_panel.show()
+	abyss_board_panel.refresh()
+
+
+func _talk_abyss_npc(action_id: String) -> void:
+	var talked: Dictionary = GameState.talk_abyss_npc(action_id, "ui:talk:%s:%s" % [action_id, str(GameState.abyss_runtime().get("stage", ""))])
+	var acts: Array[Dictionary] = []
+	acts.append({"label": "\u7ec8\u5c40\u9762\u677f", "action": "abyss_board"})
+	acts.append({"label": "close", "action": "close"})
+	dialogue_panel.open_dialogue(action_id, str(talked.get("code", "OK")), acts)
+
+
+func _claim_abyss_weekly() -> void:
+	var result: Dictionary = GameState.claim_abyss_weekly("ui:abyss_weekly:%d" % GameState.current_day)
+	_set_status(str(result.get("code", "OK")))
+
+
+func _collect_abyss_world(action_id: String) -> void:
+	var pid := action_id.trim_prefix("abyss:")
+	if pid.begins_with("totem_"):
+		var tot: Dictionary = GameState.run_abyss_totem(pid, "ui:totem:%s:%d" % [pid, GameState.current_day])
+		_set_status(str(tot.get("code", "OK")))
+		return
+	var result: Dictionary = GameState.collect_abyss_probe(pid, "ui:abyss:%s:%d" % [pid, GameState.current_day])
+	_set_status(str(result.get("code", "OK")))
+
+
 func _open_king_dialogue() -> void:
 	if not bool(GameState.story_flags.get("king_rescued", false)):
 		_set_status("国王仍被魔族囚禁。")
@@ -1328,7 +1507,7 @@ func _open_king_dialogue() -> void:
 		{"label":"神秘军","action":"king_intel:mystery"},{"label":"图腾兽","action":"king_intel:totem"},
 		{"label":"魔的能量","action":"king_intel:energy"},{"label":"魔军主帅","action":"king_intel:commander"},
 	]
-	dialogue_panel.open_dialogue("国王", words, actions)
+	dialogue_panel.open_dialogue("国王", words, _with_abyss_gate(actions))
 
 
 func _open_king_intel(intel_id: String) -> void:
@@ -1404,12 +1583,230 @@ func _claim_fuwa_completion() -> void:
 	_set_status("完成五福娃任务：获得100,000魔石，研究所VIP提升至%d星；改版技术上限继续保持%d级。" % [int(result.get("vip_level", 0)), int(result.get("effective_technology_cap", 300))])
 
 
+
+func _with_treeheart_gate(actions: Array[Dictionary]) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for entry in actions:
+		if str(entry.get("action", "")) == "close" and not inserted:
+			out.append({"label": "树心郊区", "action": "enter_treeheart"})
+			inserted = true
+		out.append(entry)
+	if not inserted:
+		out.append({"label": "树心郊区", "action": "enter_treeheart"})
+	return out
+
+
+
+
+func _with_ice_gate(actions: Array[Dictionary]) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for entry in actions:
+		if str(entry.get("action", "")) == "close" and not inserted:
+			out.append({"label": "\u51b0\u539f\u8bd5\u70bc", "action": "enter_ice"})
+			out.append({"label": "\u5143\u7d20\u56fe\u9274", "action": "ice_codex"})
+			inserted = true
+		out.append(entry)
+	if not inserted:
+		out.append({"label": "\u51b0\u539f\u8bd5\u70bc", "action": "enter_ice"})
+		out.append({"label": "\u5143\u7d20\u56fe\u9274", "action": "ice_codex"})
+	return out
+
+
+func _enter_ice() -> void:
+	_hide_all_panels()
+	GameState.current_map_id = "ice_frontier"
+	AudioService.play("change_map")
+	_apply_current_map()
+	_set_status("ice_frontier")
+
+
+func _collect_ice_probe(action_id: String) -> void:
+	var pid := action_id.trim_prefix("ice:")
+	var result: Dictionary = GameState.collect_ice_probe(pid, "ui:ice:%s:%d" % [pid, GameState.current_day])
+	_set_status(str(result.get("code", "OK")))
+
+
+func _talk_ice_npc(action_id: String) -> void:
+	var talked: Dictionary = GameState.talk_ice_npc(action_id, "ui:talk:%s:%s" % [action_id, str(GameState.ice_runtime().get("stage", ""))])
+	var acts: Array[Dictionary] = []
+	acts.append({"label": "\u5143\u7d20\u56fe\u9274", "action": "ice_codex"})
+	acts.append({"label": "close", "action": "close"})
+	dialogue_panel.open_dialogue(action_id, str(talked.get("code", "OK")), acts)
+
+
+func _open_ice_codex() -> void:
+	_hide_all_panels()
+	ice_codex_panel.show()
+	ice_codex_panel.refresh()
+
+
+func _claim_ice_weekly() -> void:
+	var result: Dictionary = GameState.claim_ice_weekly("ui:ice_weekly:%d" % GameState.current_day)
+	_set_status(str(result.get("code", "OK")))
+
+func _with_south_gate(actions: Array[Dictionary]) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for entry in actions:
+		if str(entry.get("action", "")) == "close" and not inserted:
+			out.append({"label": "南部城邦", "action": "enter_south"})
+			inserted = true
+		out.append(entry)
+	if not inserted:
+		out.append({"label": "南部城邦", "action": "enter_south"})
+	return out
+
+
+func _enter_south() -> void:
+	_hide_all_panels()
+	GameState.current_map_id = "south_city_gate"
+	AudioService.play("change_map")
+	_apply_current_map()
+	_set_status("south_city_gate")
+
+
+func _collect_border_scout(action_id: String) -> void:
+	var sid := action_id.trim_prefix("scout:")
+	var result: Dictionary = GameState.collect_border_scout(sid, "ui:scout:%s:%d" % [sid, GameState.current_day])
+	_set_status(str(result.get("code", "OK")))
+
+
+func _talk_border_npc(action_id: String) -> void:
+	if action_id == "border_qm":
+		var supply_actions: Array[Dictionary] = [
+			{"label": "提交补给", "action": "border_supply"},
+			{"label": "close", "action": "close"},
+		]
+		dialogue_panel.open_dialogue(action_id, "supply", supply_actions)
+		return
+	if action_id == "border_cmd":
+		var result: Dictionary = GameState.talk_border_npc(action_id, "ui:talk:%s:%s" % [action_id, str(GameState.border_runtime().get("stage", ""))])
+		var cmd_actions: Array[Dictionary] = [
+			{"label": "指挥面板", "action": "border_board"},
+			{"label": "close", "action": "close"},
+		]
+		dialogue_panel.open_dialogue(action_id, str(result.get("code", "OK")), cmd_actions)
+		return
+	var talked: Dictionary = GameState.talk_border_npc(action_id, "ui:talk:%s:%s" % [action_id, str(GameState.border_runtime().get("stage", ""))])
+	_set_status(str(talked.get("code", "OK")))
+
+
+func _submit_border_supply() -> void:
+	var result: Dictionary = GameState.submit_border_supply("ui:supply:%d" % GameState.current_day)
+	_set_status(str(result.get("code", "OK")))
+
+
+func _open_border_board() -> void:
+	_hide_all_panels()
+	border_command_panel.show()
+	border_command_panel.refresh()
+
+
+func _claim_border_weekly() -> void:
+	var result: Dictionary = GameState.claim_border_weekly("ui:border_weekly:%d" % GameState.current_day)
+	_set_status(str(result.get("code", "OK")))
+
+func _enter_treeheart() -> void:
+	_hide_all_panels()
+	GameState.current_map_id = "treeheart_outskirts"
+	AudioService.play("change_map")
+	_apply_current_map()
+	_set_status("treeheart_outskirts")
+
+
+func _collect_chapter_evidence(action_id: String) -> void:
+	var evid := action_id.trim_prefix("evidence:")
+	var result: Dictionary = GameState.collect_chapter_evidence(evid, "ui:evidence:%s:%d" % [evid, GameState.current_day])
+	_set_status(str(result.get("code", "OK")))
+
+
+func _talk_chapter_npc(action_id: String) -> void:
+	var result: Dictionary = GameState.talk_chapter_npc(action_id, "ui:talk:%s:%s" % [action_id, str(GameState.chapter_runtime().get("stage", ""))])
+	if action_id == "chapter_su" and str(GameState.chapter_runtime().get("stage", "")) == "smuggler_choice" and str(GameState.chapter_runtime().get("branch", "")) == "":
+		var branch_actions: Array[Dictionary] = [
+			{"label": "report", "action": "chapter_report"},
+			{"label": "track", "action": "chapter_track"},
+			{"label": "close", "action": "close"},
+		]
+		dialogue_panel.open_dialogue(action_id, "branch", branch_actions)
+		return
+	_set_status(str(result.get("code", "OK")))
+
+
+func _choose_chapter_branch(branch_id: String) -> void:
+	var result: Dictionary = GameState.choose_smuggler_branch(branch_id, "ui:branch:%s" % branch_id)
+	_set_status(str(result.get("code", "OK")))
+
+
+func _claim_chapter_weekly() -> void:
+	var result: Dictionary = GameState.claim_chapter_weekly("ui:weekly:%d" % GameState.current_day)
+	_set_status(str(result.get("code", "OK")))
+
 func _enter_dungeon() -> void:
 	_hide_all_panels()
 	GameState.current_map_id = "dungeon"
 	AudioService.play("change_map")
 	_apply_current_map()
 	_set_status("已经进入地下城一层。")
+
+func _with_adventurer_board(actions: Array[Dictionary]) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for entry in actions:
+		if str(entry.get("action", "")) == "close" and not inserted:
+			out.append({"label": "冒险者公告板", "action": "adventurer_board"})
+			inserted = true
+		out.append(entry)
+	if not inserted:
+		out.append({"label": "冒险者公告板", "action": "adventurer_board"})
+	return out
+
+
+func _open_adventurer_board() -> void:
+	_hide_all_panels()
+	adventurer_roster_panel.show()
+
+
+func _open_adventurer_mail() -> void:
+	_hide_all_panels()
+	adventurer_mail_panel.show()
+
+
+func _open_adventurer_trade() -> void:
+	_hide_all_panels()
+	adventurer_trade_panel.selected_id = adventurer_roster_panel.selected_id
+	adventurer_trade_panel.show()
+
+
+func _open_ranking_board() -> void:
+	_hide_all_panels()
+	ranking_panel.show()
+
+
+func _open_arena_board() -> void:
+	_hide_all_panels()
+	arena_panel.show()
+
+
+func _open_guild_market() -> void:
+	_hide_all_panels()
+	GameState.ensure_guild_catalog()
+	guild_market_panel.show()
+
+
+func _open_property_board() -> void:
+	_hide_all_panels()
+	property_territory_panel.show()
+
+
+func _start_arena_match(monster_id: String) -> void:
+	_hide_all_panels()
+	if arena_proxy == null or monster_id.is_empty():
+		return
+	scene_battle_controller.engage(monster_id, arena_proxy)
+
 
 func _open_daily_officer_dialogue() -> void:
 	var weekday := ((GameState.current_day - 1) % 7) + 1
@@ -1431,8 +1828,31 @@ func _open_daily_officer_dialogue() -> void:
 		7:
 			words = "周日地下城的魔族将领正在召开会议。国王悬赏勇士进入地下城，击败三层首领。"
 			actions = [{"label":"接受任务","action":"quest_accept:dungeon_conquest"},{"label":"进入地下城","action":"enter_dungeon"},{"label":"任务说明","action":"daily_help"},{"label":"离开","action":"close"}]
-	dialogue_panel.open_dialogue("日常任务官", words, actions)
+	dialogue_panel.open_dialogue("日常任务官", words, _with_season_gate(_with_treeheart_gate(_with_adventurer_board(actions))))
 
+
+
+func _with_season_gate(actions: Array) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for raw: Variant in actions:
+		if not raw is Dictionary:
+			continue
+		var row: Dictionary = raw
+		if not inserted and str(row.get("action", "")) == "close":
+			out.append({"label": "\u8d5b\u5b63\u7c3f", "action": "season_board"})
+			inserted = true
+		out.append(row)
+	if not inserted:
+		out.append({"label": "\u8d5b\u5b63\u7c3f", "action": "season_board"})
+	return out
+
+
+func _open_season_board() -> void:
+	_hide_all_panels()
+	season_board_panel.show()
+	season_board_panel.refresh()
+	_set_status(GameState.season_board_lines()[0] if not GameState.season_board_lines().is_empty() else "SSN")
 
 func _open_daily_help_dialogue() -> void:
 	var words := "周一、周二：收集宝石。\n周三、周四：训练并上交高星幻兽。\n周五：突袭雪域边境。\n周六：参加王宫 PK 赛。\n周日：破坏地下城魔族将领会议。"
@@ -1465,7 +1885,7 @@ func _perform_daily_deliver(task_id: String) -> void:
 
 func _open_marshal_dialogue() -> void:
 	var actions: Array[Dictionary] = [{"label":"领取军饷","action":"military_salary"},{"label":"战功查询","action":"military_status"},{"label":"国王消息","action":"marshal_info"},{"label":"离开","action":"close"}]
-	dialogue_panel.open_dialogue("元帅", "你好，我是国家元帅。战功、军衔和每周军饷都由我负责。", actions)
+	dialogue_panel.open_dialogue("元帅", "你好，我是国家元帅。战功、军衔和每周军饷都由我负责。", _with_south_gate(actions))
 
 
 func _open_military_status_dialogue() -> void:
@@ -1490,11 +1910,72 @@ func _open_marshal_info_dialogue() -> void:
 func _open_pk_officer_dialogue() -> void:
 	var words := "每星期六，国家竞技场都会举行例行勇士PK赛。比赛分为60级组、100级组和100级以上组，报名后会根据你的等级自动分组，每组只评出一名冠军。"
 	var actions: Array[Dictionary] = [
-		{"label":"查看奖品", "action":"pk_prizes"},
-		{"label":"我来报名参加", "action":"pk_register"},
-		{"label":"随便看看", "action":"close"},
+		{"label":"\u67e5\u770b\u5956\u54c1", "action":"pk_prizes"},
+		{"label":"\u6211\u6765\u62a5\u540d\u53c2\u52a0", "action":"pk_register"},
+		{"label":"\u5192\u9669\u8005\u6392\u884c\u699c", "action":"ranking_board"},
+		{"label":"\u5f02\u6b65\u64c2\u53f0", "action":"arena_board"},
+		{"label":"\u5546\u4f1a\u4e8b\u52a1", "action":"guild_market"},
+		{"label":"\u968f\u4fbf\u770b\u770b", "action":"close"},
 	]
-	dialogue_panel.open_dialogue("PK赛报名官", words, actions)
+	dialogue_panel.open_dialogue("PK赛报名官", words, _with_challenge_gate(actions))
+
+
+
+func _with_challenge_gate(actions: Array) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for raw: Variant in actions:
+		if not raw is Dictionary:
+			continue
+		var row: Dictionary = raw
+		if not inserted and str(row.get("action", "")) == "close":
+			out.append({"label": "\u6311\u6218\u7c3f", "action": "challenge_board"})
+			out.append({"label": "\u6218\u58eb\u7cbe\u901a", "action": "challenge_mastery"})
+			inserted = true
+		out.append(row)
+	if not inserted:
+		out.append({"label": "\u6311\u6218\u7c3f", "action": "challenge_board"})
+		out.append({"label": "\u6218\u58eb\u7cbe\u901a", "action": "challenge_mastery"})
+	return out
+
+
+func _open_challenge_board() -> void:
+	_hide_all_panels()
+	challenge_board_panel.show()
+	challenge_board_panel.refresh()
+	_set_status(GameState.challenge_board_lines()[0] if not GameState.challenge_board_lines().is_empty() else "CH")
+
+
+func _open_challenge_mastery() -> void:
+	var acts: Array[Dictionary] = [
+		{"label": "\u98de\u5929\u8fde\u65a9", "action": "unlock_mastery:mastery_flying_slash"},
+		{"label": "\u661f\u9b54\u5251", "action": "unlock_mastery:mastery_star_sword"},
+		{"label": "\u6597\u5fd7", "action": "unlock_mastery:mastery_fighting_spirit"},
+		{"label": "\u8fde\u51fb", "action": "unlock_mastery:mastery_combo"},
+		{"label": "\u8fd4\u56de", "action": "pk_officer"},
+		{"label": "\u79bb\u5f00", "action": "close"},
+	]
+	dialogue_panel.open_dialogue("\u6218\u58eb\u7cbe\u901a", "unlock warrior mastery", acts)
+
+
+
+func _set_pet_support_ui() -> void:
+	var pick := 0
+	for pet: Dictionary in GameState.pets:
+		if not bool(pet.get("deployed", false)):
+			pick = int(pet.get("instance_id", 0))
+			break
+	var r: Dictionary = GameState.set_pet_support(pick, "ui:sup:%d" % GameState.current_day)
+	_set_status(str(r.get("code", "PET_SUPPORT_OWNED")))
+
+func _start_named_challenge(challenge_id: String, training: bool) -> void:
+	var mode := "training" if training else "official"
+	var result: Dictionary = GameState.try_start_challenge(challenge_id, mode, "ui:ch:%s:%s:%d" % [challenge_id, mode, GameState.current_day])
+	if not bool(result.get("success", false)):
+		_set_status(str(result.get("code", "CHALLENGE_LOCKED")))
+		return
+	_apply_current_map()
+	_set_status("CH %s" % challenge_id)
 
 
 func _open_pk_prizes_dialogue() -> void:
@@ -1575,6 +2056,22 @@ func _world_action_route(action_id: String) -> String:
 		return "territory"
 	if action_id.begins_with("war_soul_"):
 		return "war_soul"
+	if action_id.begins_with("evidence:"):
+		return "chapter_evidence"
+	if action_id.begins_with("scout:"):
+		return "border_scout"
+	if action_id.begins_with("ice:") and not action_id.begins_with("ice_"):
+		return "ice_investigate"
+	if action_id.begins_with("abyss:") and not action_id.begins_with("abyss_"):
+		return "abyss_investigate"
+	if action_id.begins_with("challenge:"):
+		return "challenge_run"
+	if action_id.begins_with("start_challenge:") or action_id.begins_with("train_challenge:"):
+		return "challenge_run"
+	if action_id.begins_with("ptrial:") or action_id.begins_with("start_ptrial:"):
+		return "pet_trial_run"
+	if action_id.begins_with("ssn:"):
+		return "season_cycle"
 	if action_id.begins_with("travel:"):
 		return "travel"
 	if action_id.begins_with("synthesize:"):
@@ -1589,7 +2086,7 @@ func _world_action_route(action_id: String) -> String:
 		return "npc_action"
 	if action_id.begins_with("daily_deliver:"):
 		return "npc_action"
-	var known_npc: Array = ["grocery","stone_shop","collector","warehouse","daily_officer","stone_synthesizer","forger","pet_master","experience_mentor","research","marshal","prime_minister","princess","maid","maid_combat_stone","pk_officer","lottery_officer","king","daily_officer","fuwa_messenger","fuwa_reward","fuwa_completion","war_soul_explorer","war_soul_chest","enter_dungeon","enter_lottery_room","military_salary","military_status","marshal_info","prime_donate","prime_merit","prime_king","prime_nobility","princess_gift","princess_chat","princess_friend_gift","princess_sunday_gift","research_info","research_olympic_info","research_production_task","research_npc","daily_help","daily_deliver","pk_prizes","pk_register"]
+	var known_npc: Array = ["grocery","stone_shop","collector","warehouse","daily_officer","stone_synthesizer","forger","pet_master","experience_mentor","research","marshal","prime_minister","princess","maid","maid_combat_stone","pk_officer","lottery_officer","king","daily_officer","fuwa_messenger","fuwa_reward","fuwa_completion","war_soul_explorer","war_soul_chest","enter_dungeon","enter_lottery_room","military_salary","military_status","marshal_info","prime_donate","prime_merit","prime_king","prime_nobility","princess_gift","princess_chat","princess_friend_gift","princess_sunday_gift","research_info","research_olympic_info","research_production_task","research_npc","daily_help","daily_deliver","pk_prizes","pk_register","adventurer_board","ranking_board","arena_board","guild_market","property_board","enter_treeheart","enter_south","border_cmd","border_qm","border_scout_npc","border_tang","border_liang","border_weekly","border_board","border_supply","enter_ice","ice_codex","ice_shen","ice_bai","ice_weekly","enter_abyss","abyss_board","abyss_he","abyss_jiang","abyss_gu","abyss_weekly","challenge_board","challenge_mastery","pet_endgame_board","pet_endgame_menu","set_support","season_board","chapter_lin","chapter_qin","chapter_su","chapter_ye","chapter_weekly","chapter_report","chapter_track"]
 	if action_id in known_npc:
 		return "npc_dialogue"
 	return "UNSUPPORTED"
@@ -1629,6 +2126,44 @@ func _handle_dialogue_action(action: String) -> void:
 		"pk_officer": _open_pk_officer_dialogue()
 		"pk_prizes": _open_pk_prizes_dialogue()
 		"pk_register": _register_pk_race()
+		"ranking_board": _open_ranking_board()
+		"arena_board": _open_arena_board()
+		"guild_market": _open_guild_market()
+		"property_board": _open_property_board()
+		"enter_treeheart": _enter_treeheart()
+		"enter_south": _enter_south()
+		"border_cmd": _talk_border_npc("border_cmd")
+		"border_qm": _talk_border_npc("border_qm")
+		"border_scout_npc": _talk_border_npc("border_scout_npc")
+		"border_tang": _talk_border_npc("border_tang")
+		"border_liang": _talk_border_npc("border_liang")
+		"border_weekly": _claim_border_weekly()
+		"border_board": _open_border_board()
+		"border_supply": _submit_border_supply()
+		"enter_ice": _enter_ice()
+		"ice_codex": _open_ice_codex()
+		"ice_shen": _talk_ice_npc("ice_shen")
+		"ice_bai": _talk_ice_npc("ice_bai")
+		"ice_weekly": _claim_ice_weekly()
+		"enter_abyss": _enter_abyss()
+		"abyss_board": _open_abyss_board()
+		"challenge_board": _open_challenge_board()
+		"challenge_mastery": _open_challenge_mastery()
+		"pet_endgame_board": _open_pet_endgame_board()
+		"pet_endgame_menu": _open_pet_endgame_menu()
+		"set_support": _set_pet_support_ui()
+		"season_board": _open_season_board()
+		"abyss_he": _talk_abyss_npc("abyss_he")
+		"abyss_jiang": _talk_abyss_npc("abyss_jiang")
+		"abyss_gu": _talk_abyss_npc("abyss_gu")
+		"abyss_weekly": _claim_abyss_weekly()
+		"chapter_lin": _talk_chapter_npc("chapter_lin")
+		"chapter_qin": _talk_chapter_npc("chapter_qin")
+		"chapter_su": _talk_chapter_npc("chapter_su")
+		"chapter_ye": _talk_chapter_npc("chapter_ye")
+		"chapter_weekly": _claim_chapter_weekly()
+		"chapter_report": _choose_chapter_branch("report")
+		"chapter_track": _choose_chapter_branch("track")
 		"war_soul_enter": _enter_war_soul_maze()
 		"prime_minister": _open_prime_minister_dialogue()
 		"prime_donate": _open_prime_donate_dialogue()
@@ -1636,6 +2171,7 @@ func _handle_dialogue_action(action: String) -> void:
 		"military_status": _open_military_status_dialogue()
 		"princess_gift": _open_princess_gift_dialogue()
 		"daily_officer": _open_daily_officer_dialogue()
+		"adventurer_board": _open_adventurer_board()
 		"daily_deliver": _open_daily_deliver_dialogue()
 		"prime_merit": _open_prime_minister_merit()
 		"prime_king": _open_prime_minister_king_news()
@@ -1666,6 +2202,22 @@ func _handle_dialogue_action(action: String) -> void:
 				_travel_to(action.trim_prefix("travel:"))
 			elif action.begins_with("battle:"):
 				_start_battle(action.trim_prefix("battle:"))
+			elif action.begins_with("start_challenge:"):
+				_start_named_challenge(action.trim_prefix("start_challenge:"), false)
+			elif action.begins_with("train_challenge:"):
+				_start_named_challenge(action.trim_prefix("train_challenge:"), true)
+			elif action.begins_with("start_ptrial:"):
+				_start_named_pet_trial(action.trim_prefix("start_ptrial:"))
+			elif action.begins_with("claim_col:"):
+				var cr: Dictionary = GameState.claim_collection_reward(action.trim_prefix("claim_col:"), "ui:col:%d" % GameState.current_day)
+				_set_status(str(cr.get("code", "PET_COLLECTION_UNKNOWN")))
+			elif action.begins_with("claim_rc:"):
+				var rr: Dictionary = GameState.claim_research_contract(action.trim_prefix("claim_rc:"), "ui:rc:%d" % GameState.current_day)
+				_set_status(str(rr.get("code", "RESEARCH_CONTRACT_COST")))
+			elif action.begins_with("unlock_mastery:"):
+				var mid := action.trim_prefix("unlock_mastery:")
+				var ur: Dictionary = GameState.unlock_warrior_mastery(mid, "ui:ms:%s:%d" % [mid, GameState.current_day])
+				_set_status(str(ur.get("code", "MASTERY_CAP")))
 
 
 func _apply_current_map() -> void:
@@ -1689,6 +2241,7 @@ func _apply_current_map() -> void:
 			player_animation_clip = "idle"
 			player.texture = player_idle_frames[0]
 	_refresh_map_navigation(map_data)
+	GameState.note_map_visit()
 
 
 func _rebuild_map_actors(map_id: String) -> void:
@@ -1743,6 +2296,90 @@ func _rebuild_map_actors(map_id: String) -> void:
 			_add_actor("雷角风牙兽", "res://assets/extracted/images/image_0051.png", Vector2(483.55, 243), Vector2(92, 100), "battle:fuwa_beast", Color("ffcc35"))
 		"grass_reward":
 			_add_actor(GameState.current_fuwa_name(), GameState.current_fuwa_image_path(), Vector2(547.5, 244.05), Vector2(80, 92), "fuwa_reward", Color("55ff55"))
+		"south_city_gate":
+			_add_actor("cmd", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "border_cmd", Color("55ff55"))
+		"south_city_square":
+			_add_actor("qm", "res://assets/extracted/images/image_1076.png", Vector2(480, 260), Vector2(58, 111), "border_qm", Color("55ff55"))
+			_add_actor("banner", "res://assets/extracted/images/image_1213.png", Vector2(300, 240), Vector2(48, 48), "scout:scout_banner")
+		"border_watchpost":
+			_add_actor("scout", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "border_scout_npc", Color("55ff55"))
+			_add_actor("tang", "res://assets/extracted/images/image_1076.png", Vector2(500, 260), Vector2(58, 111), "border_tang", Color("55ff55"))
+			_add_actor("tracks", "res://assets/extracted/images/image_1213.png", Vector2(300, 240), Vector2(48, 48), "scout:scout_tracks")
+		"border_supply_route":
+			if GameState.border_unit_visible("border_skirmish_a"):
+				_add_actor("skirmish", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:border_skirmish_a", Color("ffcc35"))
+		"border_ruins":
+			_add_actor("liang", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "border_liang", Color("55ff55"))
+			if GameState.border_unit_visible("border_skirmish_b"):
+				_add_actor("skirmish", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:border_skirmish_b", Color("ffcc35"))
+		"border_command_tent":
+			_add_actor("weekly", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "border_weekly", Color("55ff55"))
+			if GameState.border_unit_visible("border_command_boss"):
+				_add_actor("boss", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:border_command_boss", Color("ffcc35"))
+		"ice_frontier":
+			_add_actor("shen", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "ice_shen", Color("55ff55"))
+			_add_actor("shard", "res://assets/extracted/images/image_1213.png", Vector2(300, 240), Vector2(48, 48), "ice:signal_shard")
+		"frozen_pass":
+			_add_actor("bai", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "ice_bai", Color("55ff55"))
+			_add_actor("charm", "res://assets/extracted/images/image_1213.png", Vector2(300, 240), Vector2(48, 48), "ice:rescue_charm")
+		"crystal_cavern":
+			_add_actor("key", "res://assets/extracted/images/image_1213.png", Vector2(300, 240), Vector2(48, 48), "ice:crystal_key")
+		"elemental_laboratory":
+			_add_actor("weekly", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "ice_weekly", Color("55ff55"))
+			if GameState.ice_unit_visible("ice_lab_boss"):
+				_add_actor("boss", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:ice_lab_boss", Color("ffcc35"))
+			if GameState.ice_unit_visible("ice_weekly_trial"):
+				_add_actor("trial", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:ice_weekly_trial", Color("ffcc35"))
+		"aurora_sanctum":
+			if GameState.ice_unit_visible("ice_aurora_boss"):
+				_add_actor("boss", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:ice_aurora_boss", Color("ffcc35"))
+		"abyss_gate":
+			_add_actor("he", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "abyss_he", Color("55ff55"))
+			_add_actor("seal", "res://assets/extracted/images/image_1213.png", Vector2(300, 240), Vector2(48, 48), "abyss:gate_seal")
+		"abyss_outer_ring":
+			_add_actor("jiang", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "abyss_jiang", Color("55ff55"))
+		"abyss_echo_halls":
+			if GameState.abyss_unit_visible("abyss_echo_assault"):
+				_add_actor("ea", "res://assets/extracted/images/image_1072.png", Vector2(180, 220), Vector2(101, 132), "battle:abyss_echo_assault", Color("ffcc35"))
+			if GameState.abyss_unit_visible("abyss_echo_guard"):
+				_add_actor("eg", "res://assets/extracted/images/image_1072.png", Vector2(330, 220), Vector2(101, 132), "battle:abyss_echo_guard", Color("ffcc35"))
+			if GameState.abyss_unit_visible("abyss_echo_mystery"):
+				_add_actor("em", "res://assets/extracted/images/image_1072.png", Vector2(480, 220), Vector2(101, 132), "battle:abyss_echo_mystery", Color("ffcc35"))
+			if GameState.abyss_unit_visible("abyss_echo_totem"):
+				_add_actor("et", "res://assets/extracted/images/image_1072.png", Vector2(240, 340), Vector2(101, 132), "battle:abyss_echo_totem", Color("ffcc35"))
+			if GameState.abyss_unit_visible("abyss_echo_commander"):
+				_add_actor("ec", "res://assets/extracted/images/image_1072.png", Vector2(420, 340), Vector2(101, 132), "battle:abyss_echo_commander", Color("ffcc35"))
+		"totem_sanctum":
+			_add_actor("gu", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "abyss_gu", Color("55ff55"))
+			_add_actor("tg", "res://assets/extracted/images/image_1213.png", Vector2(220, 240), Vector2(48, 48), "abyss:totem_guild")
+			_add_actor("tt", "res://assets/extracted/images/image_1213.png", Vector2(320, 240), Vector2(48, 48), "abyss:totem_territory")
+			_add_actor("tb", "res://assets/extracted/images/image_1213.png", Vector2(420, 240), Vector2(48, 48), "abyss:totem_bond")
+		"abyss_heart":
+			_add_actor("weekly", "res://assets/extracted/images/image_1076.png", Vector2(80, 260), Vector2(58, 111), "abyss_weekly", Color("55ff55"))
+			_add_actor("hs", "res://assets/extracted/images/image_1213.png", Vector2(300, 240), Vector2(48, 48), "abyss:heart_seal")
+			if GameState.abyss_unit_visible("abyss_heart_boss"):
+				_add_actor("boss", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:abyss_heart_boss", Color("ffcc35"))
+			if GameState.abyss_unit_visible("abyss_weekly_trial"):
+				_add_actor("trial", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:abyss_weekly_trial", Color("ffcc35"))
+		"treeheart_outskirts":
+			_add_actor("林夏", "res://assets/extracted/images/image_1076.png", Vector2(80, 280), Vector2(58, 111), "chapter_lin", Color("55ff55"))
+			_add_actor("bark", "res://assets/extracted/images/image_1213.png", Vector2(250, 200), Vector2(48, 48), "evidence:root_bark")
+			_add_actor("leaf", "res://assets/extracted/images/image_1213.png", Vector2(400, 320), Vector2(48, 48), "evidence:sick_leaf")
+		"treeheart_core":
+			_add_actor("秦河", "res://assets/extracted/images/image_1076.png", Vector2(120, 260), Vector2(58, 111), "chapter_qin", Color("55ff55"))
+			_add_actor("resin", "res://assets/extracted/images/image_1213.png", Vector2(480, 280), Vector2(48, 48), "evidence:core_resin")
+		"harbor_quay":
+			_add_actor("苏颜", "res://assets/extracted/images/image_1076.png", Vector2(500, 260), Vector2(58, 111), "chapter_su", Color("55ff55"))
+			_add_actor("ledger", "res://assets/extracted/images/image_1213.png", Vector2(300, 250), Vector2(48, 48), "evidence:smuggler_ledger")
+		"harbor_market":
+			_add_actor("苏颜", "res://assets/extracted/images/image_1076.png", Vector2(200, 280), Vector2(58, 111), "chapter_weekly", Color("55ff55"))
+		"sea_cave":
+			_add_actor("叶飞", "res://assets/extracted/images/image_1076.png", Vector2(80, 280), Vector2(58, 111), "chapter_ye", Color("55ff55"))
+			if GameState.chapter_boss_visible("chapter_sea_boss"):
+				_add_actor("boss", "res://assets/extracted/images/image_1072.png", Vector2(480, 280), Vector2(101, 132), "battle:chapter_sea_boss", Color("ffcc35"))
+		"tide_shrine":
+			if GameState.chapter_boss_visible("chapter_tide_boss"):
+				_add_actor("boss", "res://assets/extracted/images/image_1072.png", Vector2(450, 250), Vector2(101, 132), "battle:chapter_tide_boss", Color("ffcc35"))
 		"treeheart_city":
 			_add_decoration("decoration:treeheart_city:image_1101", "res://assets/extracted/images/image_1101.png", Vector2(434.45, 107.2), Vector2(72, 82))
 			_add_decoration("decoration:treeheart_city:image_1104", "res://assets/extracted/images/image_1104.png", Vector2(517.7, 150.2), Vector2(72, 82))
@@ -1850,6 +2487,12 @@ func _rebuild_map_actors(map_id: String) -> void:
 			_add_actor("地下城二层首领", "res://assets/extracted/images/image_0127.png", Vector2(470, 205), Vector2(110, 125), "battle:dungeon_boss_2", Color("ff3030"))
 		"dungeon_floor_3":
 			_add_actor("地下城三层首领", "res://assets/extracted/images/image_0129.png", Vector2(470, 205), Vector2(110, 125), "battle:dungeon_boss_3", Color("ff3030"))
+	var ch_mid := GameState.active_challenge_monster()
+	if not ch_mid.is_empty() and GameState.challenge_unit_visible(ch_mid):
+		_add_actor("ch_boss", "res://assets/extracted/images/image_1072.png", Vector2(380, 280), Vector2(101, 132), "battle:%s" % ch_mid, Color("ffcc35"))
+	var pt_mid := GameState.active_pet_trial_monster()
+	if not pt_mid.is_empty() and GameState.pet_trial_unit_visible(pt_mid):
+		_add_actor("pt_boss", "res://assets/extracted/images/image_1072.png", Vector2(180, 120), Vector2(101, 132), "battle:%s" % pt_mid, Color("ffcc35"))
 	if GameState.should_show_fuwa_messenger(map_id):
 		var messenger_positions := {
 			"thunder_continent":Vector2(160, 330), "palace":Vector2(137.05, 244.95),
@@ -1948,7 +2591,45 @@ func _native_exit_profile(map_id: String, target_id: String, fallback: String) -
 		"dungeon_floor_2>dungeon":{"direction":"left", "rect":Rect2(2.0, 228.95, 41.0, 90.0)},
 		"dungeon_floor_2>dungeon_floor_3":{"direction":"right", "rect":Rect2(657.0, 228.95, 41.0, 90.0)},
 		"dungeon_floor_3>dungeon_floor_2":{"direction":"top", "rect":Rect2(206.0, 124.3, 90.0, 41.0)},
+		"south_city_gate>south_city_square":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"south_city_square>south_city_gate":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"south_city_gate>border_watchpost":{"direction":"bottom", "rect":Rect2(305.0, 403.0, 90.0, 41.0)},
+		"border_watchpost>south_city_gate":{"direction":"top", "rect":Rect2(305.0, 124.3, 90.0, 41.0)},
+		"border_watchpost>border_supply_route":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"border_supply_route>border_watchpost":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"border_watchpost>border_ruins":{"direction":"bottom", "rect":Rect2(305.0, 403.0, 90.0, 41.0)},
+		"border_ruins>border_watchpost":{"direction":"top", "rect":Rect2(305.0, 124.3, 90.0, 41.0)},
+		"border_ruins>border_command_tent":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"border_command_tent>border_ruins":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"ice_frontier>frozen_pass":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"frozen_pass>ice_frontier":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"ice_frontier>crystal_cavern":{"direction":"bottom", "rect":Rect2(305.0, 403.0, 90.0, 41.0)},
+		"crystal_cavern>ice_frontier":{"direction":"top", "rect":Rect2(305.0, 124.3, 90.0, 41.0)},
+		"frozen_pass>elemental_laboratory":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"elemental_laboratory>frozen_pass":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"elemental_laboratory>aurora_sanctum":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"aurora_sanctum>elemental_laboratory":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"abyss_gate>abyss_outer_ring":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"abyss_outer_ring>abyss_gate":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"abyss_gate>abyss_echo_halls":{"direction":"bottom", "rect":Rect2(305.0, 403.0, 90.0, 41.0)},
+		"abyss_echo_halls>abyss_gate":{"direction":"top", "rect":Rect2(305.0, 124.3, 90.0, 41.0)},
+		"abyss_outer_ring>totem_sanctum":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"totem_sanctum>abyss_outer_ring":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"totem_sanctum>abyss_heart":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"abyss_heart>totem_sanctum":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
 		"treeheart_city>cassano_city":{"direction":"left", "rect":Rect2(10.0, 256.3, 41.0, 90.0)},
+		"treeheart_city>treeheart_outskirts":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"treeheart_outskirts>treeheart_city":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"treeheart_outskirts>treeheart_core":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"treeheart_outskirts>harbor_quay":{"direction":"bottom", "rect":Rect2(305.0, 403.0, 90.0, 41.0)},
+		"treeheart_core>treeheart_outskirts":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"harbor_quay>treeheart_outskirts":{"direction":"top", "rect":Rect2(305.0, 124.3, 90.0, 41.0)},
+		"harbor_quay>harbor_market":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"harbor_quay>sea_cave":{"direction":"bottom", "rect":Rect2(305.0, 403.0, 90.0, 41.0)},
+		"harbor_market>harbor_quay":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
+		"sea_cave>harbor_quay":{"direction":"top", "rect":Rect2(305.0, 124.3, 90.0, 41.0)},
+		"sea_cave>tide_shrine":{"direction":"right", "rect":Rect2(657.0, 230.0, 41.0, 90.0)},
+		"tide_shrine>sea_cave":{"direction":"left", "rect":Rect2(2.0, 230.0, 41.0, 90.0)},
 		"pk_arena>cassano_city":{"direction":"top", "rect":Rect2(211.05, 124.3, 90.0, 41.0)},
 		"pk_arena_2>cassano_city":{"direction":"top", "rect":Rect2(211.05, 124.3, 90.0, 41.0)},
 		"pk_arena_3>cassano_city":{"direction":"top", "rect":Rect2(211.05, 124.3, 90.0, 41.0)},
@@ -1977,7 +2658,29 @@ func _direction_for_exit(map_id: String, target_id: String, fallback: String) ->
 		"lottery_room":{"palace":"right"},
 		"green_field":{"cassano_city":"left"},
 		"grass_reward":{"cassano_city":"left"},
-		"treeheart_city":{"cassano_city":"left"},
+		"south_city_gate":{"south_city_square":"right", "border_watchpost":"bottom"},
+		"south_city_square":{"south_city_gate":"left"},
+		"border_watchpost":{"south_city_gate":"top", "border_supply_route":"right", "border_ruins":"bottom"},
+		"border_supply_route":{"border_watchpost":"left"},
+		"border_ruins":{"border_watchpost":"top", "border_command_tent":"right"},
+		"border_command_tent":{"border_ruins":"left"},
+		"ice_frontier":{"frozen_pass":"right", "crystal_cavern":"bottom"},
+		"frozen_pass":{"ice_frontier":"left", "elemental_laboratory":"right"},
+		"crystal_cavern":{"ice_frontier":"top"},
+		"elemental_laboratory":{"frozen_pass":"left", "aurora_sanctum":"right"},
+		"aurora_sanctum":{"elemental_laboratory":"left"},
+		"abyss_gate":{"abyss_outer_ring":"right", "abyss_echo_halls":"bottom"},
+		"abyss_outer_ring":{"abyss_gate":"left", "totem_sanctum":"right"},
+		"abyss_echo_halls":{"abyss_gate":"top"},
+		"totem_sanctum":{"abyss_outer_ring":"left", "abyss_heart":"right"},
+		"abyss_heart":{"totem_sanctum":"left"},
+		"treeheart_city":{"cassano_city":"left", "treeheart_outskirts":"right"},
+		"treeheart_outskirts":{"treeheart_city":"left", "treeheart_core":"right", "harbor_quay":"bottom"},
+		"treeheart_core":{"treeheart_outskirts":"left"},
+		"harbor_quay":{"treeheart_outskirts":"top", "harbor_market":"right", "sea_cave":"bottom"},
+		"harbor_market":{"harbor_quay":"left"},
+		"sea_cave":{"harbor_quay":"top", "tide_shrine":"right"},
+		"tide_shrine":{"sea_cave":"left"},
 		"dungeon":{"cassano_city":"top", "dungeon_floor_2":"right"},
 		"dungeon_floor_2":{"dungeon":"left", "dungeon_floor_3":"right"},
 		"dungeon_floor_3":{"dungeon_floor_2":"top"},
@@ -2021,6 +2724,8 @@ func _travel_to(map_id: String) -> void:
 			_set_status("必须先救出国王并取得最终战役情报。")
 		elif map_id == "energy_tower":
 			_set_status("魔军主帅仍在保护能量塔禁地，必须先将其消灭。")
+		elif map_id in ["treeheart_core", "harbor_quay", "harbor_market", "sea_cave", "tide_shrine", "south_city_square", "border_watchpost", "border_supply_route", "border_ruins", "border_command_tent", "frozen_pass", "crystal_cavern", "elemental_laboratory", "aurora_sanctum", "abyss_outer_ring", "abyss_echo_halls", "totem_sanctum", "abyss_heart"]:
+			_set_status("chapter_locked")
 		else:
 			_set_status("需要先击败前一层首领才能进入。")
 		return
@@ -2084,8 +2789,57 @@ func _open_research_dialogue() -> void:
 		{"label":"提高产量任务","action":"research_production_task"},
 		{"label":"离开","action":"close"},
 	]
-	dialogue_panel.open_dialogue("幻兽研究所", words, actions)
+	dialogue_panel.open_dialogue("幻兽研究所", words, _with_pet_endgame_gate(_with_ice_gate(actions)))
 
+
+
+func _with_pet_endgame_gate(actions: Array) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	var inserted := false
+	for raw: Variant in actions:
+		if not raw is Dictionary:
+			continue
+		var row: Dictionary = raw
+		if not inserted and str(row.get("action", "")) == "close":
+			out.append({"label": "\u5e7b\u517d\u7ec8\u5c40", "action": "pet_endgame_board"})
+			out.append({"label": "\u5e7b\u517d\u8bd5\u70bc", "action": "pet_endgame_menu"})
+			inserted = true
+		out.append(row)
+	if not inserted:
+		out.append({"label": "\u5e7b\u517d\u7ec8\u5c40", "action": "pet_endgame_board"})
+		out.append({"label": "\u5e7b\u517d\u8bd5\u70bc", "action": "pet_endgame_menu"})
+	return out
+
+
+func _open_pet_endgame_board() -> void:
+	_hide_all_panels()
+	pet_endgame_panel.show()
+	pet_endgame_panel.refresh()
+	_set_status(GameState.pet_endgame_lines()[0] if not GameState.pet_endgame_lines().is_empty() else "PE")
+
+
+func _open_pet_endgame_menu() -> void:
+	var acts: Array[Dictionary] = [
+		{"label": "col_light", "action": "claim_col:col_ad_light"},
+		{"label": "support", "action": "set_support"},
+		{"label": "t1", "action": "start_ptrial:pet_trial_1"},
+		{"label": "t2", "action": "start_ptrial:pet_trial_2"},
+		{"label": "t3", "action": "start_ptrial:pet_trial_3"},
+		{"label": "king", "action": "start_ptrial:pet_king"},
+		{"label": "rc_note", "action": "claim_rc:rc_note"},
+		{"label": "\u8fd4\u56de", "action": "research_npc"},
+		{"label": "\u79bb\u5f00", "action": "close"},
+	]
+	dialogue_panel.open_dialogue("\u5e7b\u517d\u8bd5\u70bc", "pet endgame", acts)
+
+
+func _start_named_pet_trial(trial_id: String) -> void:
+	var result: Dictionary = GameState.try_start_pet_trial(trial_id, "ui:pt:%s:%d" % [trial_id, GameState.current_day])
+	if not bool(result.get("success", false)):
+		_set_status(str(result.get("code", "PET_TRIAL_KING")))
+		return
+	_apply_current_map()
+	_set_status("PT %s" % trial_id)
 
 func _open_research_info() -> void:
 	var tech := float(GameState.research.get("technology_level", 0.0))
@@ -2153,7 +2907,7 @@ func _toggle_exclusive_panel(panel: Control) -> void:
 
 
 func _hide_all_panels() -> void:
-	for candidate in [inventory_panel, warehouse_panel, gold_shop, stone_shop, equipment_panel, enhancement_panel, pet_panel, research_panel, progression_panel, quest_panel, skill_panel, dialogue_panel]:
+	for candidate in [inventory_panel, warehouse_panel, gold_shop, stone_shop, equipment_panel, enhancement_panel, pet_panel, research_panel, progression_panel, quest_panel, skill_panel, dialogue_panel, adventurer_roster_panel, adventurer_mail_panel, adventurer_trade_panel, ranking_panel, arena_panel, guild_market_panel, property_territory_panel, border_command_panel, ice_codex_panel, abyss_board_panel, challenge_board_panel, pet_endgame_panel, season_board_panel]:
 		if candidate != null:
 			candidate.hide()
 	_hide_item_description()
@@ -2171,6 +2925,34 @@ func _engage_world_monster(action_id: String, skill_id: String = "", territory_c
 		return
 	var actor: TextureRect = interactive_actors.get(action_id)
 	var label: Label = actor_labels.get(action_id)
+	if GameState.expansion_state_service.chapter_encounter_service.is_chapter_boss(monster_id) and not GameState.expansion_state_service.chapter_encounter_service.allow_engage(GameState.expansion_state, monster_id):
+		_set_status("CHAPTER_PRECONDITION")
+		return
+	if GameState.expansion_state_service.border_defense_service.is_border_unit(monster_id):
+		var sess: Dictionary = GameState.begin_border_session(monster_id, "sess:%s:%d" % [monster_id, GameState.current_day])
+		if not bool(sess.get("success", false)):
+			_set_status(str(sess.get("code", "BORDER_PRECONDITION")))
+			return
+	if GameState.expansion_state_service.ice_encounter_service.is_ice_unit(monster_id):
+		var ice_sess: Dictionary = GameState.begin_ice_session(monster_id, "ice:%s:%d" % [monster_id, GameState.current_day])
+		if not bool(ice_sess.get("success", false)):
+			_set_status(str(ice_sess.get("code", "ICE_BOSS_STAGE")))
+			return
+	if GameState.expansion_state_service.echo_encounter_service.is_abyss_unit(monster_id):
+		var abyss_sess: Dictionary = GameState.begin_abyss_session(monster_id, "abyss:%s:%d" % [monster_id, GameState.current_day])
+		if not bool(abyss_sess.get("success", false)):
+			_set_status(str(abyss_sess.get("code", "ABYSS_ECHO_UNKNOWN")))
+			return
+	if GameState.expansion_state_service.challenge_service.is_challenge_unit(monster_id):
+		var ch_sess: Dictionary = GameState.begin_challenge_session(monster_id, "ch:%s:%d" % [monster_id, GameState.current_day])
+		if not bool(ch_sess.get("success", false)):
+			_set_status(str(ch_sess.get("code", "CHALLENGE_SESSION")))
+			return
+	if GameState.expansion_state_service.pet_trial_service.is_trial_unit(monster_id):
+		var pt_sess: Dictionary = GameState.begin_pet_trial_session(monster_id, "pt:%s:%d" % [monster_id, GameState.current_day])
+		if not bool(pt_sess.get("success", false)):
+			_set_status(str(pt_sess.get("code", "PET_TRIAL_CANCEL")))
+			return
 	if scene_battle_controller.is_active():
 		_hide_all_panels()
 		if scene_battle_controller.engage(monster_id, actor, label, skill_id):
@@ -2200,6 +2982,19 @@ func _on_scene_player_hp_changed(current_hp: int, maximum_hp: int) -> void:
 
 func _on_scene_battle_finished(monster_id: String, victory: bool) -> void:
 	current_player_hp = -1
+	var chapter_boss := GameState.settle_chapter_boss(monster_id, victory, "battle:%s:%s" % [monster_id, str(victory)])
+	var border_battle := GameState.settle_border_battle(monster_id, victory, str(GameState.border_runtime().get("active_session_id", "")))
+	var ice_battle := GameState.settle_ice_battle(monster_id, victory, str(GameState.ice_runtime().get("active_session_id", "")))
+	var abyss_battle := GameState.settle_abyss_battle(monster_id, victory, str(GameState.abyss_runtime().get("active_session_id", "")), not victory and int(GameState.player_current_hp) <= 0)
+	var ch_battle := GameState.settle_challenge_battle(monster_id, victory, str(GameState.challenge_runtime().get("active_session_id", "")))
+	var pt_battle := GameState.settle_pet_trial_battle(monster_id, victory, str(GameState.pet_endgame_runtime().get("active_session_id", "")))
+	if str(monster_id).begins_with("arena_npc:"):
+		if victory:
+			var match_id := str(GameState.expansion_state.get("rankings", {}).get("active_match_id", ""))
+			if not match_id.is_empty():
+				GameState.settle_arena_match(match_id, true, "battle_finished:%s" % match_id)
+		else:
+			GameState.abandon_active_arena_match("defeat")
 	var territory_result := GameState.resolve_territory_challenge(monster_id, victory)
 	if monster_id in ["pk_champion_60", "pk_champion_100", "pk_champion_130"]:
 		GameState.finish_pk_race(victory)

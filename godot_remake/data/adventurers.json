@@ -1,0 +1,506 @@
+[
+  {
+    "id": "npc_adv_lin_xia",
+    "display_name": "林夏",
+    "role": "见习采集者",
+    "personality_tags": [
+      "diligent",
+      "curious"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [
+      "comm_collect_ore"
+    ],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_su_yan",
+    "display_name": "苏妍",
+    "role": "情报员",
+    "personality_tags": [
+      "calm",
+      "observant"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [
+      "comm_explore_thunder"
+    ],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_liang_chen",
+    "display_name": "梁辰",
+    "role": "战士",
+    "personality_tags": [
+      "brave",
+      "direct"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [
+      "comm_kill_spider"
+    ],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_jiang_yue",
+    "display_name": "江月",
+    "role": "医师",
+    "personality_tags": [
+      "gentle",
+      "careful"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "fruit"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [
+      "comm_deliver_fruit"
+    ],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_qin_he",
+    "display_name": "秦鹤",
+    "role": "幻兽师",
+    "personality_tags": [
+      "patient",
+      "curious"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [
+      "comm_pet_train"
+    ],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_gu_ning",
+    "display_name": "顾宁",
+    "role": "守备",
+    "personality_tags": [
+      "loyal",
+      "stern"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [
+      "comm_campaign_assist"
+    ],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_ye_fei",
+    "display_name": "叶飞",
+    "role": "游侠",
+    "personality_tags": [
+      "free",
+      "alert"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_bai_luo",
+    "display_name": "白洛",
+    "role": "锻造师",
+    "personality_tags": [
+      "blunt",
+      "focused"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_xiao_ran",
+    "display_name": "萧然",
+    "role": "行商",
+    "personality_tags": [
+      "shrewd",
+      "friendly"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_tang_xue",
+    "display_name": "唐雪",
+    "role": "药剂师",
+    "personality_tags": [
+      "precise",
+      "quiet"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_he_ming",
+    "display_name": "何明",
+    "role": "商旅",
+    "personality_tags": [
+      "talkative",
+      "worldly"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  },
+  {
+    "id": "npc_adv_shen_yao",
+    "display_name": "沈瑶",
+    "role": "学者",
+    "personality_tags": [
+      "curious",
+      "proud"
+    ],
+    "relationship_profile": {
+      "initial_value": 0,
+      "gift_preferences": [
+        "rose"
+      ],
+      "daily_gift_limit": 1
+    },
+    "commission_pool_ids": [],
+    "initial_ledger": {
+      "gold": 300,
+      "magic_stones": 0,
+      "items": {
+        "rose": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "fruit": {
+          "quantity": 2,
+          "source": "npc_stock"
+        },
+        "silver_ore": {
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      },
+      "daily_budget": 200
+    },
+    "pet_summary": [],
+    "source_classification": "singleplayer_extension",
+    "source_refs": [
+      "docs/moyu_23_24_content_registry.json"
+    ]
+  }
+]

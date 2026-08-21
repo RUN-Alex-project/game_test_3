@@ -1,0 +1,33 @@
+{
+  "max_value": 1000,
+  "default_gift_item_id": "rose",
+  "default_gift_delta": 1,
+  "preferred_gift_bonus": 4,
+  "stages": [
+    {
+      "id": "acquaintance",
+      "name": "认识",
+      "threshold": 0
+    },
+    {
+      "id": "friend",
+      "name": "朋友",
+      "threshold": 10
+    },
+    {
+      "id": "confidant",
+      "name": "知己",
+      "threshold": 200
+    },
+    {
+      "id": "lover",
+      "name": "恋人",
+      "threshold": 500
+    },
+    {
+      "id": "beloved",
+      "name": "爱人",
+      "threshold": 1000
+    }
+  ]
+}
