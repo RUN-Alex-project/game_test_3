@@ -1,12 +1,14 @@
 {
-  "themes": [
-    {
-      "theme_id": "theme_harvest",
-      "title": "harvest"
-    },
-    {
-      "theme_id": "theme_ember",
-      "title": "ember"
-    }
-  ]
+ "themes": [
+  {
+   "theme_id": "theme_harvest",
+   "title": "harvest",
+   "name": "丰收祭"
+  },
+  {
+   "theme_id": "theme_ember",
+   "title": "ember",
+   "name": "余烬祭"
+  }
+ ]
 }

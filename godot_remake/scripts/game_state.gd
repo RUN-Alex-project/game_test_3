@@ -2049,6 +2049,79 @@ func seed_season_prereqs() -> void:
 	expansion_state = expansion_state_service.season_cycle_service.ensure(expansion_state, current_day, int(expansion_state.get("world_seed", 1)))
 
 
+## 赛季簿的玩家可读视图。season_board_lines() 是给测试断言用的 key=value 串，
+## 直接塞进面板会让玩家看到一堆调试文本，故另出一份人话版本。
+## 每行 {"text": 显示文本, "kind": 分类}，kind 供面板决定灰显与缩进。
+func season_board_view() -> Array:
+	var row: Dictionary = season_runtime()
+	var service: Variant = expansion_state_service.season_cycle_service
+	var cycle_days: int = int(service.CYCLE_DAYS)
+	var day_index: int = int(row.get("day_index", 0))
+	var season_id: int = int(row.get("season_id", 0))
+	var theme_name: String = _season_theme_name(str(row.get("theme_id", "")))
+	var rows: Array = []
+	rows.append({"text": "第 %d 赛季 · %s" % [season_id, theme_name], "kind": "title"})
+	rows.append({"text": "进度：第 %d / %d 天（自游戏第 %d 天开始）" % [
+		day_index, cycle_days, int(row.get("start_day", 0))], "kind": "info"})
+
+	var contract_ids: Array = row.get("daily_contract_ids", [])
+	var claimed: Dictionary = row.get("claimed_reward_ids", {})
+	var done: int = 0
+	for cid: Variant in contract_ids:
+		if claimed.has("daily:%s:%d:%d" % [str(cid), season_id, day_index]):
+			done += 1
+	rows.append({"text": "今日委托（已完成 %d / %d）" % [done, contract_ids.size()], "kind": "header"})
+	if contract_ids.is_empty():
+		rows.append({"text": "  今天没有委托，明天再来。", "kind": "dim"})
+	for cid: Variant in contract_ids:
+		var spec: Dictionary = _season_contract_spec(str(cid))
+		var finished: bool = claimed.has("daily:%s:%d:%d" % [str(cid), season_id, day_index])
+		rows.append({
+			"text": "  %s　+%d 金币　%s" % [
+				str(spec.get("name", cid)), int(spec.get("gold", 0)),
+				"已完成" if finished else "未完成"],
+			"kind": "dim" if finished else "item",
+		})
+		var objective: String = str(spec.get("objective", ""))
+		if not objective.is_empty():
+			rows.append({"text": "     目标：%s" % objective, "kind": "dim"})
+
+	rows.append({"text": "赛季奖励上限", "kind": "header"})
+	rows.append({"text": "  今日 %d / %d　本赛季 %d / %d　本主题 %d / %d" % [
+		int(row.get("daily_gold_granted", 0)), int(service.rules.get("daily_reward_gold_cap", 10)),
+		int(row.get("season_gold_granted", 0)), int(service.rules.get("season_reward_gold_cap", 40)),
+		int(row.get("theme_gold_granted", 0)), int(service.rules.get("theme_reward_gold_cap", 20)),
+	], "kind": "info"})
+
+	var snap: Dictionary = row.get("season_rank_snapshot", {})
+	var rank_text: String = str(snap.get("text", ""))
+	if bool(snap.get("live", false)):
+		rows.append({"text": "赛季排行：%d 分%s" % [
+			int(snap.get("score", 0)), ("　" + rank_text) if not rank_text.is_empty() else ""],
+			"kind": "info"})
+	else:
+		rows.append({"text": "赛季排行：尚未上榜（完成委托即可计分）", "kind": "dim"})
+
+	var history: Array = row.get("season_history", [])
+	rows.append({"text": "历史赛季：%d / %d 期" % [history.size(), int(service.HISTORY_CAP)], "kind": "info"})
+	rows.append({"text": "赛季只按存档中的游戏日推进，与系统时钟无关。", "kind": "dim"})
+	return rows
+
+
+func _season_theme_name(theme_id: String) -> String:
+	for raw: Variant in expansion_state_service.season_cycle_service.themes:
+		if raw is Dictionary and str((raw as Dictionary).get("theme_id", "")) == theme_id:
+			return str((raw as Dictionary).get("name", theme_id))
+	return theme_id
+
+
+func _season_contract_spec(contract_id: String) -> Dictionary:
+	var table: Dictionary = expansion_state_service.season_cycle_service.by_contract
+	if table.has(contract_id):
+		return table[contract_id]
+	return {}
+
+
 func season_board_lines() -> Array:
 	var row: Dictionary = season_runtime()
 	var snap: Dictionary = row.get("season_rank_snapshot", {}) as Dictionary

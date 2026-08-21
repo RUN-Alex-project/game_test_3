@@ -1,29 +1,39 @@
 {
-  "contracts": [
-    {
-      "contract_id": "sc_market",
-      "source": "market",
-      "gold": 2
-    },
-    {
-      "contract_id": "sc_territory",
-      "source": "territory",
-      "gold": 2
-    },
-    {
-      "contract_id": "sc_challenge",
-      "source": "challenge",
-      "gold": 2
-    },
-    {
-      "contract_id": "sc_pet",
-      "source": "pet",
-      "gold": 2
-    },
-    {
-      "contract_id": "sc_abyss",
-      "source": "abyss",
-      "gold": 2
-    }
-  ]
+ "contracts": [
+  {
+   "contract_id": "sc_market",
+   "source": "market",
+   "gold": 2,
+   "name": "商会交易",
+   "objective": "到商会完成一笔交易"
+  },
+  {
+   "contract_id": "sc_territory",
+   "source": "territory",
+   "gold": 2,
+   "name": "领地经营",
+   "objective": "持有领地并完成一次日结"
+  },
+  {
+   "contract_id": "sc_challenge",
+   "source": "challenge",
+   "gold": 2,
+   "name": "九大挑战",
+   "objective": "完成一项挑战簿首通"
+  },
+  {
+   "contract_id": "sc_pet",
+   "source": "pet",
+   "gold": 2,
+   "name": "幻兽终局",
+   "objective": "领取一份幻兽收藏奖励"
+  },
+  {
+   "contract_id": "sc_abyss",
+   "source": "abyss",
+   "gold": 2,
+   "name": "深渊终局",
+   "objective": "推进深渊终局章节"
+  }
+ ]
 }

@@ -55,7 +55,26 @@ func _ready() -> void:
 	)
 
 
+const TITLE_COLOR := Color("7a3200")
+const HEADER_COLOR := Color("3d2a12")
+const ITEM_COLOR := Color("241a0c")
+const DIM_COLOR := Color("6b5a44")
+
+
+## 用 GameState.season_board_view()（人话版）而不是 season_board_lines()
+## （给测试断言的 key=value 串）——后者直接显示会让玩家看到调试文本。
 func refresh() -> void:
 	rows.clear()
-	for line in GameState.season_board_lines():
-		rows.add_item(str(line))
+	for raw: Variant in GameState.season_board_view():
+		var entry: Dictionary = raw if raw is Dictionary else {}
+		var index := rows.add_item(str(entry.get("text", "")))
+		rows.set_item_selectable(index, false)
+		match str(entry.get("kind", "info")):
+			"title":
+				rows.set_item_custom_fg_color(index, TITLE_COLOR)
+			"header":
+				rows.set_item_custom_fg_color(index, HEADER_COLOR)
+			"dim":
+				rows.set_item_custom_fg_color(index, DIM_COLOR)
+			_:
+				rows.set_item_custom_fg_color(index, ITEM_COLOR)

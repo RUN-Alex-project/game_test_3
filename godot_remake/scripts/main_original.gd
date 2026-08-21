@@ -1813,27 +1813,72 @@ func _start_arena_match(monster_id: String) -> void:
 	scene_battle_controller.engage(monster_id, arena_proxy)
 
 
+const WEEKDAY_NAMES := ["", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+
+
 func _open_daily_officer_dialogue() -> void:
 	var weekday := ((GameState.current_day - 1) % 7) + 1
 	var words := ""
 	var actions: Array[Dictionary] = []
 	match weekday:
 		1, 2:
-			words = "今天的任务是收集宝石。交付魔魂晶石或灵魂王，可以领取对应功勋。"
+			words = "今天的任务是收集宝石。交付魔魂晶石或灵魂王，可以领取对应功勋。\n%s" % _daily_gem_status()
 			actions = [{"label":"交付宝石","action":"daily_deliver"},{"label":"任务说明","action":"daily_help"},{"label":"离开","action":"close"}]
 		3, 4:
-			words = "今天的任务是训练幻兽。交付十星以上、未出征的攻防型幻兽可领取奖励。"
+			words = "今天的任务是训练幻兽。交付十星以上、未出征的攻防型幻兽可领取奖励。\n%s" % _daily_pet_status()
 			actions = [{"label":"查看幻兽","action":"pets"},{"label":"任务说明","action":"daily_help"},{"label":"离开","action":"close"}]
 		5:
-			words = "周五突袭：从冰宫进入雪域边境，消灭暴雪勇士、骑士长和军官；每个目标都会直接增加军功。"
+			words = "周五突袭：从冰宫进入雪域边境，消灭暴雪勇士、骑士长和军官；每个目标都会直接增加军功。\n奖励：勇士 5,000、骑士长 20,000、军官 50,000 军功。\n路线：卡萨诺城 → 皇宫 → 冰宫 → 雪域边境。"
 			actions = [{"label":"接受任务","action":"quest_accept:border_raid"},{"label":"任务说明","action":"daily_help"},{"label":"离开","action":"close"}]
 		6:
-			words = "周六王宫举行每周 PK 赛。报名后前往竞技场挑战各级擂主。"
+			words = "周六王宫举行每周 PK 赛。报名后前往竞技场挑战各级擂主。\n%s" % _daily_pk_status()
 			actions = [{"label":"前往皇宫","action":"travel:palace"},{"label":"任务说明","action":"daily_help"},{"label":"离开","action":"close"}]
 		7:
-			words = "周日地下城的魔族将领正在召开会议。国王悬赏勇士进入地下城，击败三层首领。"
+			words = "周日地下城的魔族将领正在召开会议。国王悬赏勇士进入地下城，击败三层首领。\n%s" % _daily_dungeon_status()
 			actions = [{"label":"接受任务","action":"quest_accept:dungeon_conquest"},{"label":"进入地下城","action":"enter_dungeon"},{"label":"任务说明","action":"daily_help"},{"label":"离开","action":"close"}]
-	dialogue_panel.open_dialogue("日常任务官", words, _with_season_gate(_with_treeheart_gate(_with_adventurer_board(actions))))
+	var header := "第 %d 天　%s\n" % [GameState.current_day, WEEKDAY_NAMES[weekday]]
+	dialogue_panel.open_dialogue("日常任务官", header + words, _with_season_gate(_with_treeheart_gate(_with_adventurer_board(actions))))
+
+
+## 以下四个状态串把「今天该做什么」补全为「做到哪了、还差什么、奖励多少」。
+## 原先只有一句任务描述，玩家看不出完成状态与所需材料数量。
+func _daily_gem_status() -> String:
+	var magic_done: bool = bool(GameState.completed_daily_tasks.get("collect_magic_soul", false))
+	var king_done: bool = bool(GameState.completed_daily_tasks.get("collect_soul_king", false))
+	return "魔魂晶石 %d 个（每次 +500 功勋，今日%s）\n灵魂王 %d 个（每次 +2,000 功勋，今日%s）" % [
+		GameState.count_item("magic_soul_crystal"), "已交付" if magic_done else "未交付",
+		GameState.count_item("soul_king"), "已交付" if king_done else "未交付"]
+
+
+func _daily_pet_status() -> String:
+	var eligible := 0
+	for raw: Variant in GameState.pets:
+		if not raw is Dictionary:
+			continue
+		var pet: Dictionary = raw
+		if int(pet.get("star", 0)) >= 10 and not bool(pet.get("deployed", false)):
+			eligible += 1
+	if eligible <= 0:
+		return "当前没有符合条件的幻兽（需十星以上且未出征）。先到幻兽研究所培养。"
+	return "当前符合条件的幻兽：%d 只。" % eligible
+
+
+func _daily_pk_status() -> String:
+	if GameState.last_pk_race_day == GameState.current_day:
+		return "今日已参加过 PK 赛。"
+	if GameState.pk_race_active:
+		return "已报名，前往皇宫的竞技场挑战擂主。"
+	return "尚未报名。到皇宫找 PK 赛报名官报名。"
+
+
+func _daily_dungeon_status() -> String:
+	var floor_2: bool = bool(GameState.unlocked_maps.get("dungeon_floor_2", false))
+	var floor_3: bool = bool(GameState.unlocked_maps.get("dungeon_floor_3", false))
+	if floor_3:
+		return "三层已开启：击败救王首领即可完成。"
+	if floor_2:
+		return "已打通一层，二层已开启；击败二层首领可开启三层。"
+	return "尚未打通一层。先击败一层首领巨杰士。"
 
 
 
@@ -1857,7 +1902,8 @@ func _open_season_board() -> void:
 	_hide_all_panels()
 	season_board_panel.show()
 	season_board_panel.refresh()
-	_set_status(GameState.season_board_lines()[0] if not GameState.season_board_lines().is_empty() else "SSN")
+	var season_view: Array = GameState.season_board_view()
+	_set_status(str((season_view[0] as Dictionary).get("text", "")) if not season_view.is_empty() else "赛季簿")
 
 func _open_daily_help_dialogue() -> void:
 	var words := "周一、周二：收集宝石。\n周三、周四：训练并上交高星幻兽。\n周五：突袭雪域边境。\n周六：参加王宫 PK 赛。\n周日：破坏地下城魔族将领会议。"
