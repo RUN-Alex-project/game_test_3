@@ -163,7 +163,7 @@
     {
         "id": "dungeon_plus9_sword",
         "name": "极品1星+9地下城剑",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0152.jpg",
         "description": "地下城二层原版奖励装备。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -175,7 +175,7 @@
     {
         "id": "dungeon_plus12_sword",
         "name": "极品1星+12地下城剑",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0154.jpg",
         "description": "地下城三层原版奖励装备。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -187,7 +187,7 @@
     {
         "id": "territory_quality3_plus9_sword",
         "name": "极品3星+9领地剑",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0156.jpg",
         "description": "低阶地图保护者每日奖励，极品3星、魔魂+9、1孔。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -199,7 +199,7 @@
     {
         "id": "territory_quality3_plus12_sword",
         "name": "极品3星+12领地剑",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0158.jpg",
         "description": "冰宫保护者每日奖励，极品3星、魔魂+12、1孔。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -211,7 +211,7 @@
     {
         "id": "territory_quality4_plus9_sword",
         "name": "极品4星+9领地剑",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0160.jpg",
         "description": "亚维特岛保护者每日奖励，极品4星、魔魂+9、1孔。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -223,7 +223,7 @@
     {
         "id": "territory_quality4_plus12_sword",
         "name": "极品4星+12领地剑",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0162.jpg",
         "description": "卡萨诺城保护者每日奖励，极品4星、魔魂+12、1孔。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -235,7 +235,7 @@
     {
         "id": "novice_sword",
         "name": "新手长剑",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0140.jpg",
         "description": "基础武器。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -245,7 +245,7 @@
     {
         "id": "novice_armor",
         "name": "新手铠甲",
-        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "icon": "res://assets/extracted/images/image_0240.jpg",
         "description": "基础铠甲。",
         "category": "equipment",
         "equipment_slot": "armor",
@@ -290,7 +290,7 @@
     {
         "id": "lottery_weapon",
         "name": "抽奖房武器",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0150.jpg",
         "description": "抽奖房随机装备。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -300,7 +300,7 @@
     {
         "id": "lottery_helmet",
         "name": "抽奖房头盔",
-        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "icon": "res://assets/extracted/images/image_0175.jpg",
         "description": "抽奖房随机装备。",
         "category": "equipment",
         "equipment_slot": "helmet",
@@ -311,7 +311,7 @@
     {
         "id": "lottery_necklace",
         "name": "抽奖房项链",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0225.jpg",
         "description": "抽奖房随机装备。",
         "category": "equipment",
         "equipment_slot": "necklace",
@@ -322,7 +322,7 @@
     {
         "id": "lottery_armor",
         "name": "抽奖房衣服",
-        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "icon": "res://assets/extracted/images/image_0250.jpg",
         "description": "抽奖房随机装备。",
         "category": "equipment",
         "equipment_slot": "armor",
@@ -333,7 +333,7 @@
     {
         "id": "lottery_bracelet",
         "name": "抽奖房手镯",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0200.jpg",
         "description": "抽奖房随机装备。",
         "category": "equipment",
         "equipment_slot": "bracelet",
@@ -343,7 +343,7 @@
     {
         "id": "lottery_boots",
         "name": "抽奖房战靴",
-        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "icon": "res://assets/extracted/images/image_0275.jpg",
         "description": "抽奖房随机装备。",
         "category": "equipment",
         "equipment_slot": "boots",
@@ -378,7 +378,7 @@
     {
         "id": "field_weapon",
         "name": "野外武器",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0140.jpg",
         "description": "普通怪物或BOSS掉落的随机等级装备。",
         "category": "equipment",
         "equipment_slot": "weapon",
@@ -388,7 +388,7 @@
     {
         "id": "field_helmet",
         "name": "野外头盔",
-        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "icon": "res://assets/extracted/images/image_0165.jpg",
         "description": "普通怪物或BOSS掉落的随机等级装备。",
         "category": "equipment",
         "equipment_slot": "helmet",
@@ -399,7 +399,7 @@
     {
         "id": "field_necklace",
         "name": "野外项链",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0215.jpg",
         "description": "普通怪物或BOSS掉落的随机等级装备。",
         "category": "equipment",
         "equipment_slot": "necklace",
@@ -410,7 +410,7 @@
     {
         "id": "field_armor",
         "name": "野外衣服",
-        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "icon": "res://assets/extracted/images/image_0240.jpg",
         "description": "普通怪物或BOSS掉落的随机等级装备。",
         "category": "equipment",
         "equipment_slot": "armor",
@@ -421,7 +421,7 @@
     {
         "id": "field_bracelet",
         "name": "野外手镯",
-        "icon": "res://assets/extracted/images/image_0021.jpg",
+        "icon": "res://assets/extracted/images/image_0190.jpg",
         "description": "普通怪物或BOSS掉落的随机等级装备。",
         "category": "equipment",
         "equipment_slot": "bracelet",
@@ -431,7 +431,7 @@
     {
         "id": "field_boots",
         "name": "野外战靴",
-        "icon": "res://assets/extracted/images/image_0024.jpg",
+        "icon": "res://assets/extracted/images/image_0265.jpg",
         "description": "普通怪物或BOSS掉落的随机等级装备。",
         "category": "equipment",
         "equipment_slot": "boots",

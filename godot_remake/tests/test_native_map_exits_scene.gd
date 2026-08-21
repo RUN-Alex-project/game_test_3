@@ -19,7 +19,11 @@ func _ready() -> void:
 	assert(right.target_map_id == "avit_island" and right.native_direction == "right", "right city exit target is not Avit Island")
 	assert(left.target_map_id == "thunder_continent" and left.native_direction == "left", "left city exit target is not Thunder Continent")
 	assert(top.target_map_id == "palace" and bottom.target_map_id == "desert", "vertical city exits are incorrect")
-	assert(right.locked and not right.disabled, "level 70 Avit gate must be locked but still clickable so the block reason is shown")
+	# 用户 2026-08-21 取消地图等级门槛：卡萨诺城四个出口不再有等级锁。
+	# 「被门槛挡住的出口保持 locked 且不 disabled」这条规则改由
+	# ui_audit/test_ui_map_exit_blocking_scene 用仍然存在的爵位门槛（后花园）验证。
+	assert(GameState.map_entry_required_level("avit_island") == 1, "map level gates must be removed (Avit still gated)")
+	assert(not right.locked and not right.disabled, "Avit exit must be open once level gates are removed")
 	assert(right.destination == "亚维特岛" and right.travel_verb == "进入", "native edge label was not configured")
 
 	left.emit_signal("pressed")

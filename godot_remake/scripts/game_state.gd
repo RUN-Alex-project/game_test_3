@@ -41,22 +41,121 @@ const FUWA_REWARD_ITEM_IDS := ["rose_bouquet_999", "plasma_potion", "soul_king"]
 const FUWA_MESSENGER_MAP_BY_ROLL := ["thunder_continent", "", "palace", "desert", "dream_swamp", "ice_palace", "avit_island", "volcano", "abyss_maze"]
 const LOTTERY_COST := 28
 const LOTTERY_EQUIPMENT_IDS := ["lottery_weapon", "lottery_helmet", "lottery_necklace", "lottery_armor", "lottery_bracelet", "lottery_boots"]
-const MAP_LEVEL_REQUIREMENTS := {
-	"thunder_continent":10,
-	"thunder_mine":10,
-	"desert":20,
-	"dream_swamp":30,
-	"ice_palace":50,
-	"ice_border":50,
-	"demon_camp":50,
-	"demon_left":50,
-	"demon_right":50,
-	"demon_banner":50,
-	"energy_tower":50,
-	"avit_island":70,
-	"volcano":90,
-	"abyss_maze":100,
+
+## 野外掉落装备的图标按 (槽位, 掉落档位) 解析。
+## combat_service._normalize_equipment_level() 把怪物等级归一为 12 个档位
+## （1/10/20/.../100/125），而已提取的 64x64 装备图正好 6 槽 × 12 张 = 72，两边一一对应。
+## 此前 20 件装备共用两张 32x32 技能书图标，72 张真图全部闲置。
+const EQUIPMENT_ICON_TIERS := {
+	"weapon": [
+		"res://assets/extracted/images/image_0140.jpg",   # c140
+		"res://assets/extracted/images/image_0142.jpg",   # c142
+		"res://assets/extracted/images/image_0144.jpg",   # c144
+		"res://assets/extracted/images/image_0146.jpg",   # c146
+		"res://assets/extracted/images/image_0148.jpg",   # c148
+		"res://assets/extracted/images/image_0150.jpg",   # c150
+		"res://assets/extracted/images/image_0152.jpg",   # c152
+		"res://assets/extracted/images/image_0154.jpg",   # c154
+		"res://assets/extracted/images/image_0156.jpg",   # c156
+		"res://assets/extracted/images/image_0158.jpg",   # c158
+		"res://assets/extracted/images/image_0160.jpg",   # c160
+		"res://assets/extracted/images/image_0162.jpg",   # c162
+	],
+	"helmet": [
+		"res://assets/extracted/images/image_0165.jpg",   # c165
+		"res://assets/extracted/images/image_0167.jpg",   # c167
+		"res://assets/extracted/images/image_0169.jpg",   # c169
+		"res://assets/extracted/images/image_0171.jpg",   # c171
+		"res://assets/extracted/images/image_0173.jpg",   # c173
+		"res://assets/extracted/images/image_0175.jpg",   # c175
+		"res://assets/extracted/images/image_0177.jpg",   # c177
+		"res://assets/extracted/images/image_0179.jpg",   # c179
+		"res://assets/extracted/images/image_0181.jpg",   # c181
+		"res://assets/extracted/images/image_0183.jpg",   # c183
+		"res://assets/extracted/images/image_0185.jpg",   # c185
+		"res://assets/extracted/images/image_0187.jpg",   # c187
+	],
+	"bracelet": [
+		"res://assets/extracted/images/image_0190.jpg",   # c190
+		"res://assets/extracted/images/image_0192.jpg",   # c192
+		"res://assets/extracted/images/image_0194.jpg",   # c194
+		"res://assets/extracted/images/image_0196.jpg",   # c196
+		"res://assets/extracted/images/image_0198.jpg",   # c198
+		"res://assets/extracted/images/image_0200.jpg",   # c200
+		"res://assets/extracted/images/image_0202.jpg",   # c202
+		"res://assets/extracted/images/image_0204.jpg",   # c204
+		"res://assets/extracted/images/image_0206.jpg",   # c206
+		"res://assets/extracted/images/image_0208.jpg",   # c208
+		"res://assets/extracted/images/image_0210.jpg",   # c210
+		"res://assets/extracted/images/image_0212.jpg",   # c212
+	],
+	"necklace": [
+		"res://assets/extracted/images/image_0215.jpg",   # c215
+		"res://assets/extracted/images/image_0217.jpg",   # c217
+		"res://assets/extracted/images/image_0219.jpg",   # c219
+		"res://assets/extracted/images/image_0221.jpg",   # c221
+		"res://assets/extracted/images/image_0223.jpg",   # c223
+		"res://assets/extracted/images/image_0225.jpg",   # c225
+		"res://assets/extracted/images/image_0227.jpg",   # c227
+		"res://assets/extracted/images/image_0229.jpg",   # c229
+		"res://assets/extracted/images/image_0231.jpg",   # c231
+		"res://assets/extracted/images/image_0233.jpg",   # c233
+		"res://assets/extracted/images/image_0235.png",   # c235
+		"res://assets/extracted/images/image_0237.jpg",   # c237
+	],
+	"armor": [
+		"res://assets/extracted/images/image_0240.jpg",   # c240
+		"res://assets/extracted/images/image_0242.jpg",   # c242
+		"res://assets/extracted/images/image_0244.jpg",   # c244
+		"res://assets/extracted/images/image_0246.jpg",   # c246
+		"res://assets/extracted/images/image_0248.jpg",   # c248
+		"res://assets/extracted/images/image_0250.jpg",   # c250
+		"res://assets/extracted/images/image_0252.jpg",   # c252
+		"res://assets/extracted/images/image_0254.jpg",   # c254
+		"res://assets/extracted/images/image_0256.jpg",   # c256
+		"res://assets/extracted/images/image_0258.jpg",   # c258
+		"res://assets/extracted/images/image_0260.png",   # c260
+		"res://assets/extracted/images/image_0262.jpg",   # c262
+	],
+	"boots": [
+		"res://assets/extracted/images/image_0265.jpg",   # c265
+		"res://assets/extracted/images/image_0267.jpg",   # c267
+		"res://assets/extracted/images/image_0269.jpg",   # c269
+		"res://assets/extracted/images/image_0271.jpg",   # c271
+		"res://assets/extracted/images/image_0273.jpg",   # c273
+		"res://assets/extracted/images/image_0275.jpg",   # c275
+		"res://assets/extracted/images/image_0277.jpg",   # c277
+		"res://assets/extracted/images/image_0279.jpg",   # c279
+		"res://assets/extracted/images/image_0281.jpg",   # c281
+		"res://assets/extracted/images/image_0283.jpg",   # c283
+		"res://assets/extracted/images/image_0285.jpg",   # c285
+		"res://assets/extracted/images/image_0287.jpg",   # c287
+	],
 }
+
+const EQUIPMENT_LEVEL_BANDS := [1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125]
+
+
+## 返回某槽位在某掉落档位下的图标路径；槽位未登记时返回空串，
+## 由调用方回退到物品定义自带的 icon。
+func equipment_icon_for(equipment_slot: String, drop_level: int) -> String:
+	if not EQUIPMENT_ICON_TIERS.has(equipment_slot):
+		return ""
+	var tiers: Array = EQUIPMENT_ICON_TIERS[equipment_slot]
+	var band_index := 0
+	for index in EQUIPMENT_LEVEL_BANDS.size():
+		if drop_level >= int(EQUIPMENT_LEVEL_BANDS[index]):
+			band_index = index
+	return str(tiers[clampi(band_index, 0, tiers.size() - 1)])
+
+## 地图进入等级门槛。用户 2026-08-21 决定取消等级限制：1 级新档从卡萨诺城出发时，
+## 唯一有怪的四个出口原先分别要 10/20/70 级，而玩家经验只能来自战斗，城内没有任何
+## 给玩家加经验的途径（经验球与经验导师都只作用于幻兽），形成无法练级的死锁。
+## 此表留空表示所有地图门槛为 1；剧情/爵位/星期/逐层解锁等其它门槛不受影响，
+## 仍由 can_enter_map() 逐条判断。data/maps.json 的 required_level 与
+## docs/world_interaction_registry.json 的 runtime_required_level 同步为 1，
+## world_interaction_test_support 会校验三方一致。
+const MAP_LEVEL_REQUIREMENTS := {}
 
 var item_database: Dictionary = {}
 var inventory: Array[Dictionary] = []
@@ -272,6 +371,11 @@ func get_item_definition(item_id: String) -> Dictionary:
 			return {}
 		definition.name = "%d级%s" % [int(loot_equipment.item_level), str(definition.get("name", "装备"))]
 		definition.description = "%s\n野外掉落：品质+%d，魔魂+%d，洞数%d。" % [str(definition.get("description", "")), int(loot_equipment.quality_level), int(loot_equipment.magic_soul_level), int(loot_equipment.socket_count)]
+		# 掉落档位决定图标：同一槽位 12 个档位各有一张原版图，
+		# 不按档位解析的话所有等级的掉落都长一个样。
+		var tier_icon := equipment_icon_for(str(definition.get("equipment_slot", "")), int(loot_equipment.item_level))
+		if not tier_icon.is_empty():
+			definition.icon = tier_icon
 		return definition
 	return item_database.get(item_id, {})
 

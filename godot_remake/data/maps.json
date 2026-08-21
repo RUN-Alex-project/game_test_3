@@ -171,7 +171,7 @@
         "id": "thunder_continent",
         "name": "雷鸣大陆",
         "background": "res://assets/extracted/images/image_1066.jpg",
-        "required_level": 10,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -201,7 +201,7 @@
         "id": "thunder_mine",
         "name": "雷鸣矿洞",
         "background": "res://assets/extracted/images/image_1091.jpg",
-        "required_level": 10,
+        "required_level": 1,
         "spawn": [
             360,
             360
@@ -218,7 +218,7 @@
         "id": "desert",
         "name": "戈壁",
         "background": "res://assets/extracted/images/image_1226.jpg",
-        "required_level": 20,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -245,7 +245,7 @@
         "id": "dream_swamp",
         "name": "迷梦沼泽",
         "background": "res://assets/extracted/images/image_1236.jpg",
-        "required_level": 30,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -272,7 +272,7 @@
         "id": "ice_palace",
         "name": "冰宫",
         "background": "res://assets/extracted/images/image_1242.jpg",
-        "required_level": 50,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -306,7 +306,7 @@
         "id": "ice_border",
         "name": "雪域边境",
         "background": "res://assets/extracted/images/image_1271.jpg",
-        "required_level": 50,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -331,7 +331,7 @@
         "id": "demon_camp",
         "name": "魔中军阵地",
         "background": "res://assets/extracted/images/image_1271.jpg",
-        "required_level": 50,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -363,7 +363,7 @@
         "id": "demon_left",
         "name": "魔左军阵地",
         "background": "res://assets/extracted/images/image_1276.jpg",
-        "required_level": 50,
+        "required_level": 1,
         "spawn": [
             367,
             360
@@ -382,7 +382,7 @@
         "id": "demon_right",
         "name": "魔右军阵地",
         "background": "res://assets/extracted/images/image_1276.jpg",
-        "required_level": 50,
+        "required_level": 1,
         "spawn": [
             345,
             80
@@ -401,7 +401,7 @@
         "id": "demon_banner",
         "name": "魔军帅旗",
         "background": "res://assets/extracted/images/image_1278.jpg",
-        "required_level": 50,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -424,7 +424,7 @@
         "id": "energy_tower",
         "name": "能量塔禁地",
         "background": "res://assets/extracted/images/image_1278.jpg",
-        "required_level": 50,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -443,7 +443,7 @@
         "id": "avit_island",
         "name": "亚维特岛",
         "background": "res://assets/extracted/images/image_1252.jpg",
-        "required_level": 70,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -472,7 +472,7 @@
         "id": "volcano",
         "name": "火山",
         "background": "res://assets/extracted/images/image_1262.jpg",
-        "required_level": 90,
+        "required_level": 1,
         "spawn": [
             90,
             260
@@ -498,7 +498,7 @@
         "id": "abyss_maze",
         "name": "深渊迷宫",
         "background": "res://assets/extracted/images/image_1268.jpg",
-        "required_level": 100,
+        "required_level": 1,
         "spawn": [
             90,
             260

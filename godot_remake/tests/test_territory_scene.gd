@@ -16,14 +16,14 @@ func _ready() -> void:
 	assert(world.can_travel("volcano", "abyss_maze"), "volcano does not lead to the Abyss Maze")
 	assert(world.can_travel("ice_palace", "ice_border"), "Ice Palace does not lead to the snow border")
 
-	GameState.level = 9
-	assert(not GameState.can_enter_map("thunder_continent"), "Thunder Continent level gate is missing")
-	GameState.level = 10
-	assert(GameState.can_enter_map("thunder_continent"), "Thunder Continent did not unlock at level 10")
-	GameState.level = 69
-	assert(not GameState.can_enter_map("avit_island"), "Avit Island unlocked below level 70")
-	GameState.level = 100
-	assert(GameState.can_enter_map("abyss_maze"), "Abyss Maze did not unlock at level 100")
+	# 用户 2026-08-21 取消地图等级门槛：1 级即可进入全部战斗图，
+	# 避免「练级要先有等级」的死锁。剧情/爵位/星期门槛不受影响，另有测试覆盖。
+	GameState.level = 1
+	for gated_map in ["thunder_continent", "desert", "dream_swamp", "ice_palace", "avit_island", "volcano", "abyss_maze"]:
+		assert(GameState.map_entry_required_level(gated_map) == 1,
+			"map level gate still present on %s" % gated_map)
+		assert(GameState.can_enter_map(gated_map),
+			"level-1 player cannot reach %s after level gates were removed" % gated_map)
 
 	var boss_ids := ["thunder_boss_10", "desert_boss_20", "swamp_boss_30", "ice_boss_50", "avit_boss_70", "volcano_boss_90", "abyss_boss_100"]
 	var boss_levels := [10, 20, 30, 50, 70, 90, 100]
