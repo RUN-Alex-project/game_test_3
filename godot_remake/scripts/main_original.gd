@@ -120,6 +120,11 @@ func _build_world() -> void:
 	actor_layer = Control.new()
 	actor_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	actor_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# 演员层抬到边缘出口按钮之上：navigation_layer 是更晚添加的兄弟节点，
+	# 默认会压住演员并抢走点击。全世界有 13 处出口命中区与演员贴图重叠，
+	# 其中鱼妖/提风/巨杰士等怪被覆盖 87%~100%，不抬层就完全点不到，
+	# 而怪是唯一的玩家经验来源。HUD 用 49~60 的 z_index，故此处取 1 不会盖住 HUD。
+	actor_layer.z_index = 1
 	add_child(actor_layer)
 	player = TextureRect.new()
 	var idle_a: Texture2D = load("res://assets/extracted/images/image_0455.png")

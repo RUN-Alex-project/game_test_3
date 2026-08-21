@@ -12,6 +12,15 @@ const HOVER_COLOR := Color("ffff45")
 const DISABLED_COLOR := Color("777777")
 const SHADOW_COLOR := Color(0.0, 0.0, 0.0, 0.9)
 
+## 靠屏幕边缘一侧保留给出口的独占命中带宽度。
+## 演员层（z=1）压在出口之上以便怪物与 NPC 可点，但全世界有 13 处演员贴图与
+## 出口命中区重叠，其中亚维特岛的鱼妖把「回冰宫」出口盖满 100%——那是该图簇
+## 回主世界的唯一门，不留独占带就会把玩家永久困在亚维特岛/火山/深渊迷宫。
+## 本带 z=2 高于演员层，保证每个出口至少有一条贴边可点区域。
+const EDGE_PRIORITY_BAND := 12.0
+
+var edge_strip: Control
+
 
 func _ready() -> void:
 	flat = true
@@ -21,6 +30,48 @@ func _ready() -> void:
 	mouse_exited.connect(queue_redraw)
 	button_down.connect(queue_redraw)
 	button_up.connect(queue_redraw)
+	edge_strip = Control.new()
+	edge_strip.name = "EdgePriorityStrip"
+	edge_strip.mouse_filter = Control.MOUSE_FILTER_STOP
+	edge_strip.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	edge_strip.z_index = 2
+	edge_strip.gui_input.connect(_on_edge_strip_input)
+	add_child(edge_strip)
+	resized.connect(_layout_edge_strip)
+	_layout_edge_strip()
+
+
+## 独占带自身不持有状态：直接读父按钮的 disabled/visible，
+## 避免战斗中出口被禁用时这条带子成为绕过封锁的后门。
+func _on_edge_strip_input(event: InputEvent) -> void:
+	if disabled or not visible:
+		return
+	var mouse_event := event as InputEventMouseButton
+	if mouse_event == null or not mouse_event.pressed:
+		return
+	if mouse_event.button_index != MOUSE_BUTTON_LEFT:
+		return
+	accept_event()
+	emit_signal("pressed")
+
+
+func _layout_edge_strip() -> void:
+	if edge_strip == null:
+		return
+	var band := minf(EDGE_PRIORITY_BAND, minf(size.x, size.y))
+	match native_direction:
+		"top":
+			edge_strip.position = Vector2.ZERO
+			edge_strip.size = Vector2(size.x, band)
+		"bottom":
+			edge_strip.position = Vector2(0.0, size.y - band)
+			edge_strip.size = Vector2(size.x, band)
+		"left":
+			edge_strip.position = Vector2.ZERO
+			edge_strip.size = Vector2(band, size.y)
+		_:
+			edge_strip.position = Vector2(size.x - band, 0.0)
+			edge_strip.size = Vector2(band, size.y)
 
 
 func configure(target_id: String, target_name: String, direction: String, verb: String = "进入") -> void:
@@ -29,6 +80,7 @@ func configure(target_id: String, target_name: String, direction: String, verb: 
 	native_direction = direction
 	travel_verb = verb
 	tooltip_text = "%s%s" % [travel_verb, destination]
+	_layout_edge_strip()
 	queue_redraw()
 
 
