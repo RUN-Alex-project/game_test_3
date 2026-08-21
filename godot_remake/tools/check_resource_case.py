@@ -7,6 +7,8 @@
 #   3. 引用必须与真实 tracked/文件系统路径大小写完全一致；
 #   4. 大小写不匹配 -> ERROR（非 0 退出），输出 源文件:行号 引用路径 实际路径；
 #   5. 引用不存在的路径：已知负向测试夹具（故意不存在的文件）列入允许清单；
+#      指向「按策略不入库」三类输入（原版 SWF / 测试截图 / 发布派生物 / work）
+#      的引用计为 not_tracked 并逐条打印，不阻断——它们在干净 checkout 上必然缺失；
 #      其余静态可判定缺失 -> ERROR；动态拼接路径不在此工具范围（warning 不阻断）。
 #
 # 仅使用 Python 标准库；Windows/Linux 均可运行。
@@ -27,6 +29,19 @@ SCAN_EXTS = {".gd", ".tscn", ".tres", ".json", ".godot", ".cfg"}
 ALLOWED_MISSING = {
     "res://docs/evidence/does_not_exist.txt",
 }
+
+# 按仓库策略不入库的输入类（与 tools/prereqs.py 登记的三类前置一致）：
+# 原版 SWF 有意排除、测试截图与发布产物是派生物、work/ 是本地工作目录。
+# 这些引用在开发机上真实存在、在干净 checkout（CI）上不存在，因此单独计为
+# not_tracked 并逐条打印，不计入失败——否则本门禁只能在开发机通过。
+# 已入库的文件在上面 `ref in exact` 处就已放行，所以这里只会兜住确实未入库的引用，
+# 不会掩盖真正的资源缺失。
+NOT_TRACKED_PREFIXES = (
+    "tests/artifacts",              # 测试截图输出（.gitignore 排除）
+    "artifacts/releases/",          # 发布派生产物（work/v155/rebuild_release.py 生成）
+    "work/",                        # 本地工作目录（.gitignore 排除，少量脚本 force-add）
+    "../魔域1.03_v9.swf",           # 原版 Flash 输入（.gitignore 有意排除）
+)
 
 RES_RE = re.compile(r"res://([A-Za-z0-9_\-\./一-鿿]+)")
 
@@ -70,6 +85,7 @@ def main() -> int:
 
     case_errors: list[str] = []
     missing_errors: list[str] = []
+    not_tracked: list[str] = []
     dynamic_warn = 0
     checked = 0
 
@@ -115,16 +131,23 @@ def main() -> int:
                     continue
                 if res_path in ALLOWED_MISSING:
                     continue
+                if ref.startswith(NOT_TRACKED_PREFIXES):
+                    not_tracked.append(
+                        f"{p.relative_to(PROJECT).as_posix()}:{line_no} res://{ref}"
+                    )
+                    continue
                 missing_errors.append(
                     f"{p.relative_to(PROJECT).as_posix()}:{line_no} res://{ref} 文件不存在"
                 )
 
     print(f"RESOURCE_CASE checked_files={checked} case_mismatches={len(case_errors)} "
-          f"missing={len(missing_errors)} dynamic_ok={dynamic_warn}")
+          f"missing={len(missing_errors)} not_tracked={len(not_tracked)} dynamic_ok={dynamic_warn}")
     for e in case_errors:
         print(f"CASE_ERROR {e}")
     for e in missing_errors:
         print(f"MISSING_ERROR {e}")
+    for e in not_tracked:
+        print(f"NOT_TRACKED {e}")
     if case_errors or missing_errors:
         print("RESOURCE_CASE FAIL")
         return 1
