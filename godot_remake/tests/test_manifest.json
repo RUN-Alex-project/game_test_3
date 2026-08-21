@@ -358,6 +358,9 @@
       "platforms": [
         "windows",
         "linux"
+      ],
+      "requires": [
+        "swf"
       ]
     },
     {
@@ -366,7 +369,10 @@
         "windows",
         "linux"
       ],
-      "quit_after": 2000
+      "quit_after": 2000,
+      "requires": [
+        "swf"
+      ]
     },
     {
       "path": "res://tests/test_feedback_lifecycle_main_scene.tscn",
@@ -454,7 +460,10 @@
       "platforms": [
         "windows"
       ],
-      "reason": "Validates Windows Desktop export preset, Windows .exe/.pck release artifacts, and the PowerShell exe smoke script (work/smoke_release_exe.ps1); no Linux equivalent exists yet"
+      "reason": "Validates Windows Desktop export preset, Windows .exe/.pck release artifacts, and the PowerShell exe smoke script (work/smoke_release_exe.ps1); no Linux equivalent exists yet",
+      "requires": [
+        "release_dir"
+      ]
     },
     {
       "path": "res://tests/test_release_acceptance_scene.tscn",
@@ -638,7 +647,10 @@
         "windows",
         "linux"
       ],
-      "quit_after": 8000
+      "quit_after": 8000,
+      "requires": [
+        "release_dir"
+      ]
     }
   ]
 }

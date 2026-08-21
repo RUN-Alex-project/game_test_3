@@ -3,11 +3,17 @@
 
 聚合检查：
   1. res:// 资源引用大小写审计（调用 tools/check_resource_case.py 同一验证器）；
-  2. 生产运行代码 Windows 绝对路径依赖审计（scripts/ scenes/ data/ project.godot）-> 目标 0；
+  2a. 生产运行代码 Windows 绝对路径依赖审计（scripts/ scenes/ data/ project.godot）-> 目标 0；
+  2b. 已入库的 tools/ 与 work/ 门禁脚本同样审计 -> 目标 0
+      （v1.55 之前 work/ 下 5 个已入库脚本写死开发机绝对路径，克隆到别处会操作错目录；
+       只扫 git 跟踪的文件，本地未入库的临时脚本不参与）；
   3. 测试清单一致性：test_manifest.json 注册数 == current_test_baseline.automated_scenes，
      场景唯一、platforms 合法（与 doc_gate 同口径，本工具在 Linux CI 可独立运行）；
   4. shell 脚本基础检查：run_tests.sh 存在、以 shebang 开头、不含 CRLF；
-     tools/*.py 与 *.sh 在 git index 中保持可执行位（Linux checkout 可直接执行）。
+     tools/*.py 与 *.sh 在 git index 中保持可执行位（Linux checkout 可直接执行）；
+  5. 已入库 .ps1 若含非 ASCII 必须带 UTF-8 BOM：Windows PowerShell 5.1 对无 BOM 的
+     .ps1 按当前 ANSI 代码页解码，GBK 环境下中文行尾的字节会吞掉 LF 换行，
+     把后续赋值语句并进注释（曾导致 run_release_gate.ps1 的 $project 为空）。
 
 仅使用 Python 标准库；任一检查失败 -> 非零退出。
 """
@@ -27,6 +33,11 @@ WIN_PATH_RE = re.compile(r"[CDE]:[\\/]|/mnt/[cde]/")
 PROD_DIRS = ("scripts", "scenes", "data")
 PROD_FILES = ("project.godot",)
 PROD_EXTS = {".gd", ".tscn", ".tres", ".json", ".cfg"}
+
+# 已入库的门禁/工具脚本范围（同样目标 0）。只取 git 跟踪的文件：
+# work/ 大部分内容被 .gitignore 排除，本地临时脚本不应让门禁失败。
+TOOLING_DIRS = ("tools", "work")
+TOOLING_EXTS = {".py", ".ps1", ".sh"}
 
 
 def fail(msg: str) -> None:
@@ -68,6 +79,57 @@ def check_prod_windows_paths() -> bool:
         fail("生产运行代码存在 Windows 绝对路径依赖（目标 0）")
         return False
     return True
+
+
+def _tracked_tooling_files() -> list[Path]:
+    out = subprocess.run(
+        ["git", "ls-files", "--"] + [f"godot_remake/{d}" for d in TOOLING_DIRS],
+        cwd=REPO, capture_output=True, text=True,
+    ).stdout
+    files = []
+    for rel in out.splitlines():
+        rel = rel.strip()
+        if not rel:
+            continue
+        path = REPO / rel
+        if path.is_file() and path.suffix.lower() in TOOLING_EXTS:
+            files.append(path)
+    return files
+
+
+def check_tooling_windows_paths() -> bool:
+    errors = []
+    targets = _tracked_tooling_files()
+    for p in targets:
+        text = p.read_text(encoding="utf-8", errors="replace")
+        for m in WIN_PATH_RE.finditer(text):
+            line_no = text[: m.start()].count("\n") + 1
+            errors.append(f"{p.relative_to(REPO).as_posix()}:{line_no} 含 Windows 绝对路径 '{m.group(0)}'")
+    for e in errors:
+        print(f"TOOLING_PATH_ERROR {e}")
+    print(f"TOOLING_PATH tracked_files={len(targets)} errors={len(errors)}")
+    if errors:
+        fail("已入库的 tools/ 与 work/ 脚本存在绝对路径依赖（目标 0；应从脚本自身位置推导）")
+        return False
+    return True
+
+
+def check_ps1_encoding() -> bool:
+    ok = True
+    checked = 0
+    for p in _tracked_tooling_files():
+        if p.suffix.lower() != ".ps1":
+            continue
+        checked += 1
+        raw = p.read_bytes()
+        if all(b < 0x80 for b in raw):
+            continue    # 纯 ASCII 不受 ANSI 解码影响
+        if not raw.startswith(b"\xef\xbb\xbf"):
+            fail(f"{p.relative_to(REPO).as_posix()} 含非 ASCII 但缺 UTF-8 BOM"
+                 f"（PowerShell 5.1 会按 ANSI 解码并可能吞掉换行）")
+            ok = False
+    print(f"PS1_ENCODING tracked_ps1={checked}")
+    return ok
 
 
 def check_manifest_consistency() -> bool:
@@ -146,6 +208,8 @@ def main() -> int:
     results = [
         ("resource_case", check_resource_case()),
         ("prod_windows_paths", check_prod_windows_paths()),
+        ("tooling_windows_paths", check_tooling_windows_paths()),
+        ("ps1_encoding", check_ps1_encoding()),
         ("manifest_consistency", check_manifest_consistency()),
         ("shell_basics", check_shell_basics()),
     ]

@@ -1,0 +1,24 @@
+{
+  "mailbox": [
+    {
+      "mail_id": "probe_1",
+      "operation_id": "probe_op_1",
+      "sender_id": "npc_adv_lin_xia",
+      "recipient": "player",
+      "subject": "probe",
+      "body": "probe",
+      "attachments": [
+        {
+          "item_id": "rose",
+          "quantity": 1,
+          "source": "npc_stock"
+        }
+      ],
+      "created_day": 1,
+      "expires_day": 8,
+      "claimed": false,
+      "expired": false,
+      "source_type": "settlement"
+    }
+  ]
+}

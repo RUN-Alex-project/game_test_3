@@ -1,0 +1,68 @@
+name: Linux tests
+
+# 干净克隆能跑到什么程度的持续验证。
+#
+# 三类输入按仓库策略不入库：原版 SWF、Windows 发布产物、Godot 导入缓存。
+# 因此 CI 走 tools/preflight.py --for-available + tools/run_tests.py --only-available：
+#   - 导入缓存在 CI 内现场生成
+#   - 依赖原版 SWF 的 2 个场景报 PREREQ_MISSING（不是 PASS、不是 SKIP）
+#   - test_release_candidate_scene 是 Windows-only，在 Linux 为 NOT_APPLICABLE
+# docs/doc_gate.py 与 work/run_release_gate.ps1 依赖 Windows 发布产物，CI 内不跑，
+# 完整门禁仍以本机 Windows 复跑为准。
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  GODOT_VERSION: 4.6.3-stable
+
+jobs:
+  linux-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Godot ${{ env.GODOT_VERSION }}
+        run: |
+          set -euo pipefail
+          url="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_linux.x86_64.zip"
+          curl -sSLf -o /tmp/godot.zip "$url"
+          python3 -c "import zipfile; zipfile.ZipFile('/tmp/godot.zip').extractall('/tmp/godot')"
+          sudo mv "/tmp/godot/Godot_v${GODOT_VERSION}_linux.x86_64" /usr/local/bin/godot
+          sudo chmod +x /usr/local/bin/godot
+          godot --version
+
+      - name: Portability gate
+        working-directory: godot_remake
+        run: python3 tools/check_linux_portability.py
+
+      - name: Generate import cache
+        working-directory: godot_remake
+        env:
+          GODOT_BIN: /usr/local/bin/godot
+        run: godot --headless --path . --import
+
+      - name: Preflight (available-subset mode)
+        working-directory: godot_remake
+        env:
+          GODOT_BIN: /usr/local/bin/godot
+        run: python3 tools/preflight.py --for-available
+
+      - name: Run available scenes
+        working-directory: godot_remake
+        env:
+          GODOT_BIN: /usr/local/bin/godot
+        run: python3 tools/run_tests.py --only-available

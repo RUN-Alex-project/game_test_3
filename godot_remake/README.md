@@ -140,6 +140,23 @@ PK 赛场、后花园、抽奖房、树心城和战魂封印谜宫是特殊入�
 
 ## 6. 开发与测试
 
+### 克隆后第一步：前置检查
+
+```powershell
+cd <repo>\godot_remake
+$env:GODOT_EXE = "<Godot_v4.6.3-stable_win64.exe 真实路径>"
+python tools/preflight.py
+```
+
+按仓库策略有三类输入不入库：Godot 导入缓存 `.godot/`、原版 SWF、发布产物
+（`*.exe` / `*.pck` / `build_manifest.json` / `SHA256SUMS.txt`）。
+`tools/preflight.py` 会逐项报出缺什么、在哪、怎么补，以及当前能跑到什么程度，
+不必等到全量以 `No loader found for resource` 这类错误失败才发现。
+
+缺前置又想先跑能跑的部分：`python tools/run_tests.py --only-available`。
+它把前置缺失的场景报为 `PREREQ_MISSING`（不是 PASS、不是 SKIP），
+并打印与完整门禁不同的结束标记，避免部分运行被当成完整证据。
+
 ### 快速回归
 
 ```powershell
@@ -167,7 +184,23 @@ Windows-only 场景（如 release 候选校验）在 Linux 输出 `NOT_APPLICABL
 python .\docs\doc_gate.py
 ```
 
-发布包、哈希、存档和旧报告的复验记录见 `docs/综合整改报告.md`、`docs/v1.37-v1.41_全版本复验文档.md` 和 `docs/UI修复交付报告.md`。发布门禁通过前不要把 `artifacts/releases/` 或个人日志提交到源代码仓库。
+发布包、哈希、存档和旧报告的复验记录见 `docs/综合整改报告.md`、`docs/v1.37-v1.41_全版本复验文档.md` 和 `docs/UI修复交付报告.md`。
+
+`artifacts/releases/v1.41/` 里三份文档（交付报告 / 已知问题 / 试玩验收清单）是内容，已入库；
+`*.exe`、`*.pck`、`build_manifest.json`、`SHA256SUMS.txt` 是派生产物，不入库，由
+`python work/v155/rebuild_release.py` 生成。个人日志一律不提交。
+
+### 启动与打包
+
+```powershell
+.\tools\play.ps1                 # 校验 exe/pck 哈希三方一致后启动 v1.41 发布包
+.\tools\play.ps1 -VerifyOnly     # 只校验不启动
+.\tools\build_playable.ps1       # 另出 embed_pck=true 单文件包到 artifacts/playable/
+```
+
+v1.41 是非内嵌导出，exe 必须与同名 `.pck` 同目录，单独移动 exe 会启动失败；
+`tools/play.ps1` 会先确认这一点再启动。想要一个能整体拷走双击运行的文件就用
+`tools/build_playable.ps1`，它输出到 `artifacts/playable/`，不改动已签署的 `artifacts/releases/v1.41/`。
 
 ### 修改原则
 

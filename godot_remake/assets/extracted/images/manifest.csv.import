@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bgf0s34e16a0y"
+
+[deps]
+
+files=["res://assets/extracted/images/manifest.tag.translation", "res://assets/extracted/images/manifest.file.translation", "res://assets/extracted/images/manifest.width.translation", "res://assets/extracted/images/manifest.height.translation"]
+
+source_file="res://assets/extracted/images/manifest.csv"
+dest_files=["res://assets/extracted/images/manifest.tag.translation", "res://assets/extracted/images/manifest.file.translation", "res://assets/extracted/images/manifest.width.translation", "res://assets/extracted/images/manifest.height.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

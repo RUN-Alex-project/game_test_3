@@ -89,7 +89,8 @@ cd E:\deepseek-work\TKS3_mod\godot_remake
   `NOT_APPLICABLE res://tests/xxx.tscn platform=windows current=linux`
 - 含义：该测试不属于当前平台的测试集合；**不是 PASS、不是 FAIL、不是 SKIP**
   （门禁规定 SKIP=失败，NOT_APPLICABLE 是独立状态）。Windows 环境仍会执行这些测试。
-- 全局注册基线（66 场景）不因平台过滤而减少。
+- 全局注册基线不因平台过滤而减少；当前数量以 `docs/current_test_baseline.json` 与
+  `tests/test_manifest.json` 为准，不在本文另写一套数字。
 
 ## 12. 运行资源大小写审计 / 可移植性门禁
 
@@ -102,10 +103,18 @@ python3 docs/doc_gate.py                    # 文档/数量/发布物门禁（�
 ## 13. 已知限制
 
 - Linux export preset（Linux Desktop 发布包）**未包含在本阶段**，属下一阶段。
-- GitHub Actions Linux CI 属下一阶段（建议新增 `.github/workflows/linux-test.yml`：
-  Ubuntu + Godot 4.6 + `./godot_remake/run_tests.sh`）。
-- Windows 发布物目录 `artifacts/releases/`（.gitignore 排除）需从 Windows 工作树迁移或重建，
-  Linux 侧仅 test_release_candidate 依赖它（在 Linux 为 NOT_APPLICABLE）。
+- GitHub Actions Linux CI 已落地：`.github/workflows/linux-tests.yml`
+  （Ubuntu + Godot 4.6.3 + 现场生成导入缓存 + `tools/run_tests.py --only-available`）。
+  CI 内不跑 doc gate 与 release gate，它们依赖 Windows 发布产物，完整门禁仍以本机 Windows 复跑为准。
+- Windows 发布物目录 `artifacts/releases/v1.41/`：三份文档（交付报告 / 已知问题 / 试玩验收清单）
+  已入库；`*.exe`、`*.pck`、`build_manifest.json`、`SHA256SUMS.txt` 是派生产物，不入库，
+  由 `python work/v155/rebuild_release.py` 生成。Linux 侧仅 test_release_candidate 依赖它
+  （在 Linux 为 NOT_APPLICABLE）。
+- 原版 SWF（`.gitignore` 有意排除）只被 `test_native_timeline_registry_scene` 与
+  `test_combat_feedback_sequence_scene` 在运行时读取；缺失时用
+  `python tools/run_tests.py --only-available` 会把它们报为 `PREREQ_MISSING`。
+- 克隆后第一条命令建议是 `python tools/preflight.py`：它会逐项报出缺失的前置与修法，
+  避免以 `No loader found for resource` / `SHA256SUMS.txt 不存在` 这类难定位的错误失败。
 - 行尾策略见仓库根 `.gitattributes`（文本 LF 入库、*.ps1 CRLF）；不做历史全量重规范化。
 - 仓库在 Linux 侧建议 `git config core.filemode false`（若从 NTFS 复制迁移而来）。
 

@@ -1,0 +1,17 @@
+{
+  "relationships": {
+    "npc_adv_lin_xia": {
+      "value": 1,
+      "history": [
+        {
+          "operation_id": "op_a",
+          "delta": 1
+        },
+        {
+          "operation_id": "op_b",
+          "delta": 1
+        }
+      ]
+    }
+  }
+}

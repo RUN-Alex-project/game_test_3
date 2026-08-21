@@ -1,4 +1,4 @@
-# Unified release gate (第四轮拒签整改) - deterministic sequence, re-runnable:
+﻿# Unified release gate (第四轮拒签整改) - deterministic sequence, re-runnable:
 #   1) python docs/doc_gate.py
 #   2) forward exe natural-exit smoke
 #   3) sha_missing / wrong_hash / sha_dup / sha_bad_format negatives
@@ -8,9 +8,15 @@
 #   7) ready_missing negative
 #   8) every step must return its expected exit code; any unexpected pass/fail/code -> gate Exit 1
 #   9) only when all pass -> "RELEASE_GATE PASS"
-# Logs every step + failed-log paths to C:\Users\Public\release_gate.log for the delivery report.
+# Logs every step + failed-log paths to $env:RELEASE_GATE_LOG (default work/release_gate.log).
 $ErrorActionPreference = 'Stop'
-$gateLog = 'C:\Users\Public\release_gate.log'
+
+# 工程根与日志路径都从脚本自身位置推导。此前两者都是开发机绝对路径，
+# 换克隆位置或换账户就无法复跑（tools/check_linux_portability.py 现已把
+# 已入库的 tools/ 与 work/ 脚本纳入绝对路径扫描，防止复发）。
+# 日志可用 RELEASE_GATE_LOG 覆盖；默认落在 work/ 内（*.log 已被 .gitignore 排除）。
+$project = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+$gateLog = if ($env:RELEASE_GATE_LOG) { $env:RELEASE_GATE_LOG } else { Join-Path $PSScriptRoot 'release_gate.log' }
 Start-Transcript -Path $gateLog -Force | Out-Null
 
 function Gate-Fail([string]$msg) {
@@ -19,8 +25,7 @@ function Gate-Fail([string]$msg) {
     exit 1
 }
 
-$project = 'E:\deepseek-work\TKS3_mod\godot_remake'
-$smoke = Join-Path $project 'work\smoke_release_exe.ps1'
+$smoke = Join-Path $PSScriptRoot 'smoke_release_exe.ps1'
 
 # ---- 1) doc_gate ----
 Write-Host "STEP 1: doc_gate"

@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 from pathlib import Path
 import json
-import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 
-ROOT = Path(r"E:\deepseek-work\TKS3_mod\godot_remake")
-GODOT = os.environ.get(
-    "GODOT_EXE",
-    r"C:\Users\Administrator\AppData\Local\Microsoft\WinGet\Packages\GodotEngine.GodotEngine_Microsoft.Winget.Source_8wekyb3d8bbwe\Godot_v4.6.3-stable_win64.exe",
-)
+ROOT = Path(__file__).resolve().parents[2]      # godot_remake/
+sys.path.insert(0, str(ROOT / "tools"))
+from godot_env import resolve_godot  # noqa: E402
+
+GODOT, _GODOT_SOURCE = resolve_godot()
+if not GODOT:
+    raise SystemExit(
+        "no usable Godot binary found. Resolution order: GODOT_BIN > GODOT_EXE > godot4 > godot"
+    )
 SCENE = "res://tests/test_pet_endgame_scene.tscn"
 BAK = ".v153bak"
 

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dgfjxop3rfwm1"
+
+[deps]
+
+files=["res://assets/extracted/sounds/manifest.format.translation", "res://assets/extracted/sounds/manifest.rate.translation", "res://assets/extracted/sounds/manifest.sample.translation", "res://assets/extracted/sounds/manifest.channels.translation", "res://assets/extracted/sounds/manifest.sample.translation", "res://assets/extracted/sounds/manifest.payload.translation", "res://assets/extracted/sounds/manifest.file.translation"]
+
+source_file="res://assets/extracted/sounds/manifest.csv"
+dest_files=["res://assets/extracted/sounds/manifest.format.translation", "res://assets/extracted/sounds/manifest.rate.translation", "res://assets/extracted/sounds/manifest.sample.translation", "res://assets/extracted/sounds/manifest.channels.translation", "res://assets/extracted/sounds/manifest.sample.translation", "res://assets/extracted/sounds/manifest.payload.translation", "res://assets/extracted/sounds/manifest.file.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

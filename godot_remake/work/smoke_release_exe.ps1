@@ -1,4 +1,4 @@
-# exe smoke test (re-runnable validator, P1-3 / 第三轮 + 第四轮):
+﻿# exe smoke test (re-runnable validator, P1-3 / 第三轮 + 第四轮):
 # Reusable hash validator: exe exists, exactly ONE exe entry in manifest, exactly ONE exe line
 # in SHA256SUMS, and all three hashes exactly equal. Missing/duplicate/malformed entries all fail.
 # FORWARD: hash three-way -> natural exit (--headless --quit-after) -> ExitCode 0 ->

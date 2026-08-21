@@ -23,6 +23,13 @@ semantics as the historical PowerShell runner:
   Main scene smoke runs last with the same error/leak checks (no PASS marker
   required, matching historical behaviour).
 
+Optional --only-available (default OFF) skips scenes whose declared `requires`
+prerequisites are absent from the environment (original SWF input, Windows
+release directory). It reports them as PREREQ_MISSING and prints a distinct,
+weaker completion marker, so a prerequisite-gated run can never be mistaken for
+the full gate. Without the flag the behaviour is unchanged: a missing
+prerequisite is a real FAIL.
+
 Uses only the Python standard library. Exits 0 only when every applicable
 scene and the smoke pass.
 """
@@ -30,19 +37,20 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 
-TOOLS_DIR = Path(__file__).resolve().parent
-PROJECT = TOOLS_DIR.parent                      # godot_remake/
-MANIFEST_PATH = PROJECT / "tests" / "test_manifest.json"
+# 以脚本方式运行时 sys.path[0] 就是 tools/，显式插入是为了让被其它 cwd 或
+# 隔离模式（python -I）调用时同样能找到同目录的 godot_env / prereqs。
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-ALLOWED_PLATFORMS = ("windows", "linux")
+from godot_env import ALLOWED_PLATFORMS, PROJECT, detect_platform, resolve_godot  # noqa: E402
+from prereqs import missing_prerequisites  # noqa: E402
+
+MANIFEST_PATH = PROJECT / "tests" / "test_manifest.json"
 
 # Exactly one known-benign error line, filtered identically to the historical
 # PowerShell runner. Precise match only - never blanket-ignore ERROR lines.
@@ -55,39 +63,6 @@ SKIP_RE = re.compile(r"SKIP|SKIPPED|TEST_USER_DATA_NOT_WRITABLE")
 PASS_RE = re.compile(r"^PASS ", re.MULTILINE)
 
 WALL_CLOCK_TIMEOUT_DEFAULT = 900  # seconds per scene; --quit-after is the primary bound
-
-
-def detect_platform() -> str:
-    if sys.platform.startswith("win"):
-        return "windows"
-    if sys.platform.startswith("linux"):
-        return "linux"
-    return "unknown"
-
-
-def resolve_godot(arg_godot: str | None) -> tuple[str | None, str]:
-    """Resolve godot binary. Priority: --godot > GODOT_BIN > GODOT_EXE > godot4 > godot."""
-    candidates: list[str] = []
-    if arg_godot:
-        candidates.append(("arg --godot", arg_godot))
-    for env_name in ("GODOT_BIN", "GODOT_EXE"):
-        value = os.environ.get(env_name)
-        if value:
-            candidates.append((f"env {env_name}", value))
-    candidates.append(("PATH godot4", "godot4"))
-    candidates.append(("PATH godot", "godot"))
-
-    for source, candidate in candidates:
-        if "/" in candidate or "\\" in candidate or os.path.isabs(candidate):
-            resolved = candidate
-        else:
-            resolved = shutil.which(candidate)
-        if resolved and os.path.isfile(resolved):
-            # Windows 无执行位语义；POSIX 需真实可执行。
-            if os.name == "nt" or os.access(resolved, os.X_OK):
-                return resolved, source
-        # fall through to next candidate
-    return None, ""
 
 
 def load_manifest() -> dict:
@@ -204,6 +179,10 @@ def main() -> int:
     parser.add_argument("--godot", help="path to the Godot 4.6 binary")
     parser.add_argument("--timeout", type=int, default=WALL_CLOCK_TIMEOUT_DEFAULT,
                         help="wall-clock timeout per scene in seconds (default 900)")
+    parser.add_argument("--only-available", action="store_true",
+                        help="skip scenes whose manifest `requires` prerequisites are absent "
+                             "(reported as PREREQ_MISSING). Prints a weaker completion marker; "
+                             "NOT a full gate run. Default OFF: a missing prerequisite is a FAIL.")
     args = parser.parse_args()
 
     current = detect_platform()
@@ -229,7 +208,7 @@ def main() -> int:
     print(f"# platform={current} godot={godot} ({source}) version={version.stdout.strip()}")
 
     total_registered = len(scenes)
-    applicable = not_applicable = passed = failed = 0
+    applicable = not_applicable = passed = failed = prereq_missing = 0
 
     for entry in scenes:
         scene = str(entry.get("path", ""))
@@ -238,6 +217,14 @@ def main() -> int:
             not_applicable += 1
             print(f"NOT_APPLICABLE {scene} platform={','.join(platforms)} current={current}")
             continue
+        requires = entry.get("requires", [])
+        if args.only_available and requires:
+            missing = missing_prerequisites(requires)
+            if missing:
+                prereq_missing += 1
+                print(f"PREREQ_MISSING {scene} requires={','.join(str(r) for r in requires)} "
+                      f"missing={','.join(missing)}")
+                continue
         applicable += 1
         quit_after = int(entry.get("quit_after", default_quit))
         print(f"RUN {scene}")
@@ -255,6 +242,17 @@ def main() -> int:
         failed += 1
         print(f"FAILED main scene smoke test ({smoke_reason})")
         return 1
+
+    # 前置缺失的运行绝不能与完整门禁共用同一条 PASS 标记与同一条 summary 格式，
+    # 否则 CI 或第三方日志会被当成 90/90 的完整证据；
+    # 反之完整门禁的两行必须与历史签署文档中记录的字样逐字一致。
+    if prereq_missing:
+        print(f"PASS available scenes only: {prereq_missing} prerequisite-gated scene(s) not run "
+              f"(NOT a full gate run)")
+        print(f"# summary: registered={total_registered} applicable={applicable} "
+              f"not_applicable={not_applicable} prereq_missing={prereq_missing} "
+              f"passed={passed} failed={failed} (platform={current})")
+        return 0
 
     print("PASS all automated scenes and main smoke test")
     print(f"# summary: registered={total_registered} applicable={applicable} "
