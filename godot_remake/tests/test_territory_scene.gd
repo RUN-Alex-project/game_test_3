@@ -7,14 +7,24 @@ const CombatService = preload("res://scripts/combat_service.gd")
 func _ready() -> void:
 	var world := WorldService.new()
 	var combat := CombatService.new(7)
+	# 主干链按原版 character 1071 箭头表修正：戈壁的入口是卡萨诺城的 bottom 捷径，
+	# 不是雷鸣大陆；雷鸣大陆在原版没有通往戈壁的箭头。证据见
+	# docs/evidence/native_map_links.json（frame 8 / frame 12 / frame 16）。
 	assert(world.can_travel("cassano_city", "thunder_continent"), "Cassano does not lead to Thunder Continent")
-	assert(world.can_travel("thunder_continent", "desert"), "Thunder Continent does not lead to the desert")
+	assert(world.can_travel("cassano_city", "desert"), "Cassano does not lead to the desert")
 	assert(world.can_travel("desert", "dream_swamp"), "desert does not lead to Dream Swamp")
 	assert(world.can_travel("dream_swamp", "ice_palace"), "Dream Swamp does not lead to Ice Palace")
 	assert(world.can_travel("ice_palace", "avit_island"), "Ice Palace does not lead to Avit Island")
 	assert(world.can_travel("avit_island", "volcano"), "Avit Island does not lead to the volcano")
 	assert(world.can_travel("volcano", "abyss_maze"), "volcano does not lead to the Abyss Maze")
 	assert(world.can_travel("ice_palace", "ice_border"), "Ice Palace does not lead to the snow border")
+	# 原版双向捷径：戈壁/亚维特岛都直接退回卡萨诺城，领地图不能变成只进不出。
+	assert(world.can_travel("desert", "cassano_city"), "desert lost the native shortcut back to Cassano")
+	assert(world.can_travel("avit_island", "cassano_city"), "Avit Island lost the native shortcut back to Cassano")
+	# 重制版自造、原版没有的边，删掉后不得复活。
+	assert(not world.can_travel("thunder_continent", "desert"), "remake-only Thunder->desert edge came back")
+	assert(not world.can_travel("palace", "ice_palace"), "remake-only palace->Ice Palace edge came back")
+	assert(not world.can_travel("ice_palace", "palace"), "remake-only Ice Palace->palace edge came back")
 
 	# 用户 2026-08-21 取消地图等级门槛：1 级即可进入全部战斗图，
 	# 避免「练级要先有等级」的死锁。剧情/爵位/星期门槛不受影响，另有测试覆盖。

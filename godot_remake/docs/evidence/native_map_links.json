@@ -1,0 +1,1569 @@
+{
+ "sentinels": {
+  "UNCONFIRMED": "the bytecode did not let us decide this field",
+  "NO_ASSIGNMENT_IN_FRAME_SCRIPT": "the frame script was fully disassembled and provably contains no such assignment; this is a negative result, not an unknown",
+  "NOT_A_PER_MAP_FIELD": "the variable exists but is global runtime state, it never holds a per-map link value"
+ },
+ "mechanism": {
+  "summary": "There is no map table in the SWF. Each root frame whose label is a map name carries one instance of the shared exit-arrow movie clip per exit. The instance's onClipEvent(load) assigns the per-instance variable `map` to the destination frame label; the clip's own onRelease does _root.nowmap = map followed by _root.gotoAndStop(map).",
+  "display_list_note": "Flash resolves a frame's display list from every PlaceObject2/RemoveObject2 between frame 1 and that frame, so a frame can inherit an arrow placed earlier and never removed. Exits with inherited_from_frame set are real in game but have no PlaceObject2 on their own frame.",
+  "variables": {
+   "nowmap": "string, the current map name; the only variable that actually carries a map identity",
+   "nextmap": "boolean gate, true means map switching is allowed; never holds a map name",
+   "owermap": "string, the map the player currently protects in the map occupation race (misspelling of ownermap); not a link to another map",
+   "returnmap": "function on the root timeline: gotoAndStop(nowmap), or gotoAndStop the ending frame when the day limit is exceeded",
+   "map_race": "boolean, whether the occupation challenge is still available today",
+   "mapreward": "boolean, whether today's map reward was taken"
+  }
+ },
+ "arrow_characters": [
+  1071
+ ],
+ "gate_rules": [
+  {
+   "from_map": "皇宫",
+   "to_map": "后花园",
+   "message": "\r\r只有爵位达到勋爵以上才可以进入后花园",
+   "evidence": "tag#4948 offset 0x24ABDE"
+  },
+  {
+   "from_map": "卡萨诺城",
+   "to_map": "亚维特岛",
+   "message": "\r\r亚维特岛是个十分危险的地方，70级以上才允许从卡萨诺城进入亚维特岛",
+   "evidence": "tag#4948 offset 0x24AC3E"
+  },
+  {
+   "from_map": "冰宫",
+   "to_map": "雪域边境",
+   "message": "\r\r该地方十分危险，你没有有任务不能进入雪域边境",
+   "evidence": "tag#4948 offset 0x24AC99"
+  },
+  {
+   "from_map": "地下城1层",
+   "to_map": "地下城2层",
+   "message": "\r\r只有消灭完怪物后才能进入下一层",
+   "evidence": "tag#4948 offset 0x24AD14"
+  },
+  {
+   "from_map": "地下城2层",
+   "to_map": "地下城3层",
+   "message": "\r\r只有消灭完怪物后才能进入下一层",
+   "evidence": "tag#4948 offset 0x24AD7E"
+  },
+  {
+   "from_map": "魔军帅旗",
+   "to_map": "能量塔禁地",
+   "message": "\r\r魔军主帅在此守护，无法进入魔军能量塔禁地",
+   "evidence": "tag#4948 offset 0x24ADD9"
+  }
+ ],
+ "maps": [
+  {
+   "frame_label": "前言",
+   "frame": 3,
+   "is_playable_map": false,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": "UNCONFIRMED",
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#2193 DoAction  root frame 2  bytes=147",
+     "evidence": "tag#2193 offset 0x1458FA"
+    },
+    {
+     "from": "tag#4754 DefineButton2  root frame 6  label=开始  button_id=1022  cond=overDownToOverUp  bytes=43",
+     "evidence": "tag#4754 offset 0x232B91"
+    },
+    {
+     "from": "tag#6333 DefineButton2  root frame 37  label=游戏结束  button_id=1306  cond=overDownToOverUp  bytes=11",
+     "evidence": "tag#6333 offset 0x331391"
+    },
+    {
+     "from": "tag#6342 DefineButton2  root frame 37  label=游戏结束  button_id=1309  cond=overDownToOverUp  bytes=264",
+     "evidence": "tag#6342 offset 0x3315C8"
+    }
+   ]
+  },
+  {
+   "frame_label": "创建角色",
+   "frame": 4,
+   "is_playable_map": false,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": "UNCONFIRMED",
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#2208 DefineButton2  root frame 3  label=前言  button_id=400  cond=overDownToOverUp  bytes=73",
+     "evidence": "tag#2208 offset 0x16F630"
+    }
+   ]
+  },
+  {
+   "frame_label": "读取游戏",
+   "frame": 5,
+   "is_playable_map": false,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": "UNCONFIRMED",
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#2221 DefineButton2  root frame 3  label=前言  button_id=405  cond=overDownToOverUp  bytes=249",
+     "evidence": "tag#2221 offset 0x16FA8A"
+    },
+    {
+     "from": "tag#2445 DoAction  sprite446 frame 1  root_frames=[6(开始)]  bytes=17562",
+     "evidence": "tag#2445 offset 0x1AFD10"
+    },
+    {
+     "from": "tag#6342 DefineButton2  root frame 37  label=游戏结束  button_id=1309  cond=overDownToOverUp  bytes=264",
+     "evidence": "tag#6342 offset 0x3315B3"
+    }
+   ]
+  },
+  {
+   "frame_label": "开始",
+   "frame": 6,
+   "is_playable_map": false,
+   "nowmap": [
+    {
+     "value": "雷鸣大陆",
+     "evidence": "tag#2274 offset 0x1A4B27"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": "UNCONFIRMED",
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#2237 DoAction  sprite411 frame 1  root_frames=[3(前言)]  bytes=467",
+     "evidence": "tag#2237 offset 0x16FDC4"
+    },
+    {
+     "from": "tag#2262 DefineButton2  root frame 4  label=创建角色  button_id=417  cond=overDownToOverUp  bytes=127",
+     "evidence": "tag#2262 offset 0x18E438"
+    },
+    {
+     "from": "tag#2270 DoAction  root frame 5  label=读取游戏  bytes=38",
+     "evidence": "tag#2270 offset 0x1A12AD"
+    },
+    {
+     "from": "tag#6317 DoAction  root frame 36  label=战场  bytes=58",
+     "evidence": "tag#6317 offset 0x32F011"
+    }
+   ]
+  },
+  {
+   "frame_label": "读取进度",
+   "frame": 7,
+   "is_playable_map": false,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": "UNCONFIRMED",
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#2274 DoAction  root frame 6  label=开始  bytes=14923",
+     "evidence": "tag#2274 offset 0x1A4C31"
+    }
+   ]
+  },
+  {
+   "frame_label": "雷鸣大陆",
+   "frame": 8,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 12,
+     "placed_on_frame": 8,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#4957 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 8 depth 12",
+     "gate": null
+    },
+    {
+     "target": "雷鸣矿洞",
+     "depth": 15,
+     "placed_on_frame": 8,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#4958 ClipActions onClipEvent(load) map=雷鸣矿洞 at root frame 8 depth 15",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    313,
+    323
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": []
+  },
+  {
+   "frame_label": "雷鸣矿洞",
+   "frame": 9,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "雷鸣大陆",
+     "depth": 12,
+     "placed_on_frame": 9,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5164 ClipActions onClipEvent(load) map=雷鸣大陆 at root frame 9 depth 12",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    345,
+    333
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": []
+  },
+  {
+   "frame_label": "草原",
+   "frame": 10,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "草原2",
+     "evidence": "tag#5180 offset 0x255F0D"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 12,
+     "placed_on_frame": 10,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5187 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 10 depth 12",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    180,
+    380
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": [
+    {
+     "from": "tag#5124 DoAction  sprite1090 frame 1  root_frames=[8(雷鸣大陆),13(皇宫),16(戈壁),17(迷梦沼泽),18(冰宫),19(亚维特岛),20(火山),21(深渊迷宫)]  bytes=741",
+     "evidence": "tag#5124 offset 0x252829"
+    }
+   ]
+  },
+  {
+   "frame_label": "草原2",
+   "frame": 11,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "卡萨诺城",
+     "evidence": "tag#5195 offset 0x25E451"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": [
+    345,
+    333
+   ],
+   "exit_arrow_count": 0,
+   "entered_by": []
+  },
+  {
+   "frame_label": "卡萨诺城",
+   "frame": 12,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "亚维特岛",
+     "depth": 27,
+     "placed_on_frame": 12,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5406 ClipActions onClipEvent(load) map=亚维特岛 at root frame 12 depth 27",
+     "gate": {
+      "message": "\r\r亚维特岛是个十分危险的地方，70级以上才允许从卡萨诺城进入亚维特岛",
+      "evidence": "tag#4948 offset 0x24AC3E"
+     }
+    },
+    {
+     "target": "皇宫",
+     "depth": 30,
+     "placed_on_frame": 12,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5407 ClipActions onClipEvent(load) map=皇宫 at root frame 12 depth 30",
+     "gate": null
+    },
+    {
+     "target": "雷鸣大陆",
+     "depth": 33,
+     "placed_on_frame": 12,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5408 ClipActions onClipEvent(load) map=雷鸣大陆 at root frame 12 depth 33",
+     "gate": null
+    },
+    {
+     "target": "戈壁",
+     "depth": 36,
+     "placed_on_frame": 12,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5409 ClipActions onClipEvent(load) map=戈壁 at root frame 12 depth 36",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    345,
+    333
+   ],
+   "exit_arrow_count": 4,
+   "entered_by": [
+    {
+     "from": "tag#6295 ClipActions  root frame 35  label=树心城  character=1088  clip_flags=0x00000001  depth=2  bytes=770",
+     "evidence": "tag#6295 offset 0x32ED89"
+    }
+   ]
+  },
+  {
+   "frame_label": "皇宫",
+   "frame": 13,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "皇宫",
+     "evidence": "tag#5514 offset 0x2743DC"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "后花园",
+     "depth": 27,
+     "placed_on_frame": 13,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5535 ClipActions onClipEvent(load) map=后花园 at root frame 13 depth 27",
+     "gate": {
+      "message": "\r\r只有爵位达到勋爵以上才可以进入后花园",
+      "evidence": "tag#4948 offset 0x24ABDE"
+     }
+    },
+    {
+     "target": "卡萨诺城",
+     "depth": 30,
+     "placed_on_frame": 13,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5537 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 13 depth 30",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    355,
+    380
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": [
+    {
+     "from": "tag#4239 DoAction  sprite885 frame 1  root_frames=[6(开始)]  bytes=364",
+     "evidence": "tag#4239 offset 0x2292C5"
+    },
+    {
+     "from": "tag#5434 DoAction  sprite1161 frame 1  root_frames=[12(卡萨诺城)]  bytes=6543",
+     "evidence": "tag#5434 offset 0x27248C"
+    }
+   ]
+  },
+  {
+   "frame_label": "后花园",
+   "frame": 14,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "皇宫",
+     "depth": 27,
+     "placed_on_frame": 14,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5714 ClipActions onClipEvent(load) map=皇宫 at root frame 14 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    355,
+    475
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": []
+  },
+  {
+   "frame_label": "抽奖房",
+   "frame": 15,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "抽奖房",
+     "evidence": "tag#5734 offset 0x28A101"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "皇宫",
+     "depth": 27,
+     "placed_on_frame": 14,
+     "inherited_from_frame": 14,
+     "character": 1071,
+     "evidence": "tag#5714 ClipActions onClipEvent(load) map=皇宫 at root frame 14 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    345,
+    315
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": [
+    {
+     "from": "tag#5562 DoAction  sprite1185 frame 1  root_frames=[13(皇宫)]  bytes=1062",
+     "evidence": "tag#5562 offset 0x27C517"
+    }
+   ]
+  },
+  {
+   "frame_label": "戈壁",
+   "frame": 16,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 27,
+     "placed_on_frame": 16,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5826 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 16 depth 27",
+     "gate": null
+    },
+    {
+     "target": "迷梦沼泽",
+     "depth": 43,
+     "placed_on_frame": 16,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5827 ClipActions onClipEvent(load) map=迷梦沼泽 at root frame 16 depth 43",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    320,
+    315
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": []
+  },
+  {
+   "frame_label": "迷梦沼泽",
+   "frame": 17,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "冰宫",
+     "depth": 27,
+     "placed_on_frame": 17,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5875 ClipActions onClipEvent(load) map=冰宫 at root frame 17 depth 27",
+     "gate": null
+    },
+    {
+     "target": "戈壁",
+     "depth": 43,
+     "placed_on_frame": 17,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5877 ClipActions onClipEvent(load) map=戈壁 at root frame 17 depth 43",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    320,
+    315
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": []
+  },
+  {
+   "frame_label": "冰宫",
+   "frame": 18,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "雪域边境",
+     "depth": 27,
+     "placed_on_frame": 18,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5919 ClipActions onClipEvent(load) map=雪域边境 at root frame 18 depth 27",
+     "gate": {
+      "message": "\r\r该地方十分危险，你没有有任务不能进入雪域边境",
+      "evidence": "tag#4948 offset 0x24AC99"
+     }
+    },
+    {
+     "target": "亚维特岛",
+     "depth": 43,
+     "placed_on_frame": 18,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5921 ClipActions onClipEvent(load) map=亚维特岛 at root frame 18 depth 43",
+     "gate": null
+    },
+    {
+     "target": "迷梦沼泽",
+     "depth": 46,
+     "placed_on_frame": 18,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5922 ClipActions onClipEvent(load) map=迷梦沼泽 at root frame 18 depth 46",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    320,
+    315
+   ],
+   "exit_arrow_count": 3,
+   "entered_by": []
+  },
+  {
+   "frame_label": "亚维特岛",
+   "frame": 19,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "火山",
+     "depth": 27,
+     "placed_on_frame": 19,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5975 ClipActions onClipEvent(load) map=火山 at root frame 19 depth 27",
+     "gate": null
+    },
+    {
+     "target": "卡萨诺城",
+     "depth": 43,
+     "placed_on_frame": 19,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5977 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 19 depth 43",
+     "gate": null
+    },
+    {
+     "target": "冰宫",
+     "depth": 46,
+     "placed_on_frame": 19,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#5979 ClipActions onClipEvent(load) map=冰宫 at root frame 19 depth 46",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    235,
+    333
+   ],
+   "exit_arrow_count": 3,
+   "entered_by": []
+  },
+  {
+   "frame_label": "火山",
+   "frame": 20,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "亚维特岛",
+     "depth": 27,
+     "placed_on_frame": 20,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6038 ClipActions onClipEvent(load) map=亚维特岛 at root frame 20 depth 27",
+     "gate": null
+    },
+    {
+     "target": "深渊迷宫",
+     "depth": 43,
+     "placed_on_frame": 20,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6056 ClipActions onClipEvent(load) map=深渊迷宫 at root frame 20 depth 43",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    150,
+    355
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": []
+  },
+  {
+   "frame_label": "深渊迷宫",
+   "frame": 21,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "火山",
+     "depth": 27,
+     "placed_on_frame": 21,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6072 ClipActions onClipEvent(load) map=火山 at root frame 21 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    215,
+    265
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": []
+  },
+  {
+   "frame_label": "雪域边境",
+   "frame": 22,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "雪域边境",
+     "evidence": "tag#6096 offset 0x2BCE35"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "冰宫",
+     "depth": 27,
+     "placed_on_frame": 22,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6102 ClipActions onClipEvent(load) map=冰宫 at root frame 22 depth 27",
+     "gate": null
+    },
+    {
+     "target": "魔中军阵地",
+     "depth": 41,
+     "placed_on_frame": 22,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6123 ClipActions onClipEvent(load) map=魔中军阵地 at root frame 22 depth 41",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    145,
+    315
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": [
+    {
+     "from": "tag#5434 DoAction  sprite1161 frame 1  root_frames=[12(卡萨诺城)]  bytes=6543",
+     "evidence": "tag#5434 offset 0x27245F"
+    }
+   ]
+  },
+  {
+   "frame_label": "魔中军阵地",
+   "frame": 23,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "雪域边境",
+     "depth": 27,
+     "placed_on_frame": 23,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6136 ClipActions onClipEvent(load) map=雪域边境 at root frame 23 depth 27",
+     "gate": null
+    },
+    {
+     "target": "魔右军阵地",
+     "depth": 41,
+     "placed_on_frame": 23,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6138 ClipActions onClipEvent(load) map=魔右军阵地 at root frame 23 depth 41",
+     "gate": null
+    },
+    {
+     "target": "魔左军阵地",
+     "depth": 44,
+     "placed_on_frame": 23,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6139 ClipActions onClipEvent(load) map=魔左军阵地 at root frame 23 depth 44",
+     "gate": null
+    },
+    {
+     "target": "魔军帅旗",
+     "depth": 47,
+     "placed_on_frame": 23,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6140 ClipActions onClipEvent(load) map=魔军帅旗 at root frame 23 depth 47",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    145,
+    315
+   ],
+   "exit_arrow_count": 4,
+   "entered_by": []
+  },
+  {
+   "frame_label": "魔左军阵地",
+   "frame": 24,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "魔中军阵地",
+     "depth": 27,
+     "placed_on_frame": 24,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6154 ClipActions onClipEvent(load) map=魔中军阵地 at root frame 24 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    170,
+    470
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": []
+  },
+  {
+   "frame_label": "魔右军阵地",
+   "frame": 25,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "魔中军阵地",
+     "depth": 27,
+     "placed_on_frame": 25,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6161 ClipActions onClipEvent(load) map=魔中军阵地 at root frame 25 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    170,
+    470
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": []
+  },
+  {
+   "frame_label": "能量塔禁地",
+   "frame": 26,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "魔军帅旗",
+     "depth": 27,
+     "placed_on_frame": 26,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6171 ClipActions onClipEvent(load) map=魔军帅旗 at root frame 26 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    145,
+    315
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": []
+  },
+  {
+   "frame_label": "魔军帅旗",
+   "frame": 27,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "魔中军阵地",
+     "depth": 27,
+     "placed_on_frame": 27,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6180 ClipActions onClipEvent(load) map=魔中军阵地 at root frame 27 depth 27",
+     "gate": null
+    },
+    {
+     "target": "能量塔禁地",
+     "depth": 30,
+     "placed_on_frame": 27,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6181 ClipActions onClipEvent(load) map=能量塔禁地 at root frame 27 depth 30",
+     "gate": {
+      "message": "\r\r魔军主帅在此守护，无法进入魔军能量塔禁地",
+      "evidence": "tag#4948 offset 0x24ADD9"
+     }
+    }
+   ],
+   "player_spawn": [
+    145,
+    315
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": []
+  },
+  {
+   "frame_label": "地下城1层",
+   "frame": 28,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "地下城1层",
+     "evidence": "tag#6184 offset 0x2C84B1"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "地下城2层",
+     "depth": 8,
+     "placed_on_frame": 28,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6189 ClipActions onClipEvent(load) map=地下城2层 at root frame 28 depth 8",
+     "gate": {
+      "message": "\r\r只有消灭完怪物后才能进入下一层",
+      "evidence": "tag#4948 offset 0x24AD14"
+     }
+    },
+    {
+     "target": "卡萨诺城",
+     "depth": 27,
+     "placed_on_frame": 28,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6195 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 28 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    320,
+    315
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": [
+    {
+     "from": "tag#5434 DoAction  sprite1161 frame 1  root_frames=[12(卡萨诺城)]  bytes=6543",
+     "evidence": "tag#5434 offset 0x27251B"
+    }
+   ]
+  },
+  {
+   "frame_label": "地下城2层",
+   "frame": 29,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "地下城2层",
+     "evidence": "tag#6213 offset 0x2D0A90"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "地下城3层",
+     "depth": 8,
+     "placed_on_frame": 29,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6219 ClipActions onClipEvent(load) map=地下城3层 at root frame 29 depth 8",
+     "gate": {
+      "message": "\r\r只有消灭完怪物后才能进入下一层",
+      "evidence": "tag#4948 offset 0x24AD7E"
+     }
+    },
+    {
+     "target": "卡萨诺城",
+     "depth": 27,
+     "placed_on_frame": 28,
+     "inherited_from_frame": 28,
+     "character": 1071,
+     "evidence": "tag#6195 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 28 depth 27",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    140,
+    470
+   ],
+   "exit_arrow_count": 2,
+   "entered_by": []
+  },
+  {
+   "frame_label": "地下城3层",
+   "frame": 30,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "地下城3层",
+     "evidence": "tag#6241 offset 0x2D93C3"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 8,
+     "placed_on_frame": 30,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6248 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 30 depth 8",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    340,
+    335
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": [
+    {
+     "from": "tag#5434 DoAction  sprite1161 frame 1  root_frames=[12(卡萨诺城)]  bytes=6543",
+     "evidence": "tag#5434 offset 0x272530"
+    }
+   ]
+  },
+  {
+   "frame_label": "PK赛场1层",
+   "frame": 31,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 2,
+     "placed_on_frame": 31,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6258 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 31 depth 2",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    145,
+    335
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": [
+    {
+     "from": "tag#5573 DoAction  sprite1186 frame 1  root_frames=[13(皇宫)]  bytes=2149",
+     "evidence": "tag#5573 offset 0x27CD3B"
+    }
+   ]
+  },
+  {
+   "frame_label": "PK赛场2层",
+   "frame": 32,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 2,
+     "placed_on_frame": 31,
+     "inherited_from_frame": 31,
+     "character": 1071,
+     "evidence": "tag#6258 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 31 depth 2",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    145,
+    335
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": [
+    {
+     "from": "tag#5573 DoAction  sprite1186 frame 1  root_frames=[13(皇宫)]  bytes=2149",
+     "evidence": "tag#5573 offset 0x27CD6E"
+    }
+   ]
+  },
+  {
+   "frame_label": "PK赛场3层",
+   "frame": 33,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 2,
+     "placed_on_frame": 31,
+     "inherited_from_frame": 31,
+     "character": 1071,
+     "evidence": "tag#6258 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 31 depth 2",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    145,
+    335
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": [
+    {
+     "from": "tag#5573 DoAction  sprite1186 frame 1  root_frames=[13(皇宫)]  bytes=2149",
+     "evidence": "tag#5573 offset 0x27CD83"
+    }
+   ]
+  },
+  {
+   "frame_label": "战魂封印谜宫",
+   "frame": 34,
+   "is_playable_map": true,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": [
+    190,
+    245
+   ],
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#5855 DoAction  sprite1235 frame 1  root_frames=[16(戈壁)]  bytes=1544",
+     "evidence": "tag#5855 offset 0x29CD0F"
+    }
+   ]
+  },
+  {
+   "frame_label": "树心城",
+   "frame": 35,
+   "is_playable_map": true,
+   "nowmap": [
+    {
+     "value": "树心城",
+     "evidence": "tag#6290 offset 0x325F85"
+    }
+   ],
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [
+    {
+     "target": "卡萨诺城",
+     "depth": 20,
+     "placed_on_frame": 35,
+     "inherited_from_frame": null,
+     "character": 1071,
+     "evidence": "tag#6302 ClipActions onClipEvent(load) map=卡萨诺城 at root frame 35 depth 20",
+     "gate": null
+    }
+   ],
+   "player_spawn": [
+    235,
+    310
+   ],
+   "exit_arrow_count": 1,
+   "entered_by": [
+    {
+     "from": "tag#4079 DefineButton2  root frame 6  label=开始  button_id=829  cond=overDownToOverUp  bytes=174",
+     "evidence": "tag#4079 offset 0x1FE6BC"
+    }
+   ]
+  },
+  {
+   "frame_label": "战场",
+   "frame": 36,
+   "is_playable_map": false,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": "UNCONFIRMED",
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#4963 DoAction  sprite1074 frame 1  sprite_label=巨杰士  root_frames=[8(雷鸣大陆),10(草原),16(戈壁),17(迷梦沼泽),18(冰宫),19(亚维特岛),20(火山),21(深渊迷宫),22(雪域边境),23(魔中军阵地),24(魔左军阵地),25(魔右军阵地),26(能量塔禁地),27(魔军帅旗),28(地下城1层),29(地下城2层),30(地下城3层),31(PK赛场1层),32(PK赛场2层),33(PK赛场3层),34(战魂封印谜宫)]  bytes=1145",
+     "evidence": "tag#4963 offset 0x24C341"
+    },
+    {
+     "from": "tag#5086 DoAction  sprite1079 frame 1  root_frames=[8(雷鸣大陆),12(卡萨诺城),16(戈壁),17(迷梦沼泽),18(冰宫),19(亚维特岛)]  bytes=4730",
+     "evidence": "tag#5086 offset 0x24E697"
+    }
+   ]
+  },
+  {
+   "frame_label": "游戏结束",
+   "frame": 37,
+   "is_playable_map": false,
+   "nowmap": "NO_ASSIGNMENT_IN_FRAME_SCRIPT",
+   "nextmap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "nextmap is a global boolean gate, never assigned a map name anywhere in the SWF"
+   },
+   "owermap": {
+    "per_map_value": "NOT_A_PER_MAP_FIELD",
+    "reason": "owermap is the name of the map the player currently protects (map occupation race), not a link"
+   },
+   "returnmap": {
+    "per_map_value": "NOT_A_VARIABLE",
+    "reason": "returnmap is a function on the root timeline that does gotoAndStop(nowmap)"
+   },
+   "exits": [],
+   "player_spawn": "UNCONFIRMED",
+   "exit_arrow_count": 0,
+   "entered_by": [
+    {
+     "from": "tag#2274 DoAction  root frame 6  label=开始  bytes=14923",
+     "evidence": "tag#2274 offset 0x1A4AA1"
+    },
+    {
+     "from": "tag#2427 DoAction  sprite443 frame 1  root_frames=[6(开始)]  bytes=6301",
+     "evidence": "tag#2427 offset 0x1ABE18"
+    },
+    {
+     "from": "tag#4758 DefineButton2  root frame 6  label=开始  button_id=1024  cond=overDownToOverUp  bytes=49",
+     "evidence": "tag#4758 offset 0x232C33"
+    }
+   ]
+  }
+ ],
+ "source": {
+  "swf": "魔域1.03_v9.swf",
+  "sha256": "5c9d0df690f2921d6bbe01e896e59a5e1b0b7a16c7f985058506cf6d762ee1e6",
+  "file_size": 2845315,
+  "signature": "CWS",
+  "swf_version": 8,
+  "root_frame_count": 38,
+  "action_blocks": 817,
+  "parser_warnings": [],
+  "command": "python tools/swf_as2_dump.py <swf> --map-links <out>"
+ }
+}

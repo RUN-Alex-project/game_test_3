@@ -43,10 +43,6 @@
                 "name": "返回卡萨诺城"
             },
             {
-                "target": "ice_palace",
-                "name": "前往冰宫"
-            },
-            {
                 "target": "palace_garden",
                 "name": "进入后花园"
             }
@@ -137,8 +133,8 @@
         ],
         "exits": [
             {
-                "target": "dungeon",
-                "name": "返回地下城一层"
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
             },
             {
                 "target": "dungeon_floor_3",
@@ -159,8 +155,8 @@
         ],
         "exits": [
             {
-                "target": "dungeon_floor_2",
-                "name": "返回地下城二层"
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
             }
         ],
         "encounters": [
@@ -184,10 +180,6 @@
             {
                 "target": "thunder_mine",
                 "name": "进入雷鸣矿洞"
-            },
-            {
-                "target": "desert",
-                "name": "前往戈壁"
             }
         ],
         "encounters": [
@@ -225,8 +217,8 @@
         ],
         "exits": [
             {
-                "target": "thunder_continent",
-                "name": "返回雷鸣大陆"
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
             },
             {
                 "target": "dream_swamp",
@@ -285,10 +277,6 @@
             {
                 "target": "avit_island",
                 "name": "前往亚维特岛"
-            },
-            {
-                "target": "palace",
-                "name": "返回皇宫"
             },
             {
                 "target": "ice_border",
@@ -456,6 +444,10 @@
             {
                 "target": "volcano",
                 "name": "前往火山"
+            },
+            {
+                "target": "cassano_city",
+                "name": "返回卡萨诺城"
             }
         ],
         "encounters": [

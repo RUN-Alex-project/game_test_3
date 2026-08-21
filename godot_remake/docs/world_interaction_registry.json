@@ -503,38 +503,6 @@
           "runtime_availability_rule": "level_only"
         },
         {
-          "direction": "left",
-          "target_map_id": "ice_palace",
-          "name": "前往冰宫",
-          "position": [
-            2.0,
-            218.0
-          ],
-          "size": [
-            41.0,
-            90.0
-          ],
-          "availability": "UNCONFIRMED",
-          "required_level": "UNCONFIRMED",
-          "action_route": "edge_exit",
-          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
-          "evidence_tokens": [
-            "palace",
-            "ice_palace"
-          ],
-          "implementation_source": "res://scripts/main_original.gd",
-          "classification": "evidence_gap",
-          "evidence_status": {
-            "direction": "native_confirmed",
-            "position": "native_confirmed",
-            "size": "native_confirmed",
-            "availability": "unconfirmed",
-            "required_level": "unconfirmed"
-          },
-          "runtime_required_level": 1,
-          "runtime_availability_rule": "level_only"
-        },
-        {
           "direction": "right",
           "target_map_id": "palace_garden",
           "name": "进入后花园",
@@ -1245,38 +1213,6 @@
       "swf_scope": "UNCONFIRMED",
       "exits": [
         {
-          "direction": "left",
-          "target_map_id": "dungeon",
-          "name": "返回地下城一层",
-          "position": [
-            2.0,
-            228.95
-          ],
-          "size": [
-            41.0,
-            90.0
-          ],
-          "availability": "UNCONFIRMED",
-          "required_level": "UNCONFIRMED",
-          "action_route": "edge_exit",
-          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
-          "evidence_tokens": [
-            "dungeon_floor_2",
-            "dungeon"
-          ],
-          "implementation_source": "res://scripts/main_original.gd",
-          "classification": "evidence_gap",
-          "evidence_status": {
-            "direction": "native_confirmed",
-            "position": "native_confirmed",
-            "size": "native_confirmed",
-            "availability": "unconfirmed",
-            "required_level": "unconfirmed"
-          },
-          "runtime_required_level": 1,
-          "runtime_availability_rule": "level_only"
-        },
-        {
           "direction": "right",
           "target_map_id": "dungeon_floor_3",
           "name": "进入地下城三层",
@@ -1307,6 +1243,38 @@
           },
           "runtime_required_level": 1,
           "runtime_availability_rule": "unlocked_map:dungeon_floor_3"
+        },
+        {
+          "direction": "top",
+          "target_map_id": "cassano_city",
+          "name": "返回卡萨诺城",
+          "position": [
+            206.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "UNCONFIRMED",
+          "required_level": "UNCONFIRMED",
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
+          "evidence_tokens": [
+            "dungeon_floor_2",
+            "cassano_city"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "evidence_gap",
+          "evidence_status": {
+            "direction": "native_confirmed",
+            "position": "native_confirmed",
+            "size": "native_confirmed",
+            "availability": "unconfirmed",
+            "required_level": "unconfirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
         }
       ],
       "entities": [
@@ -1349,8 +1317,8 @@
       "exits": [
         {
           "direction": "top",
-          "target_map_id": "dungeon_floor_2",
-          "name": "返回地下城二层",
+          "target_map_id": "cassano_city",
+          "name": "返回卡萨诺城",
           "position": [
             206.0,
             124.3
@@ -1365,7 +1333,7 @@
           "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
           "evidence_tokens": [
             "dungeon_floor_3",
-            "dungeon_floor_2"
+            "cassano_city"
           ],
           "implementation_source": "res://scripts/main_original.gd",
           "classification": "evidence_gap",
@@ -1377,7 +1345,7 @@
             "required_level": "unconfirmed"
           },
           "runtime_required_level": 1,
-          "runtime_availability_rule": "unlocked_map:dungeon_floor_2"
+          "runtime_availability_rule": "level_only"
         }
       ],
       "entities": [
@@ -1469,38 +1437,6 @@
           "evidence_tokens": [
             "thunder_continent",
             "thunder_mine"
-          ],
-          "implementation_source": "res://scripts/main_original.gd",
-          "classification": "evidence_gap",
-          "evidence_status": {
-            "direction": "native_confirmed",
-            "position": "native_confirmed",
-            "size": "native_confirmed",
-            "availability": "unconfirmed",
-            "required_level": "unconfirmed"
-          },
-          "runtime_required_level": 1,
-          "runtime_availability_rule": "level_only"
-        },
-        {
-          "direction": "bottom",
-          "target_map_id": "desert",
-          "name": "前往戈壁",
-          "position": [
-            386.8,
-            400.45
-          ],
-          "size": [
-            90.0,
-            41.0
-          ],
-          "availability": "UNCONFIRMED",
-          "required_level": "UNCONFIRMED",
-          "action_route": "edge_exit",
-          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
-          "evidence_tokens": [
-            "thunder_continent",
-            "desert"
           ],
           "implementation_source": "res://scripts/main_original.gd",
           "classification": "evidence_gap",
@@ -1961,38 +1897,6 @@
       "swf_scope": "UNCONFIRMED",
       "exits": [
         {
-          "direction": "top",
-          "target_map_id": "thunder_continent",
-          "name": "返回雷鸣大陆",
-          "position": [
-            206.0,
-            124.3
-          ],
-          "size": [
-            90.0,
-            41.0
-          ],
-          "availability": "UNCONFIRMED",
-          "required_level": "UNCONFIRMED",
-          "action_route": "edge_exit",
-          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
-          "evidence_tokens": [
-            "desert",
-            "thunder_continent"
-          ],
-          "implementation_source": "res://scripts/main_original.gd",
-          "classification": "evidence_gap",
-          "evidence_status": {
-            "direction": "native_confirmed",
-            "position": "native_confirmed",
-            "size": "native_confirmed",
-            "availability": "unconfirmed",
-            "required_level": "unconfirmed"
-          },
-          "runtime_required_level": 1,
-          "runtime_availability_rule": "level_only"
-        },
-        {
           "direction": "bottom",
           "target_map_id": "dream_swamp",
           "name": "前往迷梦沼泽",
@@ -2011,6 +1915,38 @@
           "evidence_tokens": [
             "desert",
             "dream_swamp"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "evidence_gap",
+          "evidence_status": {
+            "direction": "native_confirmed",
+            "position": "native_confirmed",
+            "size": "native_confirmed",
+            "availability": "unconfirmed",
+            "required_level": "unconfirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "top",
+          "target_map_id": "cassano_city",
+          "name": "返回卡萨诺城",
+          "position": [
+            206.0,
+            124.3
+          ],
+          "size": [
+            90.0,
+            41.0
+          ],
+          "availability": "UNCONFIRMED",
+          "required_level": "UNCONFIRMED",
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
+          "evidence_tokens": [
+            "desert",
+            "cassano_city"
           ],
           "implementation_source": "res://scripts/main_original.gd",
           "classification": "evidence_gap",
@@ -2663,38 +2599,6 @@
           "evidence_tokens": [
             "ice_palace",
             "avit_island"
-          ],
-          "implementation_source": "res://scripts/main_original.gd",
-          "classification": "evidence_gap",
-          "evidence_status": {
-            "direction": "native_confirmed",
-            "position": "native_confirmed",
-            "size": "native_confirmed",
-            "availability": "unconfirmed",
-            "required_level": "unconfirmed"
-          },
-          "runtime_required_level": 1,
-          "runtime_availability_rule": "level_only"
-        },
-        {
-          "direction": "bottom",
-          "target_map_id": "palace",
-          "name": "返回皇宫",
-          "position": [
-            301.8,
-            402.0
-          ],
-          "size": [
-            90.0,
-            41.0
-          ],
-          "availability": "UNCONFIRMED",
-          "required_level": "UNCONFIRMED",
-          "action_route": "edge_exit",
-          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
-          "evidence_tokens": [
-            "ice_palace",
-            "palace"
           ],
           "implementation_source": "res://scripts/main_original.gd",
           "classification": "evidence_gap",
@@ -3708,6 +3612,38 @@
           "evidence_tokens": [
             "avit_island",
             "volcano"
+          ],
+          "implementation_source": "res://scripts/main_original.gd",
+          "classification": "evidence_gap",
+          "evidence_status": {
+            "direction": "native_confirmed",
+            "position": "native_confirmed",
+            "size": "native_confirmed",
+            "availability": "unconfirmed",
+            "required_level": "unconfirmed"
+          },
+          "runtime_required_level": 1,
+          "runtime_availability_rule": "level_only"
+        },
+        {
+          "direction": "left",
+          "target_map_id": "cassano_city",
+          "name": "返回卡萨诺城",
+          "position": [
+            2.0,
+            225.85
+          ],
+          "size": [
+            41.0,
+            90.0
+          ],
+          "availability": "UNCONFIRMED",
+          "required_level": "UNCONFIRMED",
+          "action_route": "edge_exit",
+          "evidence_source": "res://docs/evidence/world_interactions_v103_v9.txt",
+          "evidence_tokens": [
+            "avit_island",
+            "cassano_city"
           ],
           "implementation_source": "res://scripts/main_original.gd",
           "classification": "evidence_gap",
@@ -10090,15 +10026,6 @@
     {
       "map_id": "palace",
       "object_ids": [
-        "exit:ice_palace"
-      ],
-      "field": "availability/required_level",
-      "missing": "SWF exit availability/level evidence",
-      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
-    },
-    {
-      "map_id": "palace",
-      "object_ids": [
         "exit:palace_garden"
       ],
       "field": "availability/required_level",
@@ -10153,25 +10080,7 @@
     {
       "map_id": "dungeon_floor_2",
       "object_ids": [
-        "exit:dungeon"
-      ],
-      "field": "availability/required_level",
-      "missing": "SWF exit availability/level evidence",
-      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
-    },
-    {
-      "map_id": "dungeon_floor_2",
-      "object_ids": [
         "exit:dungeon_floor_3"
-      ],
-      "field": "availability/required_level",
-      "missing": "SWF exit availability/level evidence",
-      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
-    },
-    {
-      "map_id": "dungeon_floor_3",
-      "object_ids": [
-        "exit:dungeon_floor_2"
       ],
       "field": "availability/required_level",
       "missing": "SWF exit availability/level evidence",
@@ -10196,25 +10105,7 @@
       "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
     },
     {
-      "map_id": "thunder_continent",
-      "object_ids": [
-        "exit:desert"
-      ],
-      "field": "availability/required_level",
-      "missing": "SWF exit availability/level evidence",
-      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
-    },
-    {
       "map_id": "thunder_mine",
-      "object_ids": [
-        "exit:thunder_continent"
-      ],
-      "field": "availability/required_level",
-      "missing": "SWF exit availability/level evidence",
-      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
-    },
-    {
-      "map_id": "desert",
       "object_ids": [
         "exit:thunder_continent"
       ],
@@ -10262,15 +10153,6 @@
       "map_id": "ice_palace",
       "object_ids": [
         "exit:avit_island"
-      ],
-      "field": "availability/required_level",
-      "missing": "SWF exit availability/level evidence",
-      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
-    },
-    {
-      "map_id": "ice_palace",
-      "object_ids": [
-        "exit:palace"
       ],
       "field": "availability/required_level",
       "missing": "SWF exit availability/level evidence",
@@ -10467,6 +10349,42 @@
     },
     {
       "map_id": "pk_arena_3",
+      "object_ids": [
+        "exit:cassano_city"
+      ],
+      "field": "availability/required_level",
+      "missing": "SWF exit availability/level evidence",
+      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
+    },
+    {
+      "map_id": "desert",
+      "object_ids": [
+        "exit:cassano_city"
+      ],
+      "field": "availability/required_level",
+      "missing": "SWF exit availability/level evidence",
+      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
+    },
+    {
+      "map_id": "avit_island",
+      "object_ids": [
+        "exit:cassano_city"
+      ],
+      "field": "availability/required_level",
+      "missing": "SWF exit availability/level evidence",
+      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
+    },
+    {
+      "map_id": "dungeon_floor_2",
+      "object_ids": [
+        "exit:cassano_city"
+      ],
+      "field": "availability/required_level",
+      "missing": "SWF exit availability/level evidence",
+      "command": "python work/inspect_swf_exit_matrices.py 魔域1.03_v9.swf"
+    },
+    {
+      "map_id": "dungeon_floor_3",
       "object_ids": [
         "exit:cassano_city"
       ],

@@ -34,6 +34,38 @@ func _ready() -> void:
 	assert(right.target_map_id == "cassano_city" and right.position.is_equal_approx(Vector2(657.7, 219.5)), "Thunder return exit does not match frame 8")
 	assert(top.target_map_id == "thunder_mine" and top.position.is_equal_approx(Vector2(206.8, 124.3)), "mine entrance does not match frame 8")
 	assert(not main.direction_buttons["left"].visible, "unused Thunder left edge remained visible")
+	assert(not main.direction_buttons["bottom"].visible, "frame 8 has no desert arrow, bottom edge must stay hidden")
+
+	# 原版补回的四条回城边，坐标全部来自同一个 character 1071 箭头实例的
+	# PlaceObject2 矩阵（戈壁 frame16 d27、亚维特岛 frame19 d43、
+	# 地下城二层 frame28 d27 继承、地下城三层 frame30 d8）。
+	var native_returns := {
+		"desert":{"direction":"top", "rect":Rect2(206.0, 124.3, 90.0, 41.0)},
+		"avit_island":{"direction":"left", "rect":Rect2(2.0, 225.85, 41.0, 90.0)},
+		"dungeon_floor_2":{"direction":"top", "rect":Rect2(206.0, 124.3, 90.0, 41.0)},
+		"dungeon_floor_3":{"direction":"top", "rect":Rect2(206.0, 124.3, 90.0, 41.0)},
+	}
+	for map_id: String in native_returns:
+		var expected: Dictionary = native_returns[map_id]
+		GameState.current_map_id = map_id
+		main._apply_current_map()
+		await get_tree().process_frame
+		var back: Button = main.direction_buttons[str(expected["direction"])]
+		assert(back.visible and back.target_map_id == "cassano_city",
+			"%s lost its native exit back to Cassano" % map_id)
+		var expected_rect: Rect2 = expected["rect"]
+		assert(back.position.is_equal_approx(expected_rect.position) and back.size.is_equal_approx(expected_rect.size),
+			"%s return exit does not match its SWF arrow placement" % map_id)
+
+	# 地下城下行链在原版是单向的：二层没有回一层、三层没有回二层的箭头。
+	var upward := {"dungeon_floor_2":"dungeon", "dungeon_floor_3":"dungeon_floor_2"}
+	for floor_id: String in upward:
+		GameState.current_map_id = floor_id
+		main._apply_current_map()
+		await get_tree().process_frame
+		for button: Button in main.direction_buttons.values():
+			assert(not button.visible or button.target_map_id != str(upward[floor_id]),
+				"%s regained the remake-only upward exit to %s" % [floor_id, upward[floor_id]])
 
 	print("PASS native SWF map-edge placements, labels, gates, and travel wiring")
 	get_tree().quit(0)
